@@ -1,8 +1,9 @@
 .page-home {
   height: 100%;
-  .switch-lgv-view-container {
+  .tools-container {
     display: flex;
     height: 20px;
+    padding: 0px 10px;
     button {
       background-color: transparent;
       color: #151d2d;
@@ -13,6 +14,11 @@
     .button-active {
       color: blue;
       text-decoration: underline;
+    }
+
+    .lgv-tools-container {
+      flex: 1;
+      padding: 3px 10px 0px 10px;
     }
   }
 }

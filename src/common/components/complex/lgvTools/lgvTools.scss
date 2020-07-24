@@ -1,0 +1,33 @@
+.lgv-tools {
+  display: flex;
+  justify-content: flex-end;
+
+  .lgv-tool {
+    margin: 0px 10px;
+
+    svg {
+      margin: 0px 10px;
+    }
+
+    cursor: pointer;
+  }
+
+  .lgv-tool:hover {
+    text-decoration: underline;
+  }
+
+  .lgv-tool-latch {
+    display: flex;
+
+    input {
+      margin: 0;
+      cursor: pointer;
+    }
+
+    cursor: default;
+  }
+
+  .lgv-tool-latch:hover {
+    text-decoration: none;
+  }
+}

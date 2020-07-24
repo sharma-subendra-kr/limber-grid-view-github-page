@@ -1,32 +1,31 @@
 import { createAction, createReducer, createSelector } from "@reduxjs/toolkit";
 import { put, all, takeLatest } from "redux-saga/effects";
 
-const DO_SOMETHING = "[home] do something";
-const SOMETHING_DONE = "[home] something done";
+const CHANGE_LGV_VIEW_ACTION = "[home] change lgv view action";
+const CHANGE_LGV_VIEW = "[home] something done";
 
 const initialState = {
-  loading: true,
+  view: "customized",
 };
 
 export const stateSelector = (state) => state.homeReducer;
 
-export const getLoading = createSelector(stateSelector, (state) => {
-  console.log(state);
-  return state.loading;
+export const getView = createSelector(stateSelector, (state) => {
+  return state.view;
 });
 
 export const homeReducer = createReducer(initialState, {
-  [SOMETHING_DONE]: (state, { payload }) => {
-    state.loading = false;
+  [CHANGE_LGV_VIEW]: (state, { payload }) => {
+    state.view = payload;
   },
 });
 
-export const doSomething = createAction(DO_SOMETHING);
+export const changeLgvViewAction = createAction(CHANGE_LGV_VIEW_ACTION);
 
-function* initHome({ payload }) {
-  yield put({ type: SOMETHING_DONE, payload: { loading: false } });
+function* changeLgvViewSaga({ payload }) {
+  yield put({ type: CHANGE_LGV_VIEW, payload: payload });
 }
 
 export function* homeSaga() {
-  yield all([yield takeLatest(DO_SOMETHING, initHome)]);
+  yield all([yield takeLatest(CHANGE_LGV_VIEW_ACTION, changeLgvViewSaga)]);
 }

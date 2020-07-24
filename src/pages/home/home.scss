@@ -1,5 +1,5 @@
 .page-home {
-  height: 100%;
+  height: calc(100% - 50px);
   .tools-container {
     display: flex;
     height: 20px;
@@ -20,5 +20,8 @@
       flex: 1;
       padding: 3px 10px 0px 10px;
     }
+  }
+  .lgv-container {
+    height: calc(100% - 20px);
   }
 }

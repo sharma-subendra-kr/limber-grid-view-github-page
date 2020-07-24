@@ -4,18 +4,20 @@ import { connect } from "react-redux";
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
 import LgvTools from "src/common/components/complex/lgvTools/lgvTools";
+import LgvCustomizedView from "src/common/components/widgets/LgvCustomizedView/LgvCustomizedView";
+import LgvDefaultView from "src/common/components/widgets/LgvDefaultView/LgvDefaultView";
 
-import { getLoading, doSomething } from "./ducks";
+import { getView, changeLgvViewAction } from "./ducks";
 
 import "./home.scss";
 
 const Home = (props) => {
-  const { loading, doSomething } = props;
+  const { view, changeLgvViewAction } = props;
 
   useEffect(() => {
-    setTimeout(() => {
-      doSomething();
-    }, 1000);
+    // setTimeout(() => {
+    //   changeLgvViewAction("default");
+    // }, 1000);
   }, []);
 
   const onLatchChange = (latch) => {
@@ -28,14 +30,26 @@ const Home = (props) => {
     console.log("onAddItem");
   };
 
+  const onClickCustomizedView = () => {
+    changeLgvViewAction("customized");
+  };
+
+  const onClickDefaultViewView = () => {
+    changeLgvViewAction("default");
+  };
+
   return (
     <>
       <Header />
       <div className="page-home">
         <div className="tools-container">
           <div>
-            <button className="button">Customized View</button>
-            <button className="button">Default View</button>
+            <button className="button" onClick={onClickCustomizedView}>
+              Customized View
+            </button>
+            <button className="button" onClick={onClickDefaultViewView}>
+              Default View
+            </button>
           </div>
           <div className="lgv-tools-container">
             <LgvTools
@@ -45,6 +59,9 @@ const Home = (props) => {
             />
           </div>
         </div>
+        <div className="lgv-container">
+          {view === "customized" ? <LgvCustomizedView /> : <LgvDefaultView />}
+        </div>
       </div>
       <Footer />
     </>
@@ -53,9 +70,9 @@ const Home = (props) => {
 
 export default connect(
   (state) => ({
-    loading: getLoading(state),
+    view: getView(state),
   }),
   {
-    doSomething,
+    changeLgvViewAction,
   }
 )(Home);

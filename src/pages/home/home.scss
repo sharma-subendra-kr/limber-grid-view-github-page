@@ -1,0 +1,18 @@
+.page-home {
+  height: 100%;
+  .switch-lgv-view-container {
+    display: flex;
+    height: 20px;
+    button {
+      background-color: transparent;
+      color: #151d2d;
+      height: 20px;
+      margin: 0px 10px;
+    }
+
+    .button-active {
+      color: blue;
+      text-decoration: underline;
+    }
+  }
+}

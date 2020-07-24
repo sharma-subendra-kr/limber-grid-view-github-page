@@ -4,38 +4,50 @@ import { connect } from "react-redux";
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
 import LgvTools from "src/common/components/complex/lgvTools/lgvTools";
-import LgvCustomizedView from "src/common/components/widgets/LgvCustomizedView/LgvCustomizedView";
-import LgvDefaultView from "src/common/components/widgets/LgvDefaultView/LgvDefaultView";
+import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomizedView";
+import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
 
-import { getView, changeLgvViewAction } from "./ducks";
+import {
+  getView,
+  changeViewAction,
+  changeLatchAction,
+  changeDeskInteractionModeAction,
+} from "./ducks";
 
 import "./home.scss";
 
 const Home = (props) => {
-  const { view, changeLgvViewAction } = props;
+  const {
+    view,
+    changeViewAction,
+    changeLatchAction,
+    changeDeskInteractionModeAction,
+  } = props;
 
   useEffect(() => {
     // setTimeout(() => {
-    //   changeLgvViewAction("default");
+    //   changeViewAction("default");
     // }, 1000);
   }, []);
 
   const onLatchChange = (latch) => {
-    console.log("latch", latch);
+    changeLatchAction(latch);
   };
 
-  const onDeskInteractionChange = (deskInteractionMode) => {};
+  const onDeskInteractionChange = (deskInteractionMode) => {
+    changeDeskInteractionModeAction(deskInteractionMode);
+  };
 
   const onAddItem = () => {
     console.log("onAddItem");
   };
 
   const onClickCustomizedView = () => {
-    changeLgvViewAction("customized");
+    changeViewAction("customized");
   };
 
   const onClickDefaultViewView = () => {
-    changeLgvViewAction("default");
+    changeViewAction("default");
   };
 
   return (
@@ -73,6 +85,8 @@ export default connect(
     view: getView(state),
   }),
   {
-    changeLgvViewAction,
+    changeViewAction,
+    changeLatchAction,
+    changeDeskInteractionModeAction,
   }
 )(Home);

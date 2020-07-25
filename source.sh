@@ -1,2 +1,2 @@
-export NODE_ENV="development"
-export PORT=3000
+export NODE_ENV="production"
+export PORT=3001

@@ -12,10 +12,13 @@ var webpackNotifierPlugin = new WebpackNotifierPlugin({
 module.exports = {
   mode: process.env.NODE_ENV === "development" ? "development" : "production",
   devtool:
-    process.env.NODE_ENV === "development" ? "inline-source-map" : "source-map",
+    process.env.NODE_ENV === "development" ? "inline-source-map" : "none",
   entry: __dirname + "/src/index.js",
   output: {
-    path: __dirname + "/public/assets",
+    path:
+      process.env.NODE_ENV === "development"
+        ? __dirname + "/public/assets"
+        : __dirname + "/dist",
     publicPath: "assets",
     filename: "index.js",
   },
@@ -58,7 +61,7 @@ module.exports = {
   plugins: [miniCssExtractPlugin, webpackNotifierPlugin],
   resolve: {
     alias: {
-      "src": path.resolve(__dirname, "src/"),
+      src: path.resolve(__dirname, "src/"),
     },
   },
 };

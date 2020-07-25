@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
 import Footer from "src/common/components/static/footer/footer";
@@ -24,6 +24,9 @@ const Home = (props) => {
     changeDeskInteractionModeAction,
   } = props;
 
+  const lgvCustomizedView = useRef();
+  const lgvDefaultView = useRef();
+
   useEffect(() => {
     // setTimeout(() => {
     //   changeViewAction("default");
@@ -40,6 +43,11 @@ const Home = (props) => {
 
   const onAddItem = () => {
     console.log("onAddItem");
+    if (view === "customized") {
+      lgvCustomizedView.current.addItem();
+    } else {
+      lgvDefaultView.current.addItem();
+    }
   };
 
   const onClickCustomizedView = () => {
@@ -72,7 +80,11 @@ const Home = (props) => {
           </div>
         </div>
         <div className="lgv-container">
-          {view === "customized" ? <LgvCustomizedView /> : <LgvDefaultView />}
+          {view === "customized" ? (
+            <LgvCustomizedView ref={lgvCustomizedView} />
+          ) : (
+            <LgvDefaultView ref={lgvDefaultView} />
+          )}
         </div>
       </div>
       <Footer />

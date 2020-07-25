@@ -82,6 +82,6 @@ export function* homeSaga() {
       CHANGE_DESK_INTERACTION_MODE_ACTION,
       changeDeskInteractionModeSaga
     ),
-    yield takeLatest(SET_POSITION_DATA, setPositionDataSaga),
+    yield takeLatest(SET_POSITION_DATA_ACTION, setPositionDataSaga),
   ]);
 }

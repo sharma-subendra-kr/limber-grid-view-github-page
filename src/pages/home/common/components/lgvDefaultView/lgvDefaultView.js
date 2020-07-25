@@ -1,4 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useImperativeHandle,
+  forwardRef,
+} from "react";
 import { connect } from "react-redux";
 import LimberGridView from "LimberGridView";
 
@@ -7,17 +12,31 @@ import {
   getLatch,
   getDeskInteractionMode,
   getPositionData,
+  setPositionDataAction,
 } from "../../../ducks";
 
 import "./lgvDefaultView.scss";
 
-const LgvDefaultView = (props) => {
-  const { view, latch, deskInteractionMode, positionData } = props;
-
+const LgvDefaultView = forwardRef((props, ref) => {
+  const {
+    view,
+    latch,
+    deskInteractionMode,
+    positionData,
+    setPositionDataAction,
+  } = props;
+  console.log("pd default", positionData);
   const lgv = useRef(null);
   const el = useRef(null);
 
+  useImperativeHandle(ref, () => ({
+    addItem: () => {
+      lgv.current.addItem();
+    },
+  }));
+
   useEffect(() => {
+    console.log("mount", positionData);
     lgv.current = new LimberGridView({
       el: el.current,
       editable: true,
@@ -31,15 +50,11 @@ const LgvDefaultView = (props) => {
         removeComplete: removeComplete,
       },
       positionData: positionData,
-      // positionData: [
-      //   {
-      //     x: 430,
-      //     y: 630,
-      //     width: 200,
-      //     height: 250,
-      //   },
-      // ],
     });
+    return function () {
+      console.log("unmount default view");
+      setPositionDataAction(lgv.current.getGridData().positionData);
+    };
   }, []);
 
   useEffect(() => {
@@ -50,22 +65,34 @@ const LgvDefaultView = (props) => {
     lgv.current.setDeskInteractMode(deskInteractionMode);
   }, [deskInteractionMode]);
 
-  const renderContent = () => {
-    return "Arsenal";
+  const renderContent = (index, width, height, type) => {
+    return <div>Arsenal</div>;
   };
 
-  const renderComplete = () => {};
+  const renderComplete = (index) => {};
 
-  const resizeComplete = () => {};
+  const resizeComplete = (index, width, height, arrangedIndices) => {
+    setPositionDataAction(lgv.current.getGridData().positionData);
+  };
 
-  const moveComplete = () => {};
+  const moveComplete = (index, toX, toY, arrangedIndices) => {
+    setPositionDataAction(lgv.current.getGridData().positionData);
+  };
 
-  const addComplete = () => {};
+  const addComplete = (index) => {
+    setPositionDataAction(lgv.current.getGridData().positionData);
+  };
 
-  const removeComplete = () => {};
+  const removeComplete = (index) => {
+    setPositionDataAction(lgv.current.getGridData().positionData);
+  };
+
+  const renderPlugin = (renderData, element) => {
+    ReactDOM.render(renderData, element);
+  };
 
   return <div className="lgv-default-view-container" ref={el}></div>;
-};
+});
 
 export default connect(
   (state) => ({
@@ -74,5 +101,7 @@ export default connect(
     deskInteractionMode: getDeskInteractionMode(state),
     positionData: getPositionData(state),
   }),
-  {}
+  { setPositionDataAction },
+  null,
+  { forwardRef: true }
 )(LgvDefaultView);

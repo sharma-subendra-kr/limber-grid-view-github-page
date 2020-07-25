@@ -15,7 +15,7 @@ const initialState = {
   view: "customized",
   latch: true,
   deskInteractionMode: "ADD",
-  positionData: [],
+  positionData: undefined,
 };
 
 export const stateSelector = (state) => state.homeReducer;

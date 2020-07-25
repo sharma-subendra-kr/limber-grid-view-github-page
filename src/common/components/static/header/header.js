@@ -19,6 +19,13 @@ const Header = (props) => {
         <span>Star on github!</span>
         <FontAwesomeIcon icon={faGithub} />
       </a>
+      <a
+        className="view-example-code"
+        href="https://github.com/sharma-subendra-kr/limber-grid-view-github-page"
+        target="blank"
+      >
+        <span>View example code plugged in using React</span>
+      </a>
     </header>
   );
 };

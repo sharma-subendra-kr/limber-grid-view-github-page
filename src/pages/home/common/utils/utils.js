@@ -17,6 +17,5 @@ export const getRandomTitle = () => {
   ];
 
   const index = Math.floor(Math.random() * 11);
-  console.log(arr[index]);
   return arr[index];
 };

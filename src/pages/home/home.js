@@ -12,25 +12,30 @@ import {
   changeViewAction,
   changeLatchAction,
   changeDeskInteractionModeAction,
+  getPositionData,
+  setPositionDataAction,
 } from "./ducks";
 
+import { pd } from "src/pages/home/common/static/lgvData";
 import "./home.scss";
 
 const Home = (props) => {
   const {
     view,
+    positionData,
     changeViewAction,
     changeLatchAction,
     changeDeskInteractionModeAction,
+    setPositionDataAction,
   } = props;
 
   const lgvCustomizedView = useRef();
   const lgvDefaultView = useRef();
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   changeViewAction("default");
-    // }, 1000);
+    setTimeout(() => {
+      setPositionDataAction(pd);
+    }, 1000);
   }, []);
 
   const onLatchChange = (latch) => {
@@ -42,7 +47,6 @@ const Home = (props) => {
   };
 
   const onAddItem = () => {
-    console.log("onAddItem");
     if (view === "customized") {
       lgvCustomizedView.current.addItem();
     } else {
@@ -79,13 +83,15 @@ const Home = (props) => {
             />
           </div>
         </div>
-        <div className="lgv-container">
-          {view === "customized" ? (
-            <LgvCustomizedView ref={lgvCustomizedView} />
-          ) : (
-            <LgvDefaultView ref={lgvDefaultView} />
-          )}
-        </div>
+        {positionData && (
+          <div className="lgv-container">
+            {view === "customized" ? (
+              <LgvCustomizedView ref={lgvCustomizedView} />
+            ) : (
+              <LgvDefaultView ref={lgvDefaultView} />
+            )}
+          </div>
+        )}
       </div>
       <Footer />
     </>
@@ -95,10 +101,12 @@ const Home = (props) => {
 export default connect(
   (state) => ({
     view: getView(state),
+    positionData: getPositionData(state),
   }),
   {
     changeViewAction,
     changeLatchAction,
     changeDeskInteractionModeAction,
+    setPositionDataAction,
   }
 )(Home);

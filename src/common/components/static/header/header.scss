@@ -1,16 +1,29 @@
 .header {
   display: flex;
   height: 50px;
-  background-color: #bb1819;
+  background-color: #24292e;
   color: #f9ffff;
   padding: 7px;
 
   .header-banner {
-    flex: 1;
+    width: 250px;
   }
 
   .star-on-github {
-    width: 120px;
+    text-align: center;
+    flex: 1;
+    color: white;
+    font-size: 30px;
+    span {
+      font-size: 30px;
+      margin: 0 5px;
+    }
+    svg {
+      color: white;
+    }
+  }
+
+  .view-example-code {
     color: white;
     font-size: 12px;
     span {

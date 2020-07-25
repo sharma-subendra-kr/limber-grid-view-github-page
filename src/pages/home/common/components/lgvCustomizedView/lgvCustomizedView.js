@@ -8,6 +8,8 @@ import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import LimberGridView from "LimberGridView";
 
+import { Layout } from "./layout";
+
 import {
   getView,
   getLatch,
@@ -26,7 +28,7 @@ const LgvCustomizedView = forwardRef((props, ref) => {
     positionData,
     setPositionDataAction,
   } = props;
-  console.log("pd customized", positionData);
+
   const lgv = useRef(null);
   const el = useRef(null);
 
@@ -39,6 +41,7 @@ const LgvCustomizedView = forwardRef((props, ref) => {
   useEffect(() => {
     lgv.current = new LimberGridView({
       el: el.current,
+      itemMouseDownMoveCheck: itemMouseDownMoveCheck,
       callbacks: {
         renderContent: renderContent,
         renderComplete: renderComplete,
@@ -47,16 +50,10 @@ const LgvCustomizedView = forwardRef((props, ref) => {
         addComplete: addComplete,
         removeComplete: removeComplete,
         renderPlugin: renderPlugin,
+        removePlugin: removePlugin,
       },
       positionData: positionData,
     });
-    return function () {
-      console.log(
-        "unmount customized view",
-        lgv.current.getGridData().positionData
-      );
-      setPositionDataAction(lgv.current.getGridData().positionData);
-    };
   }, []);
 
   useEffect(() => {
@@ -67,18 +64,34 @@ const LgvCustomizedView = forwardRef((props, ref) => {
     lgv.current.setDeskInteractMode(deskInteractionMode);
   }, [deskInteractionMode]);
 
-  const a = (event) => {
-    console.log(event);
+  const itemMouseDownMoveCheck = (x, y, item, index, currentTarget) => {
+    if (currentTarget.classList.contains("custom-layout-header-title")) {
+      return true;
+    }
+    return false;
+  };
+
+  const onRemove = (index) => {
+    lgv.current.removeItem(index);
   };
 
   const renderContent = (index, width, height, type) => {
-    return <div onClick={a}>arsenal</div>;
+    return (
+      <Layout
+        index={index}
+        width={width}
+        height={height}
+        isAdd={type === "isAdd" ? true : false}
+        onRemove={onRemove}
+      />
+    );
   };
 
   const renderComplete = (index) => {};
 
   const resizeComplete = (index, width, height, arrangedIndices) => {
     setPositionDataAction(lgv.current.getGridData().positionData);
+    lgv.current.renderItem(index);
   };
 
   const moveComplete = (index, toX, toY, arrangedIndices) => {
@@ -95,6 +108,10 @@ const LgvCustomizedView = forwardRef((props, ref) => {
 
   const renderPlugin = (renderData, element) => {
     ReactDOM.render(renderData, element);
+  };
+
+  const removePlugin = (element) => {
+    ReactDOM.unmountComponentAtNode(element);
   };
 
   return <div className="lgv-customized-view-container" ref={el}></div>;

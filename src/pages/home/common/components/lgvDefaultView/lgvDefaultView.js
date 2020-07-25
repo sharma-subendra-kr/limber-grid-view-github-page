@@ -4,8 +4,11 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from "react";
+import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import LimberGridView from "LimberGridView";
+
+import { Layout } from "./layout";
 
 import {
   getView,
@@ -25,7 +28,7 @@ const LgvDefaultView = forwardRef((props, ref) => {
     positionData,
     setPositionDataAction,
   } = props;
-  console.log("pd default", positionData);
+
   const lgv = useRef(null);
   const el = useRef(null);
 
@@ -36,11 +39,8 @@ const LgvDefaultView = forwardRef((props, ref) => {
   }));
 
   useEffect(() => {
-    console.log("mount", positionData);
     lgv.current = new LimberGridView({
       el: el.current,
-      editable: true,
-      gridData: {},
       callbacks: {
         renderContent: renderContent,
         renderComplete: renderComplete,
@@ -48,13 +48,11 @@ const LgvDefaultView = forwardRef((props, ref) => {
         moveComplete: moveComplete,
         addComplete: addComplete,
         removeComplete: removeComplete,
+        renderPlugin: renderPlugin,
+        removePlugin: removePlugin,
       },
       positionData: positionData,
     });
-    return function () {
-      console.log("unmount default view");
-      setPositionDataAction(lgv.current.getGridData().positionData);
-    };
   }, []);
 
   useEffect(() => {
@@ -65,14 +63,25 @@ const LgvDefaultView = forwardRef((props, ref) => {
     lgv.current.setDeskInteractMode(deskInteractionMode);
   }, [deskInteractionMode]);
 
+  const onRemove = (index) => {};
+
   const renderContent = (index, width, height, type) => {
-    return <div>Arsenal</div>;
+    return (
+      <Layout
+        index={index}
+        width={width}
+        height={height}
+        isAdd={type === "isAdd" ? true : false}
+        onRemove={onRemove}
+      />
+    );
   };
 
   const renderComplete = (index) => {};
 
   const resizeComplete = (index, width, height, arrangedIndices) => {
     setPositionDataAction(lgv.current.getGridData().positionData);
+    lgv.current.renderItem(index);
   };
 
   const moveComplete = (index, toX, toY, arrangedIndices) => {
@@ -83,12 +92,16 @@ const LgvDefaultView = forwardRef((props, ref) => {
     setPositionDataAction(lgv.current.getGridData().positionData);
   };
 
-  const removeComplete = (index) => {
+  const removeComplete = (index, element) => {
     setPositionDataAction(lgv.current.getGridData().positionData);
   };
 
   const renderPlugin = (renderData, element) => {
     ReactDOM.render(renderData, element);
+  };
+
+  const removePlugin = (element) => {
+    ReactDOM.unmountComponentAtNode(element);
   };
 
   return <div className="lgv-default-view-container" ref={el}></div>;

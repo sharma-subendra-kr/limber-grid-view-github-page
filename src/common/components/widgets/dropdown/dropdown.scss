@@ -1,0 +1,32 @@
+.drop-down-container {
+  width: 30px;
+  height: 30px;
+  overflow: visible;
+  position: relative;
+
+  .drop-down-button {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .drop-down {
+    width: 70px;
+    position: absolute;
+    right: 0;
+    border: solid 1px black;
+    border-radius: 5px;
+    background-color: white;
+    .drop-down-item {
+      padding: 3px 7px;
+      height: 25px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .drop-down-item:hover {
+      background-color: grey;
+    }
+  }
+}

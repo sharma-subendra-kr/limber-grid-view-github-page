@@ -1,3 +1,18 @@
 .lgv-customized-view-container {
   height: 100%;
+  padding: 7px;
+
+  .limber-grid-view {
+    padding: 0px;
+    border: solid 1px #151d2d;
+  }
+
+  .limber-grid-view-item {
+    border-radius: 10px;
+  }
+
+  .limber-grid-view-item.limber-grid-view-item-editable::before {
+    height: 0px;
+    width: 0px;
+  }
 }

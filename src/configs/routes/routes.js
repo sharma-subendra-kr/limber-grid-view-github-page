@@ -11,8 +11,12 @@ const Routes = () => {
   return (
     <Router history={customHistory}>
       <Switch>
-        <PublicRoute path="/home" component={Home} redirectPath="/home" />
-        <Redirect to="/home" />
+        <PublicRoute
+          path="/LimberGridView"
+          component={Home}
+          redirectPath="/LimberGridView"
+        />
+        <Redirect to="/LimberGridView" />
       </Switch>
     </Router>
   );

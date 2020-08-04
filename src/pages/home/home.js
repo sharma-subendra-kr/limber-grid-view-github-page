@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, Suspense } from "react";
 import { connect } from "react-redux";
 
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
 import LgvTools from "src/common/components/complex/lgvTools/lgvTools";
-import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomizedView";
-import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
+// import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomizedView";
+// import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
 
 import {
   getView,
@@ -18,6 +18,13 @@ import {
 
 import { pd } from "src/pages/home/common/static/lgvData";
 import "./home.scss";
+
+const LgvCustomizedView = React.lazy(() =>
+  import("./common/components/lgvCustomizedView/lgvCustomizedView")
+);
+const LgvDefaultView = React.lazy(() =>
+  import("./common/components/lgvDefaultView/lgvDefaultView")
+);
 
 const Home = (props) => {
   const {
@@ -33,9 +40,11 @@ const Home = (props) => {
   const lgvDefaultView = useRef();
 
   useEffect(() => {
-    setTimeout(() => {
-      setPositionDataAction(pd);
-    }, 1000);
+    setPositionDataAction([]);
+    setPositionDataAction(pd);
+    // setTimeout(() => {
+    //   setPositionDataAction(pd);
+    // }, 1000);
   }, []);
 
   const onLatchChange = (latch) => {
@@ -83,15 +92,17 @@ const Home = (props) => {
             />
           </div>
         </div>
-        {positionData && (
-          <div className="lgv-container">
-            {view === "customized" ? (
-              <LgvCustomizedView ref={lgvCustomizedView} />
-            ) : (
-              <LgvDefaultView ref={lgvDefaultView} />
-            )}
-          </div>
-        )}
+        <Suspense fallback={<div>loading...</div>}>
+          {positionData && (
+            <div className="lgv-container">
+              {view === "customized" ? (
+                <LgvCustomizedView ref={lgvCustomizedView} />
+              ) : (
+                <LgvCustomizedView ref={lgvDefaultView} />
+              )}
+            </div>
+          )}
+        </Suspense>
       </div>
       <Footer />
     </>

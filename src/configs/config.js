@@ -16,7 +16,8 @@ const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-sagaMiddleware.run(sagas);
+const t = sagaMiddleware.run(sagas);
+console.log("t", t);
 
 const customHistory = createBrowserHistory();
 

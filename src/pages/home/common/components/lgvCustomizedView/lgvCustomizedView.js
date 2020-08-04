@@ -37,7 +37,7 @@ const LgvCustomizedView = forwardRef((props, ref) => {
       lgv.current.addItem();
     },
   }));
-
+  console.log("run");
   useEffect(() => {
     lgv.current = new LimberGridView({
       el: el.current,
@@ -54,6 +54,10 @@ const LgvCustomizedView = forwardRef((props, ref) => {
       },
       positionData: positionData,
     });
+    console.log("mounted");
+    return () => {
+      console.log("unmounted");
+    };
   }, []);
 
   useEffect(() => {

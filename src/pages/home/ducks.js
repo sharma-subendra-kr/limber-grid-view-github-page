@@ -1,5 +1,13 @@
 import { createAction, createReducer, createSelector } from "@reduxjs/toolkit";
-import { put, all, takeLatest } from "redux-saga/effects";
+import {
+  put,
+  all,
+  takeLatest,
+  takeEvery,
+  call,
+  take,
+  fork,
+} from "redux-saga/effects";
 
 const CHANGE_VIEW_ACTION = "[home] change view action";
 const CHANGE_VIEW = "[home] change view";
@@ -47,6 +55,7 @@ export const homeReducer = createReducer(initialState, {
     state.deskInteractionMode = payload;
   },
   [SET_POSITION_DATA]: (state, { payload }) => {
+    console.log("SET_POSITION_DATA", payload);
     state.positionData = payload;
   },
 });
@@ -70,8 +79,27 @@ function* changeDeskInteractionModeSaga({ payload }) {
   yield put({ type: CHANGE_DESK_INTERACTION_MODE, payload: payload });
 }
 
-function* setPositionDataSaga({ payload }) {
+function* process(payload) {
+  console.log("process", payload);
+  yield call(delay, 1000);
+  console.log("delay", 1000);
   yield put({ type: SET_POSITION_DATA, payload: payload });
+}
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+function* setPositionDataSaga({ payload }) {
+  console.log("setPositionDataSaga", payload);
+  yield call(delay, 1000);
+  // yield put({ type: SET_POSITION_DATA, payload: payload });
+  // yield take(SET_POSITION_DATA);
+  const a = yield fork(process, payload);
+  const b = yield fork(process, payload);
+  console.log("delay 2");
+  yield call(delay, 250);
+
+  // const a = yield call(process, payload);
+  // a.cancel();
+  console.log("a", a);
+  console.log("a", a.isCancelled());
 }
 
 export function* homeSaga() {
@@ -83,5 +111,6 @@ export function* homeSaga() {
       changeDeskInteractionModeSaga
     ),
     yield takeLatest(SET_POSITION_DATA_ACTION, setPositionDataSaga),
+    // yield takeEvery(SET_POSITION_DATA_ACTION, setPositionDataSaga),
   ]);
 }

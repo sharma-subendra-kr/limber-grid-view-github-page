@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack && ./node_modules/.bin/webpack-dev-server",
-    "build": "./node_modules/.bin/webpack"
+    "build": "./node_modules/.bin/webpack",
+    "prettier:check": "prettier -c **/*.{js,css,scss,json}",
+    "prettier:fix": "prettier --write **/*.{js,css,scss,json}",
+    "eslint:check": "eslint *.js",
+    "eslint:fix": "eslint --fix *.js"
   },
   "author": "Subendra Kumar Sharma",
   "license": "GPL-3.0-or-later",
@@ -24,7 +28,9 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
     "json-loader": "^0.5.7",
+    "lint-staged": "^10.2.11",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",

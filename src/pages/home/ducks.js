@@ -58,23 +58,23 @@ export const changeDeskInteractionModeAction = createAction(
 );
 export const setPositionDataAction = createAction(SET_POSITION_DATA_ACTION);
 
-function* changeViewSaga({ payload }) {
+function * changeViewSaga ({ payload }) {
   yield put({ type: CHANGE_VIEW, payload: payload });
 }
 
-function* changeLatchSaga({ payload }) {
+function * changeLatchSaga ({ payload }) {
   yield put({ type: CHANGE_LATCH, payload: payload });
 }
 
-function* changeDeskInteractionModeSaga({ payload }) {
+function * changeDeskInteractionModeSaga ({ payload }) {
   yield put({ type: CHANGE_DESK_INTERACTION_MODE, payload: payload });
 }
 
-function* setPositionDataSaga({ payload }) {
+function * setPositionDataSaga ({ payload }) {
   yield put({ type: SET_POSITION_DATA, payload: payload });
 }
 
-export function* homeSaga() {
+export function * homeSaga () {
   yield all([
     yield takeLatest(CHANGE_VIEW_ACTION, changeViewSaga),
     yield takeLatest(CHANGE_LATCH_ACTION, changeLatchSaga),

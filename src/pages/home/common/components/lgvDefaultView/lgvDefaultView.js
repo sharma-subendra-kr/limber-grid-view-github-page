@@ -22,7 +22,6 @@ import "./lgvDefaultView.scss";
 
 const LgvDefaultView = forwardRef((props, ref) => {
   const {
-    view,
     latch,
     deskInteractionMode,
     positionData,
@@ -71,7 +70,7 @@ const LgvDefaultView = forwardRef((props, ref) => {
         index={index}
         width={width}
         height={height}
-        isAdd={type === "isAdd" ? true : false}
+        isAdd={type === "isAdd"}
         onRemove={onRemove}
       />
     );

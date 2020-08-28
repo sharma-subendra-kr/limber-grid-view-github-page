@@ -7,8 +7,9 @@ export const PieChart = ({ width, height }) => {
   const pieChartRef = useRef();
 
   useEffect(() => {
+    pieChartRef.current.innerHTML = "";
     pieChartRef.current.appendChild(getPieChart(width, height));
-  }, []);
+  }, [width, height]);
 
   return <div ref={pieChartRef}></div>;
 };

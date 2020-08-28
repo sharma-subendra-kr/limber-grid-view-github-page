@@ -7,8 +7,9 @@ export const BarChart = ({ width, height }) => {
   const barChartRef = useRef();
 
   useEffect(() => {
+    barChartRef.current.innerHTML = "";
     barChartRef.current.appendChild(getBarChart(width, height));
-  }, []);
+  }, [width, height]);
 
   return <div ref={barChartRef}></div>;
 };

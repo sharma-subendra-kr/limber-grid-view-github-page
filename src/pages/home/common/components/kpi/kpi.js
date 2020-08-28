@@ -6,8 +6,9 @@ export const Kpi = ({ width, height }) => {
   const kpiRef = useRef();
 
   useEffect(() => {
+    kpiRef.current.innerHTML = "";
     kpiRef.current.appendChild(getKpi(width, height));
-  }, []);
+  }, [width, height]);
 
   return <div ref={kpiRef}></div>;
 };

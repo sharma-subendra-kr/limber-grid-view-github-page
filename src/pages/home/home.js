@@ -1,5 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
+
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
@@ -29,13 +32,13 @@ const Home = (props) => {
     setPositionDataAction,
   } = props;
 
+  const [info, setInfo] = useState("moveInfo");
+
   const lgvCustomizedView = useRef();
   const lgvDefaultView = useRef();
 
   useEffect(() => {
-    setTimeout(() => {
-      setPositionDataAction(pd);
-    }, 1000);
+    setPositionDataAction(pd);
   }, []);
 
   const onLatchChange = (latch) => {
@@ -65,6 +68,38 @@ const Home = (props) => {
   return (
     <>
       <Header />
+      <Snackbar
+        open={info === "moveInfo"}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          severity="info"
+          onClose={() => setInfo("resizeInfo")}
+          variant="filled"
+        >
+          Long Press/Tap on text of any item to drag and move.
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={info === "resizeInfo"}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          severity="info"
+          onClose={() => setInfo("cancelInfo")}
+          variant="filled"
+        >
+          Resize any item by dragging the bottom right corner of any item.
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={info === "cancelInfo"}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert severity="info" onClose={() => setInfo("")} variant="filled">
+          Tap anywhere or right click to cancel a move or resize operation.
+        </Alert>
+      </Snackbar>
       <div className="page-home">
         <div className="tools-container">
           <div>

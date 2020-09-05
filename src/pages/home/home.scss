@@ -1,9 +1,10 @@
 .page-home {
-  height: calc(100% - 50px);
+  height: calc(100% - 50px - 20px);
   .tools-container {
     display: flex;
     height: 20px;
     padding: 0px 10px;
+    border-bottom: solid 1px #151d2d;
     button {
       background-color: transparent;
       color: #151d2d;

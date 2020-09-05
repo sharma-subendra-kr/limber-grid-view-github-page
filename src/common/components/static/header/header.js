@@ -9,7 +9,7 @@ const Header = (props) => {
     <header className="header">
       <div className="header-banner">
         <p>Limber.co.in</p>
-        <p>LimberGridView 1.0.0-beta.2 is finally here!</p>
+        <p>LimberGridView 1.0.0-beta.1 is finally here!</p>
       </div>
       <a
         className="star-on-github"

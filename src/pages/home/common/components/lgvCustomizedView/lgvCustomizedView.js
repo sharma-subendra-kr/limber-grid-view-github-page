@@ -13,6 +13,7 @@ import { Layout } from "./layout";
 import {
   getView,
   getLatch,
+  getResizeMethod,
   getDeskInteractionMode,
   getPositionData,
   setPositionDataAction,
@@ -23,6 +24,7 @@ import "./lgvCustomizedView.scss";
 const LgvCustomizedView = forwardRef((props, ref) => {
   const {
     latch,
+    resizeMethod,
     deskInteractionMode,
     positionData,
     setPositionDataAction,
@@ -58,6 +60,10 @@ const LgvCustomizedView = forwardRef((props, ref) => {
   useEffect(() => {
     lgv.current.setLatchMovedItem(latch);
   }, [latch]);
+
+  useEffect(() => {
+    lgv.current.setUseVerticalArrOnResize(resizeMethod);
+  }, [resizeMethod]);
 
   useEffect(() => {
     lgv.current.setDeskInteractMode(deskInteractionMode);
@@ -120,6 +126,7 @@ export default connect(
   (state) => ({
     view: getView(state),
     latch: getLatch(state),
+    resizeMethod: getResizeMethod(state),
     deskInteractionMode: getDeskInteractionMode(state),
     positionData: getPositionData(state),
   }),

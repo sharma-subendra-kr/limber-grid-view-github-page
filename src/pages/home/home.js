@@ -14,6 +14,7 @@ import {
   getView,
   changeViewAction,
   changeLatchAction,
+  changeResizeMethodAction,
   changeDeskInteractionModeAction,
   getPositionData,
   setPositionDataAction,
@@ -27,6 +28,7 @@ const Home = (props) => {
     view,
     positionData,
     changeViewAction,
+    changeResizeMethodAction,
     changeLatchAction,
     changeDeskInteractionModeAction,
     setPositionDataAction,
@@ -40,6 +42,10 @@ const Home = (props) => {
   useEffect(() => {
     setPositionDataAction(pd);
   }, []);
+
+  const onResizeMethodChange = (resizeMethod) => {
+    changeResizeMethodAction(resizeMethod);
+  };
 
   const onLatchChange = (latch) => {
     changeLatchAction(latch);
@@ -112,6 +118,7 @@ const Home = (props) => {
           </div>
           <div className="lgv-tools-container">
             <LgvTools
+              onResizeMethodChange={onResizeMethodChange}
               onLatchChange={onLatchChange}
               onDeskInteractionChange={onDeskInteractionChange}
               onAddItem={onAddItem}
@@ -140,6 +147,7 @@ export default connect(
   }),
   {
     changeViewAction,
+    changeResizeMethodAction,
     changeLatchAction,
     changeDeskInteractionModeAction,
     setPositionDataAction,

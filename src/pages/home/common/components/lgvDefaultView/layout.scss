@@ -7,6 +7,7 @@
   .default-layout-header {
     display: flex;
     height: 30px;
+    white-space: nowrap;
     .default-layout-header-title {
       flex: 1;
       padding: 7px 14px;

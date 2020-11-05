@@ -53,6 +53,7 @@
     "@reduxjs/toolkit": "^1.4.0",
     "LimberGridView": "git+https://sharma-subendra-kr@github.com/sharma-subendra-kr/LimberGridView.git#release-1.0.0-beta.2",
     "d3": "^5.16.0",
+    "limbergridview": "git+https://sharma-subendra-kr@github.com/sharma-subendra-kr/LimberGridView.git#release-1.0.0-beta.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",

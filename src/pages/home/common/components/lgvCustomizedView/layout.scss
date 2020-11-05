@@ -9,6 +9,7 @@
   .custom-layout-header {
     display: flex;
     height: 30px;
+    white-space: nowrap;
     .custom-layout-header-title {
       flex: 1;
       padding: 7px 14px;

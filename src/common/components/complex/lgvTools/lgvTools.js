@@ -79,7 +79,7 @@ const LgvTools = (props) => {
           onClick={onLatchClick}
         />
         <FontAwesomeIcon icon={faClone} rotation={90} />
-        Latch on move
+        Latch on move / resize
       </div>
       {addOrCut === "ADD" ? (
         <div className="lgv-tool" onClick={onAddOrCutClick}>

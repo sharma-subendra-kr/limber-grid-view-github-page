@@ -10,4 +10,12 @@
   b {
     text-decoration: underline;
   }
+  position: fixed;
+  top: calc(100% - 20px);
+  left: 0;
+}
+
+.footer:hover {
+  top: initial;
+  bottom: 0;
 }

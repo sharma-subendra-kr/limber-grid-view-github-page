@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
-import LimberGridView from "LimberGridView";
+import LimberGridView from "limbergridview";
 
 import { Layout } from "./layout";
 

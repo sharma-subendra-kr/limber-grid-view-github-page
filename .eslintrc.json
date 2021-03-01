@@ -1,19 +1,40 @@
 {
   "env": {
     "browser": true,
-    "es2020": true
+    "es2021": true
   },
-  "extends": ["standard", "plugin:react/recommended"],
+  "extends": [
+    "standard",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "eslint-config-prettier"
+  ],
   "parserOptions": {
-    "ecmaVersion": 11,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
+  "plugins": ["react", "prettier", "jest"],
   "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-indent": [2, "tab"],
+    "react/jsx-indent-props": [2, "tab"],
+    "react/jsx-wrap-multilines": [
+      "error",
+      { "declaration": false, "assignment": false }
+    ],
     "indent": [2, 2],
     "no-tabs": 0,
     "semi": [2, "always"],
     "quotes": ["error", "double", { "allowTemplateLiterals": true }],
     "comma-dangle": "off",
+    "prettier/prettier": "error",
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
     "react/prop-types": "off"
   },
   "settings": {

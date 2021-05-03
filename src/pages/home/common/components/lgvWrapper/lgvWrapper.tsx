@@ -27,15 +27,15 @@ import LgvDefaultView from "../lgvDefaultView/lgvDefaultView";
 // };
 
 const LgvWrapper = (props) => {
-  return (
-    <div className="lgv-container">
-      {view === "customized" ? (
-        <LgvCustomizedView options={options} />
-      ) : (
-        <LgvDefaultView />
-      )}
-    </div>
-  );
+	return (
+		<div className="lgv-container">
+			{view === "customized" ? (
+				<LgvCustomizedView options={options} />
+			) : (
+				<LgvDefaultView />
+			)}
+		</div>
+	);
 };
 
 export default LgvWrapper;

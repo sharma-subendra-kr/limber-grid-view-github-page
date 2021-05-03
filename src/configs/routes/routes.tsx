@@ -8,18 +8,18 @@ import { PublicRoute } from "../../common/components/routes/PublicRoute";
 import Home from "../../pages/home/home";
 
 const Routes = () => {
-  return (
-    <Router history={customHistory}>
-      <Switch>
-        <PublicRoute
-          path="/LimberGridView"
-          component={Home}
-          redirectPath="/LimberGridView"
-        />
-        <Redirect to="/LimberGridView" />
-      </Switch>
-    </Router>
-  );
+	return (
+		<Router history={customHistory}>
+			<Switch>
+				<PublicRoute
+					path="/LimberGridView"
+					component={Home}
+					redirectPath="/LimberGridView"
+				/>
+				<Redirect to="/LimberGridView" />
+			</Switch>
+		</Router>
+	);
 };
 
 export default Routes;

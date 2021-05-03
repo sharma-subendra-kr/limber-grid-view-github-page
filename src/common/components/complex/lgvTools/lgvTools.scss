@@ -1,33 +1,33 @@
 .lgv-tools {
-  display: flex;
-  justify-content: flex-end;
+	display: flex;
+	justify-content: flex-end;
 
-  .lgv-tool {
-    margin: 0px 10px;
+	.lgv-tool {
+		margin: 0px 10px;
 
-    svg {
-      margin: 0px 10px;
-    }
+		svg {
+			margin: 0px 10px;
+		}
 
-    cursor: pointer;
-  }
+		cursor: pointer;
+	}
 
-  .lgv-tool:hover {
-    text-decoration: underline;
-  }
+	.lgv-tool:hover {
+		text-decoration: underline;
+	}
 
-  .lgv-tool-latch {
-    display: flex;
+	.lgv-tool-latch {
+		display: flex;
 
-    input {
-      margin: 0;
-      cursor: pointer;
-    }
+		input {
+			margin: 0;
+			cursor: pointer;
+		}
 
-    cursor: default;
-  }
+		cursor: default;
+	}
 
-  .lgv-tool-latch:hover {
-    text-decoration: none;
-  }
+	.lgv-tool-latch:hover {
+		text-decoration: none;
+	}
 }

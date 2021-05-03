@@ -1,24 +1,24 @@
 .default-layout {
-  display: flex;
-  background-color: white;
-  flex-direction: column;
-  height: 100%;
+	display: flex;
+	background-color: white;
+	flex-direction: column;
+	height: 100%;
 
-  .default-layout-header {
-    display: flex;
-    height: 30px;
-    white-space: nowrap;
-    .default-layout-header-title {
-      flex: 1;
-      padding: 7px 14px;
-      font-size: 14px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .default-layout-header-drop-down {
-    }
-  }
-  .default-layout-body {
-    flex: 1;
-  }
+	.default-layout-header {
+		display: flex;
+		height: 30px;
+		white-space: nowrap;
+		.default-layout-header-title {
+			flex: 1;
+			padding: 7px 14px;
+			font-size: 14px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.default-layout-header-drop-down {
+		}
+	}
+	.default-layout-body {
+		flex: 1;
+	}
 }

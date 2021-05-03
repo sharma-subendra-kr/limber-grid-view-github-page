@@ -18,7 +18,7 @@ module.exports = {
 	mode: process.env.NODE_ENV === "development" ? "development" : "production",
 	devtool:
 		process.env.NODE_ENV === "development" ? "inline-source-map" : "none",
-	entry: __dirname + "/src/index.ts",
+	entry: __dirname + "/src/index.tsx",
 	output: {
 		path:
 			process.env.NODE_ENV === "development"
@@ -37,12 +37,17 @@ module.exports = {
 	module: {
 		rules: [
 			{ test: /\.tsx?$/, exclude: /node_modules/, loader: "ts-loader" },
-			{ test: /\.js$/, exclude: /node_modules/, loader: "source-map-loader" },
-			// {
-			//   test: /\.js$/,
-			//   exclude: /node_modules/,
-			//   use: "babel-loader",
-			// },
+			{
+				test: /\.js$/,
+				enforce: "pre",
+				exclude: /node_modules/,
+				loader: "source-map-loader",
+			},
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: "babel-loader",
+			},
 			{
 				test: /\.json$/,
 				exclude: /node_modules/,

@@ -4,17 +4,13 @@ import { Provider } from "react-redux";
 
 import { store } from "./configs/config";
 
-import App from "./app";
+// import App from "./app";
 
 // import "./index.css";
 // import "./index.scss";
 
 const Root = () => {
-	return (
-		<Provider store={store}>
-			<App />
-		</Provider>
-	);
+	return <Provider store={store}>{/*<App />*/}asd</Provider>;
 };
 
 ReactDOM.render(<Root />, document.getElementById("root"));

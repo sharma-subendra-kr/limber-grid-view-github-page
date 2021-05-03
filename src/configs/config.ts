@@ -12,8 +12,8 @@ const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = composeWithDevTools({});
 
 const store = createStore(
-  reducers,
-  composeEnhancers(applyMiddleware(sagaMiddleware))
+	reducers,
+	composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
 sagaMiddleware.run(sagas);

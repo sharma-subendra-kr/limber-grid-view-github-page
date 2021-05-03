@@ -6,15 +6,15 @@ import { store } from "./configs/config";
 
 import App from "./app";
 
-import "./index.css";
-import "./index.scss";
+// import "./index.css";
+// import "./index.scss";
 
 const Root = () => {
-  return (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+	return (
+		<Provider store={store}>
+			<App />
+		</Provider>
+	);
 };
 
 ReactDOM.render(<Root />, document.getElementById("root"));

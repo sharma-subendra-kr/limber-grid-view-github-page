@@ -22,6 +22,7 @@ import ThreeSixtyIcon from "@material-ui/icons/ThreeSixty";
 import TouchAppIcon from "@material-ui/icons/TouchApp";
 import ToysIcon from "@material-ui/icons/Toys";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import AppsIcon from "@material-ui/icons/Apps";
 
 import { getDrawerState, toggleDrawerStateAction } from "./ducks";
 
@@ -108,6 +109,12 @@ const CustomDrawer = ({ className, drawerState, toggleDrawerStateAction }) => {
 						<HelpOutlineIcon />
 					</ListItemIcon>
 					<ListItemText>FAQ</ListItemText>
+				</ListItem>
+				<ListItem>
+					<ListItemIcon>
+						<AppsIcon />
+					</ListItemIcon>
+					<ListItemText>All Products</ListItemText>
 				</ListItem>
 			</List>
 		</Drawer>

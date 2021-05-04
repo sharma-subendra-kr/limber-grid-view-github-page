@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import Grid from "@material-ui/core/Grid";
 import styled from "styled-components";
 
 import Typography from "@material-ui/core/Typography";
@@ -10,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import CodeIcon from "@material-ui/icons/Code";
 
 import {
 	getDrawerState,
@@ -28,34 +30,37 @@ const Header = ({ className, drawerState, toggleDrawerStateAction }) => {
 				<IconButton edge="start" color="white" onClick={onToggleDrawer}>
 					<MenuIcon />
 				</IconButton>
-				<Typography variant="h4">limber.in</Typography>
+				<Grid container>
+					<Grid item>
+						<Typography variant="h4">limber.in</Typography>
+					</Grid>
+					<Grid item>
+						<a
+							className="star-on-github"
+							href="https://github.com/sharma-subendra-kr/LimberGridView"
+							target="blank"
+						>
+							<span>Star on github!</span>
+							<GitHubIcon />
+						</a>
+					</Grid>
+					<Grid item container>
+						<a
+							className="view-example-code"
+							href="https://github.com/sharma-subendra-kr/limber-grid-view-github-page"
+							target="blank"
+						>
+							<Grid item direction="column">
+								<p>
+									View example <CodeIcon /> plugged in using React
+								</p>
+							</Grid>
+						</a>
+					</Grid>
+				</Grid>
 			</Toolbar>
 		</AppBar>
 	);
-
-	// return (
-	// 	<header className="header">
-	// 		<div className="header-banner">
-	// 			<p>Limber.in</p>
-	// 			<p>LimberGridView 1.0.0-beta.2 is finally here!</p>
-	// 		</div>
-	// 		<a
-	// 			className="star-on-github"
-	// 			href="https://github.com/sharma-subendra-kr/LimberGridView"
-	// 			target="blank"
-	// 		>
-	// 			<span>Star on github!</span>
-	// 			<FontAwesomeIcon icon={faGithub} />
-	// 		</a>
-	// 		<a
-	// 			className="view-example-code"
-	// 			href="https://github.com/sharma-subendra-kr/limber-grid-view-github-page"
-	// 			target="blank"
-	// 		>
-	// 			<span>View example code plugged in using React</span>
-	// 		</a>
-	// 	</header>
-	// );
 };
 
 const StyledHeader = styled(Header)`
@@ -64,6 +69,38 @@ const StyledHeader = styled(Header)`
 	}
 	.MuiTypography-root {
 		cursor: pointer;
+	}
+	.MuiGrid-root {
+		.MuiGrid-item:first-child {
+			justify-content: flex-start;
+		}
+		.MuiGrid-item {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			a {
+				color: white;
+				svg {
+					font-size: 32px;
+				}
+			}
+			.star-on-github {
+				span {
+					font-size: 24px;
+					margin-right: 10px;
+					vertical-align: top;
+				}
+				svg {
+					vertical-align: middle;
+				}
+			}
+			.view-example-code {
+				svg {
+					vertical-align: middle;
+				}
+			}
+		}
 	}
 `;
 

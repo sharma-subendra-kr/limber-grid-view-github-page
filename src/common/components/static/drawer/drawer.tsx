@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
@@ -22,11 +23,11 @@ import TouchAppIcon from "@material-ui/icons/TouchApp";
 import ToysIcon from "@material-ui/icons/Toys";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 
-const CustomDrawer = ({ className }) => {
-	const [drawerState, setDrawerState] = useState(true);
+import { getDrawerState, toggleDrawerStateAction } from "./ducks";
 
+const CustomDrawer = ({ className, drawerState, toggleDrawerStateAction }) => {
 	const toggleDrawer = () => {
-		setDrawerState((drawerState) => !drawerState);
+		toggleDrawerStateAction();
 	};
 
 	return (
@@ -116,7 +117,17 @@ const CustomDrawer = ({ className }) => {
 const StyledCustomDrawer = styled(CustomDrawer)`
 	.MuiList-root {
 		width: 270px;
+		.MuiListItem-root {
+			cursor: pointer;
+		}
 	}
 `;
 
-export default StyledCustomDrawer;
+export default connect(
+	(state) => ({
+		drawerState: getDrawerState(state),
+	}),
+	{
+		toggleDrawerStateAction,
+	}
+)(StyledCustomDrawer);

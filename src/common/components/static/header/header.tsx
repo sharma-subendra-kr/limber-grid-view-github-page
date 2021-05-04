@@ -1,24 +1,36 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import styled from "styled-components";
 
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import Typography from "@material-ui/core/Typography";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import MenuIcon from "@material-ui/icons/Menu";
+import IconButton from "@material-ui/core/IconButton";
+import GitHubIcon from "@material-ui/icons/GitHub";
+
+import {
+	getDrawerState,
+	toggleDrawerStateAction,
+} from "src/common/components/static/drawer/ducks";
 
 import "./header.scss";
-const Header = (props) => {
+const Header = ({ className, drawerState, toggleDrawerStateAction }) => {
+	const onToggleDrawer = () => {
+		toggleDrawerStateAction();
+	};
+
 	return (
-		<>
-			<AppBar position="static">
-				<Toolbar variant="dense"></Toolbar>
-			</AppBar>
-		</>
+		<AppBar className={className} position="static">
+			<Toolbar variant="dense">
+				<IconButton edge="start" color="white" onClick={onToggleDrawer}>
+					<MenuIcon />
+				</IconButton>
+				<Typography variant="h4">limber.in</Typography>
+			</Toolbar>
+		</AppBar>
 	);
 
 	// return (
@@ -46,4 +58,18 @@ const Header = (props) => {
 	// );
 };
 
-export default Header;
+const StyledHeader = styled(Header)`
+	.MuiSvgIcon-root {
+		color: white;
+	}
+	.MuiTypography-root {
+		cursor: pointer;
+	}
+`;
+
+export default connect(
+	(state) => ({
+		drawerState: getDrawerState(state),
+	}),
+	{ toggleDrawerStateAction }
+)(StyledHeader);

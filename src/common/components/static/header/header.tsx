@@ -64,6 +64,7 @@ const Header = ({ className, drawerState, toggleDrawerStateAction }) => {
 };
 
 const StyledHeader = styled(Header)`
+	background-color: #28282a !important;
 	.MuiSvgIcon-root {
 		color: white;
 	}
@@ -100,6 +101,9 @@ const StyledHeader = styled(Header)`
 					vertical-align: middle;
 				}
 			}
+		}
+		.MuiGrid-item:last-child {
+			justify-content: flex-end;
 		}
 	}
 `;

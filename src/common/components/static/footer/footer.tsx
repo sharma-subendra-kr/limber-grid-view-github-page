@@ -5,11 +5,12 @@ const Footer = (props) => {
 	return (
 		<footer className="footer">
 			<p>
-				LimberGridView, a powerful JavaScript Libary that gives you movable,
-				resizable(any size) and auto-arranging grids.
+				LimberGridView, a powerful JavaScript Library using Computational
+				Geometry to render movable, dynamically resizable, and auto-arranging
+				grids.
 			</p>
 			<br />
-			<p>Copyright © 2018-2020, Subendra Kumar Sharma. All Rights reserved.</p>
+			<p>Copyright © 2018-2020, Subendra Kumar Sharma. All rights reserved.</p>
 			<br />
 			<p>
 				LimberGridView is free software: you can redistribute it and/or modify
@@ -34,10 +35,9 @@ const Footer = (props) => {
 			</p>
 			<br />
 			<p>
-				LimberGridView free software (Free as in freedom not the price). If you
+				LimberGridView free software (free as in freedom not the price). If you
 				like to use this library on a non free software, you can get a
-				proprietary license. To get a proprietary license contact{" "}
-				<b>reach.subendra.kr@gmx.com.</b>
+				proprietary license. To get a proprietary license <b>Pre-Order now.</b>
 			</p>
 		</footer>
 	);

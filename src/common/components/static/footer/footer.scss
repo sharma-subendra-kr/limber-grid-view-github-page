@@ -1,5 +1,7 @@
 .footer {
-	background-color: #172030;
+	text-align: justify;
+	// background-color: #172030;
+	background-color: #28282a;
 	color: white;
 	overflow: hidden;
 	font-size: 10px;
@@ -16,6 +18,7 @@
 }
 
 .footer:hover {
+	padding: 15px;
 	top: initial;
 	bottom: 0;
 }

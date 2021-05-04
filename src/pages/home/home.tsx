@@ -6,6 +6,7 @@ import Alert from "@material-ui/lab/Alert";
 
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
+import Drawer from "src/common/components/static/drawer/drawer";
 import LgvTools from "src/common/components/complex/lgvTools/lgvTools";
 import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomizedView";
 import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
@@ -74,6 +75,7 @@ const Home = (props) => {
 	return (
 		<>
 			<Header />
+			<Drawer />
 			<Snackbar
 				open={info === "moveInfo"}
 				anchorOrigin={{ vertical: "top", horizontal: "right" }}

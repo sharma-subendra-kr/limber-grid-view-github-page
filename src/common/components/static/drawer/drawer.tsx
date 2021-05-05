@@ -62,7 +62,7 @@ const CustomDrawer = ({
 	};
 
 	const onClickListItem = (title, url) => {
-		if (title !== "Pre-Order Now" && title !== "How It works") {
+		if (title !== "Pre-Order Now" && title !== "How To Use") {
 			push("/LimberGridView/" + url);
 		}
 		toggleDrawerStateAction();

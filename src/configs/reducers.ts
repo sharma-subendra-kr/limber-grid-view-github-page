@@ -1,12 +1,15 @@
 import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
 
 import { homeReducer } from "../pages/home/ducks";
 import { drawerReducer } from "src/common/components/static/drawer/ducks";
 
-const reducer = combineReducers({
-	// exampleReducer
-	homeReducer,
-	drawerReducer,
-});
+const createRootReducer = (customHistory) =>
+	combineReducers({
+		// ...exampleReducer
+		router: connectRouter(customHistory),
+		homeReducer,
+		drawerReducer,
+	});
 
-export default reducer;
+export default createRootReducer;

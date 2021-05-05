@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { push } from "connected-react-router";
 
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
@@ -26,8 +27,44 @@ import AppsIcon from "@material-ui/icons/Apps";
 
 import { getDrawerState, toggleDrawerStateAction } from "./ducks";
 
-const CustomDrawer = ({ className, drawerState, toggleDrawerStateAction }) => {
+const list = [
+	{ icon: HomeIcon, title: "Home", url: "" },
+	{ icon: ShoppingCartIcon, title: "Pre-Order Now", url: "" },
+	{ icon: TouchAppIcon, title: "How To Use", url: "" },
+	{ icon: ToysIcon, title: "How It Works", url: "howItWorks" },
+	{
+		icon: TimerIcon,
+		title: "About Time Complexity",
+		url: "aboutTimeComplexity",
+	},
+	{ icon: PanToolIcon, title: "Limitations", url: "limitations" },
+	{ icon: AttachMoneyIcon, title: "Pricing", url: "pricing" },
+	{ icon: ThreeSixtyIcon, title: "Refund Policy", url: "refundPolicy" },
+	{
+		icon: InfoIcon,
+		title: "Info On Commercial License",
+		url: "infoOnCommercialLicense",
+	},
+	{ icon: SecurityIcon, title: "Privacy", url: "privacy" },
+	{ icon: LiveHelpIcon, title: "Dev Support", url: "devSupport" },
+	{ icon: HelpOutlineIcon, title: "FAQ", url: "faq" },
+	{ icon: AppsIcon, title: "All Products", url: "allProducts" },
+];
+
+const CustomDrawer = ({
+	className,
+	drawerState,
+	toggleDrawerStateAction,
+	push,
+}) => {
 	const toggleDrawer = () => {
+		toggleDrawerStateAction();
+	};
+
+	const onClickListItem = (title, url) => {
+		if (title !== "Pre-Order Now" && title !== "How It works") {
+			push("/LimberGridView/" + url);
+		}
 		toggleDrawerStateAction();
 	};
 
@@ -38,84 +75,19 @@ const CustomDrawer = ({ className, drawerState, toggleDrawerStateAction }) => {
 					<Typography variant="h5">LimberGridView</Typography>
 				</ListItem>
 				<Divider />
-				<ListItem>
-					<ListItemIcon>
-						<HomeIcon />
-					</ListItemIcon>
-					<ListItemText>Home</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<ShoppingCartIcon />
-					</ListItemIcon>
-					<ListItemText>Pre-Order Now</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<TouchAppIcon />
-					</ListItemIcon>
-					<ListItemText>How To Use</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<ToysIcon />
-					</ListItemIcon>
-					<ListItemText>How It works</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<TimerIcon />
-					</ListItemIcon>
-					<ListItemText>About Time Complexity</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<PanToolIcon />
-					</ListItemIcon>
-					<ListItemText>Limitations</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<AttachMoneyIcon />
-					</ListItemIcon>
-					<ListItemText>Pricing</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<ThreeSixtyIcon />
-					</ListItemIcon>
-					<ListItemText>Refund Policy</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<InfoIcon />
-					</ListItemIcon>
-					<ListItemText>Info On Commercial License</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<SecurityIcon />
-					</ListItemIcon>
-					<ListItemText>Privacy</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<LiveHelpIcon />
-					</ListItemIcon>
-					<ListItemText>Dev Support</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<HelpOutlineIcon />
-					</ListItemIcon>
-					<ListItemText>FAQ</ListItemText>
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<AppsIcon />
-					</ListItemIcon>
-					<ListItemText>All Products</ListItemText>
-				</ListItem>
+				{list.map((item) => {
+					return (
+						<ListItem
+							key={item.title}
+							onClick={() => onClickListItem(item.title, item.url)}
+						>
+							<ListItemIcon>
+								<item.icon />
+							</ListItemIcon>
+							<ListItemText>{item.title}</ListItemText>
+						</ListItem>
+					);
+				})}
 			</List>
 		</Drawer>
 	);
@@ -136,5 +108,6 @@ export default connect(
 	}),
 	{
 		toggleDrawerStateAction,
+		push,
 	}
 )(StyledCustomDrawer);

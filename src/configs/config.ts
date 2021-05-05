@@ -3,21 +3,24 @@ import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { createBrowserHistory } from "history";
 import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
+import { routerMiddleware } from "connected-react-router";
 
-import reducers from "./reducers";
+import createRootReducer from "./reducers";
 import sagas from "./sagas";
+
+const customHistory = createBrowserHistory();
 
 const sagaMiddleware = createSagaMiddleware();
 
 const composeEnhancers = composeWithDevTools({});
 
 const store = createStore(
-	reducers,
-	composeEnhancers(applyMiddleware(sagaMiddleware))
+	createRootReducer(customHistory),
+	composeEnhancers(
+		applyMiddleware(sagaMiddleware, routerMiddleware(customHistory))
+	)
 );
 
 sagaMiddleware.run(sagas);
-
-const customHistory = createBrowserHistory();
 
 export { store, customHistory };

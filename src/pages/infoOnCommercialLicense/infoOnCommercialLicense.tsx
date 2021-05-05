@@ -47,6 +47,12 @@ const InfoOnCommercialLicense = (props) => {
 					prohibited by any means.
 					<br />
 					<br />
+					If some third party would like to load your application loading thus
+					LimberGridView or one of your other applications would like to load
+					your application loading LimberGridView then the party who wants to
+					load LimberGridView from your application should also buy a license.
+					<br />
+					<br />
 					Any dev support or other kinds of support is not mentioned and
 					guaranteed with the license.
 					<br />

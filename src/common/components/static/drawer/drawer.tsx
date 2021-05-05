@@ -77,15 +77,23 @@ const CustomDrawer = ({
 				<Divider />
 				{list.map((item) => {
 					return (
-						<ListItem
-							key={item.title}
-							onClick={() => onClickListItem(item.title, item.url)}
-						>
-							<ListItemIcon>
-								<item.icon />
-							</ListItemIcon>
-							<ListItemText>{item.title}</ListItemText>
-						</ListItem>
+						<>
+							<ListItem
+								key={item.title}
+								onClick={() => onClickListItem(item.title, item.url)}
+							>
+								<ListItemIcon>
+									<item.icon />
+								</ListItemIcon>
+								<ListItemText>{item.title}</ListItemText>
+							</ListItem>
+							{item.title === "Home" ||
+							item.title === "How It Works" ||
+							item.title === "How It Works" ||
+							item.title === "Info On Commercial License" ? (
+								<Divider />
+							) : null}
+						</>
 					);
 				})}
 			</List>

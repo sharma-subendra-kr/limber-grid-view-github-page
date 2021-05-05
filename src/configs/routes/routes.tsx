@@ -13,6 +13,7 @@ import FAQ from "../../pages/faq/faq";
 import HowItWorks from "../../pages/howItWorks/howItWorks";
 import InfoOnCommercialLicense from "../../pages/infoOnCommercialLicense/infoOnCommercialLicense";
 import Limitations from "../../pages/limitations/limitations";
+import BrowserSupport from "../../pages/browserSupport/browserSupport";
 import Pricing from "../../pages/pricing/pricing";
 import Privacy from "../../pages/privacy/privacy";
 import RefundPolicy from "../../pages/refundPolicy/refundPolicy";
@@ -61,6 +62,12 @@ const Routes = () => {
 					exact
 					path="/LimberGridView/limitations"
 					component={Limitations}
+					redirectPath="/LimberGridView"
+				/>
+				<PublicRoute
+					exact
+					path="/LimberGridView/browserSupport"
+					component={BrowserSupport}
 					redirectPath="/LimberGridView"
 				/>
 				<PublicRoute

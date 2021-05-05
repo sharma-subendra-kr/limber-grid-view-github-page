@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
 
 import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
@@ -15,7 +16,12 @@ const FAQ = (props) => {
 			<Drawer />
 			<Footer />
 			<PageContainer>
-				<Paper>Arsenal</Paper>
+				<Paper>
+					<Typography variant="h4">FAQ</Typography>
+					<br />
+					<br />
+					Coming soon...
+				</Paper>
 			</PageContainer>
 		</>
 	);

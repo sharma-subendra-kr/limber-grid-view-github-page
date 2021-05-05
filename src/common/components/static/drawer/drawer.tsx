@@ -24,6 +24,7 @@ import TouchAppIcon from "@material-ui/icons/TouchApp";
 import ToysIcon from "@material-ui/icons/Toys";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import AppsIcon from "@material-ui/icons/Apps";
+import WebIcon from "@material-ui/icons/Web";
 
 import { getDrawerState, toggleDrawerStateAction } from "./ducks";
 
@@ -38,6 +39,7 @@ const list = [
 		url: "aboutTimeComplexity",
 	},
 	{ icon: PanToolIcon, title: "Limitations", url: "limitations" },
+	{ icon: WebIcon, title: "Browser Support", url: "browserSupport" },
 	{ icon: AttachMoneyIcon, title: "Pricing", url: "pricing" },
 	{ icon: ThreeSixtyIcon, title: "Refund Policy", url: "refundPolicy" },
 	{

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
 
 import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
@@ -15,7 +16,19 @@ const DevSupport = (props) => {
 			<Drawer />
 			<Footer />
 			<PageContainer>
-				<Paper>Arsenal</Paper>
+				<Paper>
+					<Typography variant="h4">Dev Support</Typography>
+					<br />
+					<br />
+					You can get email dev support up to 2 months from the date of purchase
+					of the license.
+					<br />
+					<br />
+					This is not a dedicated service and is just a gesture of goodwill. The
+					license doesn't state or guarantee any dev support.
+					<br />
+					<br />
+				</Paper>
 			</PageContainer>
 		</>
 	);

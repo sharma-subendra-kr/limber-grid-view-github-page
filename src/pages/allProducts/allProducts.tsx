@@ -15,7 +15,7 @@ const AllProducts = (props) => {
 			<Drawer />
 			<Footer />
 			<PageContainer>
-				<Paper>Arsenal</Paper>
+				<Paper></Paper>
 			</PageContainer>
 		</>
 	);

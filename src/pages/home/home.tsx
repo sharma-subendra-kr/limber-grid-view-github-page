@@ -7,6 +7,9 @@ import Drawer from "src/common/components/static/drawer/drawer";
 import LgvTools from "src/common/components/complex/lgvTools/lgvTools";
 import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomizedView";
 import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
+import OrderNow from "src/common/components/complex/orderNow/orderNow";
+import SwitchToDesktop from "src/common/components/static/switchToDesktop/switchToDesktop";
+import HowToUse from "src/common/components/static/howToUse/howToUse";
 
 import {
 	getView,
@@ -17,6 +20,21 @@ import {
 	getPositionData,
 	setPositionDataAction,
 } from "./ducks";
+import {
+	getOrderNowDialogState,
+	toggleOrderNowDialogAction,
+	setOrderNowDialogAction,
+} from "src/common/components/complex/orderNow/ducks";
+import {
+	getswitchToDesktopDialogState,
+	toggleswitchToDesktopDialogAction,
+	setSwitchToDesktopDialogAction,
+} from "src/common/components/static/switchToDesktop/ducks";
+import {
+	getHowToUseDialogState,
+	toggleHowToUseDialogAction,
+	setHowToUseDialogAction,
+} from "src/common/components/static/howToUse/ducks";
 
 import { pd } from "src/pages/home/common/static/lgvData";
 import "./home.scss";
@@ -30,6 +48,10 @@ const Home = (props) => {
 		changeLatchAction,
 		changeDeskInteractionModeAction,
 		setPositionDataAction,
+		switchToDesktop,
+		howToUse,
+		setSwitchToDesktopDialogAction,
+		setHowToUseDialogAction,
 	} = props;
 
 	const lgvCustomizedView = useRef();
@@ -37,6 +59,11 @@ const Home = (props) => {
 
 	useEffect(() => {
 		setPositionDataAction(pd);
+		if (!localStorage.getItem("switchToDesktop")) {
+			setSwitchToDesktopDialogAction(true);
+		} else if (!localStorage.getItem("howToUse")) {
+			setHowToUseDialogAction(true);
+		}
 	}, []);
 
 	const onResizeMethodChange = (resizeMethod) => {
@@ -67,10 +94,18 @@ const Home = (props) => {
 		changeViewAction("default");
 	};
 
+	const onCloseSwitchToDesktop = () => {
+		if (!localStorage.getItem("howToUse")) {
+			setHowToUseDialogAction(true);
+		}
+	};
+
 	return (
 		<>
 			<Header />
 			<Drawer />
+			{switchToDesktop && <SwitchToDesktop onClose={onCloseSwitchToDesktop} />}
+			{howToUse && <HowToUse />}
 			<div className="page-home">
 				<div className="tools-container">
 					<div>
@@ -109,6 +144,8 @@ export default connect(
 	(state) => ({
 		view: getView(state),
 		positionData: getPositionData(state),
+		switchToDesktop: getswitchToDesktopDialogState(state),
+		howToUse: getHowToUseDialogState(state),
 	}),
 	{
 		changeViewAction,
@@ -116,5 +153,7 @@ export default connect(
 		changeLatchAction,
 		changeDeskInteractionModeAction,
 		setPositionDataAction,
+		setSwitchToDesktopDialogAction,
+		setHowToUseDialogAction,
 	}
 )(Home);

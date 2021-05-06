@@ -7,8 +7,32 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-const OrderNowModal = () => {
-	return <Dialog open={true} onClose={}></Dialog>;
+import {
+	getOrderNowDialogState,
+	toggleOrderNowDialogAction,
+	setOrderNowDialogAction,
+} from "./ducks";
+
+const OrderNowModal = ({
+	orderNowDialogState,
+	onClose,
+	setOrderNowDialogAction,
+}) => {
+	const onCloseDialog = () => {
+		setOrderNowDialogAction(false);
+		if (onClose) {
+			onClose();
+		}
+	};
+
+	return <Dialog open={orderNowDialogState} onClose={onCloseDialog}></Dialog>;
 };
 
-export default connect((state) => ({}), {})(OrderNowModal);
+export default connect(
+	(state) => ({
+		orderNowDialogState: getOrderNowDialogState(state),
+	}),
+	{
+		setOrderNowDialogAction,
+	}
+)(OrderNowModal);

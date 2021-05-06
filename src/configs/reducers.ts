@@ -6,6 +6,7 @@ import { drawerReducer } from "src/common/components/static/drawer/ducks";
 import { orderNowReducer } from "src/common/components/complex/orderNow/ducks";
 import { switchToDesktopReducer } from "src/common/components/static/switchToDesktop/ducks";
 import { howToUseReducer } from "src/common/components/static/howToUse/ducks";
+import { demoDialogReducer } from "src/common/components/static/demoDialog/ducks";
 
 const createRootReducer = (customHistory) =>
 	combineReducers({
@@ -16,6 +17,7 @@ const createRootReducer = (customHistory) =>
 		orderNowReducer,
 		switchToDesktopReducer,
 		howToUseReducer,
+		demoDialogReducer,
 	});
 
 export default createRootReducer;

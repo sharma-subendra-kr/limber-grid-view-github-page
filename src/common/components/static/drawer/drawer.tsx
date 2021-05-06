@@ -27,6 +27,7 @@ import AppsIcon from "@material-ui/icons/Apps";
 import WebIcon from "@material-ui/icons/Web";
 
 import { setOrderNowDialogAction } from "src/common/components/complex/orderNow/ducks";
+import { setHowToUseDialogAction } from "src/common/components/static/howToUse/ducks";
 import { getDrawerState, toggleDrawerStateAction } from "./ducks";
 
 const list = [
@@ -59,6 +60,7 @@ const CustomDrawer = ({
 	drawerState,
 	toggleDrawerStateAction,
 	setOrderNowDialogAction,
+	setHowToUseDialogAction,
 	push,
 }) => {
 	const toggleDrawer = () => {
@@ -70,6 +72,8 @@ const CustomDrawer = ({
 			push("/LimberGridView/" + url);
 		} else if (title === "Pre-Order Now") {
 			setOrderNowDialogAction(true);
+		} else if (title === "How To Use") {
+			setHowToUseDialogAction(true);
 		}
 		toggleDrawerStateAction();
 	};
@@ -123,6 +127,7 @@ export default connect(
 	{
 		toggleDrawerStateAction,
 		setOrderNowDialogAction,
+		setHowToUseDialogAction,
 		push,
 	}
 )(StyledCustomDrawer);

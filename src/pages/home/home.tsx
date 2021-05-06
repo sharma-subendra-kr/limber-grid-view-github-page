@@ -52,6 +52,7 @@ const Home = (props) => {
 		howToUse,
 		setSwitchToDesktopDialogAction,
 		setHowToUseDialogAction,
+		orderNow,
 	} = props;
 
 	const lgvCustomizedView = useRef();
@@ -106,6 +107,7 @@ const Home = (props) => {
 			<Drawer />
 			{switchToDesktop && <SwitchToDesktop onClose={onCloseSwitchToDesktop} />}
 			{howToUse && <HowToUse />}
+			{orderNow && <OrderNow />}
 			<div className="page-home">
 				<div className="tools-container">
 					<div>
@@ -146,6 +148,7 @@ export default connect(
 		positionData: getPositionData(state),
 		switchToDesktop: getswitchToDesktopDialogState(state),
 		howToUse: getHowToUseDialogState(state),
+		orderNow: getOrderNowDialogState(state),
 	}),
 	{
 		changeViewAction,

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -25,6 +26,15 @@ const Pricing = (props) => {
 			<PageContainer>
 				<Typography variant="h4">Pricing</Typography>
 				<br />
+				<p>
+					Prices are based on your company revenue. All revenues are based on
+					USD. Higher the revenue, the higher the price. This is to ensure the
+					development of{" "}
+					<Link to="/LimberGridView/allProducts">limber_____.com</Link>. Click
+					on
+					<Link to="/LimberGridView/allProducts">limber_____.com</Link> to learn
+					more about it.
+				</p>
 				<br />
 				<Typography variant="h5">INR</Typography>
 				<TableContainer component={Paper}>
@@ -94,18 +104,58 @@ const Pricing = (props) => {
 					<Table aria-label="simple table">
 						<TableHead>
 							<TableRow>
-								<TableCell align="center">Chrome</TableCell>
-								<TableCell align="center">Firefox</TableCell>
-								<TableCell align="center">Opera</TableCell>
-								<TableCell align="center">Safari</TableCell>
+								<TableCell align="center">Peroid</TableCell>
+								<TableCell align="center">Revenue lt 1m</TableCell>
+								<TableCell align="center">Revenue gt 1m & lt 10m</TableCell>
+								<TableCell align="center">Revenue gt 10m & lt 100m</TableCell>
+								<TableCell align="center">Revenue gt 100m & lt 500m</TableCell>
+								<TableCell align="center">Revenue gt 500m</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
 							<TableRow>
-								<TableCell align="center">Yes</TableCell>
-								<TableCell align="center">Currently No</TableCell>
-								<TableCell align="center">Yes</TableCell>
-								<TableCell align="center">Yes</TableCell>
+								<TableCell align="center">1 Year</TableCell>
+								<TableCell align="center">135</TableCell>
+								<TableCell align="center">270</TableCell>
+								<TableCell align="center">400</TableCell>
+								<TableCell align="center">675</TableCell>
+								<TableCell align="center">1000</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell align="center">3 Year 20% Off</TableCell>
+								<TableCell align="center">
+									<s>405</s> 324
+								</TableCell>
+								<TableCell align="center">
+									<s>810</s> 648
+								</TableCell>
+								<TableCell align="center">
+									<s>1200</s> 960
+								</TableCell>
+								<TableCell align="center">
+									<s>2025</s> 1620
+								</TableCell>
+								<TableCell align="center">
+									<s>3000</s> 2400
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell align="center">5 Year 40% Off</TableCell>
+								<TableCell align="center">
+									<s>675</s> 405
+								</TableCell>
+								<TableCell align="center">
+									<s>1350</s> 810
+								</TableCell>
+								<TableCell align="center">
+									<s>2000</s> 1200
+								</TableCell>
+								<TableCell align="center">
+									<s>3375</s> 2025
+								</TableCell>
+								<TableCell align="center">
+									<s>5000</s> 3000
+								</TableCell>
 							</TableRow>
 						</TableBody>
 					</Table>

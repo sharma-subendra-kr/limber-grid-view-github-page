@@ -19,9 +19,9 @@ const AboutTimeComplexity = (props) => {
 					<Typography variant="h4">About Time Complexity</Typography>
 					<br />
 					<br />
-					Worst-case time complexity can jump up to or more than 150ms depending
-					on the device, whether the device is plugged in or not, whether the
-					CPU utilization is high or not, etc.
+					Worst-case time complexity can jump up to or more than 125-150ms
+					depending on the device, whether the device is plugged in or not,
+					whether the CPU utilization is high or not, etc.
 					<br />
 					<br />
 					These calculations happen only when the user tries to move or resize

@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import OrderNow from "src/common/components/complex/orderNow/orderNow";
-
 import {
 	getOrderNowDialogState,
 	setOrderNowDialogAction,
@@ -17,7 +15,6 @@ const Footer = ({ className, orderNow, setOrderNowDialogAction }) => {
 
 	return (
 		<>
-			{orderNow && <OrderNow />}
 			<footer className={`${className} footer`}>
 				<p>
 					LimberGridView, a powerful JavaScript Library using Computational

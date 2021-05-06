@@ -26,8 +26,17 @@ import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import AppsIcon from "@material-ui/icons/Apps";
 import WebIcon from "@material-ui/icons/Web";
 
-import { setOrderNowDialogAction } from "src/common/components/complex/orderNow/ducks";
-import { setHowToUseDialogAction } from "src/common/components/static/howToUse/ducks";
+import OrderNow from "src/common/components/complex/orderNow/orderNow";
+import HowToUse from "src/common/components/static/howToUse/howToUse";
+
+import {
+	getOrderNowDialogState,
+	setOrderNowDialogAction,
+} from "src/common/components/complex/orderNow/ducks";
+import {
+	getHowToUseDialogState,
+	setHowToUseDialogAction,
+} from "src/common/components/static/howToUse/ducks";
 import { getDrawerState, toggleDrawerStateAction } from "./ducks";
 
 const list = [
@@ -58,6 +67,8 @@ const list = [
 const CustomDrawer = ({
 	className,
 	drawerState,
+	howToUse,
+	orderNow,
 	toggleDrawerStateAction,
 	setOrderNowDialogAction,
 	setHowToUseDialogAction,
@@ -79,35 +90,39 @@ const CustomDrawer = ({
 	};
 
 	return (
-		<Drawer className={className} open={drawerState} onClose={toggleDrawer}>
-			<List>
-				<ListItem>
-					<Typography variant="h5">LimberGridView</Typography>
-				</ListItem>
-				<Divider />
-				{list.map((item) => {
-					return (
-						<>
-							<ListItem
-								key={item.title}
-								onClick={() => onClickListItem(item.title, item.url)}
-							>
-								<ListItemIcon>
-									<item.icon />
-								</ListItemIcon>
-								<ListItemText>{item.title}</ListItemText>
-							</ListItem>
-							{item.title === "Home" ||
-							item.title === "How It Works" ||
-							item.title === "How It Works" ||
-							item.title === "Info On Commercial License" ? (
-								<Divider />
-							) : null}
-						</>
-					);
-				})}
-			</List>
-		</Drawer>
+		<>
+			<Drawer className={className} open={drawerState} onClose={toggleDrawer}>
+				<List>
+					<ListItem>
+						<Typography variant="h5">LimberGridView</Typography>
+					</ListItem>
+					<Divider />
+					{list.map((item) => {
+						return (
+							<>
+								<ListItem
+									key={item.title}
+									onClick={() => onClickListItem(item.title, item.url)}
+								>
+									<ListItemIcon>
+										<item.icon />
+									</ListItemIcon>
+									<ListItemText>{item.title}</ListItemText>
+								</ListItem>
+								{item.title === "Home" ||
+								item.title === "How It Works" ||
+								item.title === "How It Works" ||
+								item.title === "Info On Commercial License" ? (
+									<Divider />
+								) : null}
+							</>
+						);
+					})}
+				</List>
+			</Drawer>
+			{orderNow && <OrderNow />}
+			{howToUse && <HowToUse />}
+		</>
 	);
 };
 
@@ -123,6 +138,8 @@ const StyledCustomDrawer = styled(CustomDrawer)`
 export default connect(
 	(state) => ({
 		drawerState: getDrawerState(state),
+		howToUse: getHowToUseDialogState(state),
+		orderNow: getOrderNowDialogState(state),
 	}),
 	{
 		toggleDrawerStateAction,

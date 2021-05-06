@@ -7,9 +7,7 @@ import Drawer from "src/common/components/static/drawer/drawer";
 import LgvTools from "src/common/components/complex/lgvTools/lgvTools";
 import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomizedView";
 import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
-import OrderNow from "src/common/components/complex/orderNow/orderNow";
 import SwitchToDesktop from "src/common/components/static/switchToDesktop/switchToDesktop";
-import HowToUse from "src/common/components/static/howToUse/howToUse";
 
 import {
 	getView,
@@ -106,8 +104,6 @@ const Home = (props) => {
 			<Header />
 			<Drawer />
 			{switchToDesktop && <SwitchToDesktop onClose={onCloseSwitchToDesktop} />}
-			{howToUse && <HowToUse />}
-			{orderNow && <OrderNow />}
 			<div className="page-home">
 				<div className="tools-container">
 					<div>

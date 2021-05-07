@@ -65,6 +65,8 @@ const Header = ({ className, drawerState, toggleDrawerStateAction }) => {
 
 const StyledHeader = styled(Header)`
 	background-color: #28282a !important;
+	// background-color: #115293 !important;
+
 	.MuiSvgIcon-root {
 		color: white;
 	}

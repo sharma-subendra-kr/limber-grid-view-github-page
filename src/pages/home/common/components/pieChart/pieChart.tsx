@@ -1,34 +1,36 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import * as d3 from "d3";
-import {
-	PieChart as RePieChart,
-	Pie,
-	Sector,
-	Cell,
-	ResponsiveContainer,
-} from "recharts";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { PieChart as RePieChart, Pie, Cell, Tooltip } from "recharts";
+import styled from "styled-components";
 
 import "./pieChart.scss";
 
-export const PieChart = ({ width, height }) => {
+const DATA = [
+	{ name: "Group A", value: 400, fill: "#0088FE" },
+	{ name: "Group B", value: 300, fill: "#00C49F" },
+	{ name: "Group C", value: 300, fill: "#FFBB28" },
+	{ name: "Group D", value: 200, fill: "#FF8042" },
+];
+
+const PieChart = ({ width, height, className }) => {
+	const [data, setData] = useState(undefined);
 	const pieChartRef = useRef();
 
 	useEffect(() => {
-		// pieChartRef.current.innerHTML = "";
-		// pieChartRef.current.appendChild(getPieChart(width, height));
-	}, [width, height]);
+		setTimeout(() => {
+			const _data = [...DATA];
+			setData(_data);
+		}, 1000);
+	}, []);
 
-	return <div ref={pieChartRef}>{getPieChart(width, height)}</div>;
+	return (
+		<div className={className} ref={pieChartRef}>
+			{data && getPieChart(width, height, data)}
+			{!data && <CircularProgress color="primary" size={30} />}
+		</div>
+	);
 };
-
-const data = [
-	{ name: "Group A", value: 400 },
-	{ name: "Group B", value: 300 },
-	{ name: "Group C", value: 300 },
-	{ name: "Group D", value: 200 },
-];
-
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -40,7 +42,7 @@ const renderCustomizedLabel = ({
 	percent,
 	index,
 }) => {
-	const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+	const radius = outerRadius + 2;
 	const x = cx + radius * Math.cos(-midAngle * RADIAN);
 	const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -57,26 +59,48 @@ const renderCustomizedLabel = ({
 	);
 };
 
-export const getPieChart = (width, height) => {
+export const getPieChart = (width, height, data) => {
+	const r = width < height ? width / 2 : height / 2;
 	return (
 		<RePieChart width={width} height={height}>
+			<Tooltip formatter={(value) => [value]} />
 			<Pie
 				data={data}
 				cx="50%"
 				cy="50%"
 				labelLine={false}
 				label={renderCustomizedLabel}
-				outerRadius={80}
+				outerRadius={r - 15}
+				innerRadius={r - 35}
 				fill="#8884d8"
 				dataKey="value"
 			>
 				{data.map((entry, index) => (
-					<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+					<Cell key={`cell-${index}`} fill={entry.fill} />
 				))}
 			</Pie>
 		</RePieChart>
 	);
 };
+
+const StyledPieChart = styled(PieChart)`
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	.recharts-pie-labels {
+		text {
+			font-size: 10px;
+			font-weight: bold;
+			fill: #151d2d;
+		}
+	}
+	.MuiCircularProgress-colorPrimary {
+		color: #2196f3;
+	}
+`;
+
+export { StyledPieChart as PieChart };
 
 // export const getPieChart = (width, height) => {
 // 	const data = [10, 20, 100];

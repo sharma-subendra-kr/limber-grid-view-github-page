@@ -7,27 +7,26 @@ import { BarChart } from "../barChart/barChart";
 import { PieChart } from "../pieChart/pieChart";
 import "./layout.scss";
 
-const Comps = [Kpi, BarChart, PieChart];
+const Comps = [Kpi, BarChart, PieChart, PieChart];
 
 export const Layout = (props) => {
 	const { index, width, height, isAdd, onRemove } = props;
 
 	const [renderBody, setRenderBody] = useState(
-		isAdd ? 0 : Math.floor(Math.random() * 2) + 1
+		isAdd ? -1 : Math.floor(Math.random() * 4)
 	);
 	const [random] = useState(Math.floor(Math.random() * 11));
 
 	const onSelectCb = (key) => {
-		const rand = Math.floor(Math.random() * 2);
-		console.log("rand", rand);
+		const rand = Math.floor(Math.random() * 4);
 		if (key === "add") {
-			setRenderBody(rand + 1);
+			setRenderBody(rand);
 		} else {
 			onRemove(index);
 		}
 	};
 
-	const Comp = Comps[renderBody - 1];
+	const Comp = Comps[renderBody];
 
 	return (
 		<div className="custom-layout">
@@ -38,7 +37,7 @@ export const Layout = (props) => {
 				</div>
 			</div>
 			<div className="custom-layout-body">
-				{renderBody ? <Comp width={width} height={height - 30} /> : ""}
+				{renderBody != -1 ? <Comp width={width} height={height - 30} /> : ""}
 			</div>
 		</div>
 	);

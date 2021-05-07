@@ -23,7 +23,7 @@ const Footer = ({ className, orderNow, setOrderNowDialogAction }) => {
 				</p>
 				<br />
 				<p>
-					Copyright © 2018-2020, Subendra Kumar Sharma. All rights reserved.
+					Copyright © 2018-2021, Subendra Kumar Sharma. All rights reserved.
 				</p>
 				<br />
 				<p>

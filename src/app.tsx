@@ -1,11 +1,31 @@
 import React from "react";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import Routes from "./configs/routes/routes";
+
+const theme = createMuiTheme({
+	palette: {
+		primary: {
+			light: "#4dabf5",
+			main: "#2196f3",
+			dark: "#1769aa",
+			contrastText: "#fff",
+		},
+		secondary: {
+			light: "#f73378",
+			main: "#f50057",
+			dark: "#ab003c",
+			contrastText: "#000",
+		},
+	},
+});
 
 const App = () => {
 	return (
 		<div className="app">
-			<Routes></Routes>
+			<ThemeProvider theme={theme}>
+				<Routes></Routes>
+			</ThemeProvider>
 		</div>
 	);
 };

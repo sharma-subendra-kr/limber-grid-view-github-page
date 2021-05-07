@@ -25,7 +25,11 @@ const HowToUseModal = ({
 		}
 	};
 
-	return <Dialog open={howToUseDialogState} onClose={onCloseDialog}></Dialog>;
+	return (
+		<Dialog open={howToUseDialogState} onClose={onCloseDialog}>
+			<DialogTitle>DialogActions</DialogTitle>
+		</Dialog>
+	);
 };
 
 export default connect(

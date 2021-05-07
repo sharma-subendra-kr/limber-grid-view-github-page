@@ -25,7 +25,11 @@ const OrderNowModal = ({
 		}
 	};
 
-	return <Dialog open={orderNowDialogState} onClose={onCloseDialog}></Dialog>;
+	return (
+		<Dialog open={orderNowDialogState} onClose={onCloseDialog}>
+			<DialogTitle>DialogActions</DialogTitle>
+		</Dialog>
+	);
 };
 
 export default connect(

@@ -44,12 +44,12 @@ const SwitchToDesktopModal = ({
 					schedule in mind, this site is not designed to work with mobile
 					devices. So, please switch to desktop or tablet.
 				</DialogContentText>
-				<DialogActions>
-					<Button onClick={onCloseDialog} color="primary">
-						Alright!
-					</Button>
-				</DialogActions>
 			</DialogContent>
+			<DialogActions>
+				<Button onClick={onCloseDialog} color="primary">
+					Alright!
+				</Button>
+			</DialogActions>
 		</Dialog>
 	);
 };

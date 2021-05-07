@@ -45,17 +45,17 @@ const DemoDialogModal = ({
 					<br />
 					<br />
 					You can move or resize an item to trigger the visualization of the
-					algorithm. Remember to release the mouse button as the demo for move
-					and resize events are disabled here.
+					algorithm. Remember to release the mouse button as the demo for the
+					move and resize events are disabled here.
 					<br />
 					<br /> For the best results, move item 10 over to item 5.
 				</DialogContentText>
-				<DialogActions>
-					<Button onClick={onCloseDialog} color="primary">
-						Okie-Dokie!
-					</Button>
-				</DialogActions>
 			</DialogContent>
+			<DialogActions>
+				<Button onClick={onCloseDialog} color="primary">
+					Okie-Dokie!
+				</Button>
+			</DialogActions>
 		</Dialog>
 	);
 };

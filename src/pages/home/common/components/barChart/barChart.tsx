@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import * as d3 from "d3";
+// import * as d3 from "d3";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {
 	BarChart as ReBarChart,
@@ -111,8 +111,6 @@ const StyledBarChart = styled(BarChart)`
 	height: 100%;
 	justify-content: center;
 	align-items: center;
-	.recharts-cartesian-axis-ticks {
-	}
 	.recharts-cartesian-axis-tick-value {
 		> tspan {
 			font-size: 9px;

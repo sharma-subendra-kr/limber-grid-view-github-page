@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -36,10 +37,9 @@ const Privacy = (props) => {
 					You can find the source code for the back end that powers this site
 					limber.in and sharma-subendra-kr.github.com via this link.
 					<br />
-					<br />
-					I have no interest in harvesting your data or selling your data which
-					diverts my attention and valuable time away from building
-					limber_____.com.
+					<br />I have no interest in harvesting your data or selling your data
+					which diverts my attention and valuable time away from building{" "}
+					<Link to="/LimberGridView/allProducts">limber_____.com</Link>.
 					<br />
 					<br />
 					I store some of your inputs when you click on things like "don't show

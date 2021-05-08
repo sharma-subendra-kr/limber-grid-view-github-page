@@ -4,7 +4,8 @@
 		display: flex;
 		height: 20px;
 		padding: 0px 10px;
-		border-bottom: solid 1px #151d2d;
+		border-bottom: solid 1px #c0c0c0;
+		background-color: white;
 		button {
 			background-color: transparent;
 			color: #151d2d;
@@ -19,7 +20,7 @@
 
 		.lgv-tools-container {
 			flex: 1;
-			padding: 3px 10px 0px 10px;
+			padding: 0px 10px 0px 10px;
 		}
 	}
 	.lgv-container {

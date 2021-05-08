@@ -56,7 +56,7 @@ const Home = (props) => {
 
 	const lgvCustomizedView = useRef();
 	const lgvDefaultView = useRef();
-	const introBuy = useRef("incomplete");
+	const introBuy = useRef("incomplete-first");
 
 	useEffect(() => {
 		setPositionDataAction(pd);
@@ -77,7 +77,11 @@ const Home = (props) => {
 		) {
 			setSwitchToDesktopDialogAction(true);
 		}
-		introBuy.current = "complete";
+		if (introBuy.current === "incomplete-first") {
+			introBuy.current = "incomplete";
+		} else if (!orderNow) {
+			introBuy.current = "complete";
+		}
 	}, [orderNow]);
 
 	const onResizeMethodChange = (resizeMethod) => {

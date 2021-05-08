@@ -9,6 +9,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+
+import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
+
+import styled from "styled-components";
 
 import {
 	getOrderNowDialogState,
@@ -25,12 +30,14 @@ const companyRevenueOptions = [
 ];
 
 const OrderNowModal = ({
+	className,
 	orderNowDialogState,
 	onClose,
 	setOrderNowDialogAction,
 }) => {
 	const [inputs, setInputs] = useState({});
 	const [errors, setErrors] = useState({});
+	const [submitted, setSubmitted] = useState(true);
 
 	const onCloseDialog = () => {
 		setOrderNowDialogAction(false);
@@ -42,149 +49,177 @@ const OrderNowModal = ({
 	const onChange = () => {};
 
 	return (
-		<Dialog open={orderNowDialogState} onClose={onCloseDialog}>
+		<Dialog
+			className={className}
+			open={orderNowDialogState}
+			onClose={onCloseDialog}
+		>
 			<DialogTitle>Pre-Order Now!</DialogTitle>
-			<DialogContent>
-				<DialogContentText>
-					I am a stable release in mid-2022. This can be pushed further back as
-					LimberGridView is going under rigorous testing. Pre-order now to get
-					your purchase processed ASAP after the stable release.
-					<br />
-					<br />
-					<TextField
-						id="email"
-						name="email"
-						type="email"
-						label="Email"
-						placeholder="Email"
-						value={inputs.email}
-						onChange={onChange}
-						error={errors.email}
-						required
-						helperText={errors.email}
-						fullWidth
-						variant="outlined"
-						size="small"
-					/>
-					<br />
-					<br />
-					<TextField
-						id="first-name"
-						name="firstName"
-						type="text"
-						label="first Name"
-						placeholder="First Name"
-						value={inputs.firstName}
-						onChange={onChange}
-						error={errors.firstName}
-						required
-						helperText={errors.firstName}
-						fullWidth
-						variant="outlined"
-						size="small"
-					/>
-					<br />
-					<br />
-					<TextField
-						id="last-name"
-						name="lastName"
-						type="text"
-						label="Last Name"
-						placeholder="Last Name"
-						value={inputs.lastName}
-						onChange={onChange}
-						error={errors.lastName}
-						helperText={errors.lastName}
-						fullWidth
-						variant="outlined"
-						size="small"
-					/>
-					<br />
-					<br />
-					<TextField
-						id="phone"
-						name="phone"
-						type="phone"
-						label="Phone"
-						placeholder="Phone"
-						value={inputs.phone}
-						onChange={onChange}
-						error={errors.phone}
-						helperText={errors.phone}
-						fullWidth
-						variant="outlined"
-						size="small"
-					/>
-					<br />
-					<br />
-					<TextField
-						id="company"
-						name="Company"
-						type="text"
-						label="Company"
-						placeholder="Company"
-						value={inputs.company}
-						onChange={onChange}
-						error={errors.company}
-						helperText={errors.company}
-						fullWidth
-						variant="outlined"
-						size="small"
-					/>
-					<br />
-					<br />
-					<TextField
-						id="position"
-						name="position"
-						type="text"
-						label="Position"
-						placeholder="Position"
-						value={inputs.position}
-						onChange={onChange}
-						error={errors.position}
-						helperText={errors.position}
-						fullWidth
-						variant="outlined"
-						size="small"
-					/>
-					<br />
-					<br />
-					<TextField
-						id="company-revenue"
-						name="companyRevenue"
-						type="text"
-						label="Company Revenue"
-						placeholder="Company Revenue"
-						value={inputs.companyRevenue}
-						onChange={onChange}
-						error={errors.companyRevenue}
-						helperText={errors.companyRevenue}
-						select
-						fullWidth
-						variant="outlined"
-						size="small"
-					>
-						{companyRevenueOptions.map((item) => {
-							return (
-								<MenuItem key={item.value} value={item.value}>
-									{item.title}
-								</MenuItem>
-							);
-						})}
-					</TextField>
-				</DialogContentText>
-			</DialogContent>
-			<DialogActions>
-				<Button onClick={onCloseDialog} color="secondary">
-					Close
-				</Button>
-				<Button onClick={onCloseDialog} color="primary">
-					Pre-Order!
-				</Button>
-			</DialogActions>
+			{!submitted && (
+				<DialogContent>
+					<DialogContentText>
+						I am a stable release in mid-2022. This can be pushed further back
+						as LimberGridView is going under rigorous testing. Pre-order now to
+						get your purchase processed ASAP after the stable release.
+						<br />
+						<br />
+						<TextField
+							id="email"
+							name="email"
+							type="email"
+							label="Email"
+							placeholder="Email"
+							value={inputs.email}
+							onChange={onChange}
+							error={errors.email}
+							required
+							helperText={errors.email}
+							fullWidth
+							variant="outlined"
+							size="small"
+						/>
+						<br />
+						<br />
+						<TextField
+							id="first-name"
+							name="firstName"
+							type="text"
+							label="first Name"
+							placeholder="First Name"
+							value={inputs.firstName}
+							onChange={onChange}
+							error={errors.firstName}
+							required
+							helperText={errors.firstName}
+							fullWidth
+							variant="outlined"
+							size="small"
+						/>
+						<br />
+						<br />
+						<TextField
+							id="last-name"
+							name="lastName"
+							type="text"
+							label="Last Name"
+							placeholder="Last Name"
+							value={inputs.lastName}
+							onChange={onChange}
+							error={errors.lastName}
+							helperText={errors.lastName}
+							fullWidth
+							variant="outlined"
+							size="small"
+						/>
+						<br />
+						<br />
+						<TextField
+							id="phone"
+							name="phone"
+							type="phone"
+							label="Phone"
+							placeholder="Phone"
+							value={inputs.phone}
+							onChange={onChange}
+							error={errors.phone}
+							helperText={errors.phone}
+							fullWidth
+							variant="outlined"
+							size="small"
+						/>
+						<br />
+						<br />
+						<TextField
+							id="company"
+							name="Company"
+							type="text"
+							label="Company"
+							placeholder="Company"
+							value={inputs.company}
+							onChange={onChange}
+							error={errors.company}
+							helperText={errors.company}
+							fullWidth
+							variant="outlined"
+							size="small"
+						/>
+						<br />
+						<br />
+						<TextField
+							id="position"
+							name="position"
+							type="text"
+							label="Position"
+							placeholder="Position"
+							value={inputs.position}
+							onChange={onChange}
+							error={errors.position}
+							helperText={errors.position}
+							fullWidth
+							variant="outlined"
+							size="small"
+						/>
+						<br />
+						<br />
+						<TextField
+							id="company-revenue"
+							name="companyRevenue"
+							type="text"
+							label="Company Revenue"
+							placeholder="Company Revenue"
+							value={inputs.companyRevenue}
+							onChange={onChange}
+							error={errors.companyRevenue}
+							helperText={errors.companyRevenue}
+							select
+							fullWidth
+							variant="outlined"
+							size="small"
+						>
+							{companyRevenueOptions.map((item) => {
+								return (
+									<MenuItem key={item.value} value={item.value}>
+										{item.title}
+									</MenuItem>
+								);
+							})}
+						</TextField>
+					</DialogContentText>
+				</DialogContent>
+			)}
+			{submitted && (
+				<DialogContent>
+					<DialogContentText>
+						<CheckCircleOutlinedIcon />
+					</DialogContentText>
+				</DialogContent>
+			)}
+			{!submitted && (
+				<DialogActions>
+					<Button onClick={onCloseDialog} color="secondary">
+						Close
+					</Button>
+					<Button onClick={onCloseDialog} color="primary">
+						Pre-Order!
+					</Button>
+				</DialogActions>
+			)}
+			{submitted && (
+				<DialogActions>
+					<Button onClick={onCloseDialog} color="secondary">
+						Close
+					</Button>
+				</DialogActions>
+			)}
 		</Dialog>
 	);
 };
+
+const StyledOrderNowModal = styled(OrderNowModal)`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
 
 export default connect(
 	(state) => ({
@@ -193,4 +228,4 @@ export default connect(
 	{
 		setOrderNowDialogAction,
 	}
-)(OrderNowModal);
+)(StyledOrderNowModal);

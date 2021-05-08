@@ -51,19 +51,34 @@ const Home = (props) => {
 		setSwitchToDesktopDialogAction,
 		setHowToUseDialogAction,
 		orderNow,
+		setOrderNowDialogAction,
 	} = props;
 
 	const lgvCustomizedView = useRef();
 	const lgvDefaultView = useRef();
+	const introBuy = useRef("incomplete");
 
 	useEffect(() => {
 		setPositionDataAction(pd);
-		if (!localStorage.getItem("switchToDesktop")) {
+		if (props.location.pathname.indexOf("buy") === 16) {
+			setOrderNowDialogAction(true);
+		} else if (!localStorage.getItem("switchToDesktop")) {
 			setSwitchToDesktopDialogAction(true);
 		} else if (!localStorage.getItem("howToUse")) {
 			setHowToUseDialogAction(true);
 		}
 	}, []);
+
+	useEffect(() => {
+		if (
+			introBuy.current === "incomplete" &&
+			!orderNow &&
+			props.location.pathname.indexOf("buy") === 16
+		) {
+			setSwitchToDesktopDialogAction(true);
+		}
+		introBuy.current = "complete";
+	}, [orderNow]);
 
 	const onResizeMethodChange = (resizeMethod) => {
 		changeResizeMethodAction(resizeMethod);
@@ -154,5 +169,6 @@ export default connect(
 		setPositionDataAction,
 		setSwitchToDesktopDialogAction,
 		setHowToUseDialogAction,
+		setOrderNowDialogAction,
 	}
 )(Home);

@@ -89,6 +89,11 @@ const Routes = () => {
 					redirectPath="/LimberGridView"
 				/>
 				<PublicRoute
+					path="/LimberGridView/buy"
+					component={Home}
+					redirectPath="/LimberGridView"
+				/>
+				<PublicRoute
 					path="/LimberGridView"
 					component={Home}
 					redirectPath="/LimberGridView"

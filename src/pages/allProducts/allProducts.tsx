@@ -48,7 +48,36 @@ const AllProducts = (props) => {
 								<Typography variant="h5">limber_____.com</Typography>
 								<br />
 								<br />
-								<Typography color="textSecondary">limber_____.com</Typography>
+								<Typography color="textSecondary">
+									It is a browser-based application for one of your most common
+									daily tasks and aimed to reduce the carbon footprint. It's
+									aimed at everyone whether a 3-year-old kid or a 90-year-old
+									nanny.
+									<br />
+									<br />
+									It's not Free Software, but it will be free of cost to use
+									with all the features except cloud support because it doesn't
+									use any backend server to provide its service. Users can
+									always download their data on a flash drive. It'll become Free
+									Software once or if I make any money out of it. It's more
+									difficult to build than LimberGridView, which was a
+									two-and-a-half-year journey just to release the beta version
+									with all the features.
+									<br />
+									<br />I don't believe in the current startup culture and which
+									is to grab a bucket load of money from venture capitalists
+									that you don't deserve. Venture capitalists hinder people from
+									implementing their ideas. They don't understand the complexity
+									of research as they only want a product out to sell. It's a 5+
+									year plan before it's even shipped. I can't even guarantee
+									whether it will be shipped. The name of the application is not
+									disclosed because of this reason. Your purchase helps the
+									development process. I don't have the patience to convince
+									venture capitalists to give me money. Neither do I have any
+									money to hire more people, nor do I have the tolerance to look
+									at other people's code or deal with them, so I'll be building
+									it on my own.
+								</Typography>
 							</CardContent>
 						</Card>
 					</Grid>

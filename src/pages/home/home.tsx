@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
 
+import Button from "@material-ui/core/Button";
+
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
 import Drawer from "src/common/components/static/drawer/drawer";
@@ -125,12 +127,20 @@ const Home = (props) => {
 			<div className="page-home">
 				<div className="tools-container">
 					<div>
-						<button className="button" onClick={onClickCustomizedView}>
+						<Button
+							className="button"
+							size="small"
+							onClick={onClickCustomizedView}
+						>
 							Customized View
-						</button>
-						<button className="button" onClick={onClickDefaultViewView}>
+						</Button>
+						<Button
+							className="button"
+							size="small"
+							onClick={onClickDefaultViewView}
+						>
 							Default View
-						</button>
+						</Button>
 					</div>
 					<div className="lgv-tools-container">
 						<LgvTools

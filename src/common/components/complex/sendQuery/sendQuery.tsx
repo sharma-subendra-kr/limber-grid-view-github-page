@@ -180,6 +180,25 @@ const SendQueryModal = ({
 									size="small"
 								/>
 							</Grid>
+							<br />
+							<Grid item xs={12} sm={12}>
+								<TextField
+									id="query"
+									name="query"
+									type="text"
+									label="Query"
+									placeholder="Query"
+									value={inputs.query}
+									onChange={onChange}
+									error={errors.query}
+									helperText={errors.query}
+									multiline
+									rows={10}
+									fullWidth
+									variant="outlined"
+									size="small"
+								/>
+							</Grid>
 						</DialogContentText>
 					</Grid>
 				</DialogContent>

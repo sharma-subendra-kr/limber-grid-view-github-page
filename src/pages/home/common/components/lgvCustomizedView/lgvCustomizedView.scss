@@ -9,9 +9,4 @@
 	.limber-grid-view-item {
 		border-radius: 10px;
 	}
-
-	.limber-grid-view-item.limber-grid-view-item-editable::before {
-		height: 0px;
-		width: 0px;
-	}
 }

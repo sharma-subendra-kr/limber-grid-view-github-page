@@ -52,6 +52,12 @@ const LgvCustomizedView = forwardRef((props, ref) => {
 				removeComplete: removeComplete,
 				renderPlugin: renderPlugin,
 				removePlugin: removePlugin,
+				getArrangeTime: getArrangeTime,
+				getLogMessage: getLogMessage,
+			},
+			publicConstants: {
+				showBottomLeftResizeGuide: true,
+				autoScrollForMouse: true,
 			},
 			positionData: positionData,
 		});
@@ -61,9 +67,7 @@ const LgvCustomizedView = forwardRef((props, ref) => {
 		lgv.current.setLatchMovedItem(latch);
 	}, [latch]);
 
-	useEffect(() => {
-		lgv.current.setUseVerticalArrOnResize(resizeMethod);
-	}, [resizeMethod]);
+	useEffect(() => {}, [resizeMethod]);
 
 	useEffect(() => {
 		lgv.current.setDeskInteractMode(deskInteractionMode);
@@ -118,6 +122,10 @@ const LgvCustomizedView = forwardRef((props, ref) => {
 	const removePlugin = (element) => {
 		ReactDOM.unmountComponentAtNode(element);
 	};
+
+	const getArrangeTime = () => {};
+
+	const getLogMessage = () => {};
 
 	return <div className="lgv-customized-view-container" ref={el}></div>;
 });

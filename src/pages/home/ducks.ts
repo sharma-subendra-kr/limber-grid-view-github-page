@@ -17,7 +17,7 @@ const initialState = {
 	view: "customized",
 	latch: true,
 	resizeMethod: false,
-	deskInteractionMode: "ADD",
+	deskInteractionMode: "CUTSPACE",
 	positionData: undefined,
 };
 

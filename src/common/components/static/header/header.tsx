@@ -71,6 +71,7 @@ const StyledHeader = styled(Header)`
 		color: white;
 	}
 	.MuiTypography-root {
+		font-family: "Comic Sans MS";
 		cursor: pointer;
 	}
 	.MuiGrid-root {

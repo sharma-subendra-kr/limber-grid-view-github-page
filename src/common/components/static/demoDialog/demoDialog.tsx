@@ -49,6 +49,10 @@ const DemoDialogModal = ({
 					move and resize events are disabled here.
 					<br />
 					<br /> For the best results, move item 10 over to item 5.
+					<br />
+					<br />
+					This is quite unstable during the demonstration, so please refrain
+					from clicking anywhere.
 				</DialogContentText>
 			</DialogContent>
 			<DialogActions>

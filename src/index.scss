@@ -1,7 +1,15 @@
 @import "../node_modules/limbergridview/dist/index.css";
 #root {
-  height: 100%;
-  .app {
-    height: 100%;
-  }
+	height: 100%;
+	.app {
+		height: 100%;
+	}
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 1px) {
+	#menu-companyRevenue {
+		.MuiMenuItem-root {
+			font-size: 30px;
+		}
+	}
 }

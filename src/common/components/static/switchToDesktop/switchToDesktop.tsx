@@ -58,6 +58,22 @@ const StyledSwitchToDesktopModal = styled(SwitchToDesktopModal)`
 	.MuiDialogContentText-root {
 		font-size: 1.3rem;
 	}
+
+	@media only screen and (max-width: 1023px) and (min-width: 1px) {
+		.MuiDialogTitle-root {
+			.MuiTypography-root {
+				font-size: 50px;
+			}
+		}
+		.MuiDialogContentText-root {
+			font-size: 40px;
+		}
+		.MuiButtonBase-root {
+			span {
+				font-size: 40px;
+			}
+		}
+	}
 `;
 
 export default connect(

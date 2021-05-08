@@ -66,7 +66,7 @@ const checkFirstName = (key, value) => {
 };
 
 const checkLastName = (key, value) => {
-	if (regExp.test(value) && value.length <= 200) {
+	if ((regExp.test(value) && value.length <= 200) || value.length === 0) {
 		return { value, error: "" };
 	}
 	return {
@@ -78,7 +78,7 @@ const checkLastName = (key, value) => {
 
 const checkPhone = (key, value) => {
 	const reg = new RegExp("[0-9a-zA-Z+-]+");
-	if (reg.test(value) && value.length <= 200) {
+	if ((reg.test(value) && value.length <= 200) || value.length === 0) {
 		return { value, error: "" };
 	}
 	return {
@@ -89,7 +89,7 @@ const checkPhone = (key, value) => {
 };
 
 const checkCompany = (key, value) => {
-	if (regExp.test(value) && value.length <= 200) {
+	if ((regExp.test(value) && value.length <= 200) || value.length === 0) {
 		return { value, error: "" };
 	}
 	return {
@@ -100,7 +100,7 @@ const checkCompany = (key, value) => {
 };
 
 const checkPosition = (key, value) => {
-	if (regExp.test(value) && value.length <= 200) {
+	if ((regExp.test(value) && value.length <= 200) || value.length === 0) {
 		return { value, error: "" };
 	}
 	return {
@@ -133,6 +133,18 @@ export const getCompanyRevenue = (value) => {
 
 export const sanitizeInputs = (inputs) => {
 	for (const key in inputs) {
-		inputs[key] = sanitizeHtml(inputs[key].trim());
+		if (inputs[key]) {
+			inputs[key] = sanitizeHtml(inputs[key].trim());
+		} else {
+			delete inputs[key];
+		}
 	}
+};
+
+export const getFormInput = (inputs) => {
+	const data = new FormData();
+	for (const key in inputs) {
+		data.append(key, inputs[key]);
+	}
+	return data;
 };

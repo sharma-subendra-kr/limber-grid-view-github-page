@@ -18,7 +18,12 @@ import { ORIGIN } from "src/configs/origin";
 
 import styled from "styled-components";
 
-import { getErrors, sanitizeInputs, getCompanyRevenue } from "./orderNowUtils";
+import {
+	getErrors,
+	sanitizeInputs,
+	getCompanyRevenue,
+	getFormInput,
+} from "./orderNowUtils";
 import {
 	getOrderNowDialogState,
 	toggleOrderNowDialogAction,
@@ -58,6 +63,7 @@ const OrderNowModal = ({
 		companyRevenue: "",
 	});
 	const [submitted, setSubmitted] = useState(false);
+	const customerResponse = useRef(undefined);
 
 	const onCloseDialog = () => {
 		setOrderNowDialogAction(false);
@@ -70,6 +76,25 @@ const OrderNowModal = ({
 		const _inputs = { ...inputs };
 		sanitizeInputs(_inputs);
 		_inputs.companyRevenue = getCompanyRevenue(_inputs.companyRevenue);
+
+		fetch(ORIGIN + "api/register/", {
+			method: "POST",
+			body: getFormInput(_inputs),
+		})
+			.then((data) => {
+				return data.json().then((d) => ({
+					status: data.status,
+					message: d.message,
+				}));
+			})
+			.then((data) => {
+				if (data.status !== 200) {
+					throw data;
+				}
+				setSubmitted(true);
+				customerResponse.current = data.message;
+			})
+			.catch((error) => {});
 	};
 
 	const onChange = ({ target: { name, value } }) => {

@@ -52,19 +52,13 @@ const SendQueryModal = ({
 		email: "",
 		firstName: "",
 		lastName: "",
-		phone: "",
-		company: "",
-		position: "",
-		companyRevenue: "",
+		query: "",
 	});
 	const [errors, setErrors] = useState({
 		email: "",
 		firstName: "",
 		lastName: "",
-		phone: "",
-		company: "",
-		position: "",
-		companyRevenue: "",
+		query: "",
 	});
 	const [submitted, setSubmitted] = useState(false);
 	const customerResponse = useRef(undefined);
@@ -82,10 +76,9 @@ const SendQueryModal = ({
 		setSnackBarState(false);
 	};
 
-	const onClickOrder = () => {
+	const onClickSend = () => {
 		const _inputs = { ...inputs };
 		sanitizeInputs(_inputs);
-		_inputs.companyRevenue = getCompanyRevenue(_inputs.companyRevenue);
 
 		setFetching(true);
 		fetch(ORIGIN + "api/register/", {
@@ -126,16 +119,13 @@ const SendQueryModal = ({
 			onClose={onCloseDialog}
 			scroll="body"
 		>
-			{!submitted && <DialogTitle>Pre-Order Now!</DialogTitle>}
+			{!submitted && <DialogTitle>Send me a query!</DialogTitle>}
 			{!submitted && (
 				<DialogContent>
 					<Grid container direction="column">
 						<DialogContentText>
 							<Grid item xs={12} sm={12}>
-								A stable release is planned in mid-2022. This can be pushed
-								further back as LimberGridView is going under rigorous testing.
-								Pre-order now to get your purchase processed ASAP after the
-								stable release.
+								Feel free to send me your queries. I will contact you via email.
 							</Grid>
 							<br />
 							<Grid item xs={12} sm={12}>
@@ -190,83 +180,6 @@ const SendQueryModal = ({
 									size="small"
 								/>
 							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="phone"
-									name="phone"
-									type="tel"
-									label="Phone"
-									placeholder="Phone"
-									value={inputs.phone}
-									onChange={onChange}
-									error={errors.phone}
-									helperText={errors.phone}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="company"
-									name="company"
-									type="text"
-									label="Company"
-									placeholder="Company"
-									value={inputs.company}
-									onChange={onChange}
-									error={errors.company}
-									helperText={errors.company}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="position"
-									name="position"
-									type="text"
-									label="Position"
-									placeholder="Position"
-									value={inputs.position}
-									onChange={onChange}
-									error={errors.position}
-									helperText={errors.position}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="company-revenue"
-									name="companyRevenue"
-									type="text"
-									label="Company Revenue"
-									placeholder="Company Revenue"
-									value={inputs.companyRevenue}
-									onChange={onChange}
-									error={errors.companyRevenue}
-									helperText={errors.companyRevenue}
-									select
-									fullWidth
-									variant="outlined"
-									size="small"
-								>
-									{companyRevenueOptions.map((item) => {
-										return (
-											<MenuItem key={item.value} value={item.value}>
-												{item.title}
-											</MenuItem>
-										);
-									})}
-								</TextField>
-							</Grid>
 						</DialogContentText>
 					</Grid>
 				</DialogContent>
@@ -278,13 +191,13 @@ const SendQueryModal = ({
 							Close
 						</Button>
 						{fetching && <CircularProgress size={30} color="primary" />}
-						<Button color="primary" onClick={onClickOrder} disabled={fetching}>
-							Pre-Order!
+						<Button color="primary" onClick={onClickSend} disabled={fetching}>
+							Send!
 						</Button>
 					</DialogActions>
 				</>
 			)}
-			{submitted && <DialogTitle>Roger!</DialogTitle>}
+			{submitted && <DialogTitle>Copy that!</DialogTitle>}
 			{submitted && (
 				<DialogContent>
 					<Grid container direction="column">
@@ -293,10 +206,7 @@ const SendQueryModal = ({
 						<br />
 						<DialogContentText>
 							<Grid item xs={12} sm={12}>
-								Your request is received. If you have filled in your phone
-								number, I'll ring you on any day between 7 pm to 11 pm. If you
-								have typed in your email only, then I'll reach out to you very
-								soon.
+								Your request is received. I'll reach out to you very soon.
 								<br />
 								<br />
 								To know more about the pricing, click{" "}
@@ -308,12 +218,6 @@ const SendQueryModal = ({
 								</Link>
 								.
 								<br />
-								<br />
-								Your customer id is{" "}
-								<b>
-									{customerResponse.current.id}/{customerResponse.current.uuid}
-								</b>
-								. Please keep it handy for future reference. <br />
 								<br />
 								<b>Ba Bye!</b>
 							</Grid>

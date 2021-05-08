@@ -51,7 +51,7 @@ const AllProducts = (props) => {
 								<Typography color="textSecondary">
 									It is a browser-based application for one of your most common
 									daily tasks and aimed to reduce the carbon footprint. It's
-									aimed at everyone whether a 3-year-old kid or a 90-year-old
+									aimed at everyone whether a 13-year-old kid or a 90-year-old
 									nanny.
 									<br />
 									<br />

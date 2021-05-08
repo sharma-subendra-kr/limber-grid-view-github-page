@@ -9,6 +9,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+
 import styled from "styled-components";
 
 import HomeIcon from "@material-ui/icons/Home";
@@ -25,6 +28,7 @@ import ToysIcon from "@material-ui/icons/Toys";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import AppsIcon from "@material-ui/icons/Apps";
 import WebIcon from "@material-ui/icons/Web";
+import DescriptionIcon from "@material-ui/icons/Description";
 
 import OrderNow from "src/common/components/complex/orderNow/orderNow";
 import HowToUse from "src/common/components/static/howToUse/howToUse";
@@ -99,7 +103,22 @@ const CustomDrawer = ({
 			<Drawer className={className} open={drawerState} onClose={toggleDrawer}>
 				<List>
 					<ListItem>
-						<Typography variant="h5">LimberGridView</Typography>
+						<Grid container direction="row">
+							<Grid item>
+								<Typography variant="h5">LimberGridView</Typography>
+							</Grid>
+							<Grid item>
+								<Button
+									startIcon={<DescriptionIcon />}
+									size="small"
+									onClick={() => {
+										push("/LimberGridView/docs");
+									}}
+								>
+									Read the docs
+								</Button>
+							</Grid>
+						</Grid>
 					</ListItem>
 					<Divider />
 					{list.map((item) => {
@@ -133,9 +152,17 @@ const CustomDrawer = ({
 
 const StyledCustomDrawer = styled(CustomDrawer)`
 	.MuiList-root {
-		width: 270px;
+		width: 295px;
 		.MuiListItem-root {
 			cursor: pointer;
+		}
+		.MuiGrid-root {
+			.MuiButtonBase-root {
+				margin-left: 5px;
+				span {
+					font-size: 9px;
+				}
+			}
 		}
 	}
 `;

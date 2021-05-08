@@ -11,6 +11,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
 
@@ -64,12 +66,17 @@ const OrderNowModal = ({
 	});
 	const [submitted, setSubmitted] = useState(false);
 	const customerResponse = useRef(undefined);
+	const [snackBarState, setSnackBarState] = useState(false);
 
 	const onCloseDialog = () => {
 		setOrderNowDialogAction(false);
 		if (onClose) {
 			onClose();
 		}
+	};
+
+	const onSnackBarClose = () => {
+		setSnackBarState(false);
 	};
 
 	const onClickOrder = () => {
@@ -94,7 +101,10 @@ const OrderNowModal = ({
 				setSubmitted(true);
 				customerResponse.current = data.message;
 			})
-			.catch((error) => {});
+			.catch((error) => {
+				customerResponse.current = error.message;
+				setSnackBarState(true);
+			});
 	};
 
 	const onChange = ({ target: { name, value } }) => {
@@ -297,6 +307,16 @@ const OrderNowModal = ({
 					</Button>
 				</DialogActions>
 			)}
+			<Snackbar
+				open={snackBarState}
+				autoHideDuration={6000}
+				onClose={onSnackBarClose}
+				anchorOrigin={{ vertical: "top", horizontal: "center" }}
+			>
+				<MuiAlert severity="error" onClose={onSnackBarClose}>
+					{customerResponse.current}
+				</MuiAlert>
+			</Snackbar>
 		</Dialog>
 	);
 };

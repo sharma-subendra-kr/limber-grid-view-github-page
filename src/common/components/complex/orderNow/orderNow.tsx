@@ -230,7 +230,7 @@ const StyledOrderNowModal = styled(OrderNowModal)`
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		svg {
+		> svg {
 			font-size: 100px;
 			fill: #388e3c;
 		}

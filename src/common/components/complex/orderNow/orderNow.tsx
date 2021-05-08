@@ -37,7 +37,7 @@ const OrderNowModal = ({
 }) => {
 	const [inputs, setInputs] = useState({});
 	const [errors, setErrors] = useState({});
-	const [submitted, setSubmitted] = useState(true);
+	const [submitted, setSubmitted] = useState(false);
 
 	const onCloseDialog = () => {
 		setOrderNowDialogAction(false);

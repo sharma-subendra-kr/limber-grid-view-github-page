@@ -19,6 +19,10 @@ const theme = createMuiTheme({
 			// contrastText: "#000",
 			main: "#ab003c",
 		},
+		success: { main: "#388e3c" },
+		info: { main: "#1976d2" },
+		warning: { main: "#f57c00" },
+		error: { main: "#d32f2f" },
 	},
 });
 

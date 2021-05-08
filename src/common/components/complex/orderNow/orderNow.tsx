@@ -270,11 +270,7 @@ const OrderNowModal = ({
 					<Button onClick={onCloseDialog} color="secondary">
 						Close
 					</Button>
-					<Button
-						onClick={onCloseDialog}
-						color="primary"
-						onClick={onClickOrder}
-					>
+					<Button color="primary" onClick={onClickOrder}>
 						Pre-Order!
 					</Button>
 				</DialogActions>
@@ -313,7 +309,7 @@ const OrderNowModal = ({
 				onClose={onSnackBarClose}
 				anchorOrigin={{ vertical: "top", horizontal: "center" }}
 			>
-				<MuiAlert severity="error" onClose={onSnackBarClose}>
+				<MuiAlert severity="error" onClose={onSnackBarClose} variant="filled">
 					{customerResponse.current}
 				</MuiAlert>
 			</Snackbar>

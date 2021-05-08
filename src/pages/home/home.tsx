@@ -56,7 +56,7 @@ const Home = (props) => {
 
 	const lgvCustomizedView = useRef();
 	const lgvDefaultView = useRef();
-	const introBuy = useRef("incomplete-first");
+	const introBuy = useRef("incomplete");
 
 	useEffect(() => {
 		setPositionDataAction(pd);
@@ -69,20 +69,19 @@ const Home = (props) => {
 		}
 	}, []);
 
-	useEffect(() => {
+	const onOrderNowClose = () => {
 		if (
 			introBuy.current === "incomplete" &&
-			!orderNow &&
 			props.location.pathname.indexOf("buy") === 16
 		) {
-			setSwitchToDesktopDialogAction(true);
+			if (!localStorage.getItem("switchToDesktop")) {
+				setSwitchToDesktopDialogAction(true);
+			} else if (!localStorage.getItem("howToUse")) {
+				setHowToUseDialogAction(true);
+			}
 		}
-		if (introBuy.current === "incomplete-first") {
-			introBuy.current = "incomplete";
-		} else if (!orderNow) {
-			introBuy.current = "complete";
-		}
-	}, [orderNow]);
+		introBuy.current = "complete";
+	};
 
 	const onResizeMethodChange = (resizeMethod) => {
 		changeResizeMethodAction(resizeMethod);
@@ -121,7 +120,7 @@ const Home = (props) => {
 	return (
 		<>
 			<Header />
-			<Drawer />
+			<Drawer onOrderNowClose={onOrderNowClose} />
 			{switchToDesktop && <SwitchToDesktop onClose={onCloseSwitchToDesktop} />}
 			<div className="page-home">
 				<div className="tools-container">

@@ -72,10 +72,15 @@ const CustomDrawer = ({
 	toggleDrawerStateAction,
 	setOrderNowDialogAction,
 	setHowToUseDialogAction,
+	onOrderNowClose: _onOrderNowClose,
 	push,
 }) => {
 	const toggleDrawer = () => {
 		toggleDrawerStateAction();
+	};
+
+	const onOrderNowClose = () => {
+		_onOrderNowClose();
 	};
 
 	const onClickListItem = (title, url) => {
@@ -120,7 +125,7 @@ const CustomDrawer = ({
 					})}
 				</List>
 			</Drawer>
-			{orderNow && <OrderNow />}
+			{orderNow && <OrderNow onClose={onOrderNowClose} />}
 			{howToUse && <HowToUse />}
 		</>
 	);

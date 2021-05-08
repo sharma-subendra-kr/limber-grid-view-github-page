@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { push } from "connected-react-router";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -19,7 +20,7 @@ import {
 } from "src/common/components/static/drawer/ducks";
 
 import "./header.scss";
-const Header = ({ className, drawerState, toggleDrawerStateAction }) => {
+const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
 	const onToggleDrawer = () => {
 		toggleDrawerStateAction();
 	};
@@ -32,7 +33,14 @@ const Header = ({ className, drawerState, toggleDrawerStateAction }) => {
 				</IconButton>
 				<Grid container>
 					<Grid item>
-						<Typography variant="h4">limber.in</Typography>
+						<Typography
+							variant="h4"
+							onClick={() => {
+								push("/LimberGridView");
+							}}
+						>
+							limber.in
+						</Typography>
 					</Grid>
 					<Grid item>
 						<a
@@ -115,5 +123,5 @@ export default connect(
 	(state) => ({
 		drawerState: getDrawerState(state),
 	}),
-	{ toggleDrawerStateAction }
+	{ toggleDrawerStateAction, push }
 )(StyledHeader);

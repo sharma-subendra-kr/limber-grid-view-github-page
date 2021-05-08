@@ -22,25 +22,12 @@ import { ORIGIN } from "src/configs/origin";
 
 import styled from "styled-components";
 
-import {
-	getErrors,
-	sanitizeInputs,
-	getCompanyRevenue,
-	getFormInput,
-} from "./sendQueryUtils";
+import { getErrors, sanitizeInputs, getFormInput } from "./sendQueryUtils";
 import {
 	getSendQueryDialogState,
 	toggleSendQueryDialogAction,
 	setSendQueryDialogAction,
 } from "./ducks";
-
-const companyRevenueOptions = [
-	{ title: "Less than 1m", value: "lt 1m" },
-	{ title: "Greater than 1m & less than 10m", value: "gt 1m & lt 10m" },
-	{ title: "Greater than 10m & less than 100m", value: "gt 10m & lt 100m" },
-	{ title: "Greater than 100m & less than 500m", value: "gt 100m & lt 500m" },
-	{ title: "Greater than 500m", value: "gt 500m" },
-];
 
 const SendQueryModal = ({
 	className,

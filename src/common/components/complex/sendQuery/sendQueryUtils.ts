@@ -19,23 +19,8 @@ export const getErrors = (name, value, inputs, errors) => {
 			inputs[name] = result.value;
 			errors[name] = result.error;
 			break;
-		case "phone":
-			result = checkPhone(name, value);
-			inputs[name] = result.value;
-			errors[name] = result.error;
-			break;
-		case "company":
-			result = checkCompany(name, value);
-			inputs[name] = result.value;
-			errors[name] = result.error;
-			break;
-		case "position":
-			result = checkPosition(name, value);
-			inputs[name] = result.value;
-			errors[name] = result.error;
-			break;
-		case "companyRevenue":
-			result = checkCompanyRevenue(name, value);
+		case "query":
+			result = checkQuery(name, value);
 			inputs[name] = result.value;
 			errors[name] = result.error;
 			break;
@@ -76,59 +61,15 @@ const checkLastName = (key, value) => {
 	};
 };
 
-const checkPhone = (key, value) => {
-	const reg = new RegExp("[0-9a-zA-Z+-]+");
-	if ((reg.test(value) && value.length <= 200) || value.length === 0) {
+const checkQuery = (key, value) => {
+	if (regExp.test(value) && value.length <= 200 && value.length >= 25) {
 		return { value, error: "" };
 	}
 	return {
 		value,
 		error:
-			"Please enter a valid phone number, phone number can have letters, numbers, + and -.",
+			"Please enter a valid query, query must be more than 25 and less than 200 characters long.",
 	};
-};
-
-const checkCompany = (key, value) => {
-	if ((regExp.test(value) && value.length <= 200) || value.length === 0) {
-		return { value, error: "" };
-	}
-	return {
-		value,
-		error:
-			"Please enter a valid company name, company name can't be more than 200 characters!",
-	};
-};
-
-const checkPosition = (key, value) => {
-	if ((regExp.test(value) && value.length <= 200) || value.length === 0) {
-		return { value, error: "" };
-	}
-	return {
-		value,
-		error:
-			"Please enter a valid position, position can't be more than 200 characters!",
-	};
-};
-
-const checkCompanyRevenue = (key, value) => {
-	return {
-		value,
-		error: "",
-	};
-};
-
-export const getCompanyRevenue = (value) => {
-	const map = {
-		"lt 1m": "1",
-		"gt 1m & lt 10m": "2",
-		"gt 10m & lt 100m": "3",
-		"gt 100m & lt 500m": "4",
-		"gt 500m": "5",
-	};
-	if (!map[value]) {
-		return "0";
-	}
-	return map[value];
 };
 
 export const sanitizeInputs = (inputs) => {

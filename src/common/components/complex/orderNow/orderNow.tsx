@@ -14,8 +14,11 @@ import Grid from "@material-ui/core/Grid";
 
 import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
 
+import { ORIGIN } from "src/configs/origin";
+
 import styled from "styled-components";
 
+import { getErrors, sanitizeInputs, getCompanyRevenue } from "./orderNowUtils";
 import {
 	getOrderNowDialogState,
 	toggleOrderNowDialogAction,
@@ -36,8 +39,24 @@ const OrderNowModal = ({
 	onClose,
 	setOrderNowDialogAction,
 }) => {
-	const [inputs, setInputs] = useState({});
-	const [errors, setErrors] = useState({});
+	const [inputs, setInputs] = useState({
+		email: "",
+		firstName: "",
+		lastName: "",
+		phone: "",
+		company: "",
+		position: "",
+		companyRevenue: "",
+	});
+	const [errors, setErrors] = useState({
+		email: "",
+		firstName: "",
+		lastName: "",
+		phone: "",
+		company: "",
+		position: "",
+		companyRevenue: "",
+	});
 	const [submitted, setSubmitted] = useState(false);
 
 	const onCloseDialog = () => {
@@ -47,7 +66,17 @@ const OrderNowModal = ({
 		}
 	};
 
-	const onChange = () => {};
+	const onClickOrder = () => {
+		const _inputs = { ...inputs };
+		sanitizeInputs(_inputs);
+		_inputs.companyRevenue = getCompanyRevenue(_inputs.companyRevenue);
+	};
+
+	const onChange = ({ target: { name, value } }) => {
+		const result = getErrors(name, value, { ...inputs }, { ...errors });
+		setInputs(result.inputs);
+		setErrors(result.errors);
+	};
 
 	return (
 		<Dialog
@@ -141,7 +170,7 @@ const OrderNowModal = ({
 							<Grid item xs={12} sm={12}>
 								<TextField
 									id="company"
-									name="Company"
+									name="company"
 									type="text"
 									label="Company"
 									placeholder="Company"
@@ -206,7 +235,11 @@ const OrderNowModal = ({
 					<Button onClick={onCloseDialog} color="secondary">
 						Close
 					</Button>
-					<Button onClick={onCloseDialog} color="primary">
+					<Button
+						onClick={onCloseDialog}
+						color="primary"
+						onClick={onClickOrder}
+					>
 						Pre-Order!
 					</Button>
 				</DialogActions>

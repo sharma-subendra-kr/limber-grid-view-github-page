@@ -54,7 +54,7 @@ const OrderNowModal = ({
 			open={orderNowDialogState}
 			onClose={onCloseDialog}
 		>
-			<DialogTitle>Pre-Order Now!</DialogTitle>
+			{!submitted && <DialogTitle>Pre-Order Now!</DialogTitle>}
 			{!submitted && (
 				<DialogContent>
 					<DialogContentText>
@@ -187,13 +187,6 @@ const OrderNowModal = ({
 					</DialogContentText>
 				</DialogContent>
 			)}
-			{submitted && (
-				<DialogContent>
-					<DialogContentText>
-						<CheckCircleOutlinedIcon />
-					</DialogContentText>
-				</DialogContent>
-			)}
 			{!submitted && (
 				<DialogActions>
 					<Button onClick={onCloseDialog} color="secondary">
@@ -204,10 +197,26 @@ const OrderNowModal = ({
 					</Button>
 				</DialogActions>
 			)}
+			{submitted && <DialogTitle>Roger!</DialogTitle>}
+			{submitted && (
+				<DialogContent>
+					<CheckCircleOutlinedIcon />
+					<br />
+					<br />
+					<DialogContentText>
+						Your request is received. If you have filled in your phone number,
+						I'll ring you on any day between 7 pm to 11 pm. If you have typed in
+						your email only, then I'll reach out to you very soon.
+						<br />
+						<br />
+						<b>Ba Bye!</b>
+					</DialogContentText>
+				</DialogContent>
+			)}
 			{submitted && (
 				<DialogActions>
 					<Button onClick={onCloseDialog} color="secondary">
-						Close
+						Okie-Dokie!
 					</Button>
 				</DialogActions>
 			)}
@@ -216,9 +225,16 @@ const OrderNowModal = ({
 };
 
 const StyledOrderNowModal = styled(OrderNowModal)`
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	.MuiDialogContent-root {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		svg {
+			font-size: 100px;
+			fill: #388e3c;
+		}
+	}
 `;
 
 export default connect(

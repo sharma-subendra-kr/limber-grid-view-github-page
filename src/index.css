@@ -16,6 +16,7 @@ body {
 
 	background-color: #f1f2f3;
 	color: #151d2d;
+	overflow: hidden;
 }
 
 p {

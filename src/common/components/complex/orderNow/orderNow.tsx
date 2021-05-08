@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -13,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
 
@@ -67,6 +69,7 @@ const OrderNowModal = ({
 	const [submitted, setSubmitted] = useState(false);
 	const customerResponse = useRef(undefined);
 	const [snackBarState, setSnackBarState] = useState(false);
+	const [fetching, setFetching] = useState(false);
 
 	const onCloseDialog = () => {
 		setOrderNowDialogAction(false);
@@ -84,6 +87,7 @@ const OrderNowModal = ({
 		sanitizeInputs(_inputs);
 		_inputs.companyRevenue = getCompanyRevenue(_inputs.companyRevenue);
 
+		setFetching(true);
 		fetch(ORIGIN + "api/register/", {
 			method: "POST",
 			body: getFormInput(_inputs),
@@ -98,12 +102,14 @@ const OrderNowModal = ({
 				if (data.status !== 200) {
 					throw data;
 				}
+				customerResponse.current = JSON.parse(data.message);
 				setSubmitted(true);
-				customerResponse.current = data.message;
+				setFetching(false);
 			})
 			.catch((error) => {
 				customerResponse.current = error.message;
 				setSnackBarState(true);
+				setFetching(false);
 			});
 	};
 
@@ -266,14 +272,17 @@ const OrderNowModal = ({
 				</DialogContent>
 			)}
 			{!submitted && (
-				<DialogActions>
-					<Button onClick={onCloseDialog} color="secondary">
-						Close
-					</Button>
-					<Button color="primary" onClick={onClickOrder}>
-						Pre-Order!
-					</Button>
-				</DialogActions>
+				<>
+					<DialogActions>
+						<Button onClick={onCloseDialog} color="secondary">
+							Close
+						</Button>
+						{fetching && <CircularProgress size={30} color="primary" />}
+						<Button color="primary" onClick={onClickOrder} disabled={fetching}>
+							Pre-Order!
+						</Button>
+					</DialogActions>
+				</>
 			)}
 			{submitted && <DialogTitle>Roger!</DialogTitle>}
 			{submitted && (
@@ -289,6 +298,22 @@ const OrderNowModal = ({
 								have typed in your email only, then I'll reach out to you very
 								soon.
 								<br />
+								<br />
+								To know more about the pricing, click{" "}
+								<Link
+									onClick={() => setOrderNowDialogAction(false)}
+									to="/LimberGridView/pricing"
+								>
+									here
+								</Link>
+								.
+								<br />
+								<br />
+								Your customer id is{" "}
+								<b>
+									{customerResponse.current.id}/{customerResponse.current.uuid}
+								</b>
+								. Please keep it handy for future reference. <br />
 								<br />
 								<b>Ba Bye!</b>
 							</Grid>

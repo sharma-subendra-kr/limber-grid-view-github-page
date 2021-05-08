@@ -49,6 +49,12 @@ const LgvDefaultView = forwardRef((props, ref) => {
 				removeComplete: removeComplete,
 				renderPlugin: renderPlugin,
 				removePlugin: removePlugin,
+				getArrangeTime: getArrangeTime,
+				getLogMessage: getLogMessage,
+			},
+			publicConstants: {
+				showBottomLeftResizeGuide: true,
+				autoScrollForMouse: true,
 			},
 			positionData: positionData,
 		});
@@ -80,7 +86,6 @@ const LgvDefaultView = forwardRef((props, ref) => {
 
 	const resizeComplete = (index, width, height, arrangedIndices) => {
 		setPositionDataAction(lgv.current.getGridData().positionData);
-		lgv.current.renderItem(index);
 	};
 
 	const moveComplete = (index, toX, toY, arrangedIndices) => {
@@ -102,6 +107,10 @@ const LgvDefaultView = forwardRef((props, ref) => {
 	const removePlugin = (element) => {
 		ReactDOM.unmountComponentAtNode(element);
 	};
+
+	const getArrangeTime = () => {};
+
+	const getLogMessage = () => {};
 
 	return <div className="lgv-default-view-container" ref={el}></div>;
 });

@@ -10,6 +10,7 @@ import AboutTimeComplexity from "../../pages/aboutTimeComplexity/aboutTimeComple
 import AllProducts from "../../pages/allProducts/allProducts";
 import DevSupport from "../../pages/devSupport/devSupport";
 import FAQ from "../../pages/faq/faq";
+import Docs from "../../pages/docs/docs";
 import HowItWorks from "../../pages/howItWorks/howItWorks";
 import InfoOnCommercialLicense from "../../pages/infoOnCommercialLicense/infoOnCommercialLicense";
 import Limitations from "../../pages/limitations/limitations";
@@ -86,6 +87,11 @@ const Routes = () => {
 					exact
 					path="/LimberGridView/refundPolicy"
 					component={RefundPolicy}
+					redirectPath="/LimberGridView"
+				/>
+				<PublicRoute
+					path="/LimberGridView/docs"
+					component={Docs}
 					redirectPath="/LimberGridView"
 				/>
 				<PublicRoute

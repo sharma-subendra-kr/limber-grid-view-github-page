@@ -112,6 +112,7 @@ const CustomDrawer = ({
 									startIcon={<DescriptionIcon />}
 									size="small"
 									onClick={() => {
+										toggleDrawerStateAction();
 										push("/LimberGridView/docs");
 									}}
 								>

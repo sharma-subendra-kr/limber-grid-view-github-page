@@ -1,5 +1,6 @@
 import React, {
 	useEffect,
+	useState,
 	useRef,
 	useImperativeHandle,
 	forwardRef,
@@ -7,6 +8,8 @@ import React, {
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import LimberGridView from "limbergridview";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import { Layout } from "./layout";
 
@@ -28,8 +31,10 @@ const LgvDefaultView = forwardRef((props, ref) => {
 		setPositionDataAction,
 	} = props;
 
+	const [snackBarState, setSnackBarState] = useState(false);
 	const lgv = useRef(null);
 	const el = useRef(null);
+	const lgvMessage = useRef(undefined);
 
 	useImperativeHandle(ref, () => ({
 		addItem: () => {
@@ -53,7 +58,6 @@ const LgvDefaultView = forwardRef((props, ref) => {
 				getLogMessage: getLogMessage,
 			},
 			publicConstants: {
-				showBottomLeftResizeGuide: true,
 				autoScrollForMouse: true,
 			},
 			positionData: positionData,
@@ -108,11 +112,33 @@ const LgvDefaultView = forwardRef((props, ref) => {
 		ReactDOM.unmountComponentAtNode(element);
 	};
 
-	const getArrangeTime = () => {};
+	const getArrangeTime = (a, b, c) => {
+		console.log("a,b,c", a, b, c);
+	};
 
-	const getLogMessage = () => {};
+	const getLogMessage = (log) => {
+		lgvMessage.current = log.message;
+		setSnackBarState(true);
+	};
 
-	return <div className="lgv-default-view-container" ref={el}></div>;
+	const onSnackBarClose = () => {
+		setSnackBarState(false);
+	};
+
+	return (
+		<div className="lgv-default-view-container" ref={el}>
+			<Snackbar
+				open={snackBarState}
+				autoHideDuration={6000}
+				onClose={onSnackBarClose}
+				anchorOrigin={{ vertical: "top", horizontal: "center" }}
+			>
+				<MuiAlert severity="error" onClose={onSnackBarClose} variant="filled">
+					{lgvMessage.current}
+				</MuiAlert>
+			</Snackbar>
+		</div>
+	);
 });
 
 export default connect(

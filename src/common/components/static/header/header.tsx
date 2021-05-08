@@ -47,7 +47,7 @@ const Header = ({ className, drawerState, toggleDrawerStateAction }) => {
 					<Grid item container>
 						<a
 							className="view-example-code"
-							href="https://github.com/sharma-subendra-kr/limber-grid-view-github-page"
+							href="https://github.com/sharma-subendra-kr/limber-grid-view-github-page/blob/release-1.0.0-beta.3/src/pages/home/common/components/lgvCustomizedView/lgvCustomizedView.tsx"
 							target="blank"
 						>
 							<Grid item direction="column">

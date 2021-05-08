@@ -84,7 +84,9 @@ const CustomDrawer = ({
 	};
 
 	const onOrderNowClose = () => {
-		_onOrderNowClose();
+		if (_onOrderNowClose) {
+			_onOrderNowClose();
+		}
 	};
 
 	const onClickListItem = (title, url) => {

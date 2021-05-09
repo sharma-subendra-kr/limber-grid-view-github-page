@@ -58,6 +58,7 @@ const LgvDefaultView = forwardRef((props, ref) => {
 				moveComplete: moveComplete,
 				addComplete: addComplete,
 				removeComplete: removeComplete,
+				cutSpaceComplete: cutSpaceComplete,
 				renderPlugin: renderPlugin,
 				removePlugin: removePlugin,
 				getArrangeTime: getArrangeTime,
@@ -106,6 +107,10 @@ const LgvDefaultView = forwardRef((props, ref) => {
 	};
 
 	const removeComplete = (index, element) => {
+		setPositionDataAction(lgv.current.getGridData().positionData);
+	};
+
+	const cutSpaceComplete = () => {
 		setPositionDataAction(lgv.current.getGridData().positionData);
 	};
 

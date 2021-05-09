@@ -10,7 +10,7 @@ import "./layout.scss";
 const Comps = [Kpi, BarChart, PieChart, PieChart];
 
 export const Layout = (props) => {
-	const { index, width, height, isAdd, onRemove } = props;
+	const { index, width, height, isAdd, onRemove, useIndexForTitle } = props;
 
 	const [renderBody, setRenderBody] = useState(
 		isAdd ? -1 : Math.floor(Math.random() * 4)
@@ -31,7 +31,9 @@ export const Layout = (props) => {
 	return (
 		<div className="custom-layout">
 			<div className="custom-layout-header">
-				<p className="custom-layout-header-title">{getTitle(random)}</p>
+				<p className="custom-layout-header-title">
+					{useIndexForTitle ? index : getTitle(random)}
+				</p>
 				<div className="custom-layout-header-drop-down">
 					<DropDown onSelectCb={onSelectCb} />
 				</div>

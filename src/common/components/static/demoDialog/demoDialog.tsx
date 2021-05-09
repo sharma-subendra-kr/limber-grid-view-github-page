@@ -63,11 +63,13 @@ const DemoDialogModal = ({
 					algorithm. Remember to release the mouse button as the demo for the
 					move and resize events are disabled here.
 					<br />
-					<br /> For the best results, move item 10 over to item 5.
+					<br /> <b>For the best results, move item 17 over to item 15.</b>
 					<br />
 					<br />
-					This is quite unstable during the demonstration, so please refrain
-					from clicking anywhere.
+					<b>
+						This is quite unstable during the demonstration, so please refrain
+						from clicking anywhere.
+					</b>
 				</DialogContentText>
 				<FormControlLabel
 					control={
@@ -92,6 +94,9 @@ const DemoDialogModal = ({
 const StyledDemoDialogModal = styled(DemoDialogModal)`
 	.MuiDialogContentText-root {
 		font-size: 1.3rem;
+	}
+	b {
+		font-size: 20px;
 	}
 `;
 

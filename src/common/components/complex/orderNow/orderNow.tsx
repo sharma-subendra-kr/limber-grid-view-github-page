@@ -22,12 +22,8 @@ import { ORIGIN } from "src/configs/origin";
 
 import styled from "styled-components";
 
-import {
-	getErrors,
-	sanitizeInputs,
-	getCompanyRevenue,
-	getFormInput,
-} from "./orderNowUtils";
+import { getErrors, sanitizeInputs, getCompanyRevenue } from "./orderNowUtils";
+import { hasErrors, getFormInput } from "src/common/utils/utils";
 import {
 	getOrderNowDialogState,
 	toggleOrderNowDialogAction,
@@ -83,6 +79,10 @@ const OrderNowModal = ({
 	};
 
 	const onClickOrder = () => {
+		if (hasErrors(errors)) {
+			return;
+		}
+
 		const _inputs = { ...inputs };
 		sanitizeInputs(_inputs);
 		_inputs.companyRevenue = getCompanyRevenue(_inputs.companyRevenue);

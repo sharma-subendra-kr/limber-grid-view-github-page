@@ -22,7 +22,8 @@ import { ORIGIN } from "src/configs/origin";
 
 import styled from "styled-components";
 
-import { getErrors, sanitizeInputs, getFormInput } from "./sendQueryUtils";
+import { getErrors, sanitizeInputs } from "./sendQueryUtils";
+import { hasErrors, getFormInput } from "src/common/utils/utils";
 import {
 	getSendQueryDialogState,
 	toggleSendQueryDialogAction,
@@ -64,6 +65,10 @@ const SendQueryModal = ({
 	};
 
 	const onClickSend = () => {
+		if (hasErrors(errors)) {
+			return;
+		}
+
 		const _inputs = { ...inputs };
 		sanitizeInputs(_inputs);
 

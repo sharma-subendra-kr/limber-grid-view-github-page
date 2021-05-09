@@ -37,7 +37,7 @@ const FAQ = ({ className, sendQueryDialogState, setSendQueryDialogAction }) => {
 					Coming soon...
 					<br />
 					<br />
-					If you have any queries, then you can send a{" "}
+					If you have any queries, then feel free to send a{" "}
 					<u>
 						<b className={"open-send-query"} onClick={onClickOpenModal}>
 							message

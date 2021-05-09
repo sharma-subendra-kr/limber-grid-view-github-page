@@ -40,6 +40,12 @@ const LgvDefaultView = forwardRef((props, ref) => {
 		addItem: () => {
 			lgv.current.addItem();
 		},
+		undo: () => {
+			lgv.current.undo();
+		},
+		redo: () => {
+			lgv.current.redo();
+		},
 	}));
 
 	useEffect(() => {

@@ -9,6 +9,8 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import TouchAppOutlinedIcon from "@material-ui/icons/TouchAppOutlined";
+import UndoIcon from "@material-ui/icons/Undo";
+import RedoIcon from "@material-ui/icons/Redo";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCut } from "@fortawesome/free-solid-svg-icons";
@@ -21,6 +23,8 @@ const LgvTools = (props) => {
 	const {
 		className,
 		// onResizeMethodChange,
+		onUserUndo,
+		onUserRedo,
 		onLatchChange,
 		onDeskInteractionChange,
 		onAddItem,
@@ -37,6 +41,14 @@ const LgvTools = (props) => {
 	// 		onResizeMethodChange(!resizeMethod);
 	// 	}
 	// };
+
+	const onUndo = () => {
+		onUserUndo();
+	};
+
+	const onRedo = () => {
+		onUserRedo();
+	};
 
 	const onLatchClick = (event) => {
 		setLatch(!latch);
@@ -70,6 +82,24 @@ const LgvTools = (props) => {
 	return (
 		<div className={`${className} lgv-tools`}>
 			<FormGroup row>
+				<FormControlLabel
+					control={
+						<IconButton size="small" onClick={onUndo}>
+							<UndoIcon />
+						</IconButton>
+					}
+					label="Undo"
+				/>
+				<div className="seperator" />
+				<FormControlLabel
+					control={
+						<IconButton size="small" onClick={onRedo}>
+							<RedoIcon />
+						</IconButton>
+					}
+					label="Redo"
+				/>
+				<div className="seperator" />
 				<FormControlLabel
 					control={
 						<Checkbox size="small" checked={latch} onClick={onLatchClick} />

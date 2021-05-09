@@ -85,6 +85,22 @@ const Home = (props) => {
 		introBuy.current = "complete";
 	};
 
+	const onUserUndo = () => {
+		if (view === "customized") {
+			lgvCustomizedView.current.undo();
+		} else {
+			lgvDefaultView.current.undo();
+		}
+	};
+
+	const onUserRedo = () => {
+		if (view === "customized") {
+			lgvCustomizedView.current.redo();
+		} else {
+			lgvDefaultView.current.redo();
+		}
+	};
+
 	const onResizeMethodChange = (resizeMethod) => {
 		changeResizeMethodAction(resizeMethod);
 	};
@@ -145,6 +161,8 @@ const Home = (props) => {
 					<div className="lgv-tools-container">
 						<LgvTools
 							onResizeMethodChange={onResizeMethodChange}
+							onUserUndo={onUserUndo}
+							onUserRedo={onUserRedo}
 							onLatchChange={onLatchChange}
 							onDeskInteractionChange={onDeskInteractionChange}
 							onAddItem={onAddItem}

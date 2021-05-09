@@ -7,6 +7,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 import styled from "styled-components";
 
@@ -22,12 +25,22 @@ const SwitchToDesktopModal = ({
 	onClose,
 	setSwitchToDesktopDialogAction,
 }) => {
+	const onDontShowClick = ({ target: { checked } }) => {
+		if (checked) {
+			localStorage.setItem("switchToDesktop", "switchToDesktop");
+		} else {
+			localStorage.removeItem("switchToDesktop");
+		}
+	};
+
 	const onCloseDialog = () => {
 		setSwitchToDesktopDialogAction(false);
 		if (onClose) {
 			onClose();
 		}
 	};
+
+	const defaultChecked = !!localStorage.getItem("switchToDesktop");
 
 	return (
 		<Dialog
@@ -44,6 +57,16 @@ const SwitchToDesktopModal = ({
 					schedule in mind, this site is not designed to work with mobile
 					devices. So, please switch to desktop or tablet.
 				</DialogContentText>
+				<FormControlLabel
+					control={
+						<Checkbox
+							defaultChecked={defaultChecked}
+							size="small"
+							onClick={onDontShowClick}
+						/>
+					}
+					label="Don't show this message again"
+				/>
 			</DialogContent>
 			<DialogActions>
 				<Button onClick={onCloseDialog} color="primary">

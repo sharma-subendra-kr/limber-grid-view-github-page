@@ -7,6 +7,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 import styled from "styled-components";
 
@@ -22,12 +25,24 @@ const DemoDialogModal = ({
 	onClose,
 	setDemoDialogAction,
 }) => {
+	const onDontShowClick = ({ target: { checked } }) => {
+		// event.nativeEvent.target.checked
+		// event.target.checked
+		if (checked) {
+			localStorage.setItem("demoDialog", "demoDialog");
+		} else {
+			localStorage.removeItem("demoDialog");
+		}
+	};
+
 	const onCloseDialog = () => {
 		setDemoDialogAction(false);
 		if (onClose) {
 			onClose();
 		}
 	};
+
+	const defaultChecked = !!localStorage.getItem("demoDialog");
 
 	return (
 		<Dialog
@@ -54,6 +69,16 @@ const DemoDialogModal = ({
 					This is quite unstable during the demonstration, so please refrain
 					from clicking anywhere.
 				</DialogContentText>
+				<FormControlLabel
+					control={
+						<Checkbox
+							defaultChecked={defaultChecked}
+							size="small"
+							onClick={onDontShowClick}
+						/>
+					}
+					label="Don't show this message again"
+				/>
 			</DialogContent>
 			<DialogActions>
 				<Button onClick={onCloseDialog} color="primary">

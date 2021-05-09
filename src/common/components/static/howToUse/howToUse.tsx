@@ -6,6 +6,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 import {
 	getHowToUseDialogState,
@@ -18,6 +21,14 @@ const HowToUseModal = ({
 	onClose,
 	setHowToUseDialogAction,
 }) => {
+	const onDontShowClick = ({ target: { checked } }) => {
+		if (checked) {
+			localStorage.setItem("howToUse", "howToUse");
+		} else {
+			localStorage.removeItem("howToUse");
+		}
+	};
+
 	const onCloseDialog = () => {
 		setHowToUseDialogAction(false);
 		if (onClose) {
@@ -25,9 +36,24 @@ const HowToUseModal = ({
 		}
 	};
 
+	const defaultChecked = !!localStorage.getItem("howToUse");
+
 	return (
 		<Dialog open={howToUseDialogState} onClose={onCloseDialog}>
-			<DialogTitle>DialogActions</DialogTitle>
+			<DialogTitle>Tips on using LimberGridView!</DialogTitle>
+			<DialogContent>
+				<DialogContentText></DialogContentText>
+				<FormControlLabel
+					control={
+						<Checkbox
+							defaultChecked={defaultChecked}
+							size="small"
+							onClick={onDontShowClick}
+						/>
+					}
+					label="Don't show this message again"
+				/>
+			</DialogContent>
 		</Dialog>
 	);
 };

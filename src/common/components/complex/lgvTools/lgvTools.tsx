@@ -108,6 +108,7 @@ const LgvTools = (props) => {
 				/>
 				<div className="seperator" />
 				<RadioGroup
+					className="add-cut-group"
 					name="addOrCut"
 					row
 					onChange={onAddOrCutClick}
@@ -153,6 +154,9 @@ const StyledLgvTools = styled(LgvTools)`
 	span {
 		font-size: 12px !important;
 	}
+	.MuiFormControlLabel-root {
+		margin: 0;
+	}
 	.seperator {
 		width: 2px;
 		height: 100%;
@@ -162,9 +166,15 @@ const StyledLgvTools = styled(LgvTools)`
 	.MuiButtonBase-root {
 		padding-top: 0;
 		padding-bottom: 0;
+		padding-left: 0;
 	}
 	.MuiSvgIcon-root {
 		vertical-align: middle;
+	}
+	.MuiFormGroup-root.add-cut-group {
+		> label:first-child {
+			margin-right: 10px;
+		}
 	}
 `;
 

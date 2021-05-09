@@ -130,7 +130,7 @@ const LgvCustomizedView = forwardRef((props, ref) => {
 	};
 
 	const getArrangeTime = (a, b, c) => {
-		console.log("a,b,c", a, b, c);
+		// console.log("a,b,c", a, b, c);
 	};
 
 	const getLogMessage = (log) => {

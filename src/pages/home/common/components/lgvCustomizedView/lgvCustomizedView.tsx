@@ -67,18 +67,17 @@ const LgvCustomizedView = forwardRef((props, ref) => {
 			publicConstants: {
 				showBottomLeftResizeGuide: true,
 				autoScrollForMouse: true,
+				deskInteractionMode: deskInteractionMode,
+				latchMovedItem: latch,
 			},
 			positionData: positionData,
 		});
 	}, []);
 
-	useEffect(() => {
+	if (lgv.current) {
 		lgv.current.setLatchMovedItem(latch);
-	}, [latch]);
-
-	useEffect(() => {
 		lgv.current.setDeskInteractMode(deskInteractionMode);
-	}, [deskInteractionMode]);
+	}
 
 	const itemMouseDownMoveCheck = (x, y, item, index, currentTarget) => {
 		if (currentTarget.classList.contains("custom-layout-header-title")) {

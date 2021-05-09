@@ -14,25 +14,19 @@ import SwitchToDesktop from "src/common/components/static/switchToDesktop/switch
 import {
 	getView,
 	changeViewAction,
-	changeLatchAction,
-	changeResizeMethodAction,
-	changeDeskInteractionModeAction,
 	getPositionData,
 	setPositionDataAction,
 } from "./ducks";
 import {
 	getOrderNowDialogState,
-	toggleOrderNowDialogAction,
 	setOrderNowDialogAction,
 } from "src/common/components/complex/orderNow/ducks";
 import {
 	getswitchToDesktopDialogState,
-	toggleswitchToDesktopDialogAction,
 	setSwitchToDesktopDialogAction,
 } from "src/common/components/static/switchToDesktop/ducks";
 import {
 	getHowToUseDialogState,
-	toggleHowToUseDialogAction,
 	setHowToUseDialogAction,
 } from "src/common/components/static/howToUse/ducks";
 
@@ -44,15 +38,10 @@ const Home = (props) => {
 		view,
 		positionData,
 		changeViewAction,
-		changeResizeMethodAction,
-		changeLatchAction,
-		changeDeskInteractionModeAction,
 		setPositionDataAction,
 		switchToDesktop,
-		howToUse,
 		setSwitchToDesktopDialogAction,
 		setHowToUseDialogAction,
-		orderNow,
 		setOrderNowDialogAction,
 	} = props;
 
@@ -99,18 +88,6 @@ const Home = (props) => {
 		} else {
 			lgvDefaultView.current.redo();
 		}
-	};
-
-	const onResizeMethodChange = (resizeMethod) => {
-		changeResizeMethodAction(resizeMethod);
-	};
-
-	const onLatchChange = (latch) => {
-		changeLatchAction(latch);
-	};
-
-	const onDeskInteractionChange = (deskInteractionMode) => {
-		changeDeskInteractionModeAction(deskInteractionMode);
 	};
 
 	const onAddItem = () => {
@@ -160,11 +137,8 @@ const Home = (props) => {
 					</div>
 					<div className="lgv-tools-container">
 						<LgvTools
-							onResizeMethodChange={onResizeMethodChange}
 							onUserUndo={onUserUndo}
 							onUserRedo={onUserRedo}
-							onLatchChange={onLatchChange}
-							onDeskInteractionChange={onDeskInteractionChange}
 							onAddItem={onAddItem}
 						/>
 					</div>
@@ -194,9 +168,6 @@ export default connect(
 	}),
 	{
 		changeViewAction,
-		changeResizeMethodAction,
-		changeLatchAction,
-		changeDeskInteractionModeAction,
 		setPositionDataAction,
 		setSwitchToDesktopDialogAction,
 		setHowToUseDialogAction,

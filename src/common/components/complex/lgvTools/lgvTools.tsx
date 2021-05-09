@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -17,30 +18,26 @@ import { faCut } from "@fortawesome/free-solid-svg-icons";
 
 import styled from "styled-components";
 
+import {
+	getLatch,
+	changeLatchAction,
+	getDeskInteractionMode,
+	changeDeskInteractionModeAction,
+} from "src/pages/home/ducks";
+
 import "./lgvTools.scss";
 
 const LgvTools = (props) => {
 	const {
 		className,
-		// onResizeMethodChange,
 		onUserUndo,
 		onUserRedo,
-		onLatchChange,
-		onDeskInteractionChange,
 		onAddItem,
+		latch,
+		changeLatchAction,
+		deskInteractionMode,
+		changeDeskInteractionModeAction,
 	} = props;
-
-	// const [resizeMethod, setResizeMethod] = useState(false);
-	const [latch, setLatch] = useState(true);
-	const [addOrCut, setAddOrCut] = useState("CUTSPACE"); // ADD or CUTSPACE
-
-	// const onResizeMethodClick = (event) => {
-	// 	setResizeMethod(!resizeMethod);
-
-	// 	if (onResizeMethodChange) {
-	// 		onResizeMethodChange(!resizeMethod);
-	// 	}
-	// };
 
 	const onUndo = () => {
 		onUserUndo();
@@ -50,27 +47,25 @@ const LgvTools = (props) => {
 		onUserRedo();
 	};
 
-	const onLatchClick = (event) => {
-		setLatch(!latch);
-
-		if (onLatchChange) {
-			onLatchChange(!latch);
-		}
+	const onLatchClick = ({ target: { checked } }) => {
+		changeLatchAction(checked);
 	};
 
-	const onAddOrCutClick = (event) => {
-		let newState;
-		if (addOrCut === "ADD") {
-			setAddOrCut("CUTSPACE");
-			newState = "CUTSPACE";
-		} else {
-			setAddOrCut("ADD");
-			newState = "ADD";
-		}
+	const onAddOrCutClick = ({ target: { value } }) => {
+		console.log("value", value);
+		// let newState;
+		// if (addOrCut === "ADD") {
+		// 	setAddOrCut("CUTSPACE");
+		// 	newState = "CUTSPACE";
+		// } else {
+		// 	setAddOrCut("ADD");
+		// 	newState = "ADD";
+		// }
 
-		if (onDeskInteractionChange) {
-			onDeskInteractionChange(newState);
-		}
+		// if (onDeskInteractionChange) {
+		// 	onDeskInteractionChange(newState);
+		// }
+		changeDeskInteractionModeAction(value);
 	};
 
 	const onAddItemClick = (event) => {
@@ -112,7 +107,7 @@ const LgvTools = (props) => {
 					name="addOrCut"
 					row
 					onChange={onAddOrCutClick}
-					value={addOrCut}
+					value={deskInteractionMode}
 				>
 					<FormControlLabel
 						value="CUTSPACE"
@@ -178,4 +173,13 @@ const StyledLgvTools = styled(LgvTools)`
 	}
 `;
 
-export default StyledLgvTools;
+export default connect(
+	(state) => ({
+		latch: getLatch(state),
+		deskInteractionMode: getDeskInteractionMode(state),
+	}),
+	{
+		changeLatchAction,
+		changeDeskInteractionModeAction,
+	}
+)(StyledLgvTools);

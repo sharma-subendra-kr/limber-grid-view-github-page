@@ -65,18 +65,17 @@ const LgvDefaultView = forwardRef((props, ref) => {
 			},
 			publicConstants: {
 				autoScrollForMouse: true,
+				deskInteractionMode: deskInteractionMode,
+				latchMovedItem: latch,
 			},
 			positionData: positionData,
 		});
 	}, []);
 
-	useEffect(() => {
+	if (lgv.current) {
 		lgv.current.setLatchMovedItem(latch);
-	}, [latch]);
-
-	useEffect(() => {
 		lgv.current.setDeskInteractMode(deskInteractionMode);
-	}, [deskInteractionMode]);
+	}
 
 	const onRemove = (index) => {};
 

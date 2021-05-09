@@ -52,19 +52,6 @@ const LgvTools = (props) => {
 	};
 
 	const onAddOrCutClick = ({ target: { value } }) => {
-		console.log("value", value);
-		// let newState;
-		// if (addOrCut === "ADD") {
-		// 	setAddOrCut("CUTSPACE");
-		// 	newState = "CUTSPACE";
-		// } else {
-		// 	setAddOrCut("ADD");
-		// 	newState = "ADD";
-		// }
-
-		// if (onDeskInteractionChange) {
-		// 	onDeskInteractionChange(newState);
-		// }
 		changeDeskInteractionModeAction(value);
 	};
 

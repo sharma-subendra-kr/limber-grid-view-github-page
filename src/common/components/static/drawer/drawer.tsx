@@ -107,7 +107,15 @@ const CustomDrawer = ({
 					<ListItem>
 						<Grid container direction="row">
 							<Grid item>
-								<Typography variant="h5">LimberGridView</Typography>
+								<Typography
+									variant="h5"
+									onClick={() => {
+										toggleDrawerStateAction();
+										push("/LimberGridView/");
+									}}
+								>
+									LimberGridView
+								</Typography>
 							</Grid>
 							<Grid item>
 								<Button

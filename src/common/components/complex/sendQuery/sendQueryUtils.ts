@@ -1,6 +1,23 @@
 import sanitizeHtml from "sanitize-html";
 import { validateEmail } from "src/common/utils/utils";
 
+export const getAllErrors = (inputs, errors) => {
+	let result = checkEmail("email", inputs.email);
+	inputs.email = result.value;
+	errors.email = result.error;
+	result = checkFirstName("firstName", inputs.firstName);
+	inputs.firstName = result.value;
+	errors.firstName = result.error;
+	result = checkLastName("lastName", inputs.lastName);
+	inputs.lastName = result.value;
+	errors.lastName = result.error;
+	result = checkQuery("query", inputs.query);
+	inputs.query = result.value;
+	errors.query = result.error;
+
+	return { inputs, errors };
+};
+
 export const getErrors = (name, value, inputs, errors) => {
 	let result;
 	switch (name) {

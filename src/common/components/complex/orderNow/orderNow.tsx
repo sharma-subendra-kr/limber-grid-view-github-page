@@ -22,7 +22,12 @@ import { ORIGIN } from "src/configs/origin";
 
 import styled from "styled-components";
 
-import { getErrors, sanitizeInputs, getCompanyRevenue } from "./orderNowUtils";
+import {
+	getErrors,
+	sanitizeInputs,
+	getCompanyRevenue,
+	getAllErrors,
+} from "./orderNowUtils";
 import { hasErrors, getFormInput } from "src/common/utils/utils";
 import {
 	getOrderNowDialogState,
@@ -79,7 +84,10 @@ const OrderNowModal = ({
 	};
 
 	const onClickOrder = () => {
-		if (hasErrors(errors)) {
+		const result = getAllErrors({ ...inputs }, { ...errors });
+		if (hasErrors(result.errors)) {
+			setErrors(result.errors);
+			setInputs(result.inputs);
 			return;
 		}
 

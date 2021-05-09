@@ -22,7 +22,7 @@ import { ORIGIN } from "src/configs/origin";
 
 import styled from "styled-components";
 
-import { getErrors, sanitizeInputs } from "./sendQueryUtils";
+import { getErrors, sanitizeInputs, getAllErrors } from "./sendQueryUtils";
 import { hasErrors, getFormInput } from "src/common/utils/utils";
 import {
 	getSendQueryDialogState,
@@ -65,7 +65,10 @@ const SendQueryModal = ({
 	};
 
 	const onClickSend = () => {
-		if (hasErrors(errors)) {
+		const result = getAllErrors({ ...inputs }, { ...errors });
+		if (hasErrors(result.errors)) {
+			setErrors(result.errors);
+			setInputs(result.inputs);
 			return;
 		}
 
@@ -73,7 +76,7 @@ const SendQueryModal = ({
 		sanitizeInputs(_inputs);
 
 		setFetching(true);
-		fetch(ORIGIN + "api/register/", {
+		fetch(ORIGIN + "api/sendQuery/", {
 			method: "POST",
 			body: getFormInput(_inputs),
 		})

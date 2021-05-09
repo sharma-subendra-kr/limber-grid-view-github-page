@@ -90,7 +90,7 @@ const SendQueryModal = ({
 				if (data.status !== 200) {
 					throw data;
 				}
-				customerResponse.current = JSON.parse(data.message);
+				customerResponse.current = data.message;
 				setSubmitted(true);
 				setFetching(false);
 			})

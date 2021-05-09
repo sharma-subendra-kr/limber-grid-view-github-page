@@ -64,7 +64,7 @@ const list = [
 	},
 	{ icon: SecurityIcon, title: "Privacy", url: "privacy" },
 	{ icon: LiveHelpIcon, title: "Dev Support", url: "devSupport" },
-	{ icon: HelpOutlineIcon, title: "FAQ", url: "faq" },
+	{ icon: HelpOutlineIcon, title: "FAQ & Contact me", url: "faq" },
 	{ icon: AppsIcon, title: "All Products", url: "allProducts" },
 ];
 

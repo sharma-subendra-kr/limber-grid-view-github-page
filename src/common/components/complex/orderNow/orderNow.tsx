@@ -151,12 +151,11 @@ const OrderNowModal = ({
 									id="email"
 									name="email"
 									type="email"
-									label="Email"
-									placeholder="Email"
+									label="Email *"
+									placeholder="Email *"
 									value={inputs.email}
 									onChange={onChange}
 									error={errors.email}
-									required
 									helperText={errors.email}
 									fullWidth
 									variant="outlined"
@@ -169,12 +168,11 @@ const OrderNowModal = ({
 									id="first-name"
 									name="firstName"
 									type="text"
-									label="First Name"
-									placeholder="First Name"
+									label="First Name *"
+									placeholder="First Name *"
 									value={inputs.firstName}
 									onChange={onChange}
 									error={errors.firstName}
-									required
 									helperText={errors.firstName}
 									fullWidth
 									variant="outlined"

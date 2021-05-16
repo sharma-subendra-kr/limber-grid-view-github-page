@@ -1,5 +1,5 @@
 let ORIGIN;
-const protocol = "http";
+const protocol = "https";
 const PORT = 5001;
 
 if (process.env.NODE_ENV === "development") {

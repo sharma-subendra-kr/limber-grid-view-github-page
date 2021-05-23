@@ -113,7 +113,7 @@ const SendQueryModal = ({
 			open={sendQueryDialogState}
 			onClose={onCloseDialog}
 			scroll="body"
-			maxWidth="xl"
+			maxWidth="md"
 		>
 			{!submitted && <DialogTitle>Send me a query!</DialogTitle>}
 			{!submitted && (

@@ -133,7 +133,7 @@ const OrderNowModal = ({
 			open={orderNowDialogState}
 			onClose={onCloseDialog}
 			scroll="body"
-			maxWidth="xl"
+			maxWidth="md"
 		>
 			{!submitted && <DialogTitle>Pre-Order Now!</DialogTitle>}
 			{!submitted && (

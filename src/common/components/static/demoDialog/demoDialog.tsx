@@ -50,7 +50,7 @@ const DemoDialogModal = ({
 			open={demoDialogState}
 			onClose={onCloseDialog}
 			scroll="body"
-			maxWidth="xl"
+			maxWidth="md"
 		>
 			<DialogTitle>How it all works!</DialogTitle>
 			<DialogContent>

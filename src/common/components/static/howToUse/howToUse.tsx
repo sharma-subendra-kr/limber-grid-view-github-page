@@ -49,7 +49,7 @@ const HowToUseModal = ({
 			open={howToUseDialogState}
 			onClose={onCloseDialog}
 			scroll="body"
-			maxWidth="xl"
+			maxWidth="lg"
 		>
 			<DialogTitle>Tips on using LimberGridView!</DialogTitle>
 			<DialogContent>

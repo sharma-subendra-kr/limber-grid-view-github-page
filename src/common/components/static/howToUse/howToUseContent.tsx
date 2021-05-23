@@ -81,7 +81,7 @@ const HowToUseContent = ({ className }) => {
 				desired result but it works 85% of the time.
 			</p>
 			<p>Captain Haddock: Ten thousand thundering typhoons!!!</p>
-			<HowToUseVideoWrapper video="swap_1" />
+			<HowToUseVideoWrapper video="swap_1.mp4" />
 			<p>
 				Tintin: Captain you can also swap items. Just try to place your item on
 				top of the item you want to swap to.

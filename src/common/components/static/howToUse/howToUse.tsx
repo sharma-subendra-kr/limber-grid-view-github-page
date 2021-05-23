@@ -9,6 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 
 import HowToUseContent from "./howToUseContent";
@@ -51,7 +52,12 @@ const HowToUseModal = ({
 			scroll="body"
 			maxWidth="md"
 		>
-			<DialogTitle>Tips on using LimberGridView!</DialogTitle>
+			<div className="title-wrapper">
+				<DialogTitle>Tips on using LimberGridView! </DialogTitle>
+				<Button onClick={onCloseDialog} color="primary">
+					I'm done!
+				</Button>
+			</div>
 			<DialogContent>
 				<FormControlLabel
 					control={
@@ -67,11 +73,24 @@ const HowToUseModal = ({
 					<HowToUseContent />
 				</DialogContentText>
 			</DialogContent>
+			<DialogActions>
+				<Button onClick={onCloseDialog} color="primary">
+					I'm done!
+				</Button>
+			</DialogActions>
 		</Dialog>
 	);
 };
 
 const StyledHowToUseModal = styled(HowToUseModal)`
+	.title-wrapper {
+		display: flex;
+		.MuiButton-root {
+			margin-left: auto;
+			margin-right: 24px;
+		}
+	}
+
 	.MuiDialogContentText-root {
 		font-size: 1.3rem;
 	}

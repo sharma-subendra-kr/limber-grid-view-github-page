@@ -52,10 +52,33 @@ const HowToUseContent = ({ className }) => {
 				LimberGridView will try to match the top-left, top-right or the
 				bottom-left position of nearest item.
 			</p>
-			<p>Captain Haddock: Nitwitted ninepins!!!</p>
-
+			<p>Captain Haddock: Nitwitted ninepins!!! ... ... ...</p>
+			<p>
+				Captain Haddock: Fake sea-dogs!!! Why is this nonsensical box appearing
+				like Sea-lice!!!
+			</p>
 			<HowToUseVideoWrapper video="move_toggle_box_1.mp4" />
+			<p>
+				Tintin: Captain. Oh that Captain. It's to toogle whether you want to
+				place your item on the item you hovered over or to latch your item to
+				the the nearest item. Just move your mouse or your finger over the box
+				to toggle, and when your done, release your mouse button or release your
+				finger from the screen.
+			</p>
 			<HowToUseVideoWrapper video="no_latch_move_1.mp4" />
+			<p>
+				Captain Haddock: Traitors!!! Freshwater pirate!!! Bloodsuckers!!!
+				Thieves!!!
+			</p>
+			<p>Tintin: What's the matter Captain.</p>
+			<p>
+				Captain Haddock: I can't latch this Sea lion!!! to this Sea gherkin!!!
+			</p>
+			<p>
+				Tintin: Look at the tool bar Captain, you have disabled the latch
+				feature.
+			</p>
+			<p>Captain Haddock: Ten thousand thundering typhoons!!!</p>
 			<HowToUseVideoWrapper video="swap_1" />
 			<HowToUseVideoWrapper video="multi_swap_1.mp4" />
 			<HowToUseVideoWrapper video="push_left_right_1.mp4" />

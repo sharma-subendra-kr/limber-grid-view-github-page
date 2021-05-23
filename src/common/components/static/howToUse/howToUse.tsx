@@ -9,9 +9,9 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-
 import styled from "styled-components";
 
+import HowToUseContent from "./howToUseContent";
 import { ORIGIN, VIDEO_CDN_ORIGIN } from "src/configs/origin";
 
 import {
@@ -49,15 +49,10 @@ const HowToUseModal = ({
 			open={howToUseDialogState}
 			onClose={onCloseDialog}
 			scroll="body"
-			maxWidth="lg"
+			maxWidth="md"
 		>
 			<DialogTitle>Tips on using LimberGridView!</DialogTitle>
 			<DialogContent>
-				<DialogContentText>
-					<video width="825" height="432" autoPlay loop>
-						<source src="/assets/final.mp4" type="video/mp4" />
-					</video>
-				</DialogContentText>
 				<FormControlLabel
 					control={
 						<Checkbox
@@ -68,6 +63,9 @@ const HowToUseModal = ({
 					}
 					label="Don't show this message again"
 				/>
+				<DialogContentText>
+					<HowToUseContent />
+				</DialogContentText>
 			</DialogContent>
 		</Dialog>
 	);

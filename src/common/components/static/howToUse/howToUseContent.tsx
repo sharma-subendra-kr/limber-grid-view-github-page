@@ -28,7 +28,7 @@ const HowToUseContent = ({ className }) => {
 				bottom-left corner. When you hover any item, the guides will become
 				visible.
 			</p>
-			<p>Captain, Haddock: I see...</p>
+			<p>Captain, Haddock: I see Landlubber!!!</p>
 			<p>
 				Tintin: Now, Captain. When you click hold or touch hold and drag, you
 				can resize any item to any size. But the height must not be greater than

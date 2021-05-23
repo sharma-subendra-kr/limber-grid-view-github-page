@@ -48,6 +48,7 @@ const SwitchToDesktopModal = ({
 			open={switchToDesktopDialogState}
 			onClose={onCloseDialog}
 			scroll="body"
+			maxWidth="xl"
 		>
 			<DialogTitle>
 				Switch to desktop or tablet for the best experience
@@ -89,9 +90,20 @@ const StyledSwitchToDesktopModal = styled(SwitchToDesktopModal)`
 				font-size: 50px;
 			}
 		}
-		.MuiDialogContentText-root {
-			font-size: 40px;
+		.MuiDialogContent-root {
+			.MuiDialogContentText-root {
+				font-size: 40px;
+			}
+			.MuiIconButton-root {
+				.MuiSvgIcon-root {
+					font-size: 40px;
+				}
+			}
+			.MuiTypography-root {
+				font-size: 40px;
+			}
 		}
+
 		.MuiButtonBase-root {
 			span {
 				font-size: 40px;

@@ -122,6 +122,13 @@ const HowToUseContent = ({ className }) => {
 				and drag your mouse or finger.
 			</p>
 			<p>
+				Tintin: You can learn to use LimberGridView by clicking on "How to use"
+				from the sidebar or through the link{" "}
+				<a target="_blank" href="https://limber.in/LimberGridView/howToUse">
+					https://limber.in/LimberGridView/howToUse.
+				</a>
+			</p>
+			<p>
 				Captain, Haddock: Parasites!!! I'll walk the plank before I ever use
 				this again!!!
 			</p>

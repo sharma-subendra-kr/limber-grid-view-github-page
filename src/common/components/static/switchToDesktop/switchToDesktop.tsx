@@ -47,6 +47,7 @@ const SwitchToDesktopModal = ({
 			className={className}
 			open={switchToDesktopDialogState}
 			onClose={onCloseDialog}
+			scroll="body"
 		>
 			<DialogTitle>
 				Switch to desktop or tablet for the best experience

@@ -49,6 +49,7 @@ const DemoDialogModal = ({
 			className={className}
 			open={demoDialogState}
 			onClose={onCloseDialog}
+			scroll="body"
 		>
 			<DialogTitle>How it all works!</DialogTitle>
 			<DialogContent>

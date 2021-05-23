@@ -9,3 +9,5 @@ if (process.env.NODE_ENV === "development") {
 }
 
 export { ORIGIN };
+
+export const VIDEO_CDN_ORIGIN = "";

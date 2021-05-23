@@ -10,6 +10,8 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
+import { ORIGIN, VIDEO_CDN_ORIGIN } from "src/configs/origin";
+
 import {
 	getHowToUseDialogState,
 	toggleHowToUseDialogAction,
@@ -39,10 +41,19 @@ const HowToUseModal = ({
 	const defaultChecked = !!localStorage.getItem("howToUse");
 
 	return (
-		<Dialog open={howToUseDialogState} onClose={onCloseDialog}>
+		<Dialog
+			open={howToUseDialogState}
+			onClose={onCloseDialog}
+			scroll="body"
+			maxWidth="xl"
+		>
 			<DialogTitle>Tips on using LimberGridView!</DialogTitle>
 			<DialogContent>
-				<DialogContentText></DialogContentText>
+				<DialogContentText>
+					<video width="825" height="432" autoPlay loop>
+						<source src="/assets/final.mp4" type="video/mp4" />
+					</video>
+				</DialogContentText>
 				<FormControlLabel
 					control={
 						<Checkbox

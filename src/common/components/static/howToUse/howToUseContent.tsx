@@ -75,16 +75,58 @@ const HowToUseContent = ({ className }) => {
 				Captain Haddock: I can't latch this Sea lion!!! to this Sea gherkin!!!
 			</p>
 			<p>
-				Tintin: Look at the tool bar Captain, you have disabled the latch
-				feature.
+				Tintin: Look at the toolbar Captain, you have disabled the latch
+				feature. Captain use the latch feature 90% percent of the time. This
+				will arrange your items properly. Sometimes it will not give you your
+				desired result but it works 85% of the time.
 			</p>
 			<p>Captain Haddock: Ten thousand thundering typhoons!!!</p>
 			<HowToUseVideoWrapper video="swap_1" />
+			<p>
+				Tintin: Captain you can also swap items. Just try to place your item on
+				top of the item you want to swap to.
+			</p>
 			<HowToUseVideoWrapper video="multi_swap_1.mp4" />
-			<HowToUseVideoWrapper video="push_left_right_1.mp4" />
+			<p>
+				Tintin: You can also swap multiple items. Just make sure they fit into
+				spaces. Even if they don't seem to fit, LimberGridView will shrink the
+				items that it's trying to auto arrange up to 10%.
+			</p>
 			<HowToUseVideoWrapper video="resize_and_swap_1.mp4" />
+			<p>
+				Captain Haddock: Baboons!!! What about these two items, they are not
+				similar in sizes???
+			</p>
+			<p>
+				Tintin: In that case Captain try to reduce the sizes of the items you
+				want to swap. LimberGridView will swap their positions then you can
+				resize them.
+			</p>
+			<HowToUseVideoWrapper video="push_left_right_1.mp4" />
+			<p>
+				Tintin: Captain you can even push items to the right or left when you
+				try to resize.
+			</p>
 			<HowToUseVideoWrapper video="add_all_1.mp4" />
+			<p>Captain Haddock: What if I want to add items?</p>
+			<p>
+				Tintin: Select the add option from toolbar and just drag your mouse or
+				finger over the screen to draw an item Captain.
+			</p>
 			<HowToUseVideoWrapper video="cut_space_1.mp4" />
+			<p>Captain Haddock: Hmmm...</p>
+			<p>
+				Captain Haddock: Billions of bilious blue blistering barnacles!!! How do
+				I get rid of this empty space???
+			</p>
+			<p>
+				Tintin: Just like how you added an item captain, select the cut space
+				tool and drag your mouse or your finger.
+			</p>
+			<p>
+				Captain Haddock: Parasites!!! I'll walk the plank before I ever use this
+				again!!!
+			</p>
 		</div>
 	);
 };

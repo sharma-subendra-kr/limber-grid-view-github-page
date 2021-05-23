@@ -10,4 +10,4 @@ if (process.env.NODE_ENV === "development") {
 
 export { ORIGIN };
 
-export const VIDEO_CDN_ORIGIN = "";
+export const VIDEO_CDN_ORIGIN = "https://limber.in/assets/videos/";

@@ -52,6 +52,8 @@ const HowToUseContent = ({ className }) => {
 				LimberGridView will try to match the top-left, top-right or the
 				bottom-left position of nearest item.
 			</p>
+			<p>Captain Haddock: Nitwitted ninepins!!!</p>
+
 			<HowToUseVideoWrapper video="move_toggle_box_1.mp4" />
 			<HowToUseVideoWrapper video="no_latch_move_1.mp4" />
 			<HowToUseVideoWrapper video="swap_1" />

@@ -55,7 +55,10 @@ const Home = (props) => {
 			setOrderNowDialogAction(true);
 		} else if (!localStorage.getItem("switchToDesktop")) {
 			setSwitchToDesktopDialogAction(true);
-		} else if (!localStorage.getItem("howToUse")) {
+		} else if (
+			!localStorage.getItem("howToUse") ||
+			props.location.pathname.indexOf("howToUse") >= 0
+		) {
 			setHowToUseDialogAction(true);
 		}
 	}, []);
@@ -107,7 +110,10 @@ const Home = (props) => {
 	};
 
 	const onCloseSwitchToDesktop = () => {
-		if (!localStorage.getItem("howToUse")) {
+		if (
+			!localStorage.getItem("howToUse") ||
+			props.location.pathname.indexOf("howToUse") >= 0
+		) {
 			setHowToUseDialogAction(true);
 		}
 	};

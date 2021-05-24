@@ -24,7 +24,7 @@ const HowToUseVideoWrapper = ({ className, video }) => {
 	return (
 		<div className={className}>
 			<br />
-			<video width="912" height="477" autoPlay loop muted>
+			<video width="825" height="432" autoPlay loop muted>
 				<source src={`${BASE}${video}`} type="video/mp4" />
 			</video>
 			<br />
@@ -33,6 +33,8 @@ const HowToUseVideoWrapper = ({ className, video }) => {
 };
 
 const StyledHowToUseVideoWrapper = styled(HowToUseVideoWrapper)`
+	display: flex;
+	justify-content: center;
 	* {
 		font-family: "Comic Sans MS";
 	}

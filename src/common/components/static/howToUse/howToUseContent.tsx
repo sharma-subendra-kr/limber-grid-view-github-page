@@ -141,6 +141,11 @@ const StyledHowToUseContent = styled(HowToUseContent)`
 		font-family: "Comic Sans MS";
 		color: black;
 	}
+	@media only screen and (max-width: 1023px) and (min-width: 1px) {
+		* {
+			font-size: 25px;
+		}
+	}
 `;
 
 export default StyledHowToUseContent;

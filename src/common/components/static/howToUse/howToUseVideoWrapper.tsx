@@ -22,11 +22,13 @@ if (process.env.NODE_ENV === "development") {
 
 const HowToUseVideoWrapper = ({ className, video }) => {
 	return (
-		<div className={className}>
+		<div>
 			<br />
-			<video width="825" height="432" autoPlay loop muted>
-				<source src={`${BASE}${video}`} type="video/mp4" />
-			</video>
+			<div className={className}>
+				<video width="825" height="432" autoPlay loop muted>
+					<source src={`${BASE}${video}`} type="video/mp4" />
+				</video>
+			</div>
 			<br />
 		</div>
 	);
@@ -35,9 +37,6 @@ const HowToUseVideoWrapper = ({ className, video }) => {
 const StyledHowToUseVideoWrapper = styled(HowToUseVideoWrapper)`
 	display: flex;
 	justify-content: center;
-	* {
-		font-family: "Comic Sans MS";
-	}
 `;
 
 export default StyledHowToUseVideoWrapper;

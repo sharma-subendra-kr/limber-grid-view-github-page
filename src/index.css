@@ -1,8 +1,14 @@
 * {
 	box-sizing: border-box;
 	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
 	font-size: 14px;
 	text-align: justify;
+}
+
+@font-face {
+	font-family: "Comic Sans MS";
+	src: url("/assets/fonts/Comic_Sans_MS.ttf");
 }
 
 html {

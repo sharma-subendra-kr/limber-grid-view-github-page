@@ -20,7 +20,7 @@
 
 .page-home{height:calc(100% - 50px - 20px)}.page-home .tools-container{display:-ms-flexbox;display:flex;height:20px;padding:0px 10px;border-bottom:solid 1px #c0c0c0;background-color:white}.page-home .tools-container button{background-color:transparent;color:#151d2d;height:20px;margin:0}.page-home .tools-container button span{font-size:10px}.page-home .tools-container .button-active{color:blue;text-decoration:underline}.page-home .tools-container .lgv-tools-container{-ms-flex:1;flex:1;padding:0px 10px 0px 0px}.page-home .lgv-container{height:calc(100% - 20px)}
 
-*{box-sizing:border-box;font-family:"Roboto", "Helvetica", "Arial", sans-serif;font-size:14px;text-align:justify}html{height:100%}body{width:100%;height:100%;margin:0px;background-color:#f1f2f3;color:#151d2d;overflow:hidden}p{margin:0}.button{background-color:#666;border:none;min-width:100px;height:30px;color:#fff;border-radius:5px;margin:5px 10px;cursor:pointer}.button:disabled{cursor:not-allowed}
+*{box-sizing:border-box;font-family:"Roboto", "Helvetica", "Arial", sans-serif;font-size:14px;text-align:justify}@font-face{font-family:"Comic Sans MS";src:url("/assets/fonts/Comic_Sans_MS.ttf")}html{height:100%}body{width:100%;height:100%;margin:0px;background-color:#f1f2f3;color:#151d2d;overflow:hidden}p{margin:0}.button{background-color:#666;border:none;min-width:100px;height:30px;color:#fff;border-radius:5px;margin:5px 10px;cursor:pointer}.button:disabled{cursor:not-allowed}
 
 /** @license LimberGridView
  *

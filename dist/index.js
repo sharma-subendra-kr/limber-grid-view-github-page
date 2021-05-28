@@ -624,10 +624,13 @@ Written by Subendra Kumar Sharma.
 				}
 			}
 			.star-on-github {
+				text-decoration: none;
 				span {
 					font-size: 24px;
 					margin-right: 10px;
 					vertical-align: top;
+					text-decoration: underline;
+					font-family: "Comic Sans MS";
 				}
 				svg {
 					vertical-align: middle;

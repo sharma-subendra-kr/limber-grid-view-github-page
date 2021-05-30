@@ -106,16 +106,21 @@ const CustomDrawer = ({
 				<List>
 					<ListItem>
 						<Grid container direction="row">
-							<Grid item>
-								<Typography
-									variant="h5"
-									onClick={() => {
-										toggleDrawerStateAction();
-										push("/LimberGridView/");
-									}}
-								>
-									LimberGridView
-								</Typography>
+							<Grid container item direction="column" className="lgv-info">
+								<Grid item>
+									<Typography
+										variant="h5"
+										onClick={() => {
+											toggleDrawerStateAction();
+											push("/LimberGridView/");
+										}}
+									>
+										LimberGridView
+									</Typography>
+								</Grid>
+								<Grid item>
+									<span className="version-info">Latest v1.0.0-beta.3</span>
+								</Grid>
 							</Grid>
 							<Grid item>
 								<Button
@@ -162,6 +167,13 @@ const CustomDrawer = ({
 };
 
 const StyledCustomDrawer = styled(CustomDrawer)`
+	.lgv-info {
+		flex: 1;
+	}
+	.version-info {
+		font-size: 9px;
+	}
+
 	.MuiList-root {
 		width: 295px;
 		.MuiListItem-root {

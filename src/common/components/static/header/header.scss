@@ -1,33 +1,33 @@
 .header {
-  display: flex;
-  height: 50px;
-  background-color: #24292e;
-  color: #f9ffff;
-  padding: 7px;
+	display: flex;
+	height: 50px;
+	background-color: #24292e;
+	color: #f9ffff;
+	padding: 7px;
 
-  .header-banner {
-    width: 270px;
-  }
+	.header-banner {
+		width: 270px;
+	}
 
-  .star-on-github {
-    text-align: center;
-    flex: 1;
-    color: white;
-    font-size: 30px;
-    span {
-      font-size: 30px;
-      margin: 0 5px;
-    }
-    svg {
-      color: white;
-    }
-  }
+	.star-on-github {
+		text-align: center;
+		flex: 1;
+		color: white;
+		font-size: 30px;
+		span {
+			font-size: 30px;
+			margin: 0 5px;
+		}
+		svg {
+			color: white;
+		}
+	}
 
-  .view-example-code {
-    color: white;
-    font-size: 12px;
-    span {
-      margin: 0 5px;
-    }
-  }
+	.view-example-code {
+		color: white;
+		font-size: 12px;
+		span {
+			margin: 0 5px;
+		}
+	}
 }

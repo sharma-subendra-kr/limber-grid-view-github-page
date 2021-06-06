@@ -1,27 +1,27 @@
 .custom-layout {
-  display: flex;
-  background-color: white;
-  flex-direction: column;
-  height: 100%;
-  border-radius: 10px;
-  overflow: hidden;
+	display: flex;
+	background-color: white;
+	flex-direction: column;
+	height: 100%;
+	border-radius: 10px;
+	overflow: hidden;
 
-  .custom-layout-header {
-    display: flex;
-    height: 30px;
-    white-space: nowrap;
-    .custom-layout-header-title {
-      flex: 1;
-      padding: 7px 14px;
-      font-size: 14px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      cursor: grab;
-    }
-    .custom-layout-header-drop-down {
-    }
-  }
-  .custom-layout-body {
-    flex: 1;
-  }
+	.custom-layout-header {
+		display: flex;
+		height: 30px;
+		white-space: nowrap;
+		.custom-layout-header-title {
+			flex: 1;
+			padding: 7px 14px;
+			font-size: 14px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			cursor: grabbing;
+		}
+		.custom-layout-header-drop-down {
+		}
+	}
+	.custom-layout-body {
+		flex: 1;
+	}
 }

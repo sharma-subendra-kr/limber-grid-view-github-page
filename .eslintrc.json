@@ -18,16 +18,20 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "jest"],
+  "plugins": ["react", "prettier", "jest", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".ts", ".tsx", ".js", ".jsx"] }
+    ],
     "react/jsx-indent": [2, "tab"],
     "react/jsx-indent-props": [2, "tab"],
     "react/jsx-wrap-multilines": [
       "error",
       { "declaration": false, "assignment": false }
     ],
-    "indent": [2, 2],
+    "indent": [2, "tab"],
     "no-tabs": 0,
     "semi": [2, "always"],
     "quotes": ["error", "double", { "allowTemplateLiterals": true }],

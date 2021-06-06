@@ -1,21 +1,24 @@
 .footer {
-  background-color: #172030;
-  color: white;
-  overflow: hidden;
-  font-size: 10px;
-  padding: 3px 10px;
-  a {
-    color: white;
-  }
-  b {
-    text-decoration: underline;
-  }
-  position: fixed;
-  top: calc(100% - 20px);
-  left: 0;
+	text-align: justify;
+	background-color: #172030;
+	// background-color: #28282a;
+	color: white;
+	overflow: hidden;
+	font-size: 10px;
+	padding: 3px 10px;
+	a {
+		color: white;
+	}
+	b {
+		text-decoration: underline;
+	}
+	position: fixed;
+	top: calc(100% - 20px);
+	left: 0;
 }
 
 .footer:hover {
-  top: initial;
-  bottom: 0;
+	padding: 15px;
+	top: initial;
+	bottom: 0;
 }

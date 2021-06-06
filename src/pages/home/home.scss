@@ -1,28 +1,33 @@
 .page-home {
-  height: calc(100% - 50px - 20px);
-  .tools-container {
-    display: flex;
-    height: 20px;
-    padding: 0px 10px;
-    border-bottom: solid 1px #151d2d;
-    button {
-      background-color: transparent;
-      color: #151d2d;
-      height: 20px;
-      margin: 0px 10px;
-    }
+	height: calc(100% - 50px - 20px);
+	.tools-container {
+		display: flex;
+		height: 20px;
+		padding: 0px 10px;
+		border-bottom: solid 1px #c0c0c0;
+		background-color: white;
 
-    .button-active {
-      color: blue;
-      text-decoration: underline;
-    }
+		button {
+			background-color: transparent;
+			color: #151d2d;
+			height: 20px;
+			margin: 0;
+			span {
+				font-size: 10px;
+			}
+		}
 
-    .lgv-tools-container {
-      flex: 1;
-      padding: 3px 10px 0px 10px;
-    }
-  }
-  .lgv-container {
-    height: calc(100% - 20px);
-  }
+		.button-active {
+			color: blue;
+			text-decoration: underline;
+		}
+
+		.lgv-tools-container {
+			flex: 1;
+			padding: 0px 10px 0px 0px;
+		}
+	}
+	.lgv-container {
+		height: calc(100% - 20px);
+	}
 }

@@ -27,7 +27,7 @@ const Docs = (props) => {
 						For now please view the{" "}
 						<a
 							className="star-on-github"
-							href="https://github.com/sharma-subendra-kr/LimberGridView"
+							href="https://github.com/sharma-subendra-kr/LimberGridView/wiki"
 							target="blank"
 						>
 							wiki

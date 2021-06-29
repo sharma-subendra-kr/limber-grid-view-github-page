@@ -44,17 +44,13 @@ const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
 							limber.in
 						</Typography>
 						<Typography className="header-links">
-							<a href={`${window.location.origin}/LimberGridView/howToUse`}>
-								How To Use
-							</a>
+							<Link to="/LimberGridView/howToUse">How To Use</Link>
 						</Typography>
 						<Typography className="header-links">
 							<Link to="/LimberGridView/browserSupport">Browser Support</Link>
 						</Typography>
 						<Typography className="header-links">
-							<a href={`${window.location.origin}/LimberGridView/buy`}>
-								Pre-Order Now
-							</a>
+							<Link to="/LimberGridView/buy">Pre-Order Now</Link>
 						</Typography>
 						<Typography className="header-links">
 							<Link to="/LimberGridView/pricing">Pricing</Link>

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
+import { Link } from "react-router-dom";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -31,15 +32,32 @@ const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
 				<IconButton edge="start" color="white" onClick={onToggleDrawer}>
 					<MenuIcon />
 				</IconButton>
-				<Grid container>
+				<Grid className="header-content" container wrap="nowrap">
 					<Grid item>
 						<Typography
-							variant="h4"
+							className="site-name"
+							variant="h6"
 							onClick={() => {
 								push("/LimberGridView");
 							}}
 						>
 							limber.in
+						</Typography>
+						<Typography className="header-links">
+							<a href={`${window.location.origin}/LimberGridView/howToUse`}>
+								How To Use
+							</a>
+						</Typography>
+						<Typography className="header-links">
+							<Link to="/LimberGridView/browserSupport">Browser Support</Link>
+						</Typography>
+						<Typography className="header-links">
+							<a href={`${window.location.origin}/LimberGridView/buy`}>
+								Pre-Order Now
+							</a>
+						</Typography>
+						<Typography className="header-links">
+							<Link to="/LimberGridView/pricing">Pricing</Link>
 						</Typography>
 					</Grid>
 					<Grid item>
@@ -75,17 +93,35 @@ const StyledHeader = styled(Header)`
 	// background-color: #28282a !important;
 	// background-color: #115293 !important;
 
+	.header-content {
+		overflow: hidden;
+	}
+
 	.MuiSvgIcon-root {
 		color: white;
 	}
-	.MuiTypography-root {
+	.MuiTypography-root.site-name {
 		font-family: "Comic Sans MS";
 		cursor: pointer;
+		margin-right: 10px;
 	}
+
+	.MuiTypography-root.header-links {
+		text-decoration: underline;
+		cursor: pointer;
+		margin-right: 10px;
+		text-align: left;
+	}
+
 	.MuiGrid-root {
 		.MuiGrid-item:first-child {
 			justify-content: flex-start;
 		}
+		.MuiGrid-item:nth-child(2) {
+			min-width: 220px;
+			max-width: 220px;
+		}
+
 		.MuiGrid-item {
 			flex: 1;
 			display: flex;
@@ -118,6 +154,18 @@ const StyledHeader = styled(Header)`
 		}
 		.MuiGrid-item:last-child {
 			justify-content: flex-end;
+		}
+	}
+
+	@media only screen and (max-width: 1180px) {
+		.MuiGrid-root {
+			.MuiGrid-item:first-child {
+				min-width: 442px;
+				max-width: 442px;
+			}
+			.MuiGrid-item:last-child {
+				min-width: 270px;
+			}
 		}
 	}
 `;

@@ -160,8 +160,8 @@ const StyledHeader = styled(Header)`
 	@media only screen and (max-width: 1180px) {
 		.MuiGrid-root {
 			.MuiGrid-item:first-child {
-				min-width: 442px;
-				max-width: 442px;
+				min-width: 450px;
+				max-width: 450px;
 			}
 			.MuiGrid-item:last-child {
 				min-width: 270px;

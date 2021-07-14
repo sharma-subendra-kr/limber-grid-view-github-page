@@ -102,34 +102,6 @@ const StyledDemoDialogModal = styled(DemoDialogModal)`
 	}
 
 	@media only screen and (max-width: 1023px) and (min-width: 1px) {
-		.MuiDialogTitle-root {
-			.MuiTypography-root {
-				font-size: 50px;
-			}
-		}
-		.MuiDialogContent-root {
-			.MuiDialogContentText-root {
-				font-size: 40px;
-
-				b {
-					font-size: 60px;
-				}
-			}
-			.MuiIconButton-root {
-				.MuiSvgIcon-root {
-					font-size: 40px;
-				}
-			}
-			.MuiTypography-root {
-				font-size: 40px;
-			}
-		}
-
-		.MuiButtonBase-root {
-			span {
-				font-size: 40px;
-			}
-		}
 	}
 `;
 

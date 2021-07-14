@@ -119,83 +119,83 @@ const SendQueryModal = ({
 			{!submitted && (
 				<DialogContent>
 					<Grid container direction="column">
-						<DialogContentText>
-							<Grid item xs={12} sm={12}>
+						<Grid item xs={12} sm={12}>
+							<DialogContentText>
 								Feel free to send me your queries. I will contact you via email.
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="email"
-									name="email"
-									type="email"
-									label="Email"
-									placeholder="Email"
-									value={inputs.email}
-									onChange={onChange}
-									error={errors.email}
-									required
-									helperText={errors.email}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="first-name"
-									name="firstName"
-									type="text"
-									label="First Name"
-									placeholder="First Name"
-									value={inputs.firstName}
-									onChange={onChange}
-									error={errors.firstName}
-									required
-									helperText={errors.firstName}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="last-name"
-									name="lastName"
-									type="text"
-									label="Last Name"
-									placeholder="Last Name"
-									value={inputs.lastName}
-									onChange={onChange}
-									error={errors.lastName}
-									helperText={errors.lastName}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="query"
-									name="query"
-									type="text"
-									label="Query"
-									placeholder="Query"
-									value={inputs.query}
-									onChange={onChange}
-									error={errors.query}
-									helperText={errors.query}
-									multiline
-									rows={10}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-						</DialogContentText>
+							</DialogContentText>
+						</Grid>
+						<br />
+						<Grid item xs={12} sm={12}>
+							<TextField
+								id="email"
+								name="email"
+								type="email"
+								label="Email"
+								placeholder="Email"
+								value={inputs.email}
+								onChange={onChange}
+								error={errors.email}
+								required
+								helperText={errors.email}
+								fullWidth
+								variant="outlined"
+								size="small"
+							/>
+						</Grid>
+						<br />
+						<Grid item xs={12} sm={12}>
+							<TextField
+								id="first-name"
+								name="firstName"
+								type="text"
+								label="First Name"
+								placeholder="First Name"
+								value={inputs.firstName}
+								onChange={onChange}
+								error={errors.firstName}
+								required
+								helperText={errors.firstName}
+								fullWidth
+								variant="outlined"
+								size="small"
+							/>
+						</Grid>
+						<br />
+						<Grid item xs={12} sm={12}>
+							<TextField
+								id="last-name"
+								name="lastName"
+								type="text"
+								label="Last Name"
+								placeholder="Last Name"
+								value={inputs.lastName}
+								onChange={onChange}
+								error={errors.lastName}
+								helperText={errors.lastName}
+								fullWidth
+								variant="outlined"
+								size="small"
+							/>
+						</Grid>
+						<br />
+						<Grid item xs={12} sm={12}>
+							<TextField
+								id="query"
+								name="query"
+								type="text"
+								label="Query"
+								placeholder="Query"
+								value={inputs.query}
+								onChange={onChange}
+								error={errors.query}
+								helperText={errors.query}
+								multiline
+								rows={10}
+								fullWidth
+								variant="outlined"
+								size="small"
+							/>
+						</Grid>
 					</Grid>
 				</DialogContent>
 			)}
@@ -219,8 +219,8 @@ const SendQueryModal = ({
 						<CheckCircleOutlinedIcon />
 						<br />
 						<br />
-						<DialogContentText>
-							<Grid item xs={12} sm={12}>
+						<Grid item xs={12} sm={12}>
+							<DialogContentText>
 								Your request is received. I'll reach out to you very soon.
 								<br />
 								<br />
@@ -235,8 +235,8 @@ const SendQueryModal = ({
 								<br />
 								<br />
 								<b>Ba Bye!</b>
-							</Grid>
-						</DialogContentText>
+							</DialogContentText>
+						</Grid>
 					</Grid>
 				</DialogContent>
 			)}
@@ -264,10 +264,6 @@ const SendQueryModal = ({
 const StyledSendQueryModal = styled(SendQueryModal)`
 	.MuiDialogContent-root {
 		> .MuiGrid-root {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
 			> svg {
 				font-size: 100px;
 				fill: #388e3c;
@@ -275,29 +271,6 @@ const StyledSendQueryModal = styled(SendQueryModal)`
 		}
 	}
 	@media only screen and (max-width: 1023px) and (min-width: 1px) {
-		.MuiDialogTitle-root {
-			.MuiTypography-root {
-				font-size: 50px;
-			}
-		}
-		.MuiTypography-root {
-			.MuiGrid-item {
-				font-size: 30px;
-			}
-		}
-		.MuiDialogContentText-root {
-			font-size: 25px;
-			.MuiGrid-item {
-				* {
-					font-size: 30px;
-				}
-			}
-		}
-		.MuiButtonBase-root {
-			span {
-				font-size: 40px;
-			}
-		}
 	}
 `;
 

@@ -138,149 +138,147 @@ const OrderNowModal = ({
 			{!submitted && <DialogTitle>Pre-Order Now!</DialogTitle>}
 			{!submitted && (
 				<DialogContent>
-					<Grid container direction="column">
+					<Grid container direction="row" justify="center">
 						<DialogContentText>
-							<Grid item xs={12} sm={12}>
-								A stable release is planned in mid-2022. This can be pushed
-								further back as LimberGridView is going under rigorous testing.
-								Pre-order now to get your purchase processed ASAP after the
-								stable release. Your purchase helps the development of{" "}
-								<Link
-									to="/LimberGridView/allProducts"
-									onClick={() => setOrderNowDialogAction(false)}
-								>
-									limber_____.com.
-								</Link>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="email"
-									name="email"
-									type="email"
-									label="Email *"
-									placeholder="Email *"
-									value={inputs.email}
-									onChange={onChange}
-									error={errors.email}
-									helperText={errors.email}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="first-name"
-									name="firstName"
-									type="text"
-									label="First Name *"
-									placeholder="First Name *"
-									value={inputs.firstName}
-									onChange={onChange}
-									error={errors.firstName}
-									helperText={errors.firstName}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="last-name"
-									name="lastName"
-									type="text"
-									label="Last Name"
-									placeholder="Last Name"
-									value={inputs.lastName}
-									onChange={onChange}
-									error={errors.lastName}
-									helperText={errors.lastName}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="phone"
-									name="phone"
-									type="tel"
-									label="Phone"
-									placeholder="Phone"
-									value={inputs.phone}
-									onChange={onChange}
-									error={errors.phone}
-									helperText={errors.phone}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="company"
-									name="company"
-									type="text"
-									label="Company"
-									placeholder="Company"
-									value={inputs.company}
-									onChange={onChange}
-									error={errors.company}
-									helperText={errors.company}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="position"
-									name="position"
-									type="text"
-									label="Position"
-									placeholder="Position"
-									value={inputs.position}
-									onChange={onChange}
-									error={errors.position}
-									helperText={errors.position}
-									fullWidth
-									variant="outlined"
-									size="small"
-								/>
-							</Grid>
-							<br />
-							<Grid item xs={12} sm={12}>
-								<TextField
-									id="company-revenue"
-									name="companyRevenue"
-									type="text"
-									label="Company Revenue"
-									placeholder="Company Revenue"
-									value={inputs.companyRevenue}
-									onChange={onChange}
-									error={errors.companyRevenue}
-									helperText={errors.companyRevenue}
-									select
-									fullWidth
-									variant="outlined"
-									size="small"
-								>
-									{companyRevenueOptions.map((item) => {
-										return (
-											<MenuItem key={item.value} value={item.value}>
-												{item.title}
-											</MenuItem>
-										);
-									})}
-								</TextField>
-							</Grid>
+							A stable release is planned in mid-2022. This can be pushed
+							further back as LimberGridView is going under rigorous testing.
+							Pre-order now to get your purchase processed ASAP after the stable
+							release. Your purchase helps the development of{" "}
+							<Link
+								to="/LimberGridView/allProducts"
+								onClick={() => setOrderNowDialogAction(false)}
+							>
+								limber_____.com.
+							</Link>
 						</DialogContentText>
+						<br />
+						<Grid item lg={8} md={8} xs={8} sm={8} className="order-field">
+							<TextField
+								id="email"
+								name="email"
+								type="email"
+								label="Email *"
+								placeholder="Email *"
+								value={inputs.email}
+								onChange={onChange}
+								error={errors.email}
+								helperText={errors.email}
+								variant="outlined"
+								size="small"
+								fullWidth
+							/>
+						</Grid>
+						<br />
+						<Grid item xs={8} sm={8} className="order-field">
+							<TextField
+								id="first-name"
+								name="firstName"
+								type="text"
+								label="First Name *"
+								placeholder="First Name *"
+								value={inputs.firstName}
+								onChange={onChange}
+								error={errors.firstName}
+								helperText={errors.firstName}
+								variant="outlined"
+								size="small"
+								fullWidth
+							/>
+						</Grid>
+						<br />
+						<Grid item xs={8} sm={8} className="order-field">
+							<TextField
+								id="last-name"
+								name="lastName"
+								type="text"
+								label="Last Name"
+								placeholder="Last Name"
+								value={inputs.lastName}
+								onChange={onChange}
+								error={errors.lastName}
+								helperText={errors.lastName}
+								variant="outlined"
+								size="small"
+								fullWidth
+							/>
+						</Grid>
+						<br />
+						<Grid item xs={8} sm={8} className="order-field">
+							<TextField
+								id="phone"
+								name="phone"
+								type="tel"
+								label="Phone"
+								placeholder="Phone"
+								value={inputs.phone}
+								onChange={onChange}
+								error={errors.phone}
+								helperText={errors.phone}
+								variant="outlined"
+								size="small"
+								fullWidth
+							/>
+						</Grid>
+						<br />
+						<Grid item xs={8} sm={8} className="order-field">
+							<TextField
+								id="company"
+								name="company"
+								type="text"
+								label="Company"
+								placeholder="Company"
+								value={inputs.company}
+								onChange={onChange}
+								error={errors.company}
+								helperText={errors.company}
+								variant="outlined"
+								size="small"
+								fullWidth
+							/>
+						</Grid>
+						<br />
+						<Grid item xs={8} sm={8} className="order-field">
+							<TextField
+								id="position"
+								name="position"
+								type="text"
+								label="Position"
+								placeholder="Position"
+								value={inputs.position}
+								onChange={onChange}
+								error={errors.position}
+								helperText={errors.position}
+								variant="outlined"
+								size="small"
+								fullWidth
+							/>
+						</Grid>
+						<br />
+						<Grid item xs={8} sm={8} className="order-field">
+							<TextField
+								id="company-revenue"
+								name="companyRevenue"
+								type="text"
+								label="Company Revenue"
+								placeholder="Company Revenue"
+								value={inputs.companyRevenue}
+								onChange={onChange}
+								error={errors.companyRevenue}
+								helperText={errors.companyRevenue}
+								select
+								variant="outlined"
+								size="small"
+								fullWidth
+							>
+								{companyRevenueOptions.map((item) => {
+									return (
+										<MenuItem key={item.value} value={item.value}>
+											{item.title}
+										</MenuItem>
+									);
+								})}
+							</TextField>
+						</Grid>
 					</Grid>
 				</DialogContent>
 			)}
@@ -300,12 +298,12 @@ const OrderNowModal = ({
 			{submitted && <DialogTitle>Roger!</DialogTitle>}
 			{submitted && (
 				<DialogContent>
-					<Grid container direction="column">
+					<Grid container direction="column" alignItems="center">
 						<CheckCircleOutlinedIcon />
 						<br />
 						<br />
-						<DialogContentText>
-							<Grid item xs={12} sm={12}>
+						<Grid item xs={12} sm={12}>
+							<DialogContentText>
 								Your request is received. If you have filled in your phone
 								number, I'll ring you on any day between 7 pm to 11 pm. If you
 								have typed in your email only, then I'll reach out to you very
@@ -324,13 +322,14 @@ const OrderNowModal = ({
 								<br />
 								Your customer id is{" "}
 								<b>
-									{customerResponse.current.id}/{customerResponse.current.uuid}
+									{customerResponse?.current?.id}/
+									{customerResponse?.current?.uuid}
 								</b>
 								. Please keep it handy for future reference. <br />
 								<br />
 								<b>Ba Bye!</b>
-							</Grid>
-						</DialogContentText>
+							</DialogContentText>
+						</Grid>
 					</Grid>
 				</DialogContent>
 			)}
@@ -348,7 +347,7 @@ const OrderNowModal = ({
 				anchorOrigin={{ vertical: "top", horizontal: "center" }}
 			>
 				<MuiAlert severity="error" onClose={onSnackBarClose} variant="filled">
-					{customerResponse.current}
+					{customerResponse?.current}
 				</MuiAlert>
 			</Snackbar>
 		</Dialog>
@@ -358,40 +357,16 @@ const OrderNowModal = ({
 const StyledOrderNowModal = styled(OrderNowModal)`
 	.MuiDialogContent-root {
 		> .MuiGrid-root {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
 			> svg {
 				font-size: 100px;
 				fill: #388e3c;
 			}
+			.order-field {
+				margin-bottom: 20px;
+			}
 		}
 	}
 	@media only screen and (max-width: 1023px) and (min-width: 1px) {
-		.MuiDialogTitle-root {
-			.MuiTypography-root {
-				font-size: 50px;
-			}
-		}
-		.MuiTypography-root {
-			.MuiGrid-item {
-				font-size: 30px;
-			}
-		}
-		.MuiDialogContentText-root {
-			font-size: 25px;
-			.MuiGrid-item {
-				* {
-					font-size: 30px;
-				}
-			}
-		}
-		.MuiButtonBase-root {
-			span {
-				font-size: 40px;
-			}
-		}
 	}
 `;
 

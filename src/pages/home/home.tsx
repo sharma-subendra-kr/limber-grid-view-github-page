@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
 
 import Button from "@material-ui/core/Button";
 
@@ -11,6 +12,7 @@ import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomiz
 import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
 import SwitchToDesktop from "src/common/components/static/switchToDesktop/switchToDesktop";
 
+import { withLGV } from "../../common/components/hoc/withLGV";
 import {
 	getView,
 	changeViewAction,
@@ -43,10 +45,9 @@ const Home = (props) => {
 		setSwitchToDesktopDialogAction,
 		setHowToUseDialogAction,
 		setOrderNowDialogAction,
+		lgv,
 	} = props;
 
-	const lgvCustomizedView = useRef();
-	const lgvDefaultView = useRef();
 	const introBuy = useRef("incomplete");
 
 	useEffect(() => {
@@ -78,27 +79,15 @@ const Home = (props) => {
 	};
 
 	const onUserUndo = () => {
-		if (view === "customized") {
-			lgvCustomizedView.current.undo();
-		} else {
-			lgvDefaultView.current.undo();
-		}
+		lgv.current.undo();
 	};
 
 	const onUserRedo = () => {
-		if (view === "customized") {
-			lgvCustomizedView.current.redo();
-		} else {
-			lgvDefaultView.current.redo();
-		}
+		lgv.current.redo();
 	};
 
 	const onAddItem = () => {
-		if (view === "customized") {
-			lgvCustomizedView.current.addItem();
-		} else {
-			lgvDefaultView.current.addItem();
-		}
+		lgv.current.addItem();
 	};
 
 	const onClickCustomizedView = () => {
@@ -151,11 +140,7 @@ const Home = (props) => {
 				</div>
 				{positionData && (
 					<div className="lgv-container">
-						{view === "customized" ? (
-							<LgvCustomizedView ref={lgvCustomizedView} />
-						) : (
-							<LgvDefaultView ref={lgvDefaultView} />
-						)}
+						{view === "customized" ? <LgvCustomizedView /> : <LgvDefaultView />}
 					</div>
 				)}
 			</div>
@@ -164,19 +149,22 @@ const Home = (props) => {
 	);
 };
 
-export default connect(
-	(state) => ({
-		view: getView(state),
-		positionData: getPositionData(state),
-		switchToDesktop: getswitchToDesktopDialogState(state),
-		howToUse: getHowToUseDialogState(state),
-		orderNow: getOrderNowDialogState(state),
-	}),
-	{
-		changeViewAction,
-		setPositionDataAction,
-		setSwitchToDesktopDialogAction,
-		setHowToUseDialogAction,
-		setOrderNowDialogAction,
-	}
+export default compose(
+	withLGV,
+	connect(
+		(state) => ({
+			view: getView(state),
+			positionData: getPositionData(state),
+			switchToDesktop: getswitchToDesktopDialogState(state),
+			howToUse: getHowToUseDialogState(state),
+			orderNow: getOrderNowDialogState(state),
+		}),
+		{
+			changeViewAction,
+			setPositionDataAction,
+			setSwitchToDesktopDialogAction,
+			setHowToUseDialogAction,
+			setOrderNowDialogAction,
+		}
+	)
 )(Home);

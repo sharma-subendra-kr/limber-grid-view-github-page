@@ -144,7 +144,13 @@ const OrderNowModal = ({
 								A stable release is planned in mid-2022. This can be pushed
 								further back as LimberGridView is going under rigorous testing.
 								Pre-order now to get your purchase processed ASAP after the
-								stable release.
+								stable release. Your purchase helps the development of{" "}
+								<Link
+									to="/LimberGridView/allProducts"
+									onClick={() => setOrderNowDialogAction(false)}
+								>
+									limber_____.com.
+								</Link>
 							</Grid>
 							<br />
 							<Grid item xs={12} sm={12}>

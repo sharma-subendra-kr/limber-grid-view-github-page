@@ -7,11 +7,13 @@ import React, {
 } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import LimberGridView from "limbergridview";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
 import { Layout } from "./layout";
+import { withLGV } from "../../../../../common/components/hoc/withLGV";
 
 import {
 	getView,
@@ -23,30 +25,18 @@ import {
 
 import "./lgvDefaultView.scss";
 
-const LgvDefaultView = forwardRef((props, ref) => {
+const LgvDefaultView = (props) => {
 	const {
 		latch,
 		deskInteractionMode,
 		positionData,
 		setPositionDataAction,
+		lgv,
 	} = props;
 
 	const [snackBarState, setSnackBarState] = useState(false);
-	const lgv = useRef(null);
 	const el = useRef(null);
 	const lgvMessage = useRef(undefined);
-
-	useImperativeHandle(ref, () => ({
-		addItem: () => {
-			lgv.current.addItem();
-		},
-		undo: () => {
-			lgv.current.undo();
-		},
-		redo: () => {
-			lgv.current.redo();
-		},
-	}));
 
 	useEffect(() => {
 		lgv.current = new LimberGridView({
@@ -149,16 +139,17 @@ const LgvDefaultView = forwardRef((props, ref) => {
 			</Snackbar>
 		</div>
 	);
-});
+};
 
-export default connect(
-	(state) => ({
-		view: getView(state),
-		latch: getLatch(state),
-		deskInteractionMode: getDeskInteractionMode(state),
-		positionData: getPositionData(state),
-	}),
-	{ setPositionDataAction },
-	null,
-	{ forwardRef: true }
+export default compose(
+	withLGV,
+	connect(
+		(state) => ({
+			view: getView(state),
+			latch: getLatch(state),
+			deskInteractionMode: getDeskInteractionMode(state),
+			positionData: getPositionData(state),
+		}),
+		{ setPositionDataAction }
+	)
 )(LgvDefaultView);

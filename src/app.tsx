@@ -2,6 +2,7 @@ import React from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import Routes from "./configs/routes/routes";
+import { LGVProvider, lgv } from "./common/components/hoc/withLGV";
 
 const theme = createMuiTheme({
 	palette: {
@@ -30,7 +31,9 @@ const App = () => {
 	return (
 		<div className="app">
 			<ThemeProvider theme={theme}>
-				<Routes></Routes>
+				<LGVProvider lgv={lgv}>
+					<Routes></Routes>
+				</LGVProvider>
 			</ThemeProvider>
 		</div>
 	);

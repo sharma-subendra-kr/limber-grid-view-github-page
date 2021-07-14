@@ -21,6 +21,19 @@ const Docs = (props) => {
 					<br />
 					<br />
 					Coming soon...
+					<br />
+					<br />
+					<p>
+						For now please view the{" "}
+						<a
+							className="star-on-github"
+							href="https://github.com/sharma-subendra-kr/LimberGridView/wiki"
+							target="blank"
+						>
+							wiki
+						</a>{" "}
+						page...
+					</p>
 				</Paper>
 			</PageContainer>
 		</>

@@ -44,24 +44,24 @@ const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
 							limber.in
 						</Typography>
 						<Typography className="header-links">
-							<Link to="/LimberGridView/howToUse">
-								<b>How To Use</b>
-							</Link>
+							<b>
+								<Link to="/LimberGridView/howToUse">How To Use</Link>
+							</b>
 						</Typography>
 						<Typography className="header-links">
-							<Link to="/LimberGridView/browserSupport">
-								<b>Browser Support</b>
-							</Link>
+							<b>
+								<Link to="/LimberGridView/browserSupport">Browser Support</Link>
+							</b>
 						</Typography>
 						<Typography className="header-links">
-							<Link to="/LimberGridView/buy">
-								<b>Pre-Order Now</b>
-							</Link>
+							<b>
+								<Link to="/LimberGridView/buy">Pre-Order Now</Link>
+							</b>
 						</Typography>
 						<Typography className="header-links">
-							<Link to="/LimberGridView/pricing">
-								<b>Pricing</b>
-							</Link>
+							<b>
+								<Link to="/LimberGridView/pricing">Pricing</Link>
+							</b>
 						</Typography>
 					</Grid>
 					<Grid item>
@@ -104,6 +104,7 @@ const StyledHeader = styled(Header)`
 	.MuiSvgIcon-root {
 		color: white;
 	}
+
 	.MuiTypography-root.site-name {
 		font-family: "Comic Sans MS";
 		cursor: pointer;
@@ -125,24 +126,29 @@ const StyledHeader = styled(Header)`
 			min-width: 220px;
 			max-width: 220px;
 		}
+		.MuiGrid-item:last-child {
+			justify-content: flex-end;
+		}
 
 		.MuiGrid-item {
 			flex: 1;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+
 			a {
 				color: white;
 				svg {
 					font-size: 32px;
 				}
 			}
+
 			.star-on-github {
 				text-decoration: none;
 				span {
 					font-size: 24px;
 					margin-right: 10px;
-					vertical-align: top;
+					vertical-align: middle;
 					text-decoration: underline;
 					font-family: "Comic Sans MS";
 				}
@@ -150,25 +156,33 @@ const StyledHeader = styled(Header)`
 					vertical-align: middle;
 				}
 			}
+
 			.view-example-code {
 				svg {
 					vertical-align: middle;
 				}
 			}
 		}
-		.MuiGrid-item:last-child {
-			justify-content: flex-end;
-		}
 	}
 
 	@media only screen and (max-width: 1180px) {
 		.MuiGrid-root {
 			.MuiGrid-item:first-child {
-				min-width: 450px;
-				max-width: 450px;
+				p:not(:first-child) {
+					display: none;
+				}
+			}
+			.MuiGrid-item:nth-child(2) {
+				justify-content: flex-start;
+				.star-on-github {
+					span {
+						font-size: 18px;
+					}
+				}
 			}
 			.MuiGrid-item:last-child {
 				min-width: 270px;
+				display: none;
 			}
 		}
 	}

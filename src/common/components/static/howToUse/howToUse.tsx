@@ -72,6 +72,7 @@ const HowToUseModal = ({
 						label="Don't show this message again"
 					/>
 				</Box>
+				<br />
 				<HowToUseContent />
 			</DialogContent>
 			<DialogActions>

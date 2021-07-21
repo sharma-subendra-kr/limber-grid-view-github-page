@@ -10,6 +10,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
 import styled from "styled-components";
 
 import HowToUseContent from "./howToUseContent";
@@ -59,19 +60,20 @@ const HowToUseModal = ({
 				</Button>
 			</div>
 			<DialogContent>
-				<FormControlLabel
-					control={
-						<Checkbox
-							defaultChecked={defaultChecked}
-							size="small"
-							onClick={onDontShowClick}
-						/>
-					}
-					label="Don't show this message again"
-				/>
-				<DialogContentText>
-					<HowToUseContent />
-				</DialogContentText>
+				<Box px={3}>
+					<FormControlLabel
+						control={
+							<Checkbox
+								defaultChecked={defaultChecked}
+								size="small"
+								onClick={onDontShowClick}
+							/>
+						}
+						label="Don't show this message again"
+					/>
+				</Box>
+				<br />
+				<HowToUseContent />
 			</DialogContent>
 			<DialogActions>
 				<Button onClick={onCloseDialog} color="primary">
@@ -85,41 +87,24 @@ const HowToUseModal = ({
 const StyledHowToUseModal = styled(HowToUseModal)`
 	.title-wrapper {
 		display: flex;
+		flex-wrap: wrap;
+		.MuiDialogTitle-root {
+			flex: 1;
+			max-width: calc(100% - 88px);
+		}
 		.MuiButton-root {
+			flex: 1;
 			margin-left: auto;
 			margin-right: 24px;
 		}
 	}
 
-	.MuiDialogContentText-root {
-		font-size: 1.3rem;
+	.MuiDialogContent-root {
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	@media only screen and (max-width: 1023px) and (min-width: 1px) {
-		.MuiDialogTitle-root {
-			.MuiTypography-root {
-				font-size: 50px;
-			}
-		}
-		.MuiDialogContent-root {
-			.MuiDialogContentText-root {
-				font-size: 40px;
-			}
-			.MuiIconButton-root {
-				.MuiSvgIcon-root {
-					font-size: 40px;
-				}
-			}
-			.MuiTypography-root {
-				font-size: 40px;
-			}
-		}
-
-		.MuiButtonBase-root {
-			span {
-				font-size: 40px;
-			}
-		}
 	}
 `;
 

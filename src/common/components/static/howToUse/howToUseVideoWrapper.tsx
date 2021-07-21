@@ -25,7 +25,7 @@ const HowToUseVideoWrapper = ({ className, video }) => {
 		<div>
 			<br />
 			<div className={className}>
-				<video width="825" height="432" autoPlay loop muted>
+				<video autoPlay loop muted>
 					<source src={`${BASE}${video}`} type="video/mp4" />
 				</video>
 			</div>
@@ -37,6 +37,10 @@ const HowToUseVideoWrapper = ({ className, video }) => {
 const StyledHowToUseVideoWrapper = styled(HowToUseVideoWrapper)`
 	display: flex;
 	justify-content: center;
+	video {
+		width: 100%;
+		height: auto;
+	}
 `;
 
 export default StyledHowToUseVideoWrapper;

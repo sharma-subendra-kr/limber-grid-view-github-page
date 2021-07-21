@@ -50,14 +50,13 @@ const SwitchToDesktopModal = ({
 			scroll="body"
 			maxWidth="md"
 		>
-			<DialogTitle>
-				Switch to desktop or tablet for the best experience
-			</DialogTitle>
+			<DialogTitle>Use a desktop or tablet for the best experience</DialogTitle>
 			<DialogContent>
 				<DialogContentText>
+					Howdy! <br />
 					LimberGridView is a desktop/tablet application. Keeping my busy
 					schedule in mind, this site is not designed to work with mobile
-					devices. So, please switch to desktop or tablet.
+					devices. So, please use a desktop or tablet.
 				</DialogContentText>
 				<FormControlLabel
 					control={
@@ -85,30 +84,6 @@ const StyledSwitchToDesktopModal = styled(SwitchToDesktopModal)`
 	}
 
 	@media only screen and (max-width: 1023px) and (min-width: 1px) {
-		.MuiDialogTitle-root {
-			.MuiTypography-root {
-				font-size: 50px;
-			}
-		}
-		.MuiDialogContent-root {
-			.MuiDialogContentText-root {
-				font-size: 40px;
-			}
-			.MuiIconButton-root {
-				.MuiSvgIcon-root {
-					font-size: 40px;
-				}
-			}
-			.MuiTypography-root {
-				font-size: 40px;
-			}
-		}
-
-		.MuiButtonBase-root {
-			span {
-				font-size: 40px;
-			}
-		}
 	}
 `;
 

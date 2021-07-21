@@ -133,6 +133,8 @@ const LgvTools = (props) => {
 };
 
 const StyledLgvTools = styled(LgvTools)`
+	overflow: hidden;
+
 	span {
 		font-size: 12px !important;
 	}

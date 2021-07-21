@@ -223,6 +223,7 @@ const StyledHeader = styled(Header)`
 
 			.star-on-github {
 				text-decoration: none;
+				text-align: center;
 				span {
 					font-size: 24px;
 					margin-right: 10px;
@@ -293,8 +294,7 @@ const StyledHeader = styled(Header)`
 		}
 
 		.mobile-links {
-			display: flex;
-			break-after: always;
+			display: block;
 			z-index: 1100;
 			background-color: #1769aa;
 

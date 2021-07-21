@@ -160,6 +160,11 @@ const StyledLgvTools = styled(LgvTools)`
 			margin-right: 10px;
 		}
 	}
+
+	@media only screen and (max-width: 980px) and (min-width: 1px) and (orientation: portrait),
+		only screen and (max-width: 979px) and (min-width: 1px) and (orientation: landscape) {
+		display: none;
+	}
 `;
 
 export default connect(

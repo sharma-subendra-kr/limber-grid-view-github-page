@@ -644,6 +644,7 @@ Written by Subendra Kumar Sharma.
 
 			.star-on-github {
 				text-decoration: none;
+				text-align: center;
 				span {
 					font-size: 24px;
 					margin-right: 10px;
@@ -714,8 +715,7 @@ Written by Subendra Kumar Sharma.
 		}
 
 		.mobile-links {
-			display: flex;
-			break-after: always;
+			display: block;
 			z-index: 1100;
 			background-color: #1769aa;
 

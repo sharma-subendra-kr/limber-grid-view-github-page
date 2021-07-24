@@ -54,9 +54,8 @@ const SwitchToDesktopModal = ({
 			<DialogContent>
 				<DialogContentText>
 					Howdy! <br />
-					LimberGridView is a desktop/tablet application. Keeping my busy
-					schedule in mind, this site is not designed to work with mobile
-					devices. So, please use a desktop or tablet.
+					LimberGridView is a desktop/tablet application. To make full use of
+					all the features of LimberGridView use a desktop or tablet.
 				</DialogContentText>
 				<FormControlLabel
 					control={

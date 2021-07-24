@@ -58,19 +58,21 @@ const DemoDialogModal = ({
 					Howdy! a fellow human being! This demo was made possible thanks to the
 					LimberGridView debug tool. Since it's hard to debug a bunch of
 					rectangles, an in-house debug tool was necessary. It turns out that
-					the debug tool was perfect to visualize the underlying algorithm.
+					the debug tool was perfect to visualize the underlying algorithm. The
+					current visualization is from a pretty old version. Newer versions are
+					much faster.
 					<br />
 					<br />
-					You can move or resize an item to trigger the visualization of the
-					algorithm. Remember to release the mouse button as the demo for the
-					move and resize events are disabled here.
+					You can move or resize an item to trigger the visualization. Remember
+					to release the mouse button as the demo for the move and resize events
+					are disabled here.
 					<br />
 					<br /> <b>For the best results, move item 17 over to item 15.</b>
 					<br />
 					<br />
 					<b>
-						This is quite unstable during the demonstration, so please refrain
-						from clicking anywhere.
+						It is quite unstable during the demonstration, so please refrain
+						from clicking anywhere because it will cause a memory leak.
 					</b>
 				</DialogContentText>
 				<FormControlLabel

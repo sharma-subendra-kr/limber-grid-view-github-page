@@ -49,7 +49,7 @@ const Footer = ({ className, orderNow, setOrderNowDialogAction }) => {
 				</p>
 				<br />
 				<p>
-					LimberGridView free software (free as in freedom not the price). If
+					LimberGridView is free software (free as in freedom not the price). If
 					you like to use this library on a non free software, you can get a
 					proprietary license. To get a proprietary license{" "}
 					<b className="order-now" onClick={onClickOrderNow}>

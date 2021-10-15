@@ -9,19 +9,19 @@
 
 <dl>
 <dt><a href="#options">options</a> : <code>object</code></dt>
-<dd><p>Parameters to constructor function</p>
+<dd><p>Parameters to the constructor.</p>
 </dd>
 <dt><a href="#gridData">gridData</a> : <code>options~gridData</code></dt>
-<dd><p>Warning: Keys here to be set only once during the application development lifecycle. Changes later on are dangerous and will result in unwanted behaviour. Output from function getGridData are scaled as per the dimensions defined here. If custom values are used then they should be passed everytime a new instance is created.</p>
+<dd><p>Actual grid height and width. Output from function getGridData is scaled as per the dimensions defined here. Warning: Keys here to be set only once during the application development lifecycle. Changes, later on, are dangerous and will result in unwanted behavior. There is no actual need to change this. Custom values, if used, must be passed every time for instantiation.</p>
 </dd>
 <dt><a href="#positionData">positionData</a> : <code>Array.&lt;options~positionData&gt;</code></dt>
-<dd><p>Array of Position Data of the items on grid. These are scaled during the runtime. Use getGridData function to get data to store on the database which is scaled accorging to gridData.</p>
+<dd><p>An array of Position data of items. It can be in two-point form i.e. top-left and bottom-right coordinate ({x1: 100, y1: 100, x2: 300, y2: 300}) or in dimension form with height and width ({x: 100, y: 100, width: 200, height: 200}). Position data are scaled during the runtime according to the screen size. Use the function getGridData to get position data to store for persistence which is scaled according to gridData.</p>
 </dd>
 <dt><a href="#callbacks">callbacks</a> : <code>options~callbacks</code></dt>
-<dd><p>Object containing all the callbacks</p>
+<dd><p>An object containing various callbacks.</p>
 </dd>
 <dt><a href="#publicConstants">publicConstants</a> : <code>options~publicConstants</code></dt>
-<dd><p>Constants which you can change or set at any point of time to get the desired behaviour.</p>
+<dd><p>Constants that you can change or set at any point in time to get the desired behavior.</p>
 </dd>
 </dl>
 
@@ -32,25 +32,27 @@
 
 * [LimberGridView](#LimberGridView)
     * [new LimberGridView(options)](#new_LimberGridView_new)
-    * [.renderItem(index)](#LimberGridView+renderItem)
+    * [.renderItem(index)](#LimberGridView+renderItem) ⇒ <code>undefined</code>
     * [.getGridData()](#LimberGridView+getGridData) ⇒ <code>object</code>
-    * [.setDeskInteractMode(flag)](#LimberGridView+setDeskInteractMode)
-    * [.setLatchMovedItem(flag)](#LimberGridView+setLatchMovedItem)
-    * [.setShrinkToFit(Value)](#LimberGridView+setShrinkToFit)
-    * [.addItem(item)](#LimberGridView+addItem)
-    * [.removeItem(index)](#LimberGridView+removeItem)
-    * [.setIsMobileCheck(f)](#LimberGridView+setIsMobileCheck)
-    * [.undo()](#LimberGridView+undo)
-    * [.redo()](#LimberGridView+redo)
-    * [.isUndoAvailable()](#LimberGridView+isUndoAvailable)
-    * [.isRedoAvailable()](#LimberGridView+isRedoAvailable)
-    * [.setAutoScrollDelay()](#LimberGridView+setAutoScrollDelay)
-    * [.setAutoScrollForMouse()](#LimberGridView+setAutoScrollForMouse)
-    * [.destroy()](#LimberGridView+destroy)
+    * [.setDeskInteractMode(flag)](#LimberGridView+setDeskInteractMode) ⇒ <code>undefined</code>
+    * [.setLatchMovedItem(flag)](#LimberGridView+setLatchMovedItem) ⇒ <code>undefined</code>
+    * [.setShrinkToFit(value)](#LimberGridView+setShrinkToFit) ⇒ <code>undefined</code>
+    * [.addItem(item)](#LimberGridView+addItem) ⇒ <code>undefined</code>
+    * [.removeItem(index)](#LimberGridView+removeItem) ⇒ <code>undefined</code>
+    * [.setIsMobileCheck(func)](#LimberGridView+setIsMobileCheck) ⇒ <code>undefined</code>
+    * [.undo()](#LimberGridView+undo) ⇒ <code>undefined</code>
+    * [.redo()](#LimberGridView+redo) ⇒ <code>undefined</code>
+    * [.isUndoAvailable()](#LimberGridView+isUndoAvailable) ⇒ <code>boolean</code>
+    * [.isRedoAvailable()](#LimberGridView+isRedoAvailable) ⇒ <code>boolean</code>
+    * [.setAutoScrollDelay(value)](#LimberGridView+setAutoScrollDelay) ⇒ <code>undefined</code>
+    * [.setAutoScrollForMouse(flag)](#LimberGridView+setAutoScrollForMouse) ⇒ <code>undefined</code>
+    * [.destroy()](#LimberGridView+destroy) ⇒ <code>undefined</code>
 
 <a name="new_LimberGridView_new"></a>
 
 ### new LimberGridView(options)
+Constructor
+
 
 | Param | Type |
 | --- | --- |
@@ -58,14 +60,14 @@
 
 <a name="LimberGridView+renderItem"></a>
 
-### limberGridView.renderItem(index)
-Call this function to forcefully re-render the contents of the item. Internally calls renderContent. Must be called inside resizeComplete
+### limberGridView.renderItem(index) ⇒ <code>undefined</code>
+Call this function to forcefully re-render the contents of the item.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| index | <code>number</code> | Index of item to force re-render. |
+| index | <code>number</code> | Index of the item to force re-render. |
 
 <a name="LimberGridView+getGridData"></a>
 
@@ -73,139 +75,149 @@ Call this function to forcefully re-render the contents of the item. Internally 
 Call this function to get positionData scaled according to gridData.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
-**Returns**: <code>object</code> - Object containing gridData and positionData.  
+**Returns**: <code>object</code> - Returns an object containing gridData and positionData.  
 <a name="LimberGridView+setDeskInteractMode"></a>
 
-### limberGridView.setDeskInteractMode(flag)
-Call this function to change DESK_INTERACTION_MODE during runtime.
+### limberGridView.setDeskInteractMode(flag) ⇒ <code>undefined</code>
+Call this function to change the publicConstant, deskInteractionMode during runtime.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| flag | <code>string</code> | String "ADD" or "CUTSPACE" |
+| flag | <code>string</code> | A string with the value "ADD" or "CUTSPACE". |
 
 <a name="LimberGridView+setLatchMovedItem"></a>
 
-### limberGridView.setLatchMovedItem(flag)
-Call this function to change LATCH_MOVED_ITEM during runtime.
+### limberGridView.setLatchMovedItem(flag) ⇒ <code>undefined</code>
+Call this function to change the publicConstant, latchMovedItem during runtime.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| flag | <code>boolean</code> | Boolean true or false. To latch or not to latch. |
+| flag | <code>boolean</code> | A boolean flag. |
 
 <a name="LimberGridView+setShrinkToFit"></a>
 
-### limberGridView.setShrinkToFit(Value)
-Call this function to change SHRINK_TO_FIT during runtime.
+### limberGridView.setShrinkToFit(value) ⇒ <code>undefined</code>
+Call this function to change the publicConstant, shrinkToFit during runtime.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| Value | <code>number</code> | indicates up to a certain percentage an item can be shrinked. Specify 0 if no shrink is desired. |
+| value | <code>number</code> | Specifies the percentage value up to which items might be shrunk while arranging. Specify 0 not to shrink. |
 
 <a name="LimberGridView+addItem"></a>
 
-### limberGridView.addItem(item)
+### limberGridView.addItem(item) ⇒ <code>undefined</code>
 Call this function to add an item.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| item | <code>object</code> | Object with optional properties width and height. |
+| item | <code>object</code> | An object with mandatory properties 'height' and 'width' and optional properties x and y. |
 
 <a name="LimberGridView+removeItem"></a>
 
-### limberGridView.removeItem(index)
-Call this function to remove an item with the index.
+### limberGridView.removeItem(index) ⇒ <code>undefined</code>
+Call this function to remove an item.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| index | <code>number</code> | Index of the item to be removed. |
+| index | <code>number</code> | The index of the item to be removed. |
 
 <a name="LimberGridView+setIsMobileCheck"></a>
 
-### limberGridView.setIsMobileCheck(f)
-Set isMobileCheck callback function during runtime
+### limberGridView.setIsMobileCheck(func) ⇒ <code>undefined</code>
+Call this function to set isMobileCheck callback during runtime.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| f | <code>isMobileCheck</code> | isMobileCheck callback to check if the screen is a mobile device screen. |
+| func | <code>isMobileCheck</code> | func is isMobileCheck callback to check if the screen is of a mobile device. |
 
 <a name="LimberGridView+undo"></a>
 
-### limberGridView.undo()
-undo previous move or drag
+### limberGridView.undo() ⇒ <code>undefined</code>
+Undo the previous move or resize.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 <a name="LimberGridView+redo"></a>
 
-### limberGridView.redo()
-redo move or drag
+### limberGridView.redo() ⇒ <code>undefined</code>
+Redo the next move or resize.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 <a name="LimberGridView+isUndoAvailable"></a>
 
-### limberGridView.isUndoAvailable()
-returns true if undo is possible
+### limberGridView.isUndoAvailable() ⇒ <code>boolean</code>
+Returns true when undo operation is possible.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 <a name="LimberGridView+isRedoAvailable"></a>
 
-### limberGridView.isRedoAvailable()
-returns true if redo is possible
+### limberGridView.isRedoAvailable() ⇒ <code>boolean</code>
+Returns true when a redo operation is possible.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 <a name="LimberGridView+setAutoScrollDelay"></a>
 
-### limberGridView.setAutoScrollDelay()
-set auto scroll delay for resize, move, add, cut in milliseconds
+### limberGridView.setAutoScrollDelay(value) ⇒ <code>undefined</code>
+Call this function to change the publicConstant, autoScrollDelay during runtime.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>number</code> | Delay in milliseconds. |
+
 <a name="LimberGridView+setAutoScrollForMouse"></a>
 
-### limberGridView.setAutoScrollForMouse()
-set auto scroll for resize, move, add, cut
+### limberGridView.setAutoScrollForMouse(flag) ⇒ <code>undefined</code>
+Call this function to change the publicConstant, autoScrollForMouse during runtime.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| flag | <code>boolean</code> | A boolean flag. |
+
 <a name="LimberGridView+destroy"></a>
 
-### limberGridView.destroy()
-free event listeners and all other resources
+### limberGridView.destroy() ⇒ <code>undefined</code>
+Free event listeners and all other resources like DOM elements.
 
 **Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 <a name="options"></a>
 
 ## options : <code>object</code>
-Parameters to constructor function
+Parameters to the constructor.
 
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| el | <code>string</code> \| <code>object</code> | id of the container or element object |
-| editable | <code>boolean</code> | If enabled user can resize, move, cut space, interactivelu add on the desk. Default is true. |
-| enableInteractiveAddAndCut | <code>boolean</code> | If enabled user can add and cut space on the desk. Default is true. |
-| enableTouchInteraction | <code>boolean</code> | If enabled user can use touch interaction on items on desk and on the desk. Default is true. |
-| autoArrange | <code>boolean</code> | If enabled first render is autoarranged. Autoarrange also happens when a faulty data is received during window resize. |
-| reRenderOnResize | <code>boolean</code> | If enabled rerender on window resize. Passing false is dangerous. Default is true. |
-| isMobileCheck | [<code>isMobileCheck</code>](#options..isMobileCheck) | A callback that returns a boolean which tells that the screen is or is not a mobile screen |
-| pseudoElementContainer | <code>string</code> \| <code>object</code> | The id of the element or the element where the pseudo elements are rendered that appear during moving. |
-| itemMouseDownMoveCheck | [<code>itemMouseDownMoveCheck</code>](#options..itemMouseDownMoveCheck) | A callback function to tell whether the mouse down event has occured at a desired location on the item for move event. |
-| itemMouseDownResizeCheck | [<code>itemMouseDownResizeCheck</code>](#options..itemMouseDownResizeCheck) | A callback function to tell whether the mouse down event has occured at a desired location on the item for resize event. |
-| gridData | [<code>gridData</code>](#gridData) | Warning: Keys here to be set only once during the application development lifecycle. Changes later on are dangerous and will result in unwanted behaviour. Output from function getGridData are scaled as per the dimensions defined here. If custom values are used then they should be passed everytime a new instance is created. |
-| positionData | [<code>positionData</code>](#positionData) | input position data of items to render. |
+| el | <code>string</code> \| <code>object</code> | Id of the container or element. |
+| editable | <code>boolean</code> | If enabled, users can resize, move, cut space, interactively add items on the desk. Default is true. |
+| enableInteractiveAddAndCut | <code>boolean</code> | If enabled, users can add and cut space on the desk. Default is true. |
+| enableTouchInteraction | <code>boolean</code> | If enabled, users can use touch to interact with items on the desk and with the desk also. Default is true. |
+| autoArrange | <code>boolean</code> | If enabled, the first render is auto arranged. Auto arrange also happens when invalid data is received. |
+| reRenderOnResize | <code>boolean</code> | If enabled, re-renders on window resize. Passing false is dangerous. Default is true. |
+| isMobileCheck | [<code>isMobileCheck</code>](#options..isMobileCheck) | Callback that returns true when the screen size is of a mobile device. It receives boundingClientRect of LimberGridView as an argument. |
+| pseudoElementContainer | <code>string</code> \| <code>object</code> | The id of the element or the element where the pseudo-elements are rendered that appear during moving. |
+| itemMouseDownMoveCheck | [<code>itemMouseDownMoveCheck</code>](#options..itemMouseDownMoveCheck) | Callback function to check whether the mouse down event occurred at a desired area on the item for move event. |
+| itemMouseDownResizeCheck | [<code>itemMouseDownResizeCheck</code>](#options..itemMouseDownResizeCheck) | Callback function to check whether the mouse down event occurred at a desired area on the item for resize event. |
+| gridData | [<code>gridData</code>](#gridData) | Actual grid height and width. Output from function getGridData is scaled as per the dimensions defined here. Warning: Keys here to be set only once during the application development lifecycle. Changes, later on, are dangerous and will result in unwanted behavior. There is no actual need to change this. Custom values, if used, must be passed every time for instantiation. |
+| positionData | [<code>positionData</code>](#positionData) | An array of Position data of items. It can be in two-point form i.e. top-left and bottom-right coordinate ({x1: 100, y1: 100, x2: 300, y2: 300}) or in dimension form with height and width ({x: 100, y: 100, width: 200, height: 200}). Position data are scaled during the runtime according to the screen size. Use the function getGridData to get position data to store for persistence which is scaled according to gridData. |
 | callbacks | [<code>callbacks</code>](#callbacks) | An object containing various callbacks. |
-| publicConstants | [<code>publicConstants</code>](#publicConstants) | Constants which you can change or set at any point of time to get the desired behaviour. |
+| publicConstants | [<code>publicConstants</code>](#publicConstants) | Constants that you can change or set at any point in time to get the desired behavior. |
 
 
 * [options](#options) : <code>object</code>
@@ -216,121 +228,142 @@ Parameters to constructor function
 <a name="options..isMobileCheck"></a>
 
 ### options~isMobileCheck ⇒ <code>boolean</code>
-**Kind**: inner typedef of [<code>options</code>](#options)  
-**Returns**: <code>boolean</code> - Returns true if the screen matches media queries for a mobile screen.  
-<a name="options..itemMouseDownMoveCheck"></a>
+Callback that returns true when the screen size is of a mobile device. It receives boundingClientRect of LimberGridView as an argument.
 
-### options~itemMouseDownMoveCheck ⇒ <code>boolean</code>
 **Kind**: inner typedef of [<code>options</code>](#options)  
-**Returns**: <code>boolean</code> - Returns true if the mouse down happened at a desired location on the item for move event.  
+**Returns**: <code>boolean</code> - Returns true when the screen size is of a mobile device.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| x | <code>Number</code> | point along the x axis axis where the mouse down happened on the item |
-| y | <code>Number</code> | point along the y axis axis where the mouse down happened on the item |
-| positionData | <code>object</code> | object for the item. |
-| index | <code>number</code> | Index of the item in positionData array. |
-| target | <code>object</code> | target element where the mouse down happened. |
+| boundingClientRect | <code>object</code> | boundingClientRect of LimberGridView. |
+
+<a name="options..itemMouseDownMoveCheck"></a>
+
+### options~itemMouseDownMoveCheck ⇒ <code>boolean</code>
+Callback function to check whether the mouse down event occurred at a desired area on the item for move event.
+
+**Kind**: inner typedef of [<code>options</code>](#options)  
+**Returns**: <code>boolean</code> - Returns true if the mouse down event got triggered at the desired area on the item for move event.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| x | <code>Number</code> | The distance along the x-axis of the item, the mouse-down event was triggered. |
+| y | <code>Number</code> | The distance along the y-axis of the item, the mouse-down event was triggered. |
+| positionData | <code>object</code> | Position data of the item. |
+| index | <code>number</code> | Index of the item in the position data array. |
+| target | <code>object</code> | Target element where mouse down event was triggered. |
 
 <a name="options..itemMouseDownResizeCheck"></a>
 
 ### options~itemMouseDownResizeCheck ⇒ <code>boolean</code>
+Callback function to check whether the mouse down event occurred at a desired area on the item for resize event.
+
 **Kind**: inner typedef of [<code>options</code>](#options)  
-**Returns**: <code>boolean</code> - Returns true if the mouse down happened at a desired location on the item for resize event.  
+**Returns**: <code>boolean</code> - Returns true if the mouse down event got triggered at the desired area on the item for resize event.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| x | <code>Number</code> | point along the x axis axis where the mouse down happened on the item |
-| y | <code>Number</code> | point along the y axis axis where the mouse down happened on the item |
-| positionData | <code>object</code> | object for the item. |
+| x | <code>Number</code> | The distance along the x-axis of the item, the mouse-down event was triggered. |
+| y | <code>Number</code> | The distance along the y-axis of the item, the mouse-down event was triggered. |
+| positionData | <code>object</code> | Position data of the item. |
 | index | <code>number</code> | Index of the item in positionData array. |
-| target | <code>object</code> | target element where the mouse down happened. |
+| target | <code>object</code> | Target element where mouse down event was triggered. |
 
 <a name="gridData"></a>
 
 ## gridData : <code>options~gridData</code>
-Warning: Keys here to be set only once during the application development lifecycle. Changes later on are dangerous and will result in unwanted behaviour. Output from function getGridData are scaled as per the dimensions defined here. If custom values are used then they should be passed everytime a new instance is created.
+Actual grid height and width. Output from function getGridData is scaled as per the dimensions defined here. Warning: Keys here to be set only once during the application development lifecycle. Changes, later on, are dangerous and will result in unwanted behavior. There is no actual need to change this. Custom values, if used, must be passed every time for instantiation.
 
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| WIDTH | <code>number</code> | Width of the Grid. It is scaled internally as per the device size for visual consistency. Default value is 1920. |
-| HEIGHT | <code>number</code> | Height of the Grid. It is scaled internally as per the device size for visual consistency. Default value is 1080. |
-| MARGIN | <code>number</code> | Margin or the items maintained by Arrange Engine. It is scaled internally as per the device size for visual consistency. Default value is 8. |
-| MIN_HEIGHT_AND_WIDTH | <code>number</code> | Min height and width of the items. It is scaled internally as per the device size for visual consistency. A lower number affects the performance of the arrange algorithm. Default value is 150. |
+| WIDTH | <code>number</code> | Width of the Grid. It is scaled internally as per the device screen size for visual consistency. The default value is 1920. |
+| Height | <code>number</code> | of the Grid. It is scaled internally as per the device screen size for visual consistency. The default value is 1080. |
+| MARGIN | <code>number</code> | The margin for the items. It is scaled internally as per the device screen size for visual consistency. The default value is 8. |
+| MIN_HEIGHT_AND_WIDTH | <code>number</code> | The minimum value for height and width for any item. It is scaled internally as per the device screen size for visual consistency. The default value is 150. |
 
 <a name="positionData"></a>
 
 ## positionData : <code>Array.&lt;options~positionData&gt;</code>
-Array of Position Data of the items on grid. These are scaled during the runtime. Use getGridData function to get data to store on the database which is scaled accorging to gridData.
+An array of Position data of items. It can be in two-point form i.e. top-left and bottom-right coordinate ({x1: 100, y1: 100, x2: 300, y2: 300}) or in dimension form with height and width ({x: 100, y: 100, width: 200, height: 200}). Position data are scaled during the runtime according to the screen size. Use the function getGridData to get position data to store for persistence which is scaled according to gridData.
 
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| x | <code>number</code> | positon of item along the x axis. |
-| y | <code>number</code> | positon of item along the y axis. |
+| x | <code>number</code> | Distance of item along the x-axis. |
+| y | <code>number</code> | Distance of item along the y-axis. |
 | width | <code>number</code> | Width of the item. |
 | height | <code>number</code> | Height of the item. |
+| x1 | <code>number</code> | Distance of item along the x-axis for the top-left corner. |
+| y1 | <code>number</code> | Distance of item along the y-axis for the top-left corner. |
+| x2 | <code>number</code> | Distance of item along the x-axis for the bottom-right corner. |
+| x2 | <code>number</code> | Distance of item along the y-axis for the bottom-right corner. |
 
 <a name="callbacks"></a>
 
 ## callbacks : <code>options~callbacks</code>
-Object containing all the callbacks
+An object containing various callbacks.
 
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| callback | [<code>renderComplete</code>](#callbacks..renderComplete) | Callback function called after rendering of all the items or a single item are complete. This is not called after re-rendering of items whose indices are affected due to removal of any item. |
-| callback | [<code>renderContent</code>](#callbacks..renderContent) | Callback function called to get the contents to attach to the item as children. |
-| callback | [<code>addComplete</code>](#callbacks..addComplete) | Callback function called when addition of an item is complete. |
-| callback | [<code>removeComplete</code>](#callbacks..removeComplete) | Callback function called when removing of item is complete. |
-| callback | [<code>moveComplete</code>](#callbacks..moveComplete) | Callback function called when moving of item is complete. |
-| callback | [<code>resizeComplete</code>](#callbacks..resizeComplete) | Callback function called when resizing of item is complete. |
-| callback | [<code>renderPlugin</code>](#callbacks..renderPlugin) | Callback function called after renderContent and before renderComplete and addComplete but after removeComplete  for items to be rerender after a removeal of an item. |
-| callback | [<code>removePlugin</code>](#callbacks..removePlugin) | Callback function called before the item is removed from the DOM. Also before removeComplete. |
+| renderComplete | [<code>renderComplete</code>](#callbacks..renderComplete) | Callback function invoked after rendering contents of an item. It does not get invoked after re-rendering items whose indices are affected due to the removal of any item. It receives the index of the item as an argument. For the first time render, invocation of this callback is batched and doesn't receive any argument. |
+| renderContent | [<code>renderContent</code>](#callbacks..renderContent) | Callback function called to receive the contents of the item. Also called for all the items whose indices have changed due to the removal of any item. In such cases, it is invoked after removeComplete. |
+| addComplete | [<code>addComplete</code>](#callbacks..addComplete) | Callback function called when addition of an item is complete. |
+| removeComplete | [<code>removeComplete</code>](#callbacks..removeComplete) | Callback function called when removing of item is complete. |
+| moveComplete | [<code>moveComplete</code>](#callbacks..moveComplete) | Callback function called when moving of item is complete. |
+| resizeComplete | [<code>resizeComplete</code>](#callbacks..resizeComplete) | Callback function called when resizing of item is complete. |
+| renderPlugin | [<code>renderPlugin</code>](#callbacks..renderPlugin) | Callback function called after renderContent and before renderComplete and addComplete but after removeComplete  for items to be rerender after a removeal of an item. |
+| removePlugin | [<code>removePlugin</code>](#callbacks..removePlugin) | Callback function called before the item is removed from the DOM. Also before removeComplete. |
 
 
 * [callbacks](#callbacks) : <code>options~callbacks</code>
-    * [~renderComplete](#callbacks..renderComplete) : <code>function</code>
+    * [~renderComplete](#callbacks..renderComplete) ⇒ <code>undefined</code>
     * [~renderContent](#callbacks..renderContent) ⇒ <code>string</code> \| <code>Element</code> \| <code>object</code>
-    * [~addComplete](#callbacks..addComplete) : <code>function</code>
-    * [~removeComplete](#callbacks..removeComplete) : <code>function</code>
-    * [~moveComplete](#callbacks..moveComplete) : <code>function</code>
-    * [~resizeComplete](#callbacks..resizeComplete) : <code>function</code>
-    * [~renderPlugin](#callbacks..renderPlugin) : <code>function</code>
-    * [~removePlugin](#callbacks..removePlugin) : <code>function</code>
+    * [~addComplete](#callbacks..addComplete) ⇒ <code>undefined</code>
+    * [~removeComplete](#callbacks..removeComplete) ⇒ <code>undefined</code>
+    * [~moveComplete](#callbacks..moveComplete) ⇒ <code>undefined</code>
+    * [~resizeComplete](#callbacks..resizeComplete) ⇒ <code>undefined</code>
+    * [~renderPlugin](#callbacks..renderPlugin) ⇒ <code>undefined</code>
+    * [~removePlugin](#callbacks..removePlugin) ⇒ <code>undefined</code>
 
 <a name="callbacks..renderComplete"></a>
 
-### callbacks~renderComplete : <code>function</code>
+### callbacks~renderComplete ⇒ <code>undefined</code>
+Callback function invoked after rendering contents of an item. It does not get invoked after re-rendering items whose indices are affected due to the removal of any item. It receives the index of the item as an argument. For the first time render, invocation of this callback is batched and doesn't receive any argument.
+
 **Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| index | <code>undefined</code> \| <code>number</code> | Index is the index of the item rendered or undefined if the item was rendered by the constructor or on resize. |
+| index | <code>undefined</code> \| <code>number</code> | Index of the item rendered or undefined if batched by the constructor or during resize. |
 
 <a name="callbacks..renderContent"></a>
 
 ### callbacks~renderContent ⇒ <code>string</code> \| <code>Element</code> \| <code>object</code>
+Callback function called to receive the contents of the item. Also called for all the items whose indices have changed due to the removal of any item. In such cases, it is invoked after removeComplete.
+
 **Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
-**Returns**: <code>string</code> \| <code>Element</code> \| <code>object</code> - String representing DOM elements. Instance of an Element. Any object.  
+**Returns**: <code>string</code> \| <code>Element</code> \| <code>object</code> - Should return a string representing DOM element or an instance of DOM element or an object. When an object is returned, renderPlugin gets triggered.  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | index | <code>number</code> | Index of the item. |
 | width | <code>number</code> | Width of the item. |
 | height | <code>number</code> | Height of the item. |
-| type | <code>undefined</code> \| <code>string</code> | Type is undefined for all occurances except when item is freshly added. |
+| type | <code>undefined</code> \| <code>string</code> | Type is undefined for all occurrences. An exception to this case is when an item is created by the user using add APIs. In this case, the type is a string, and the value is 'isAdd'. |
 
 <a name="callbacks..addComplete"></a>
 
-### callbacks~addComplete : <code>function</code>
+### callbacks~addComplete ⇒ <code>undefined</code>
+The callback function, called after the creation of an item is complete.
+
 **Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 
 | Param | Type | Description |
@@ -339,7 +372,9 @@ Object containing all the callbacks
 
 <a name="callbacks..removeComplete"></a>
 
-### callbacks~removeComplete : <code>function</code>
+### callbacks~removeComplete ⇒ <code>undefined</code>
+The callback function, called when the removal of an item is complete.
+
 **Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 
 | Param | Type | Description |
@@ -348,70 +383,82 @@ Object containing all the callbacks
 
 <a name="callbacks..moveComplete"></a>
 
-### callbacks~moveComplete : <code>function</code>
+### callbacks~moveComplete ⇒ <code>undefined</code>
+The callback function, called when moving an item is complete.
+
 **Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | index | <code>number</code> | Index of the item moved. |
-| toX | <code>number</code> | Position along the x axis where the item is moved. |
-| toY | <code>number</code> | Position along the y axis where the item is moved. |
-| arrangedIndices | <code>Array.&lt;number&gt;</code> | Indices of the arranged items. |
+| toX | <code>number</code> | The distance along the x-axis where the user placed the item. |
+| toY | <code>number</code> | The distance along the y-axis where the user placed the item. |
+| arrangedIndices | <code>Array.&lt;number&gt;</code> | An array of indices of the arranged items. |
 
 <a name="callbacks..resizeComplete"></a>
 
-### callbacks~resizeComplete : <code>function</code>
+### callbacks~resizeComplete ⇒ <code>undefined</code>
+The callback function, called when resizing of an item is complete.
+
 **Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| index | <code>number</code> | Index of the resized item. |
+| index | <code>number</code> | Index of the item resized. |
 | width | <code>number</code> | Width of the item resized. |
-| height | <code>number</code> | Height of the item resized. |
-| arrangedIndices | <code>Array.&lt;number&gt;</code> | Indices of the arranged items. |
+| height | <code>number</code> | The height of the item resized. |
+| arrangedIndices | <code>Array.&lt;number&gt;</code> | An array of indices of the arranged items. |
 
 <a name="callbacks..renderPlugin"></a>
 
-### callbacks~renderPlugin : <code>function</code>
+### callbacks~renderPlugin ⇒ <code>undefined</code>
+The callback function, called after renderContent and before renderComplete and addComplete. It is also called, after removeComplete for items whose indices are affected due to the removal of any item. In the function body of renderPlugin, you can render your React JSX using 'ReactDOM.render'.
+
 **Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | renderData | <code>object</code> | Data received from renderContent callback. |
-| element | <code>Element</code> | Element object of the item that is being rendered. |
+| element | <code>Element</code> | The instance of an element inside which the content is to be rendered. |
 
 <a name="callbacks..removePlugin"></a>
 
-### callbacks~removePlugin : <code>function</code>
+### callbacks~removePlugin ⇒ <code>undefined</code>
+The callback function, called just before the item is removed from the DOM and before removeComplete. In the function body of removePlugin, necessary clean-up can be performed by frameworks like react (e.g. calling 'ReactDOM.unmountComponentAtNode').
+
 **Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| element | <code>Element</code> | Element which is going to be removed. |
+| element | <code>Element</code> | The instance of an element which is going to be removed from the DOM. |
 
 <a name="publicConstants"></a>
 
 ## publicConstants : <code>options~publicConstants</code>
-Constants which you can change or set at any point of time to get the desired behaviour.
+Constants that you can change or set at any point in time to get the desired behavior.
 
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| mobileAspectRatio | <code>number</code> | A nummber denoting the aspect ratio of each item for mobile view e.g. 5:4. Default value is 5/4. |
-| moveGuideRadius | <code>number</code> | Radius of the Move guide radius a pseudo element at the top left corner of the item. You can remove move guide for a customized look and feel. Default value is 10. |
-| resizeSquareGuideLength | <code>number</code> | Length of the square that is rendered at the bottom right corner of the item as a pseudo element. Default value is 10. |
-| resizeSquareGuideBorderWidth | <code>number</code> | Width of the border of the square that is rendered at the bottom right corner of the item as a pseudo element. Default value is 3. |
-| autoScrollDistance | <code>number</code> | A number by which the grid or desk is scrolled automatically on height increments for touch mode. Default value is 50. |
-| autoScrollPoint | <code>number</code> | A height above the bottom at which scroll happens automatically for touch mode. Default value is 50. |
-| moveOrResizeHeightIncrements | <code>number</code> | A number by which the height of the grid view is increased while resizing, adding or cuttting space when you reach the bottom for touch mode. Default value is 50. |
-| mouseDownTime | <code>number</code> | Time to wait before initiating move, add or resize routines for mouse interaction. Default value is 500ms. |
-| touchHoldTime | <code>number</code> | Time to wait before initiating move, add or resize routines for touch mode. Default value is 300ms. |
-| demoWaitTime | <code>number</code> | TIme to wait before a demo of resize or move is initiated. Waring a very low demo wait time will cause unwanted behaviour as the algorithm needs some time to calculate next positions. Default is 500ms. |
-| windowResizeTimeTime | <code>number</code> | Time to wait before initiating resize routines. Default value is 1000ms. |
-| deskInteraction | <code>string</code> | Flag which tells whether the user wants to add an item or cut space by mouse or touch interaction. Default value is ADD. |
-| latchMovedItem | <code>boolean</code> | To latch or not to latch on to other items when overlapped while dragging to move an item. Default value is true. |
-| animateMovedItem | <code>boolean</code> | Wether to animate or not to animate the moved item. Default value is false. |
-| animateTime | <code>numer</code> | Time to wait before re-activating animate to the moved item. Re-activating means the moved item should animate if other items are moved resized later. This flag might have some more features later on. Default value is 250ms. |
+| mobileAspectRatio | <code>number</code> | The floating-point number representing the aspect ratio of items for mobile view (e.g. 5:4). The default value is 5/4. |
+| moveGuideRadius | <code>number</code> | The radius of the default move guide. Move guide is a pseudo-element at the top-left corner of every item. You can remove the move guide for a customized look and feel. The default value is 10. |
+| resizeSquareGuideLength | <code>number</code> | The length of the square rendered at the bottom-right corner of every item as a pseudo-element. The default value is 10. |
+| resizeSquareGuideBorderWidth | <code>number</code> | The width of the border of the square rendered at the bottom-right corner of the item as a pseudo-element. The default value is 3. |
+| showBottomLeftResizeGuide | <code>boolean</code> | When this flag is true, resize guide is activated on the bottom-left corner also. Enabling this flag will cause the default move guide to be disabled and custom move behavior has to be defined. |
+| autoScrollDistance | <code>number</code> | The number by which the desk is scrolled automatically on resize events and move events when auto-scroll is enabled. Auto-scroll is enabled by default for touch events. The default value is 50. |
+| autoScrollPoint | <code>number</code> | The distance above the bottom or below the top at which scroll happens when auto-scroll is enabled. The default value is 50. |
+| moveOrResizeHeightIncrements | <code>number</code> | A number by which the height of the grid view is increased while moving, resizing, adding, or cutting space when you reach the bottom when auto-scroll is enabled. The default value is 50. |
+| autoScrollForMouse | <code>boolean</code> | Setting this to true will enable auto-scroll for the move, resize, add, and cut-space events for mouse-based operations. |
+| mouseDownTime | <code>number</code> | The time to wait before initiating the move, resize, add, or cut-space routines after the mouse down event. The default value is 500ms. |
+| touchHoldTime | <code>number</code> | The time to wait before initiating the move, resize, add, or cut-space routines after the tap-hold event. The default value is 300ms. |
+| demoWaitTime | <code>number</code> | The time to wait before a demo for the resize or move event is initiated. Warning, a very low demo wait time will cause unwanted behavior as the algorithm needs some time for calculations. The default is 500ms. |
+| windowResizeWaitTime | <code>number</code> | The time to wait before initiating window resize routines. The default value is 1000ms. |
+| autoScrollDelay | <code>number</code> | The time to wait before the next scroll during a move, resize, add, or cut-space operation. |
+| deskInteractionMode | <code>string</code> | The flag tells whether the user wants to add an item or cut space by mouse or touch interaction. Values can be ADD or CUTSPACE. The default value is ADD. |
+| latchMovedItem | <code>boolean</code> | To enable or disable latch mode. The default value is true. |
+| animateMovedItem | <code>boolean</code> | The flag tells whether to animate or not to animate the moved item. The default value is false. |
+| animateTime | <code>number</code> | Time to wait before re-activating animate to the moved item. It can be the actual animate time set through CSS. LimberGridView temporarily disables animation for the moved item when the animateMovedItem flag is set to false through inline CSS. The default value is 250ms. |
+| shrinkToFit | <code>number</code> | LimberGridView will shrink items by the percentage value specified while trying to arrange affected items. |
 

@@ -8,6 +8,7 @@
 		padding: 5px 15px;
 		background-color: #9a0036;
 		color: #fff;
+		word-break: break-word;
 	}
 
 	h3 {
@@ -20,6 +21,7 @@
 		background-color: #000;
 		color: #fff;
 		margin-top: 50px;
+		word-break: break-word;
 
 		~ p {
 			line-height: 1.5;
@@ -66,26 +68,30 @@
 		}
 	}
 
-	table {
-		border-collapse: collapse;
-		margin: 10px;
-		thead {
-			tr {
-				border-bottom: 1px solid rgba(224, 224, 224, 1);
-				font-weight: 500;
-				line-height: 1.5rem;
+	.docs-table {
+		width: 100%;
+		overflow-x: auto;
+		table {
+			border-collapse: collapse;
+			margin: 10px;
+			thead {
+				tr {
+					border-bottom: 1px solid rgba(224, 224, 224, 1);
+					font-weight: 500;
+					line-height: 1.5rem;
 
-				th {
-					padding: 16px;
+					th {
+						padding: 16px;
+					}
 				}
 			}
-		}
-		tbody {
-			tr {
-				td {
-					border-bottom: 1px solid rgba(224, 224, 224, 1);
-					padding: 16px;
-					line-height: 1.5rem;
+			tbody {
+				tr {
+					td {
+						border-bottom: 1px solid rgba(224, 224, 224, 1);
+						padding: 16px;
+						line-height: 1.5rem;
+					}
 				}
 			}
 		}

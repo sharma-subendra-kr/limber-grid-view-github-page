@@ -40,7 +40,7 @@ const HeaderLinks = () => {
 
 			<Typography className="header-links">
 				<b>
-					<Link to="/LimberGridView/browserSupport">Browser Support</Link>
+					<Link to="/LimberGridView/docs">API Docs</Link>
 				</b>
 			</Typography>
 
@@ -72,7 +72,7 @@ const HeaderLinksMobile = () => {
 			<ListItem>
 				<Typography className="header-links">
 					<b>
-						<Link to="/LimberGridView/browserSupport">Browser Support</Link>
+						<Link to="/LimberGridView/docs">API Docs</Link>
 					</b>
 				</Typography>
 			</ListItem>

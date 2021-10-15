@@ -33,10 +33,6 @@ const Privacy = (props) => {
 					purchases. Again this data is not shared with anyone and will not be
 					shared with anyone.
 					<br />
-					<br />
-					You can find the source code for the back end that powers this site
-					limber.in and sharma-subendra-kr.github.com via this link.
-					<br />
 					<br />I have no interest in harvesting your data or selling your data
 					which diverts my attention and valuable time away from building{" "}
 					<Link to="/LimberGridView/allProducts">limber_____.com</Link>.

@@ -52,9 +52,11 @@ const HowToUseContent = ({ className }) => {
 				</p>
 				<br />
 				<p>
-					<b>Tintin:</b> Notice the latch feature is on. When you try to resize
-					any item, LimberGridView will try to latch on to the top-right,
-					bottom-right, or bottom-left position of the nearest other items.
+					<b>Tintin:</b> Captain. Notice the latch feature is on. When you try
+					to resize any item, LimberGridView will try to latch the bottom-right
+					corner to the bottom-left and top-right corners or left and top edge.
+					This behavior is similar when you try to resize from the bottom-left
+					corner.
 				</p>
 				<br />
 				<p>
@@ -73,9 +75,11 @@ const HowToUseContent = ({ className }) => {
 				</p>
 				<br />
 				<p>
-					<b>Tintin:</b> Captain. The latch feature also works when you move an
-					item. LimberGridView will try to match the top-left, top-right, or
-					bottom-left position of the nearest other items.
+					<b>Tintin:</b> The latch feature also works when you try to move an
+					item. LimberGridView will try to match all four corners to the most
+					likely corners. For example, it will try to latch the top-left corner
+					to the adjacent top-right and bottom-left corner or right and bottom
+					edge.
 				</p>
 				<br />
 				<p>
@@ -90,11 +94,11 @@ const HowToUseContent = ({ className }) => {
 			<HowToUseVideoWrapper video="move_toggle_box_1.mp4" />
 			<Box px={3}>
 				<p>
-					<b>Tintin:</b> Captain. Oh, that Captain. It's to toggle between two
-					options, whether you like to place your selection where the item
-					you're overlapping exists or latch on your selected item to the
-					nearest other items. Just move your mouse or your finger over the box
-					to toggle, and when done, release your mouse button or finger.
+					<b>Tintin:</b> Oh, that Captain. It's to tell you that LimberGridView
+					is trying to place your item where the top-left corner of the
+					overlapped card is present. It will become visible only when the
+					top-left corner of your selected item is overlapping any other card.
+					For all different corners, this won't work.
 				</p>
 			</Box>
 			<HowToUseVideoWrapper video="no_latch_move_1.mp4" />

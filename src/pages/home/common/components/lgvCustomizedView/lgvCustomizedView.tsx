@@ -65,7 +65,10 @@ const LgvCustomizedView = (props) => {
 	}
 
 	const itemMouseDownMoveCheck = (x, y, item, index, currentTarget) => {
-		if (currentTarget.classList.contains("custom-layout-header-title")) {
+		if (
+			currentTarget.classList.contains("custom-layout-header-title") ||
+			currentTarget.classList.contains("MuiSvgIcon-root")
+		) {
 			return true;
 		}
 		return false;

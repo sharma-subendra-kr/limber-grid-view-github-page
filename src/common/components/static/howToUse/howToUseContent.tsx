@@ -63,7 +63,7 @@ const HowToUseContent = ({ className }) => {
 					<b>Captain, Haddock:</b> Cro-Magnon !!!
 				</p>
 			</Box>
-			<HowToUseVideoWrapper video="move_1.mp4" />
+			<HowToUseVideoWrapper video="move_2.mp4" />
 			<Box px={3}>
 				<p>
 					<b>Tintin:</b> Captain. Click-hold or tap-hold the top of any item
@@ -91,7 +91,7 @@ const HowToUseContent = ({ className }) => {
 					appearing like Sea-lice !!!
 				</p>
 			</Box>
-			<HowToUseVideoWrapper video="move_toggle_box_1.mp4" />
+			<HowToUseVideoWrapper video="overlap_1.mp4" />
 			<Box px={3}>
 				<p>
 					<b>Tintin:</b> Oh, that Captain. It's to tell you that LimberGridView

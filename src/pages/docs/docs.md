@@ -321,6 +321,9 @@ An object containing various callbacks.
 | resizeComplete | [<code>resizeComplete</code>](#callbacks..resizeComplete) | Callback function called when resizing of item is complete. |
 | renderPlugin | [<code>renderPlugin</code>](#callbacks..renderPlugin) | Callback function called after renderContent and before renderComplete and addComplete but after removeComplete  for items to be rerender after a removeal of an item. |
 | removePlugin | [<code>removePlugin</code>](#callbacks..removePlugin) | Callback function called before the item is removed from the DOM. Also before removeComplete. |
+| getLogMessage | [<code>getLogMessage</code>](#callbacks..getLogMessage) | The callback function to get logs for errors like when the user drags outside of grid view. Returns an object with keys type and message. |
+| getArrangeTime | [<code>getArrangeTime</code>](#callbacks..getArrangeTime) | The callback function to get logs for the move or resize operation. Returns time taken, resize count, and count of rectangles processed internally. |
+| offsetMovePseudoElement | [<code>offsetMovePseudoElement</code>](#callbacks..offsetMovePseudoElement) | The callback function to offset the move helper element from the top-left. Receives current cursor or touch coordinates and item dimensions in the two-point form as arguments. Use these details to offset the move helper top-left from the curser point. |
 
 
 * [callbacks](#callbacks) : <code>options~callbacks</code>
@@ -332,6 +335,9 @@ An object containing various callbacks.
     * [~resizeComplete](#callbacks..resizeComplete) ⇒ <code>undefined</code>
     * [~renderPlugin](#callbacks..renderPlugin) ⇒ <code>undefined</code>
     * [~removePlugin](#callbacks..removePlugin) ⇒ <code>undefined</code>
+    * [~getLogMessage](#callbacks..getLogMessage) ⇒ <code>undefined</code>
+    * [~getArrangeTime](#callbacks..getArrangeTime) ⇒ <code>undefined</code>
+    * [~offsetMovePseudoElement](#callbacks..offsetMovePseudoElement) ⇒ <code>object</code>
 
 <a name="callbacks..renderComplete"></a>
 
@@ -432,6 +438,44 @@ The callback function, called just before the item is removed from the DOM and b
 | --- | --- | --- |
 | element | <code>Element</code> | The instance of an element which is going to be removed from the DOM. |
 
+<a name="callbacks..getLogMessage"></a>
+
+### callbacks~getLogMessage ⇒ <code>undefined</code>
+The callback function to get logs for errors like when the user drags outside of grid view. Returns an object with keys type and message.
+
+**Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| log | <code>object</code> | Returns an object with keys type and message. |
+
+<a name="callbacks..getArrangeTime"></a>
+
+### callbacks~getArrangeTime ⇒ <code>undefined</code>
+The callback function to get logs for the move or resize operation. Returns time taken, resize count, and count of rectangles processed internally.
+
+**Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| time | <code>number</code> | The time taken for all arrangement jobs to complete. |
+| resizeCount | <code>number</code> | The number of items resized. |
+| count | <code>number</code> | The number of rectangles processed internally. |
+
+<a name="callbacks..offsetMovePseudoElement"></a>
+
+### callbacks~offsetMovePseudoElement ⇒ <code>object</code>
+The callback function to offset the move helper element from the top-left. Receives current cursor or touch coordinates and item dimensions in the two-point form as arguments. Use these details to offset the move helper top-left from the curser point.
+
+**Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
+**Returns**: <code>object</code> - An object with keys x and y. It represents the translated top-left point of the move pseudo-element.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| x | <code>number</code> | The distance along the x-axis where the user placed the cursor or touched the surface. |
+| y | <code>number</code> | The distance along the y-axis where the user placed the cursor or touched the surface. |
+| item | <code>object</code> | An item object in the two-point form. |
+
 <a name="publicConstants"></a>
 
 ## publicConstants : <code>options~publicConstants</code>
@@ -451,7 +495,7 @@ Constants that you can change or set at any point in time to get the desired beh
 | autoScrollPoint | <code>number</code> | The distance above the bottom or below the top at which scroll happens when auto-scroll is enabled. The default value is 50. |
 | moveOrResizeHeightIncrements | <code>number</code> | A number by which the height of the grid view is increased while moving, resizing, adding, or cutting space when you reach the bottom when auto-scroll is enabled. The default value is 50. |
 | autoScrollForMouse | <code>boolean</code> | Setting this to true will enable auto-scroll for the move, resize, add, and cut-space events for mouse-based operations. |
-| mouseDownTime | <code>number</code> | The time to wait before initiating the move, resize, add, or cut-space routines after the mouse down event. The default value is 500ms. |
+| mouseDownTime | <code>number</code> | The time to wait before initiating the move, resize, add, or cut-space routines after the mouse down event. The default value is 0ms. |
 | touchHoldTime | <code>number</code> | The time to wait before initiating the move, resize, add, or cut-space routines after the tap-hold event. The default value is 300ms. |
 | demoWaitTime | <code>number</code> | The time to wait before a demo for the resize or move event is initiated. Warning, a very low demo wait time will cause unwanted behavior as the algorithm needs some time for calculations. The default is 500ms. |
 | windowResizeWaitTime | <code>number</code> | The time to wait before initiating window resize routines. The default value is 1000ms. |

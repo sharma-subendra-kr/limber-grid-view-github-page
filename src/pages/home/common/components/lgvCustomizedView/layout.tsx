@@ -5,6 +5,7 @@ import { getTitle } from "src/pages/home/common/utils/utils";
 import { Kpi } from "../kpi/kpi";
 import { BarChart } from "../barChart/barChart";
 import { PieChart } from "../pieChart/pieChart";
+import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 import "./layout.scss";
 
 const Comps = [Kpi, BarChart, PieChart, PieChart];
@@ -31,6 +32,7 @@ export const Layout = (props) => {
 	return (
 		<div className="custom-layout">
 			<div className="custom-layout-header">
+				<DragIndicatorIcon />
 				<p className="custom-layout-header-title">
 					{useIndexForTitle ? index : getTitle(random)}
 				</p>

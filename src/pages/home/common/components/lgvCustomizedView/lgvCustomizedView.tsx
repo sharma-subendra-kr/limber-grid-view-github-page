@@ -1,10 +1,4 @@
-import React, {
-	useEffect,
-	useState,
-	useRef,
-	useImperativeHandle,
-	forwardRef,
-} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -54,6 +48,7 @@ const LgvCustomizedView = (props) => {
 				removePlugin: removePlugin,
 				getArrangeTime: getArrangeTime,
 				getLogMessage: getLogMessage,
+				offsetMovePseudoElement: offsetMovePseudoElement,
 			},
 			publicConstants: {
 				showBottomLeftResizeGuide: true,
@@ -71,7 +66,10 @@ const LgvCustomizedView = (props) => {
 	}
 
 	const itemMouseDownMoveCheck = (x, y, item, index, currentTarget) => {
-		if (currentTarget.classList.contains("custom-layout-header-title")) {
+		if (
+			currentTarget.classList.contains("custom-layout-header-title") ||
+			currentTarget.classList.contains("MuiSvgIcon-root")
+		) {
 			return true;
 		}
 		return false;
@@ -130,6 +128,13 @@ const LgvCustomizedView = (props) => {
 	const getLogMessage = (log) => {
 		lgvMessage.current = log.message;
 		setSnackBarState(true);
+	};
+
+	const offsetMovePseudoElement = function (x, y, item) {
+		return {
+			x: x - (item.x2 - item.x1) / 2,
+			y: y - (item.y2 - item.y1) / 2,
+		};
 	};
 
 	const onSnackBarClose = () => {

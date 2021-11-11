@@ -76,6 +76,10 @@ module.exports = {
 					"sass-loader",
 				],
 			},
+			{
+				test: /\.(txt|md)$/i,
+				use: "raw-loader",
+			},
 		],
 	},
 	plugins: [miniCssExtractPlugin, webpackNotifierPlugin, cleanTerminalPlugin],

@@ -52,46 +52,46 @@ const Pricing = (props) => {
 						<TableBody>
 							<TableRow>
 								<TableCell align="center">1 Year</TableCell>
-								<TableCell align="center">10,000</TableCell>
-								<TableCell align="center">20,000</TableCell>
-								<TableCell align="center">30,000</TableCell>
-								<TableCell align="center">50,000</TableCell>
-								<TableCell align="center">80,000</TableCell>
+								<TableCell align="center">&#8377;10,000</TableCell>
+								<TableCell align="center">&#8377;20,000</TableCell>
+								<TableCell align="center">&#8377;30,000</TableCell>
+								<TableCell align="center">&#8377;50,000</TableCell>
+								<TableCell align="center">&#8377;80,000</TableCell>
 							</TableRow>
 							<TableRow>
 								<TableCell align="center">3 Year 20% Off</TableCell>
 								<TableCell align="center">
-									<s>30,000</s> 24,000
+									<s>&#8377;30,000</s> &#8377;24,000
 								</TableCell>
 								<TableCell align="center">
-									<s>60,000</s> 48,000
+									<s>&#8377;60,000</s> &#8377;48,000
 								</TableCell>
 								<TableCell align="center">
-									<s>90,000</s> 72,000
+									<s>&#8377;90,000</s> &#8377;72,000
 								</TableCell>
 								<TableCell align="center">
-									<s>150,000</s> 120,000
+									<s>&#8377;150,000</s> &#8377;120,000
 								</TableCell>
 								<TableCell align="center">
-									<s>240,000</s> 192,000
+									<s>&#8377;240,000</s> &#8377;192,000
 								</TableCell>
 							</TableRow>
 							<TableRow>
 								<TableCell align="center">5 Year 40% Off</TableCell>
 								<TableCell align="center">
-									<s>50,000</s> 30,000
+									<s>&#8377;50,000</s> &#8377;30,000
 								</TableCell>
 								<TableCell align="center">
-									<s>100,000</s> 60,000
+									<s>&#8377;100,000</s> &#8377;60,000
 								</TableCell>
 								<TableCell align="center">
-									<s>150,000</s> 90,000
+									<s>&#8377;150,000</s> &#8377;90,000
 								</TableCell>
 								<TableCell align="center">
-									<s>250,000</s> 150,000
+									<s>&#8377;250,000</s> &#8377;150,000
 								</TableCell>
 								<TableCell align="center">
-									<s>400,000</s> 240,000
+									<s>&#8377;400,000</s> &#8377;240,000
 								</TableCell>
 							</TableRow>
 						</TableBody>
@@ -115,46 +115,46 @@ const Pricing = (props) => {
 						<TableBody>
 							<TableRow>
 								<TableCell align="center">1 Year</TableCell>
-								<TableCell align="center">135</TableCell>
-								<TableCell align="center">270</TableCell>
-								<TableCell align="center">400</TableCell>
-								<TableCell align="center">675</TableCell>
-								<TableCell align="center">1,000</TableCell>
+								<TableCell align="center">$135</TableCell>
+								<TableCell align="center">$270</TableCell>
+								<TableCell align="center">$400</TableCell>
+								<TableCell align="center">$675</TableCell>
+								<TableCell align="center">$1,000</TableCell>
 							</TableRow>
 							<TableRow>
 								<TableCell align="center">3 Year 20% Off</TableCell>
 								<TableCell align="center">
-									<s>405</s> 324
+									<s>$405</s> $324
 								</TableCell>
 								<TableCell align="center">
-									<s>810</s> 648
+									<s>$810</s> $648
 								</TableCell>
 								<TableCell align="center">
-									<s>1,200</s> 960
+									<s>$1,200</s> $960
 								</TableCell>
 								<TableCell align="center">
-									<s>2,025</s> 1,620
+									<s>$2,025</s> $1,620
 								</TableCell>
 								<TableCell align="center">
-									<s>3,000</s> 2,400
+									<s>$3,000</s> $2,400
 								</TableCell>
 							</TableRow>
 							<TableRow>
 								<TableCell align="center">5 Year 40% Off</TableCell>
 								<TableCell align="center">
-									<s>675</s> 405
+									<s>$675</s> $405
 								</TableCell>
 								<TableCell align="center">
-									<s>1,350</s> 810
+									<s>$1,350</s> $810
 								</TableCell>
 								<TableCell align="center">
-									<s>2,000</s> 1,200
+									<s>$2,000</s> $1,200
 								</TableCell>
 								<TableCell align="center">
-									<s>3,375</s> 2,025
+									<s>$3,375</s> $2,025
 								</TableCell>
 								<TableCell align="center">
-									<s>5,000</s> 3,000
+									<s>$5,000</s> $3,000
 								</TableCell>
 							</TableRow>
 						</TableBody>

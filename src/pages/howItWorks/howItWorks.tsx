@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 
-import LimberGridView from "limbergridview-demo";
+import LimberGridView from "@sharma-subendra-kr/limber-grid-view";
 
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";

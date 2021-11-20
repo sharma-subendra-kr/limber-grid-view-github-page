@@ -11,25 +11,26 @@ const webpackNotifierPlugin = new WebpackNotifierPlugin({
 	alwaysNotify: true,
 });
 
+const Webpack = require("webpack");
+const webpackBannerPlugin = new Webpack.BannerPlugin({
+	banner: fs.readFileSync("./license_header", "utf8"),
+	raw: true,
+});
+
 const CleanTerminalPlugin = require("clean-terminal-webpack-plugin");
 const cleanTerminalPlugin = new CleanTerminalPlugin();
 
 module.exports = {
-	mode: process.env.NODE_ENV === "development" ? "development" : "production",
-	devtool:
-		process.env.NODE_ENV === "development" ? "inline-source-map" : "none",
-	entry: __dirname + "/src/index.tsx",
+	entry: path.resolve(__dirname, "src/index.tsx"),
+	optimization: {
+		minimize: process.env.MINIMIZE === "true",
+	},
 	output: {
-		path:
-			process.env.NODE_ENV === "development"
-				? __dirname + "/public/assets"
-				: __dirname + "/dist",
-		publicPath: "assets",
-		filename: "index.js",
+		publicPath: "/assets",
 	},
 	devServer: {
 		inline: true,
-		contentBase: "./public",
+		contentBase: path.resolve(__dirname, "public"),
 		port: process.env.PORT,
 		host: "0.0.0.0",
 		historyApiFallback: true,
@@ -66,12 +67,14 @@ module.exports = {
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader,
+						options: {},
+					},
+					{
+						loader: "css-loader",
 						options: {
-							hmr: process.env.NODE_ENV === "development",
-							reloadAll: true,
+							url: false,
 						},
 					},
-					"css-loader",
 					"postcss-loader",
 					"sass-loader",
 				],
@@ -82,7 +85,7 @@ module.exports = {
 			},
 		],
 	},
-	plugins: [miniCssExtractPlugin, webpackNotifierPlugin, cleanTerminalPlugin],
+	plugins: [miniCssExtractPlugin, webpackNotifierPlugin, webpackBannerPlugin, cleanTerminalPlugin],
 	resolve: {
 		extensions: [".tsx", ".ts", ".js", "jsx"],
 		alias: {

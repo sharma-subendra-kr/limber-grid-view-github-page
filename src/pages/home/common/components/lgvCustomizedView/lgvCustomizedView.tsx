@@ -55,6 +55,7 @@ const LgvCustomizedView = (props) => {
 				autoScrollForMouse: true,
 				deskInteractionMode: deskInteractionMode,
 				latchMovedItem: latch,
+				resizeSquareGuideLength: 50,
 			},
 			positionData: positionData,
 		});

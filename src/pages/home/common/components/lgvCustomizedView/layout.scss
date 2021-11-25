@@ -32,3 +32,23 @@
 		flex: 1;
 	}
 }
+
+.limber-grid-view .limber-grid-view-item.limber-grid-view-item-editable::after {
+	top: calc(100% - 30px);
+	left: calc(100% - 30px);
+	height: 30px;
+	width: 30px;
+	border-image: linear-gradient(315deg, black 20%, transparent 0%);
+	border-image-slice: 1;
+	border-image-repeat: stretch;
+}
+
+.limber-grid-view
+	.limber-grid-view-item.limber-grid-view-item-editable::before {
+	top: calc(100% - 30px);
+	height: 30px;
+	width: 30px;
+	border-image: linear-gradient(45deg, black 20%, transparent 0%);
+	border-image-slice: 1;
+	border-image-repeat: stretch;
+}

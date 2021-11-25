@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import LimberGridView from "limbergridview";
+import LimberGridView from "@sharma-subendra-kr/limber-grid-view";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
@@ -55,6 +55,7 @@ const LgvCustomizedView = (props) => {
 				autoScrollForMouse: true,
 				deskInteractionMode: deskInteractionMode,
 				latchMovedItem: latch,
+				resizeSquareGuideLength: 30, // see ./layout.scss for required css
 			},
 			positionData: positionData,
 		});

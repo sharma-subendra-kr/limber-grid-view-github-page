@@ -119,7 +119,7 @@ const CustomDrawer = ({
 									</Typography>
 								</Grid>
 								<Grid item>
-									<span className="version-info">Latest v1.0.0-beta.11</span>
+									<span className="version-info">Latest v1.0.0-beta.12</span>
 								</Grid>
 							</Grid>
 							<Grid item>

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 
-import LimberGridView from "limbergridview-demo";
+import LimberGridView from "limber-grid-view-demo";
 
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
@@ -55,10 +55,12 @@ const HowItWorks = ({
 				removePlugin: removePlugin,
 				getArrangeTime: getArrangeTime,
 				getLogMessage: getLogMessage,
+				offsetMovePseudoElement: offsetMovePseudoElement,
 			},
 			publicConstants: {
 				showBottomLeftResizeGuide: true,
 				autoScrollForMouse: true,
+				resizeSquareGuideLength: 30,
 			},
 			positionData: pd,
 		});
@@ -71,7 +73,10 @@ const HowItWorks = ({
 	};
 
 	const itemMouseDownMoveCheck = (x, y, item, index, currentTarget) => {
-		if (currentTarget.classList.contains("custom-layout-header-title")) {
+		if (
+			currentTarget.classList.contains("custom-layout-header-title") ||
+			currentTarget.classList.contains("MuiSvgIcon-root")
+		) {
 			return true;
 		}
 		return false;
@@ -117,6 +122,13 @@ const HowItWorks = ({
 	const getArrangeTime = (a, b, c) => {};
 
 	const getLogMessage = (log) => {};
+
+	const offsetMovePseudoElement = function (x, y, item) {
+		return {
+			x: x - (item.x2 - item.x1) / 2,
+			y: y - (item.y2 - item.y1) / 2,
+		};
+	};
 
 	return (
 		<>

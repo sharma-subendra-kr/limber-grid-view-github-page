@@ -27,7 +27,7 @@ import {
 import "./header.scss";
 
 const codeLink =
-	"https://github.com/sharma-subendra-kr/limber-grid-view-github-page/blob/release-1.0.0-beta.6/src/pages/home/common/components/lgvCustomizedView/lgvCustomizedView.tsx";
+	"https://github.com/sharma-subendra-kr/limber-grid-view-github-page/blob/release-1.0.0-beta.7/src/pages/home/common/components/lgvCustomizedView/lgvCustomizedView.tsx";
 
 const HeaderLinks = () => {
 	return (

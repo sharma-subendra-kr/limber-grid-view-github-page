@@ -43,7 +43,7 @@ const BrowserSupport = (props) => {
 								<TableCell align="center">Yes</TableCell>
 								<TableCell align="center">Yes</TableCell>
 								<TableCell align="center">Yes</TableCell>
-								<TableCell align="center">?</TableCell>
+								<TableCell align="center">Yes</TableCell>
 								<TableCell align="center">Yes</TableCell>
 							</TableRow>
 						</TableBody>
@@ -94,7 +94,7 @@ const BrowserSupport = (props) => {
 									Currently No (contextmenu event behaves differently)
 								</TableCell>
 								<TableCell align="center">Yes</TableCell>
-								<TableCell align="center">?</TableCell>
+								<TableCell align="center">Yes</TableCell>
 							</TableRow>
 						</TableBody>
 					</Table>

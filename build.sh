@@ -27,3 +27,6 @@ npm run build
 echo "Building production version"
 export MINIMIZE=true
 npm run build
+
+cp ./dist/gh-page.index.html ./public/
+cp ./dist/limber.index.html ./public/

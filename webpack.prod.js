@@ -1,14 +1,6 @@
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 
-function externalForMaterialUi({ context, request }, callback) {
-	if (/@material-ui.+/.test(request)) {
-		const name = request.replace(/^.*[\\\/]/, "");
-		return callback(null, "root MaterialUI." + name);
-	}
-	callback();
-}
-
 module.exports = merge(common, {
 	mode: "production",
 	output: {
@@ -16,11 +8,6 @@ module.exports = merge(common, {
 		filename: "index.js",
 	},
 	externals: [
-		// "@fortawesome",
-		"/@material-ui/core/.*/",
-		// "/@material-ui/icons/.*/",
-		// "/@material-ui/lab/.*/",
-		// externalForMaterialUi,
 		{ "@reduxjs/toolkit": "RTK" },
 		{ "connected-react-router": "ConnectedReactRouter" },
 		{
@@ -37,7 +24,6 @@ module.exports = merge(common, {
 		{ "react-dom": "ReactDOM" },
 		{ "react-redux": "ReactRedux" },
 		{ "react-router-dom": "ReactRouterDOM" },
-		// { recharts: "Recharts" },
 		{ redux: "Redux" },
 		{ "redux-saga": "ReduxSaga" },
 		// Sanitize html should be removed from front end

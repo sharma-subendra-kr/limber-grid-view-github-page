@@ -26,8 +26,6 @@ module.exports = merge(common, {
 		{ "react-router-dom": "ReactRouterDOM" },
 		{ redux: "Redux" },
 		{ "redux-saga": "ReduxSaga" },
-		// Sanitize html should be removed from front end
-		// { "sanitize-html": "sanitizeHtml" },
 		{ "styled-components": "styled" },
 	],
 });

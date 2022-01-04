@@ -33,7 +33,9 @@
 	}
 }
 
-.limber-grid-view .limber-grid-view-item.limber-grid-view-item-editable::after {
+.lgv-customized-view-container
+	.limber-grid-view
+	.limber-grid-view-item.limber-grid-view-item-editable::after {
 	top: calc(100% - 30px);
 	left: calc(100% - 30px);
 	height: 30px;
@@ -43,7 +45,8 @@
 	border-image-repeat: stretch;
 }
 
-.limber-grid-view
+.lgv-customized-view-container
+	.limber-grid-view
 	.limber-grid-view-item.limber-grid-view-item-editable::before {
 	top: calc(100% - 30px);
 	height: 30px;

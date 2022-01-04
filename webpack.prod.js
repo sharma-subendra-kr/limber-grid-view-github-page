@@ -5,14 +5,27 @@ module.exports = merge(common, {
 	mode: "production",
 	output: {
 		path: __dirname + "/dist",
-		filename:	"index.js",
+		filename: "index.js",
 	},
-	externals: {
-		"resize-observer-polyfill": {
-			commonjs: "resize-observer-polyfill",
-			commonjs2: "resize-observer-polyfill",
-			amd: "resize-observer-polyfill",
-			root: "resize-observer-polyfill",
+	externals: [
+		{ "@reduxjs/toolkit": "RTK" },
+		{ "connected-react-router": "ConnectedReactRouter" },
+		{
+			lodash: {
+				commonjs: "lodash",
+				commonjs2: "lodash",
+				amd: "lodash",
+				root: "_",
+			},
 		},
-	},
+		{ "markdown-to-jsx": "MarkdownToJSX" },
+		{ react: "React" },
+		{ "react-is": "ReactIs" },
+		{ "react-dom": "ReactDOM" },
+		{ "react-redux": "ReactRedux" },
+		{ "react-router-dom": "ReactRouterDOM" },
+		{ redux: "Redux" },
+		{ "redux-saga": "ReduxSaga" },
+		{ "styled-components": "styled" },
+	],
 });

@@ -5,6 +5,19 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const miniCssExtractPlugin = new MiniCssExtractPlugin({
 	filename: "index.css",
 });
+
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const htmlWebpackPluginLimberIn = new HtmlWebpackPlugin({
+	filename: "limber.index.html",
+	template: "./src/templates/limber.index.html",
+	inject: false,
+});
+const htmlWebpackPluginGhPage = new HtmlWebpackPlugin({
+	filename: "gh-page.index.html",
+	template: "./src/templates/gh-page.index.html",
+	inject: false,
+});
+
 const WebpackNotifierPlugin = require("webpack-notifier");
 const webpackNotifierPlugin = new WebpackNotifierPlugin({
 	title: "Github Page",
@@ -85,7 +98,14 @@ module.exports = {
 			},
 		],
 	},
-	plugins: [miniCssExtractPlugin, webpackNotifierPlugin, webpackBannerPlugin, cleanTerminalPlugin],
+	plugins: [
+		miniCssExtractPlugin,
+		webpackNotifierPlugin,
+		webpackBannerPlugin,
+		cleanTerminalPlugin,
+		htmlWebpackPluginLimberIn,
+		htmlWebpackPluginGhPage,
+	],
 	resolve: {
 		extensions: [".tsx", ".ts", ".js", "jsx"],
 		alias: {

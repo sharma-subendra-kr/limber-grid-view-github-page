@@ -1,4 +1,3 @@
-import sanitizeHtml from "sanitize-html";
 import { validateEmail } from "src/common/utils/utils";
 
 export const getAllErrors = (inputs, errors) => {
@@ -160,7 +159,7 @@ export const getCompanyRevenue = (value) => {
 export const sanitizeInputs = (inputs) => {
 	for (const key in inputs) {
 		if (inputs[key]) {
-			inputs[key] = sanitizeHtml(inputs[key].trim());
+			inputs[key] = inputs[key].trim();
 		} else {
 			delete inputs[key];
 		}

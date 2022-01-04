@@ -22,9 +22,7 @@ const HowToUse = ({ className }) => {
 			<PageContainer>
 				<Grid className={className} container justifyContent="center">
 					<Grid item>
-						<Typography variant="h3">
-							The LimberGridView Incident !...
-						</Typography>
+						<Typography variant="h3">How to use LimberGridView!</Typography>
 					</Grid>
 					<Grid item>
 						<HowToUseContent />

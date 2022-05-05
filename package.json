@@ -79,7 +79,7 @@
     "@reduxjs/toolkit": "^1.5.1",
     "@sharma-subendra-kr/limber-grid-view": "^1.0.0-beta.12",
     "connected-react-router": "^6.9.1",
-    "limber-grid-view-demo": "file:../LimberGridView",
+    "limber-grid-view-demo": "file:../limber-grid-view-demo",
     "lodash": "^4.17.21",
     "markdown-to-jsx": "^7.1.3",
     "react": "^16.13.1",

@@ -7,6 +7,7 @@ import { switchToDesktopSaga } from "src/common/components/static/switchToDeskto
 import { howToUseSaga } from "src/common/components/static/howToUse/ducks";
 import { demoDialogSaga } from "src/common/components/static/demoDialog/ducks";
 import { sendQuerySaga } from "src/common/components/complex/sendQuery/ducks";
+import { developmentSaga } from "../pages/development/ducks";
 
 export default function* rootSaga() {
 	yield all([
@@ -18,5 +19,6 @@ export default function* rootSaga() {
 		howToUseSaga(),
 		demoDialogSaga(),
 		sendQuerySaga(),
+		developmentSaga(),
 	]);
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -11,6 +12,7 @@ import LgvTools from "src/common/components/complex/lgvTools/lgvTools";
 import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomizedView";
 import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
 import SwitchToDesktop from "src/common/components/static/switchToDesktop/switchToDesktop";
+import Logger from "./common/components/logger/logger";
 
 import { withLGV } from "../../common/components/hoc/withLGV";
 import {
@@ -62,6 +64,8 @@ const Development = (props) => {
 		) {
 			setHowToUseDialogAction(true);
 		}
+
+		ReactDOM.render(<Logger />, document.getElementById("development-console"));
 	}, []);
 
 	const onOrderNowClose = () => {

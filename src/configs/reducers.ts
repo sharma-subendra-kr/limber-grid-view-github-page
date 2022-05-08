@@ -9,6 +9,7 @@ import { howToUseReducer } from "src/common/components/static/howToUse/ducks";
 import { demoDialogReducer } from "src/common/components/static/demoDialog/ducks";
 import { sendQueryReducer } from "src/common/components/complex/sendQuery/ducks";
 import { developmentReducer } from "../pages/development/ducks";
+import { loggerReducer } from "../pages/development/common/components/logger/ducks";
 
 const createRootReducer = (customHistory) =>
 	combineReducers({
@@ -21,7 +22,8 @@ const createRootReducer = (customHistory) =>
 		howToUseReducer,
 		demoDialogReducer,
 		sendQueryReducer,
-		developmentReducer
+		developmentReducer,
+		loggerReducer,
 	});
 
 export default createRootReducer;

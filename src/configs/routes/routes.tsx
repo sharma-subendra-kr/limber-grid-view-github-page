@@ -115,7 +115,7 @@ const Routes = () => {
 					key={Date.now() + "1"}
 				/>
 				<PublicRoute
-					path="/LimberGridView/development"
+					path="/LimberGridView/dev"
 					component={Development}
 					redirectPath="/LimberGridView"
 				/>

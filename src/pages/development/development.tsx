@@ -55,14 +55,14 @@ const Development = (props) => {
 	useEffect(() => {
 		setPositionDataAction(pd);
 		if (props.location.pathname.indexOf("buy") === 16) {
-			setOrderNowDialogAction(true);
+			// setOrderNowDialogAction(true);
 		} else if (!localStorage.getItem("switchToDesktop")) {
-			setSwitchToDesktopDialogAction(true);
+			// setSwitchToDesktopDialogAction(true);
 		} else if (
 			!localStorage.getItem("howToUse") ||
 			props.location.pathname.indexOf("howToUse") >= 0
 		) {
-			setHowToUseDialogAction(true);
+			// setHowToUseDialogAction(true);
 		}
 
 		ReactDOM.render(<Logger />, document.getElementById("development-console"));

@@ -16,6 +16,7 @@ import {
 	getPositionData,
 	setPositionDataAction,
 } from "../../../ducks";
+import { logAction } from "../logger/ducks";
 
 import "./lgvCustomizedView.scss";
 
@@ -25,12 +26,17 @@ const LgvCustomizedView = (props) => {
 		deskInteractionMode,
 		positionData,
 		setPositionDataAction,
+		logAction,
 		lgv,
 	} = props;
 
 	const [snackBarState, setSnackBarState] = useState(false);
 	const el = useRef(null);
 	const lgvMessage = useRef(undefined);
+
+	const getDebugLog = function (logs) {
+		logAction(logs);
+	};
 
 	useEffect(() => {
 		lgv.current = new LimberGridView({
@@ -49,6 +55,7 @@ const LgvCustomizedView = (props) => {
 				getArrangeTime: getArrangeTime,
 				getLogMessage: getLogMessage,
 				offsetMovePseudoElement: offsetMovePseudoElement,
+				getDebugLog: getDebugLog,
 			},
 			publicConstants: {
 				showBottomLeftResizeGuide: true,
@@ -56,6 +63,7 @@ const LgvCustomizedView = (props) => {
 				deskInteractionMode: deskInteractionMode,
 				latchMovedItem: latch,
 				resizeSquareGuideLength: 30, // see ./layout.scss for required css
+				emitDebugLogs: true,
 			},
 			positionData: positionData,
 			isMobileCheck: () => false,
@@ -168,6 +176,6 @@ export default compose(
 			deskInteractionMode: getDeskInteractionMode(state),
 			positionData: getPositionData(state),
 		}),
-		{ setPositionDataAction }
+		{ setPositionDataAction, logAction }
 	)
 )(LgvCustomizedView);

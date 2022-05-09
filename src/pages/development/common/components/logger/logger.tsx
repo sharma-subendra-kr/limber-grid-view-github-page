@@ -6,7 +6,13 @@ import Grid from "@material-ui/core/Grid";
 import styled from "styled-components";
 
 import { store } from "../../../../../configs/config";
-import { getPosition, getLogs, changePositionAction, logAction } from "./ducks";
+import {
+	getPosition,
+	getLogs,
+	changePositionAction,
+	logAction,
+	clearLogAction,
+} from "./ducks";
 
 const Logger = () => {
 	return (
@@ -24,6 +30,7 @@ const LoggerCore = ({
 	logs,
 	changePositionAction,
 	logAction,
+	clearLogAction,
 }) => {
 	return (
 		<div className={className}>
@@ -39,7 +46,7 @@ const LoggerCore = ({
 						</Fab>
 					</Grid>
 					<Grid item>
-						<p onClick={() => logAction(["logs", "clicked"])}>Logs</p>
+						<p onClick={() => clearLogAction()}>Clear</p>
 					</Grid>
 					<Grid item>
 						<Fab
@@ -54,28 +61,20 @@ const LoggerCore = ({
 			</div>
 			<div className="logger-content">
 				{logs.map((log, index) => {
-					if (Array.isArray(log)) {
-						return (
-							<div className="log-container">
-								<p className="log-details">log: {index}</p>
-								<p className="log">
-									{log.map((arg, idx) => {
-										return (
-											<span key={idx} className="log-arg">
-												{arg}{" "}
-											</span>
-										);
-									})}
-								</p>
-							</div>
-						);
-					} else {
-						return (
-							<div className="log-container">
-								<p className="log">log</p>
-							</div>
-						);
-					}
+					return (
+						<div key={index} className="log-container">
+							<p className="log-details">log: {index}</p>
+							<p className="log">
+								{log.map((arg, idx) => {
+									return (
+										<span key={idx} className="log-arg">
+											{arg}{" "}
+										</span>
+									);
+								})}
+							</p>
+						</div>
+					);
 				})}
 			</div>
 		</div>
@@ -113,6 +112,7 @@ const StyledLoggerCore = styled(LoggerCore)`
 			}
 			.log {
 				.log-arg {
+					word-break: break-all;
 				}
 			}
 		}
@@ -125,6 +125,6 @@ const ConnectedLoggerCore = compose(
 			position: getPosition(state),
 			logs: getLogs(state),
 		}),
-		{ changePositionAction, logAction }
+		{ changePositionAction, logAction, clearLogAction }
 	)
 )(StyledLoggerCore);

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 
 import Button from "@material-ui/core/Button";
+import Fab from "@material-ui/core/Fab";
 
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
@@ -32,6 +33,8 @@ import {
 	setHowToUseDialogAction,
 } from "src/common/components/static/howToUse/ducks";
 
+import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
+
 import { pd } from "src/pages/home/common/static/lgvData";
 import "./home.scss";
 
@@ -49,6 +52,7 @@ const Home = (props) => {
 	} = props;
 
 	const introBuy = useRef("incomplete");
+	const [isToolsExpanded, setIsToolsExpanded] = useState(false);
 
 	useEffect(() => {
 		setPositionDataAction(pd);
@@ -107,6 +111,10 @@ const Home = (props) => {
 		}
 	};
 
+	const onClickExpandTools = (event) => {
+		setIsToolsExpanded((state) => !state);
+	};
+
 	return (
 		<>
 			<Header />
@@ -114,28 +122,39 @@ const Home = (props) => {
 			{switchToDesktop && <SwitchToDesktop onClose={onCloseSwitchToDesktop} />}
 			<div className="page-home">
 				<div className="tools-container">
-					<div>
-						<Button
-							className="button"
+					<div className={`tools-wrapper ${isToolsExpanded ? "expanded" : ""}`}>
+						<div>
+							<Button
+								className="tools-button"
+								size="small"
+								onClick={onClickCustomizedView}
+							>
+								Customized View
+							</Button>
+							<Button
+								className="tools-button"
+								size="small"
+								onClick={onClickDefaultViewView}
+							>
+								Default View
+							</Button>
+						</div>
+						<div className="lgv-tools-container">
+							<LgvTools
+								onUserUndo={onUserUndo}
+								onUserRedo={onUserRedo}
+								onAddItem={onAddItem}
+							/>
+						</div>
+						<Fab
 							size="small"
-							onClick={onClickCustomizedView}
+							color="secondary"
+							aria-label="expand"
+							onClick={onClickExpandTools}
+							className={isToolsExpanded && "expanded"}
 						>
-							Customized View
-						</Button>
-						<Button
-							className="button"
-							size="small"
-							onClick={onClickDefaultViewView}
-						>
-							Default View
-						</Button>
-					</div>
-					<div className="lgv-tools-container">
-						<LgvTools
-							onUserUndo={onUserUndo}
-							onUserRedo={onUserRedo}
-							onAddItem={onAddItem}
-						/>
+							<DoubleArrowIcon />
+						</Fab>
 					</div>
 				</div>
 				{positionData && (

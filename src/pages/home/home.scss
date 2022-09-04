@@ -7,24 +7,64 @@
 		border-bottom: solid 1px #c0c0c0;
 		background-color: white;
 
-		button {
-			background-color: transparent;
-			color: #151d2d;
-			height: 20px;
-			margin: 0;
-			span {
-				font-size: 10px;
+		.tools-wrapper {
+			display: flex;
+			width: 100%;
+			position: relative;
+			background-color: white;
+			z-index: 1000;
+
+			.tools-button {
+				background-color: transparent;
+				color: #151d2d;
+				height: 20px;
+				margin: 0;
+				span {
+					font-size: 10px;
+				}
+			}
+
+			.button-active {
+				color: blue;
+				text-decoration: underline;
+			}
+
+			.lgv-tools-container {
+				flex: 1;
+				padding: 0px 10px 0px 0px;
+			}
+
+			.MuiFab-root {
+				height: 20px;
+				width: 20px;
+				min-height: 20px;
+				position: absolute;
+				right: -10px;
+				bottom: -10px;
+				z-index: 1000;
+
+				@media only screen and (max-width: 980px) and (min-width: 1px) and (orientation: portrait),
+					only screen and (max-width: 979px) and (min-width: 1px) and (orientation: landscape) {
+					display: none;
+				}
+
+				svg {
+					transform: rotate(90deg);
+				}
+			}
+
+			.MuiFab-root.expanded {
+				svg {
+					transform: rotate(-90deg);
+				}
 			}
 		}
 
-		.button-active {
-			color: blue;
-			text-decoration: underline;
-		}
-
-		.lgv-tools-container {
-			flex: 1;
-			padding: 0px 10px 0px 0px;
+		.tools-wrapper.expanded {
+			height: 100px;
+			border-bottom: solid 1px #c0c0c0;
+			border-left: solid 1px #c0c0c0;
+			border-right: solid 1px #c0c0c0;
 		}
 	}
 	.lgv-container {

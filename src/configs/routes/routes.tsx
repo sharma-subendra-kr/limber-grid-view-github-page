@@ -106,13 +106,12 @@ const Routes = () => {
 					path="/LimberGridView/buy"
 					component={Home}
 					redirectPath="/LimberGridView"
-					key={Date.now()}
+					reRenderOnSamePath={true}
 				/>
 				<PublicRoute
 					path="/LimberGridView/howToUse"
 					component={HowToUse}
 					redirectPath="/LimberGridView"
-					key={Date.now() + "1"}
 				/>
 				<PublicRoute
 					path="/LimberGridView/dev"

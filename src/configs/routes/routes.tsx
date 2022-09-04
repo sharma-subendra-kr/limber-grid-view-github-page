@@ -19,6 +19,7 @@ import Pricing from "../../pages/pricing/pricing";
 import Privacy from "../../pages/privacy/privacy";
 import RefundPolicy from "../../pages/refundPolicy/refundPolicy";
 import HowToUse from "../../pages/howToUse/howToUse";
+import Development from "../../pages/development/development";
 
 const Routes = () => {
 	return (
@@ -112,6 +113,11 @@ const Routes = () => {
 					component={HowToUse}
 					redirectPath="/LimberGridView"
 					key={Date.now() + "1"}
+				/>
+				<PublicRoute
+					path="/LimberGridView/dev"
+					component={Development}
+					redirectPath="/LimberGridView"
 				/>
 				<PublicRoute
 					path="/LimberGridView"

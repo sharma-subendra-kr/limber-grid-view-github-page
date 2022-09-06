@@ -9,6 +9,7 @@ import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
 import Drawer from "src/common/components/static/drawer/drawer";
 import LgvTools from "src/common/components/complex/lgvTools/lgvTools";
+import LgvMoreTools from "src/common/components/complex/lgvMoreTools/lgvMoreTools";
 import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomizedView";
 import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
 import SwitchToDesktop from "src/common/components/static/switchToDesktop/switchToDesktop";
@@ -19,6 +20,7 @@ import {
 	changeViewAction,
 	getPositionData,
 	setPositionDataAction,
+	setMarginAction,
 } from "./ducks";
 import {
 	getOrderNowDialogState,
@@ -48,6 +50,7 @@ const Home = (props) => {
 		setSwitchToDesktopDialogAction,
 		setHowToUseDialogAction,
 		setOrderNowDialogAction,
+		setMarginAction,
 		lgv,
 	} = props;
 
@@ -94,6 +97,16 @@ const Home = (props) => {
 		lgv.current.addItem();
 	};
 
+	const onIncreaseMargin = () => {
+		lgv.current.increaseMargin();
+		setMarginAction(lgv.current.getCurrentMargin());
+	};
+
+	const onDecreaseMargin = () => {
+		lgv.current.decreaseMargin();
+		setMarginAction(lgv.current.getCurrentMargin());
+	};
+
 	const onClickCustomizedView = () => {
 		changeViewAction("customized");
 	};
@@ -113,6 +126,10 @@ const Home = (props) => {
 
 	const onClickExpandTools = (event) => {
 		setIsToolsExpanded((state) => !state);
+	};
+
+	const onRenderComplete = (event) => {
+		setMarginAction(lgv.current.getCurrentMargin());
 	};
 
 	return (
@@ -145,6 +162,13 @@ const Home = (props) => {
 								onUserRedo={onUserRedo}
 								onAddItem={onAddItem}
 							/>
+							{isToolsExpanded && (
+								<LgvMoreTools
+									onIncreaseMargin={onIncreaseMargin}
+									onDecreaseMargin={onDecreaseMargin}
+									margin={margin}
+								/>
+							)}
 						</div>
 						<Fab
 							size="small"
@@ -159,7 +183,11 @@ const Home = (props) => {
 				</div>
 				{positionData && (
 					<div className="lgv-container">
-						{view === "customized" ? <LgvCustomizedView /> : <LgvDefaultView />}
+						{view === "customized" ? (
+							<LgvCustomizedView onRenderComplete={onRenderComplete} />
+						) : (
+							<LgvDefaultView onRenderComplete={onRenderComplete} />
+						)}
 					</div>
 				)}
 			</div>
@@ -184,6 +212,7 @@ export default compose(
 			setSwitchToDesktopDialogAction,
 			setHowToUseDialogAction,
 			setOrderNowDialogAction,
+			setMarginAction,
 		}
 	)
 )(Home);

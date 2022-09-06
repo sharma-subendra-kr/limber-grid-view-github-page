@@ -12,6 +12,9 @@ const CHANGE_DESK_INTERACTION_MODE_ACTION =
 const CHANGE_DESK_INTERACTION_MODE = "[home] change desk interaction mode";
 const SET_POSITION_DATA_ACTION = "[home] set position data action";
 const SET_POSITION_DATA = "[home] set position data";
+const SET_MARGIN_ACTION = "[home] set margin action";
+const SET_MARGIN = "[home] set margin";
+const GET_MARGIN = "[home] get margin";
 
 const initialState = {
 	view: "customized",
@@ -43,6 +46,10 @@ export const getPositionData = createSelector(stateSelector, (state) => {
 	return state.positionData;
 });
 
+export const getMargin = (state) => {
+	return stateSelector(state).margin;
+};
+
 export const homeReducer = createReducer(initialState, {
 	[CHANGE_VIEW]: (state, { payload }) => {
 		state.view = payload;
@@ -59,6 +66,9 @@ export const homeReducer = createReducer(initialState, {
 	[SET_POSITION_DATA]: (state, { payload }) => {
 		state.positionData = payload;
 	},
+	[SET_MARGIN]: (state, { payload }) => {
+		state.margin = payload;
+	},
 });
 
 export const changeViewAction = createAction(CHANGE_VIEW_ACTION);
@@ -70,6 +80,7 @@ export const changeDeskInteractionModeAction = createAction(
 	CHANGE_DESK_INTERACTION_MODE_ACTION
 );
 export const setPositionDataAction = createAction(SET_POSITION_DATA_ACTION);
+export const setMarginAction = createAction(SET_MARGIN_ACTION);
 
 function* changeViewSaga({ payload }) {
 	yield put({ type: CHANGE_VIEW, payload: payload });
@@ -91,6 +102,10 @@ function* setPositionDataSaga({ payload }) {
 	yield put({ type: SET_POSITION_DATA, payload: payload });
 }
 
+function* setMarginSaga({ payload }) {
+	yield put({ type: SET_MARGIN, payload });
+}
+
 export function* homeSaga() {
 	yield all([
 		yield takeLatest(CHANGE_VIEW_ACTION, changeViewSaga),
@@ -101,5 +116,6 @@ export function* homeSaga() {
 			changeDeskInteractionModeSaga
 		),
 		yield takeLatest(SET_POSITION_DATA_ACTION, setPositionDataSaga),
+		yield takeLatest(SET_MARGIN_ACTION, setMarginSaga),
 	]);
 }

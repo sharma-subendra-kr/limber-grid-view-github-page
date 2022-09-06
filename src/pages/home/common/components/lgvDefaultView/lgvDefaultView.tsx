@@ -26,6 +26,7 @@ const LgvDefaultView = (props) => {
 		positionData,
 		setPositionDataAction,
 		lgv,
+		onRenderComplete,
 	} = props;
 
 	const [snackBarState, setSnackBarState] = useState(false);
@@ -76,7 +77,11 @@ const LgvDefaultView = (props) => {
 		);
 	};
 
-	const renderComplete = (index) => {};
+	const renderComplete = (index) => {
+		if (index === undefined) {
+			onRenderComplete();
+		}
+	};
 
 	const resizeComplete = (index, width, height, arrangedIndices) => {
 		setPositionDataAction(lgv.current.getGridData().positionData);

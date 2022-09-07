@@ -14,7 +14,8 @@ const SET_POSITION_DATA_ACTION = "[home] set position data action";
 const SET_POSITION_DATA = "[home] set position data";
 const SET_MARGIN_ACTION = "[home] set margin action";
 const SET_MARGIN = "[home] set margin";
-const GET_MARGIN = "[home] get margin";
+const SET_MARGIN_CHANGE_VALUE_ACTION = "[home] set margin change value action";
+const SET_MARGIN_CHANGE_VALUE = "[home] set margin change value";
 
 const initialState = {
 	view: "customized",
@@ -22,6 +23,8 @@ const initialState = {
 	resizeMethod: false,
 	deskInteractionMode: "CUTSPACE",
 	positionData: undefined,
+	margin: undefined,
+	marginChangeValue: undefined,
 };
 
 export const stateSelector = (state) => state.homeReducer;
@@ -50,6 +53,10 @@ export const getMargin = (state) => {
 	return stateSelector(state).margin;
 };
 
+export const getMarginChangeValue = (state) => {
+	return stateSelector(state).marginChangeValue;
+};
+
 export const homeReducer = createReducer(initialState, {
 	[CHANGE_VIEW]: (state, { payload }) => {
 		state.view = payload;
@@ -69,6 +76,9 @@ export const homeReducer = createReducer(initialState, {
 	[SET_MARGIN]: (state, { payload }) => {
 		state.margin = payload;
 	},
+	[SET_MARGIN_CHANGE_VALUE]: (state, { payload }) => {
+		state.marginChangeValue = payload;
+	},
 });
 
 export const changeViewAction = createAction(CHANGE_VIEW_ACTION);
@@ -81,6 +91,9 @@ export const changeDeskInteractionModeAction = createAction(
 );
 export const setPositionDataAction = createAction(SET_POSITION_DATA_ACTION);
 export const setMarginAction = createAction(SET_MARGIN_ACTION);
+export const setMarginChangeValueAction = createAction(
+	SET_MARGIN_CHANGE_VALUE_ACTION
+);
 
 function* changeViewSaga({ payload }) {
 	yield put({ type: CHANGE_VIEW, payload: payload });
@@ -106,6 +119,10 @@ function* setMarginSaga({ payload }) {
 	yield put({ type: SET_MARGIN, payload });
 }
 
+function* setMarginChangeValueSaga({ payload }) {
+	yield put({ type: SET_MARGIN_CHANGE_VALUE, payload });
+}
+
 export function* homeSaga() {
 	yield all([
 		yield takeLatest(CHANGE_VIEW_ACTION, changeViewSaga),
@@ -117,5 +134,6 @@ export function* homeSaga() {
 		),
 		yield takeLatest(SET_POSITION_DATA_ACTION, setPositionDataSaga),
 		yield takeLatest(SET_MARGIN_ACTION, setMarginSaga),
+		yield takeLatest(SET_MARGIN_CHANGE_VALUE_ACTION, setMarginChangeValueSaga),
 	]);
 }

@@ -15,6 +15,8 @@ import {
 	getDeskInteractionMode,
 	getPositionData,
 	setPositionDataAction,
+	getMargin,
+	getMarginChangeValue,
 } from "../../../ducks";
 
 import "./lgvCustomizedView.scss";
@@ -27,6 +29,8 @@ const LgvCustomizedView = (props) => {
 		setPositionDataAction,
 		lgv,
 		onRenderComplete,
+		margin,
+		marginChangeValue,
 	} = props;
 
 	const [snackBarState, setSnackBarState] = useState(false);
@@ -59,6 +63,8 @@ const LgvCustomizedView = (props) => {
 				resizeSquareGuideLength: 30, // see ./layout.scss for required css
 			},
 			positionData: positionData,
+			margin: margin,
+			marginChangeValue: marginChangeValue,
 		});
 	}, []);
 
@@ -171,6 +177,8 @@ export default compose(
 			latch: getLatch(state),
 			deskInteractionMode: getDeskInteractionMode(state),
 			positionData: getPositionData(state),
+			margin: getMargin(state),
+			marginChangeValue: getMarginChangeValue(state),
 		}),
 		{ setPositionDataAction }
 	)

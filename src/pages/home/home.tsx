@@ -21,6 +21,7 @@ import {
 	getPositionData,
 	setPositionDataAction,
 	setMarginAction,
+	setMarginChangeValueAction,
 } from "./ducks";
 import {
 	getOrderNowDialogState,
@@ -51,6 +52,7 @@ const Home = (props) => {
 		setHowToUseDialogAction,
 		setOrderNowDialogAction,
 		setMarginAction,
+		setMarginChangeValueAction,
 		lgv,
 	} = props;
 
@@ -130,6 +132,7 @@ const Home = (props) => {
 
 	const onRenderComplete = (event) => {
 		setMarginAction(lgv.current.getCurrentMargin());
+		setMarginChangeValueAction(lgv.current.getMarginChangeValue());
 	};
 
 	return (
@@ -166,7 +169,6 @@ const Home = (props) => {
 								<LgvMoreTools
 									onIncreaseMargin={onIncreaseMargin}
 									onDecreaseMargin={onDecreaseMargin}
-									margin={margin}
 								/>
 							)}
 						</div>
@@ -213,6 +215,7 @@ export default compose(
 			setHowToUseDialogAction,
 			setOrderNowDialogAction,
 			setMarginAction,
+			setMarginChangeValueAction,
 		}
 	)
 )(Home);

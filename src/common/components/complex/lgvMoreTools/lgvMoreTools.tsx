@@ -17,6 +17,7 @@ import {
 	getMargin,
 	getMarginChangeValue,
 	setMarginChangeValueAction,
+	setMarginAction,
 } from "src/pages/home/ducks";
 
 import "./lgvMoreTools.scss";
@@ -24,11 +25,10 @@ import "./lgvMoreTools.scss";
 const LgvMoreTools = (props) => {
 	const {
 		className,
-		onIncreaseMargin,
-		onDecreaseMargin,
 		margin,
 		marginChangeValue,
 		setMarginChangeValueAction,
+		setMarginAction,
 		lgv,
 	} = props;
 
@@ -37,6 +37,16 @@ const LgvMoreTools = (props) => {
 			lgv.current.setMarginChangeValue(Number(event.target.value));
 			setMarginChangeValueAction(Number(event.target.value));
 		}
+	};
+
+	const onIncreaseMargin = () => {
+		lgv.current.increaseMargin();
+		setMarginAction(lgv.current.getCurrentMargin());
+	};
+
+	const onDecreaseMargin = () => {
+		lgv.current.decreaseMargin();
+		setMarginAction(lgv.current.getCurrentMargin());
 	};
 
 	return (
@@ -123,6 +133,6 @@ export default compose(
 			margin: getMargin(state),
 			marginChangeValue: getMarginChangeValue(state),
 		}),
-		{ setMarginChangeValueAction }
+		{ setMarginChangeValueAction, setMarginAction }
 	)
 )(StyledLgvMoreTools);

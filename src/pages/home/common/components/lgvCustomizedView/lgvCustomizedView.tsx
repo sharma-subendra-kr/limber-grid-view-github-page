@@ -17,6 +17,8 @@ import {
 	setPositionDataAction,
 	getMargin,
 	getMarginChangeValue,
+	setMarginAction,
+	setMarginChangeValueAction,
 } from "../../../ducks";
 
 import "./lgvCustomizedView.scss";
@@ -28,9 +30,10 @@ const LgvCustomizedView = (props) => {
 		positionData,
 		setPositionDataAction,
 		lgv,
-		onRenderComplete,
 		margin,
 		marginChangeValue,
+		setMarginAction,
+		setMarginChangeValueAction,
 	} = props;
 
 	const [snackBarState, setSnackBarState] = useState(false);
@@ -101,7 +104,8 @@ const LgvCustomizedView = (props) => {
 
 	const renderComplete = (index) => {
 		if (index === undefined) {
-			onRenderComplete();
+			setMarginAction(lgv.current.getCurrentMargin());
+			setMarginChangeValueAction(lgv.current.getMarginChangeValue());
 		}
 	};
 
@@ -180,6 +184,6 @@ export default compose(
 			margin: getMargin(state),
 			marginChangeValue: getMarginChangeValue(state),
 		}),
-		{ setPositionDataAction }
+		{ setPositionDataAction, setMarginAction, setMarginChangeValueAction }
 	)
 )(LgvCustomizedView);

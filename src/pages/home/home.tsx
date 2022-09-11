@@ -20,8 +20,6 @@ import {
 	changeViewAction,
 	getPositionData,
 	setPositionDataAction,
-	setMarginAction,
-	setMarginChangeValueAction,
 } from "./ducks";
 import {
 	getOrderNowDialogState,
@@ -51,8 +49,6 @@ const Home = (props) => {
 		setSwitchToDesktopDialogAction,
 		setHowToUseDialogAction,
 		setOrderNowDialogAction,
-		setMarginAction,
-		setMarginChangeValueAction,
 		lgv,
 	} = props;
 
@@ -87,28 +83,6 @@ const Home = (props) => {
 		introBuy.current = "complete";
 	};
 
-	const onUserUndo = () => {
-		lgv.current.undo();
-	};
-
-	const onUserRedo = () => {
-		lgv.current.redo();
-	};
-
-	const onAddItem = () => {
-		lgv.current.addItem();
-	};
-
-	const onIncreaseMargin = () => {
-		lgv.current.increaseMargin();
-		setMarginAction(lgv.current.getCurrentMargin());
-	};
-
-	const onDecreaseMargin = () => {
-		lgv.current.decreaseMargin();
-		setMarginAction(lgv.current.getCurrentMargin());
-	};
-
 	const onClickCustomizedView = () => {
 		changeViewAction("customized");
 	};
@@ -128,11 +102,6 @@ const Home = (props) => {
 
 	const onClickExpandTools = (event) => {
 		setIsToolsExpanded((state) => !state);
-	};
-
-	const onRenderComplete = (event) => {
-		setMarginAction(lgv.current.getCurrentMargin());
-		setMarginChangeValueAction(lgv.current.getMarginChangeValue());
 	};
 
 	return (
@@ -160,17 +129,8 @@ const Home = (props) => {
 							</Button>
 						</div>
 						<div className="lgv-tools-container">
-							<LgvTools
-								onUserUndo={onUserUndo}
-								onUserRedo={onUserRedo}
-								onAddItem={onAddItem}
-							/>
-							{isToolsExpanded && (
-								<LgvMoreTools
-									onIncreaseMargin={onIncreaseMargin}
-									onDecreaseMargin={onDecreaseMargin}
-								/>
-							)}
+							<LgvTools />
+							{isToolsExpanded && <LgvMoreTools />}
 						</div>
 						<Fab
 							size="small"
@@ -214,8 +174,6 @@ export default compose(
 			setSwitchToDesktopDialogAction,
 			setHowToUseDialogAction,
 			setOrderNowDialogAction,
-			setMarginAction,
-			setMarginChangeValueAction,
 		}
 	)
 )(Home);

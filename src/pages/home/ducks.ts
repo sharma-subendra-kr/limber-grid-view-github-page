@@ -16,6 +16,8 @@ const SET_MARGIN_ACTION = "[home] set margin action";
 const SET_MARGIN = "[home] set margin";
 const SET_MARGIN_CHANGE_VALUE_ACTION = "[home] set margin change value action";
 const SET_MARGIN_CHANGE_VALUE = "[home] set margin change value";
+const SET_SCALED_MARGIN_ACTION = "[home] set scaled margin action";
+const SET_SCALED_MARGIN = "[home] set scaled margin";
 
 const initialState = {
 	view: "customized",
@@ -24,6 +26,7 @@ const initialState = {
 	deskInteractionMode: "CUTSPACE",
 	positionData: undefined,
 	margin: undefined,
+	scaledMargin: undefined,
 	marginChangeValue: undefined,
 };
 
@@ -53,6 +56,10 @@ export const getMargin = (state) => {
 	return stateSelector(state).margin;
 };
 
+export const getScaledMargin = (state) => {
+	return stateSelector(state).scaledMargin;
+};
+
 export const getMarginChangeValue = (state) => {
 	return stateSelector(state).marginChangeValue;
 };
@@ -76,6 +83,9 @@ export const homeReducer = createReducer(initialState, {
 	[SET_MARGIN]: (state, { payload }) => {
 		state.margin = payload;
 	},
+	[SET_SCALED_MARGIN]: (state, { payload }) => {
+		state.scaledMargin = payload;
+	},
 	[SET_MARGIN_CHANGE_VALUE]: (state, { payload }) => {
 		state.marginChangeValue = payload;
 	},
@@ -91,6 +101,7 @@ export const changeDeskInteractionModeAction = createAction(
 );
 export const setPositionDataAction = createAction(SET_POSITION_DATA_ACTION);
 export const setMarginAction = createAction(SET_MARGIN_ACTION);
+export const setScaledMarginAction = createAction(SET_SCALED_MARGIN_ACTION);
 export const setMarginChangeValueAction = createAction(
 	SET_MARGIN_CHANGE_VALUE_ACTION
 );
@@ -119,6 +130,10 @@ function* setMarginSaga({ payload }) {
 	yield put({ type: SET_MARGIN, payload });
 }
 
+function* setScaledMarginSaga({ payload }) {
+	yield put({ type: SET_SCALED_MARGIN, payload });
+}
+
 function* setMarginChangeValueSaga({ payload }) {
 	yield put({ type: SET_MARGIN_CHANGE_VALUE, payload });
 }
@@ -134,6 +149,7 @@ export function* homeSaga() {
 		),
 		yield takeLatest(SET_POSITION_DATA_ACTION, setPositionDataSaga),
 		yield takeLatest(SET_MARGIN_ACTION, setMarginSaga),
+		yield takeLatest(SET_SCALED_MARGIN_ACTION, setScaledMarginSaga),
 		yield takeLatest(SET_MARGIN_CHANGE_VALUE_ACTION, setMarginChangeValueSaga),
 	]);
 }

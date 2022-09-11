@@ -14,10 +14,11 @@ import styled from "styled-components";
 
 import { withLGV } from "../../hoc/withLGV";
 import {
-	getMargin,
+	getScaledMargin,
 	getMarginChangeValue,
 	setMarginChangeValueAction,
 	setMarginAction,
+	setScaledMarginAction,
 } from "src/pages/home/ducks";
 
 import "./lgvMoreTools.scss";
@@ -25,10 +26,11 @@ import "./lgvMoreTools.scss";
 const LgvMoreTools = (props) => {
 	const {
 		className,
-		margin,
+		scaledMargin,
 		marginChangeValue,
 		setMarginChangeValueAction,
 		setMarginAction,
+		setScaledMarginAction,
 		lgv,
 	} = props;
 
@@ -42,11 +44,13 @@ const LgvMoreTools = (props) => {
 	const onIncreaseMargin = () => {
 		lgv.current.increaseMargin();
 		setMarginAction(lgv.current.getCurrentMargin());
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
 	};
 
 	const onDecreaseMargin = () => {
 		lgv.current.decreaseMargin();
 		setMarginAction(lgv.current.getCurrentMargin());
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
 	};
 
 	return (
@@ -86,7 +90,7 @@ const LgvMoreTools = (props) => {
 						<Fab size="small" color="secondary" onClick={onDecreaseMargin}>
 							<RemoveIcon />
 						</Fab>
-						<Chip label={margin} disabled variant="outlined" />
+						<Chip label={scaledMargin} disabled variant="outlined" />
 						<Fab size="small" color="secondary" onClick={onIncreaseMargin}>
 							<AddIcon />
 						</Fab>
@@ -130,9 +134,9 @@ export default compose(
 	withLGV,
 	connect(
 		(state) => ({
-			margin: getMargin(state),
+			scaledMargin: getScaledMargin(state),
 			marginChangeValue: getMarginChangeValue(state),
 		}),
-		{ setMarginChangeValueAction, setMarginAction }
+		{ setMarginChangeValueAction, setMarginAction, setScaledMarginAction }
 	)
 )(StyledLgvMoreTools);

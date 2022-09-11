@@ -62,6 +62,7 @@ const LgvTools = (props) => {
 	};
 
 	const onAddItemClick = (event) => {
+		// addComplete callback present so not updating the redux store here
 		lgv.current.addItem();
 	};
 

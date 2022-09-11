@@ -18,6 +18,7 @@ import {
 	getMargin,
 	getMarginChangeValue,
 	setMarginAction,
+	setScaledMarginAction,
 	setMarginChangeValueAction,
 } from "../../../ducks";
 
@@ -33,6 +34,7 @@ const LgvDefaultView = (props) => {
 		margin,
 		marginChangeValue,
 		setMarginAction,
+		setScaledMarginAction,
 		setMarginChangeValueAction,
 	} = props;
 
@@ -72,6 +74,7 @@ const LgvDefaultView = (props) => {
 
 	const mountComplete = () => {
 		setMarginAction(lgv.current.getCurrentMargin());
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
 		setMarginChangeValueAction(lgv.current.getMarginChangeValue());
 	};
 
@@ -161,6 +164,11 @@ export default compose(
 			margin: getMargin(state),
 			marginChangeValue: getMarginChangeValue(state),
 		}),
-		{ setPositionDataAction, setMarginAction, setMarginChangeValueAction }
+		{
+			setPositionDataAction,
+			setMarginAction,
+			setScaledMarginAction,
+			setMarginChangeValueAction,
+		}
 	)
 )(LgvDefaultView);

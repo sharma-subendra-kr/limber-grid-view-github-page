@@ -45,8 +45,9 @@ const LgvCustomizedView = (props) => {
 			el: el.current,
 			itemMouseDownMoveCheck: itemMouseDownMoveCheck,
 			callbacks: {
-				renderContent: renderContent,
+				mountComplete: mountComplete,
 				renderComplete: renderComplete,
+				renderContent: renderContent,
 				resizeComplete: resizeComplete,
 				moveComplete: moveComplete,
 				addComplete: addComplete,
@@ -71,11 +72,6 @@ const LgvCustomizedView = (props) => {
 		});
 	}, []);
 
-	if (lgv.current) {
-		lgv.current.setLatchMovedItem(latch);
-		lgv.current.setDeskInteractMode(deskInteractionMode);
-	}
-
 	const itemMouseDownMoveCheck = (x, y, item, index, currentTarget) => {
 		if (
 			currentTarget.classList.contains("custom-layout-header-title") ||
@@ -90,6 +86,17 @@ const LgvCustomizedView = (props) => {
 		lgv.current.removeItem(index);
 	};
 
+	const mountComplete = () => {
+		setMarginAction(lgv.current.getCurrentMargin());
+		setMarginChangeValueAction(lgv.current.getMarginChangeValue());
+	};
+
+	const renderComplete = (index) => {
+		if (index === undefined) {
+		} else {
+		}
+	};
+
 	const renderContent = (index, width, height, type) => {
 		return (
 			<Layout
@@ -100,13 +107,6 @@ const LgvCustomizedView = (props) => {
 				onRemove={onRemove}
 			/>
 		);
-	};
-
-	const renderComplete = (index) => {
-		if (index === undefined) {
-			setMarginAction(lgv.current.getCurrentMargin());
-			setMarginChangeValueAction(lgv.current.getMarginChangeValue());
-		}
 	};
 
 	const resizeComplete = (index, width, height, arrangedIndices) => {

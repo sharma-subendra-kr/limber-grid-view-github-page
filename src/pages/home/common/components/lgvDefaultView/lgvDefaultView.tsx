@@ -44,8 +44,9 @@ const LgvDefaultView = (props) => {
 		lgv.current = new LimberGridView({
 			el: el.current,
 			callbacks: {
-				renderContent: renderContent,
+				mountComplete: mountComplete,
 				renderComplete: renderComplete,
+				renderContent: renderContent,
 				resizeComplete: resizeComplete,
 				moveComplete: moveComplete,
 				addComplete: addComplete,
@@ -67,12 +68,18 @@ const LgvDefaultView = (props) => {
 		});
 	}, []);
 
-	if (lgv.current) {
-		lgv.current.setLatchMovedItem(latch);
-		lgv.current.setDeskInteractMode(deskInteractionMode);
-	}
-
 	const onRemove = (index) => {};
+
+	const mountComplete = () => {
+		setMarginAction(lgv.current.getCurrentMargin());
+		setMarginChangeValueAction(lgv.current.getMarginChangeValue());
+	};
+
+	const renderComplete = (index) => {
+		if (index === undefined) {
+		} else {
+		}
+	};
 
 	const renderContent = (index, width, height, type) => {
 		return (
@@ -84,13 +91,6 @@ const LgvDefaultView = (props) => {
 				onRemove={onRemove}
 			/>
 		);
-	};
-
-	const renderComplete = (index) => {
-		if (index === undefined) {
-			setMarginAction(lgv.current.getCurrentMargin());
-			setMarginChangeValueAction(lgv.current.getMarginChangeValue());
-		}
 	};
 
 	const resizeComplete = (index, width, height, arrangedIndices) => {

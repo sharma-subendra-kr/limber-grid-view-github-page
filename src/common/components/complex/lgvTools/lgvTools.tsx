@@ -52,10 +52,12 @@ const LgvTools = (props) => {
 	};
 
 	const onLatchClick = ({ target: { checked } }) => {
+		lgv.current.setLatchMovedItem(checked);
 		changeLatchAction(checked);
 	};
 
 	const onAddOrCutClick = ({ target: { value } }) => {
+		lgv.current.setDeskInteractMode(value);
 		changeDeskInteractionModeAction(value);
 	};
 

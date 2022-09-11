@@ -145,11 +145,7 @@ const Home = (props) => {
 				</div>
 				{positionData && (
 					<div className="lgv-container">
-						{view === "customized" ? (
-							<LgvCustomizedView onRenderComplete={onRenderComplete} />
-						) : (
-							<LgvDefaultView onRenderComplete={onRenderComplete} />
-						)}
+						{view === "customized" ? <LgvCustomizedView /> : <LgvDefaultView />}
 					</div>
 				)}
 			</div>

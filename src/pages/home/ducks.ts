@@ -1,28 +1,18 @@
 import { createAction, createReducer, createSelector } from "@reduxjs/toolkit";
 import { put, all, takeLatest } from "redux-saga/effects";
 
-const CHANGE_VIEW_ACTION = "[home] change view action";
 const CHANGE_VIEW = "[home] change view";
-const CHANGE_LATCH_ACTION = "[home] change latch action";
 const CHANGE_LATCH = "[home] change latch";
-const CHANGE_RESIZE_METHOD_ACTION = "[home] change resize method action";
 const CHANGE_RESIZE_METHOD = "[home] change resize method";
-const CHANGE_DESK_INTERACTION_MODE_ACTION =
-	"[home] change desk interaction mode action";
 const CHANGE_DESK_INTERACTION_MODE = "[home] change desk interaction mode";
-const SET_POSITION_DATA_ACTION = "[home] set position data action";
 const SET_POSITION_DATA = "[home] set position data";
-const SET_MARGIN_ACTION = "[home] set margin action";
 const SET_MARGIN = "[home] set margin";
-const SET_MARGIN_CHANGE_VALUE_ACTION = "[home] set margin change value action";
 const SET_MARGIN_CHANGE_VALUE = "[home] set margin change value";
-const SET_SCALED_MARGIN_ACTION = "[home] set scaled margin action";
 const SET_SCALED_MARGIN = "[home] set scaled margin";
 
 const initialState = {
 	view: "customized",
 	latch: true,
-	resizeMethod: false,
 	deskInteractionMode: "CUTSPACE",
 	positionData: undefined,
 	margin: undefined,
@@ -32,25 +22,21 @@ const initialState = {
 
 export const stateSelector = (state) => state.homeReducer;
 
-export const getView = createSelector(stateSelector, (state) => {
-	return state.view;
-});
+export const getView = (state) => {
+	return stateSelector(state).view;
+};
 
-export const getLatch = createSelector(stateSelector, (state) => {
-	return state.latch;
-});
+export const getLatch = (state) => {
+	return stateSelector(state).latch;
+};
 
-export const getResizeMethod = createSelector(stateSelector, (state) => {
-	return state.resizeMethod;
-});
+export const getDeskInteractionMode = (state) => {
+	return stateSelector(state).deskInteractionMode;
+};
 
-export const getDeskInteractionMode = createSelector(stateSelector, (state) => {
-	return state.deskInteractionMode;
-});
-
-export const getPositionData = createSelector(stateSelector, (state) => {
-	return state.positionData;
-});
+export const getPositionData = (state) => {
+	return stateSelector(state).positionData;
+};
 
 export const getMargin = (state) => {
 	return stateSelector(state).margin;
@@ -91,65 +77,14 @@ export const homeReducer = createReducer(initialState, {
 	},
 });
 
-export const changeViewAction = createAction(CHANGE_VIEW_ACTION);
-export const changeLatchAction = createAction(CHANGE_LATCH_ACTION);
-export const changeResizeMethodAction = createAction(
-	CHANGE_RESIZE_METHOD_ACTION
-);
+export const changeViewAction = createAction(CHANGE_VIEW);
+export const changeLatchAction = createAction(CHANGE_LATCH);
 export const changeDeskInteractionModeAction = createAction(
-	CHANGE_DESK_INTERACTION_MODE_ACTION
+	CHANGE_DESK_INTERACTION_MODE
 );
-export const setPositionDataAction = createAction(SET_POSITION_DATA_ACTION);
-export const setMarginAction = createAction(SET_MARGIN_ACTION);
-export const setScaledMarginAction = createAction(SET_SCALED_MARGIN_ACTION);
-export const setMarginChangeValueAction = createAction(
-	SET_MARGIN_CHANGE_VALUE_ACTION
-);
+export const setPositionDataAction = createAction(SET_POSITION_DATA);
+export const setMarginAction = createAction(SET_MARGIN);
+export const setScaledMarginAction = createAction(SET_SCALED_MARGIN);
+export const setMarginChangeValueAction = createAction(SET_MARGIN_CHANGE_VALUE);
 
-function* changeViewSaga({ payload }) {
-	yield put({ type: CHANGE_VIEW, payload: payload });
-}
-
-function* changeLatchSaga({ payload }) {
-	yield put({ type: CHANGE_LATCH, payload: payload });
-}
-
-function* changeResizeMethodSaga({ payload }) {
-	yield put({ type: CHANGE_RESIZE_METHOD, payload: payload });
-}
-
-function* changeDeskInteractionModeSaga({ payload }) {
-	yield put({ type: CHANGE_DESK_INTERACTION_MODE, payload: payload });
-}
-
-function* setPositionDataSaga({ payload }) {
-	yield put({ type: SET_POSITION_DATA, payload: payload });
-}
-
-function* setMarginSaga({ payload }) {
-	yield put({ type: SET_MARGIN, payload });
-}
-
-function* setScaledMarginSaga({ payload }) {
-	yield put({ type: SET_SCALED_MARGIN, payload });
-}
-
-function* setMarginChangeValueSaga({ payload }) {
-	yield put({ type: SET_MARGIN_CHANGE_VALUE, payload });
-}
-
-export function* homeSaga() {
-	yield all([
-		yield takeLatest(CHANGE_VIEW_ACTION, changeViewSaga),
-		yield takeLatest(CHANGE_LATCH_ACTION, changeLatchSaga),
-		yield takeLatest(CHANGE_RESIZE_METHOD_ACTION, changeResizeMethodSaga),
-		yield takeLatest(
-			CHANGE_DESK_INTERACTION_MODE_ACTION,
-			changeDeskInteractionModeSaga
-		),
-		yield takeLatest(SET_POSITION_DATA_ACTION, setPositionDataSaga),
-		yield takeLatest(SET_MARGIN_ACTION, setMarginSaga),
-		yield takeLatest(SET_SCALED_MARGIN_ACTION, setScaledMarginSaga),
-		yield takeLatest(SET_MARGIN_CHANGE_VALUE_ACTION, setMarginChangeValueSaga),
-	]);
-}
+export function* homeSaga() {}

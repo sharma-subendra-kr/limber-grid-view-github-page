@@ -72,6 +72,8 @@ const LgvCustomizedView = (props) => {
 			margin: margin,
 			marginChangeValue: marginChangeValue,
 		});
+		// for debugging
+		window.limberGridView = lgv.current;
 	}, []);
 
 	const itemMouseDownMoveCheck = (x, y, item, index, currentTarget) => {

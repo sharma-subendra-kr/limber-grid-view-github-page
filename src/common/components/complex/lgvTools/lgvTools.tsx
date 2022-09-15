@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
 
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -18,11 +19,14 @@ import { faCut } from "@fortawesome/free-solid-svg-icons";
 
 import styled from "styled-components";
 
+import { withLGV } from "../../hoc/withLGV";
 import {
 	getLatch,
 	changeLatchAction,
 	getDeskInteractionMode,
 	changeDeskInteractionModeAction,
+	setPositionDataAction,
+	setScaledMarginAction,
 } from "src/pages/home/ducks";
 
 import "./lgvTools.scss";
@@ -30,35 +34,40 @@ import "./lgvTools.scss";
 const LgvTools = (props) => {
 	const {
 		className,
-		onUserUndo,
-		onUserRedo,
-		onAddItem,
 		latch,
 		changeLatchAction,
 		deskInteractionMode,
 		changeDeskInteractionModeAction,
+		setPositionDataAction,
+		setScaledMarginAction,
+		lgv,
 	} = props;
 
 	const onUndo = () => {
-		onUserUndo();
+		lgv.current.undo();
+		setPositionDataAction(lgv.current.getGridData().positionData);
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
 	};
 
 	const onRedo = () => {
-		onUserRedo();
+		lgv.current.redo();
+		setPositionDataAction(lgv.current.getGridData().positionData);
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
 	};
 
 	const onLatchClick = ({ target: { checked } }) => {
+		lgv.current.setLatchMovedItem(checked);
 		changeLatchAction(checked);
 	};
 
 	const onAddOrCutClick = ({ target: { value } }) => {
+		lgv.current.setDeskInteractMode(value);
 		changeDeskInteractionModeAction(value);
 	};
 
 	const onAddItemClick = (event) => {
-		if (onAddItem) {
-			onAddItem();
-		}
+		// addComplete callback present so not updating the redux store here
+		lgv.current.addItem();
 	};
 
 	return (
@@ -167,13 +176,18 @@ const StyledLgvTools = styled(LgvTools)`
 	}
 `;
 
-export default connect(
-	(state) => ({
-		latch: getLatch(state),
-		deskInteractionMode: getDeskInteractionMode(state),
-	}),
-	{
-		changeLatchAction,
-		changeDeskInteractionModeAction,
-	}
+export default compose(
+	withLGV,
+	connect(
+		(state) => ({
+			latch: getLatch(state),
+			deskInteractionMode: getDeskInteractionMode(state),
+		}),
+		{
+			changeLatchAction,
+			changeDeskInteractionModeAction,
+			setPositionDataAction,
+			setScaledMarginAction,
+		}
+	)
 )(StyledLgvTools);

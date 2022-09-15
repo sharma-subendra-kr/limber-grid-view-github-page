@@ -15,6 +15,11 @@ import {
 	getDeskInteractionMode,
 	getPositionData,
 	setPositionDataAction,
+	getMargin,
+	getMarginChangeValue,
+	setMarginAction,
+	setScaledMarginAction,
+	setMarginChangeValueAction,
 } from "../../../ducks";
 
 import "./lgvCustomizedView.scss";
@@ -26,6 +31,11 @@ const LgvCustomizedView = (props) => {
 		positionData,
 		setPositionDataAction,
 		lgv,
+		margin,
+		marginChangeValue,
+		setMarginAction,
+		setScaledMarginAction,
+		setMarginChangeValueAction,
 	} = props;
 
 	const [snackBarState, setSnackBarState] = useState(false);
@@ -37,8 +47,9 @@ const LgvCustomizedView = (props) => {
 			el: el.current,
 			itemMouseDownMoveCheck: itemMouseDownMoveCheck,
 			callbacks: {
-				renderContent: renderContent,
+				mountComplete: mountComplete,
 				renderComplete: renderComplete,
+				renderContent: renderContent,
 				resizeComplete: resizeComplete,
 				moveComplete: moveComplete,
 				addComplete: addComplete,
@@ -58,13 +69,12 @@ const LgvCustomizedView = (props) => {
 				resizeSquareGuideLength: 30, // see ./layout.scss for required css
 			},
 			positionData: positionData,
+			margin: margin,
+			marginChangeValue: marginChangeValue,
 		});
+		// for debugging
+		window.limberGridView = lgv.current;
 	}, []);
-
-	if (lgv.current) {
-		lgv.current.setLatchMovedItem(latch);
-		lgv.current.setDeskInteractMode(deskInteractionMode);
-	}
 
 	const itemMouseDownMoveCheck = (x, y, item, index, currentTarget) => {
 		if (
@@ -80,6 +90,18 @@ const LgvCustomizedView = (props) => {
 		lgv.current.removeItem(index);
 	};
 
+	const mountComplete = () => {
+		setMarginAction(lgv.current.getCurrentMargin());
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
+		setMarginChangeValueAction(lgv.current.getMarginChangeValue());
+	};
+
+	const renderComplete = (index) => {
+		if (index === undefined) {
+		} else {
+		}
+	};
+
 	const renderContent = (index, width, height, type) => {
 		return (
 			<Layout
@@ -91,8 +113,6 @@ const LgvCustomizedView = (props) => {
 			/>
 		);
 	};
-
-	const renderComplete = (index) => {};
 
 	const resizeComplete = (index, width, height, arrangedIndices) => {
 		setPositionDataAction(lgv.current.getGridData().positionData);
@@ -166,7 +186,14 @@ export default compose(
 			latch: getLatch(state),
 			deskInteractionMode: getDeskInteractionMode(state),
 			positionData: getPositionData(state),
+			margin: getMargin(state),
+			marginChangeValue: getMarginChangeValue(state),
 		}),
-		{ setPositionDataAction }
+		{
+			setPositionDataAction,
+			setMarginAction,
+			setScaledMarginAction,
+			setMarginChangeValueAction,
+		}
 	)
 )(LgvCustomizedView);

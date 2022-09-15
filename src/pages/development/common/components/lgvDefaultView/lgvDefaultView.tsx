@@ -15,6 +15,7 @@ import {
 	getDeskInteractionMode,
 	getPositionData,
 	setPositionDataAction,
+	getMargin,
 } from "../../../ducks";
 import { logAction } from "../logger/ducks";
 
@@ -25,6 +26,7 @@ const LgvDefaultView = (props) => {
 		latch,
 		deskInteractionMode,
 		positionData,
+		margin,
 		setPositionDataAction,
 		logAction,
 		lgv,
@@ -62,6 +64,7 @@ const LgvDefaultView = (props) => {
 				emitDebugLogs: true,
 			},
 			positionData: positionData,
+			margin: margin,
 			isMobileCheck: () => false,
 		});
 	}, []);
@@ -152,6 +155,7 @@ export default compose(
 			latch: getLatch(state),
 			deskInteractionMode: getDeskInteractionMode(state),
 			positionData: getPositionData(state),
+			margin: getMargin(state),
 		}),
 		{ setPositionDataAction, logAction }
 	)

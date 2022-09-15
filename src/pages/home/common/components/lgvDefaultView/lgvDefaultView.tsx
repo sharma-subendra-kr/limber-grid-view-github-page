@@ -15,11 +15,6 @@ import {
 	getDeskInteractionMode,
 	getPositionData,
 	setPositionDataAction,
-	getMargin,
-	getMarginChangeValue,
-	setMarginAction,
-	setScaledMarginAction,
-	setMarginChangeValueAction,
 } from "../../../ducks";
 
 import "./lgvDefaultView.scss";
@@ -31,11 +26,6 @@ const LgvDefaultView = (props) => {
 		positionData,
 		setPositionDataAction,
 		lgv,
-		margin,
-		marginChangeValue,
-		setMarginAction,
-		setScaledMarginAction,
-		setMarginChangeValueAction,
 	} = props;
 
 	const [snackBarState, setSnackBarState] = useState(false);
@@ -46,7 +36,6 @@ const LgvDefaultView = (props) => {
 		lgv.current = new LimberGridView({
 			el: el.current,
 			callbacks: {
-				mountComplete: mountComplete,
 				renderComplete: renderComplete,
 				renderContent: renderContent,
 				resizeComplete: resizeComplete,
@@ -65,18 +54,10 @@ const LgvDefaultView = (props) => {
 				latchMovedItem: latch,
 			},
 			positionData: positionData,
-			margin: margin,
-			marginChangeValue: marginChangeValue,
 		});
 	}, []);
 
 	const onRemove = (index) => {};
-
-	const mountComplete = () => {
-		setMarginAction(lgv.current.getCurrentMargin());
-		setScaledMarginAction(lgv.current.getCurrentMargin(true));
-		setMarginChangeValueAction(lgv.current.getMarginChangeValue());
-	};
 
 	const renderComplete = (index) => {
 		if (index === undefined) {
@@ -161,14 +142,9 @@ export default compose(
 			latch: getLatch(state),
 			deskInteractionMode: getDeskInteractionMode(state),
 			positionData: getPositionData(state),
-			margin: getMargin(state),
-			marginChangeValue: getMarginChangeValue(state),
 		}),
 		{
 			setPositionDataAction,
-			setMarginAction,
-			setScaledMarginAction,
-			setMarginChangeValueAction,
 		}
 	)
 )(LgvDefaultView);

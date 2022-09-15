@@ -46,11 +46,6 @@
     * [.isRedoAvailable()](#LimberGridView+isRedoAvailable) ⇒ <code>boolean</code>
     * [.setAutoScrollDelay(value)](#LimberGridView+setAutoScrollDelay) ⇒ <code>undefined</code>
     * [.setAutoScrollForMouse(flag)](#LimberGridView+setAutoScrollForMouse) ⇒ <code>undefined</code>
-    * [.decreaseMargin()](#LimberGridView+decreaseMargin) ⇒ <code>boolean</code>
-    * [.increaseMargin()](#LimberGridView+increaseMargin) ⇒ <code>boolean</code>
-    * [.setMarginChangeValue()](#LimberGridView+setMarginChangeValue) ⇒ <code>boolean</code>
-    * [.getMarginChangeValue()](#LimberGridView+getMarginChangeValue) ⇒ <code>boolean</code>
-    * [.getCurrentMargin()](#LimberGridView+getCurrentMargin) ⇒ <code>number</code>
     * [.destroy()](#LimberGridView+destroy) ⇒ <code>undefined</code>
 
 <a name="new_LimberGridView_new"></a>
@@ -193,44 +188,6 @@ Call this function to change the publicConstant, autoScrollForMouse during runti
 | --- | --- | --- |
 | flag | <code>boolean</code> | A boolean flag. |
 
-<a name="LimberGridView+decreaseMargin"></a>
-
-### limberGridView.decreaseMargin() ⇒ <code>boolean</code>
-Decreases the margin by the specified value asynchrousnoly.
-
-**Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
-**Throws**:
-
-- <code>string</code> 
-
-<a name="LimberGridView+increaseMargin"></a>
-
-### limberGridView.increaseMargin() ⇒ <code>boolean</code>
-Increases the margin by the specified value asynchrousnoly.
-
-**Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
-**Throws**:
-
-- <code>string</code> 
-
-<a name="LimberGridView+setMarginChangeValue"></a>
-
-### limberGridView.setMarginChangeValue() ⇒ <code>boolean</code>
-Sets the value by which margin is to increased or decreased.
-
-**Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
-<a name="LimberGridView+getMarginChangeValue"></a>
-
-### limberGridView.getMarginChangeValue() ⇒ <code>boolean</code>
-Get the value by which margin is to increased or decreased.
-
-**Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
-<a name="LimberGridView+getCurrentMargin"></a>
-
-### limberGridView.getCurrentMargin() ⇒ <code>number</code>
-Get current margin scaled according to gridData. Pass true as first argument to get currently scaled margin.
-
-**Kind**: instance method of [<code>LimberGridView</code>](#LimberGridView)  
 <a name="LimberGridView+destroy"></a>
 
 ### limberGridView.destroy() ⇒ <code>undefined</code>
@@ -356,50 +313,36 @@ An object containing various callbacks.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| mountComplete | [<code>mountComplete</code>](#callbacks..mountComplete) | Callback function invoked after completion of all jobs i.e. when everything is initialized, rendered, etc. It is invoked after first time renderComplete. |
-| renderComplete | [<code>renderComplete</code>](#callbacks..renderComplete) | Callback function invoked after rendering contents of an item. It does not get invoked after re-rendering items whose indices are affected due to the removal of any item. It receives the index of the item as an argument. For the first time render, window resize and margin change, invocation of this callback is batched and doesn't receive any argument. |
+| renderComplete | [<code>renderComplete</code>](#callbacks..renderComplete) | Callback function invoked after rendering contents of an item. It does not get invoked after re-rendering items whose indices are affected due to the removal of any item. It receives the index of the item as an argument. For the first time render, invocation of this callback is batched and doesn't receive any argument. |
 | renderContent | [<code>renderContent</code>](#callbacks..renderContent) | Callback function called to receive the contents of the item. Also called for all the items whose indices have changed due to the removal of any item. In such cases, it is invoked after removeComplete. |
 | addComplete | [<code>addComplete</code>](#callbacks..addComplete) | Callback function called when addition of an item is complete. |
 | removeComplete | [<code>removeComplete</code>](#callbacks..removeComplete) | Callback function called when removing of item is complete. |
 | moveComplete | [<code>moveComplete</code>](#callbacks..moveComplete) | Callback function called when moving of item is complete. |
 | resizeComplete | [<code>resizeComplete</code>](#callbacks..resizeComplete) | Callback function called when resizing of item is complete. |
-| cutSpaceComplete | [<code>cutSpaceComplete</code>](#callbacks..cutSpaceComplete) | Callback function called when removing empty space is complete. |
 | renderPlugin | [<code>renderPlugin</code>](#callbacks..renderPlugin) | Callback function called after renderContent and before renderComplete and addComplete but after removeComplete  for items to be rerender after a removeal of an item. |
 | removePlugin | [<code>removePlugin</code>](#callbacks..removePlugin) | Callback function called before the item is removed from the DOM. Also before removeComplete. |
-| onItemClickCallback | [<code>onItemClickCallback</code>](#callbacks..onItemClickCallback) | Callback function called when user clicks on an item. |
 | getLogMessage | [<code>getLogMessage</code>](#callbacks..getLogMessage) | The callback function to get logs for errors like when the user drags outside of grid view. Returns an object with keys type and message. |
 | getArrangeTime | [<code>getArrangeTime</code>](#callbacks..getArrangeTime) | The callback function to get logs for the move or resize operation. Returns time taken, resize count, and count of rectangles processed internally. |
 | offsetMovePseudoElement | [<code>offsetMovePseudoElement</code>](#callbacks..offsetMovePseudoElement) | The callback function to offset the move helper element from the top-left. Receives current cursor or touch coordinates and item dimensions in the two-point form as arguments. Use these details to offset the move helper top-left from the curser point. |
-| getDebugLog | [<code>getDebugLog</code>](#callbacks..getDebugLog) | The callback function to get currently logged item. For developer of LimberGridView only. |
 
 
 * [callbacks](#callbacks) : <code>options~callbacks</code>
-    * [~mountComplete](#callbacks..mountComplete) ⇒ <code>undefined</code>
     * [~renderComplete](#callbacks..renderComplete) ⇒ <code>undefined</code>
     * [~renderContent](#callbacks..renderContent) ⇒ <code>string</code> \| <code>Element</code> \| <code>object</code>
     * [~addComplete](#callbacks..addComplete) ⇒ <code>undefined</code>
     * [~removeComplete](#callbacks..removeComplete) ⇒ <code>undefined</code>
     * [~moveComplete](#callbacks..moveComplete) ⇒ <code>undefined</code>
     * [~resizeComplete](#callbacks..resizeComplete) ⇒ <code>undefined</code>
-    * [~cutSpaceComplete](#callbacks..cutSpaceComplete) ⇒ <code>undefined</code>
     * [~renderPlugin](#callbacks..renderPlugin) ⇒ <code>undefined</code>
     * [~removePlugin](#callbacks..removePlugin) ⇒ <code>undefined</code>
-    * [~onItemClickCallback](#callbacks..onItemClickCallback) ⇒ <code>undefined</code>
     * [~getLogMessage](#callbacks..getLogMessage) ⇒ <code>undefined</code>
     * [~getArrangeTime](#callbacks..getArrangeTime) ⇒ <code>undefined</code>
     * [~offsetMovePseudoElement](#callbacks..offsetMovePseudoElement) ⇒ <code>object</code>
-    * [~getDebugLog](#callbacks..getDebugLog) : <code>function</code>
 
-<a name="callbacks..mountComplete"></a>
-
-### callbacks~mountComplete ⇒ <code>undefined</code>
-Callback function invoked after completion of all jobs i.e. when everything is initialized, rendered, etc. It is invoked after first time renderComplete.
-
-**Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 <a name="callbacks..renderComplete"></a>
 
 ### callbacks~renderComplete ⇒ <code>undefined</code>
-Callback function invoked after rendering contents of an item. It does not get invoked after re-rendering items whose indices are affected due to the removal of any item. It receives the index of the item as an argument. For the first time render, window resize and margin change, invocation of this callback is batched and doesn't receive any argument.
+Callback function invoked after rendering contents of an item. It does not get invoked after re-rendering items whose indices are affected due to the removal of any item. It receives the index of the item as an argument. For the first time render, invocation of this callback is batched and doesn't receive any argument.
 
 **Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 
@@ -472,12 +415,6 @@ The callback function, called when resizing of an item is complete.
 | height | <code>number</code> | The height of the item resized. |
 | arrangedIndices | <code>Array.&lt;number&gt;</code> | An array of indices of the arranged items. |
 
-<a name="callbacks..cutSpaceComplete"></a>
-
-### callbacks~cutSpaceComplete ⇒ <code>undefined</code>
-The callback function, called when removing free space is complete.
-
-**Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 <a name="callbacks..renderPlugin"></a>
 
 ### callbacks~renderPlugin ⇒ <code>undefined</code>
@@ -500,17 +437,6 @@ The callback function, called just before the item is removed from the DOM and b
 | Param | Type | Description |
 | --- | --- | --- |
 | element | <code>Element</code> | The instance of an element which is going to be removed from the DOM. |
-
-<a name="callbacks..onItemClickCallback"></a>
-
-### callbacks~onItemClickCallback ⇒ <code>undefined</code>
-The callback function, called when user clicks on an item.
-
-**Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| event | <code>event</code> | The event object. |
 
 <a name="callbacks..getLogMessage"></a>
 
@@ -550,17 +476,6 @@ The callback function to offset the move helper element from the top-left. Recei
 | y | <code>number</code> | The distance along the y-axis where the user placed the cursor or touched the surface. |
 | item | <code>object</code> | An item object in the two-point form. |
 
-<a name="callbacks..getDebugLog"></a>
-
-### callbacks~getDebugLog : <code>function</code>
-The callback function to get log messages. For use only for developer of LimberGridView.
-
-**Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
-
-| Type |
-| --- |
-| <code>number</code> | 
-
 <a name="publicConstants"></a>
 
 ## publicConstants : <code>options~publicConstants</code>
@@ -590,9 +505,5 @@ Constants that you can change or set at any point in time to get the desired beh
 | latchMovedItem | <code>boolean</code> | To enable or disable latch mode. The default value is true. |
 | animateMovedItem | <code>boolean</code> | The flag tells whether to animate or not to animate the moved item. The default value is false. |
 | animateTime | <code>number</code> | Time to wait before re-activating animate to the moved item. It can be the actual animate time set through CSS. LimberGridView temporarily disables animation for the moved item when the animateMovedItem flag is set to false through inline CSS. The default value is 250ms. |
-| marginChangeValue | <code>number</code> | Value by which margin is increased or decreased. Default value is 0.5. |
-| crossHairWidth | <code>number</code> | Width of move/resise helper cross hair. Default value is 500. |
-| crossHairHeight | <code>number</code> | Height of move/resise helper cross hair. Default value is 500. |
 | shrinkToFit | <code>number</code> | LimberGridView will shrink items by the percentage value specified while trying to arrange affected items. |
-| emitDebugLogs | <code>number</code> | Flag to specify whether or not logger will emit logs. For developer of LimberGridView only. Default value is false. |
 

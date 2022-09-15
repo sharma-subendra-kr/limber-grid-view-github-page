@@ -9,7 +9,7 @@ import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
 import Drawer from "src/common/components/static/drawer/drawer";
 import LgvTools from "src/common/components/complex/lgvTools/lgvTools";
-import LgvMoreTools from "src/common/components/complex/lgvMoreTools/lgvMoreTools";
+// import LgvMoreTools from "src/common/components/complex/lgvMoreTools/lgvMoreTools";
 import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomizedView";
 import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
 import SwitchToDesktop from "src/common/components/static/switchToDesktop/switchToDesktop";
@@ -130,17 +130,19 @@ const Home = (props) => {
 						</div>
 						<div className="lgv-tools-container">
 							<LgvTools />
-							{isToolsExpanded && <LgvMoreTools />}
+							{/*{isToolsExpanded && <LgvMoreTools />}*/}
 						</div>
-						<Fab
-							size="small"
-							color="secondary"
-							aria-label="expand"
-							onClick={onClickExpandTools}
-							className={isToolsExpanded && "expanded"}
-						>
-							<DoubleArrowIcon />
-						</Fab>
+						{false && (
+							<Fab
+								size="small"
+								color="secondary"
+								aria-label="expand"
+								onClick={onClickExpandTools}
+								className={isToolsExpanded && "expanded"}
+							>
+								<DoubleArrowIcon />
+							</Fab>
+						)}
 					</div>
 				</div>
 				{positionData && (

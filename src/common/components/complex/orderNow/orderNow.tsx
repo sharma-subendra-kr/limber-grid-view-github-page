@@ -140,16 +140,9 @@ const OrderNowModal = ({
 				<DialogContent>
 					<Grid container direction="row" justify="center">
 						<DialogContentText>
-							A stable release is planned in mid-2022. This can be pushed
-							further back as LimberGridView is going under rigorous testing.
-							Pre-order now to get your purchase processed ASAP after the stable
-							release. Your purchase helps the development of{" "}
-							<Link
-								to="/LimberGridView/allProducts"
-								onClick={() => setOrderNowDialogAction(false)}
-							>
-								limber_____.com.
-							</Link>
+							A stable release is planned soon. This can be pushed further back
+							as LimberGridView is going under rigorous testing. Pre-order now
+							to get your purchase processed ASAP after the stable release.
 						</DialogContentText>
 						<br />
 						<Grid item lg={8} md={8} xs={8} sm={8} className="order-field">

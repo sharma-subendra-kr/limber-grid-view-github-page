@@ -59,7 +59,9 @@ const Pricing = (props) => {
 									<TableHead>
 										<TableRow>
 											<TableCell>
-												<Typography variant="h6">Integration*</Typography>
+												<Typography variant="h6">
+													Integration Support*
+												</Typography>
 											</TableCell>
 											<TableCell>
 												<Typography variant="h6">Price</Typography>
@@ -71,21 +73,21 @@ const Pricing = (props) => {
 									</TableHead>
 									<TableBody>
 										<TableRow>
-											<TableCell>Integration (Work From Home)</TableCell>
+											<TableCell>Work From Home</TableCell>
 											<TableCell>INR 50,000/week, 5 working days</TableCell>
 											<TableCell style={{ color: "green", fontWeight: "bold" }}>
 												Available
 											</TableCell>
 										</TableRow>
 										<TableRow>
-											<TableCell>Integration (Bangalore)</TableCell>
+											<TableCell>Bangalore</TableCell>
 											<TableCell>INR 60,000/week, 5 working days</TableCell>
 											<TableCell style={{ color: "green", fontWeight: "bold" }}>
 												Available
 											</TableCell>
 										</TableRow>
 										<TableRow>
-											<TableCell>Integration (Other cities in India)</TableCell>
+											<TableCell>Other cities in India</TableCell>
 											<TableCell>
 												INR 60,000/week, 5 working days
 												<br />
@@ -98,7 +100,7 @@ const Pricing = (props) => {
 											</TableCell>
 										</TableRow>
 										<TableRow>
-											<TableCell>Integration (Other countries)</TableCell>
+											<TableCell>Other countries</TableCell>
 											<TableCell>
 												Contact for pricing
 												<br />
@@ -113,9 +115,61 @@ const Pricing = (props) => {
 								</Table>
 							</TableContainer>
 							<br />
+							<br />
+							<br />
+							<Grid item>
+								<TableContainer component={Paper}>
+									<Table aria-label="simple table">
+										<TableHead>
+											<TableRow>
+												<TableCell>
+													<Typography variant="h6">Email Support</Typography>
+												</TableCell>
+												<TableCell>
+													<Typography variant="h6">Price</Typography>
+												</TableCell>
+												<TableCell>
+													<Typography variant="h6">Status</Typography>
+												</TableCell>
+											</TableRow>
+										</TableHead>
+										<TableBody>
+											<TableRow>
+												<TableCell>Response within 48hrs</TableCell>
+												<TableCell>INR 5,000/mo</TableCell>
+												<TableCell style={{ color: "red", fontWeight: "bold" }}>
+													Unavailable
+												</TableCell>
+											</TableRow>
+											<TableRow>
+												<TableCell>Response within 24hrs</TableCell>
+												<TableCell>INR 10,000/mo</TableCell>
+												<TableCell style={{ color: "red", fontWeight: "bold" }}>
+													Unavailable
+												</TableCell>
+											</TableRow>
+											<TableRow>
+												<TableCell>Response within 12hrs</TableCell>
+												<TableCell>INR 20,000/mo</TableCell>
+												<TableCell style={{ color: "red", fontWeight: "bold" }}>
+													Unavailable
+												</TableCell>
+											</TableRow>
+											<TableRow>
+												<TableCell>Response within 6hrs</TableCell>
+												<TableCell>INR 30,000/mo</TableCell>
+												<TableCell style={{ color: "red", fontWeight: "bold" }}>
+													Unavailable
+												</TableCell>
+											</TableRow>
+										</TableBody>
+									</Table>
+								</TableContainer>
+							</Grid>
+							<br />
 							<Typography variant="caption">
 								* Integration might not complete in 5 working days depending
-								upon your code base. Buyers might be able to extend the service
+								upon your codebase. Buyers might be able to extend the service
 								time at a cost of INR 12,000/day within India up to 5 working
 								days.
 								<br />

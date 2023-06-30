@@ -40,7 +40,7 @@ const Routes = () => {
 				<PublicRoute
 					exact
 					path="/LimberGridView/devSupport"
-					component={DevSupport}
+					component={Pricing}
 					redirectPath="/LimberGridView"
 				/>
 				<PublicRoute

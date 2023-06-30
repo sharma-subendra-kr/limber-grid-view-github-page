@@ -21,37 +21,51 @@ import Drawer from "src/common/components/static/drawer/drawer";
 import PageContainer from "src/common/components/static/pageContainer/pageContainer";
 
 const Pricing = (props) => {
+	console.log("location", location);
 	return (
 		<>
 			<Header />
 			<Drawer />
 			<Footer />
 			<PageContainer>
-				<Typography variant="h4">Pricing</Typography>
-				<br />
+				{location.pathname.indexOf("pricing") !== -1 && (
+					<>
+						<Typography variant="h4">Pricing</Typography>
+						<br />
+					</>
+				)}
 				<Box m={0} p={0}>
 					<Grid container alignItems="center" direction="column" spacing={3}>
+						{location.pathname.indexOf("pricing") !== -1 && (
+							<>
+								<Grid item>
+									<p>
+										Payment must be made to a specific bank in India in Indian
+										Rupees. All prices are exclusive of taxes.
+									</p>
+								</Grid>
+								<Grid
+									container
+									item
+									alignItems="center"
+									justifyContent="center"
+								>
+									<Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
+										<Card>
+											<CardContent>
+												<Grid container alignItems="center" direction="column">
+													<Typography variant="h4">Licensing fees</Typography>
+													<br />
+													<Typography variant="h5">INR 50,000/yr</Typography>
+												</Grid>
+											</CardContent>
+										</Card>
+									</Grid>
+								</Grid>
+							</>
+						)}
 						<Grid item>
-							<p>
-								Payment must be made to a specific bank in India in Indian
-								Rupees. All prices are exclusive of taxes.
-							</p>
-						</Grid>
-						<Grid container item alignItems="center" justifyContent="center">
-							<Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
-								<Card>
-									<CardContent>
-										<Grid container alignItems="center" direction="column">
-											<Typography variant="h4">Licensing fees</Typography>
-											<br />
-											<Typography variant="h5">INR 50,000/yr</Typography>
-										</Grid>
-									</CardContent>
-								</Card>
-							</Grid>
-						</Grid>
-						<Grid item>
-							<Typography variant="h5">Services</Typography>
+							<Typography variant="h4">Support Services</Typography>
 						</Grid>
 						<Grid item>
 							<TableContainer component={Paper}>
@@ -158,6 +172,43 @@ const Pricing = (props) => {
 											<TableRow>
 												<TableCell>Response within 6hrs</TableCell>
 												<TableCell>INR 30,000/mo</TableCell>
+												<TableCell style={{ color: "red", fontWeight: "bold" }}>
+													Unavailable
+												</TableCell>
+											</TableRow>
+										</TableBody>
+									</Table>
+								</TableContainer>
+							</Grid>
+							<br />
+							<br />
+							<br />
+							<Grid item>
+								<TableContainer component={Paper}>
+									<Table aria-label="simple table">
+										<TableHead>
+											<TableRow>
+												<TableCell>
+													<Typography variant="h6">
+														Complimentary Email Support
+													</Typography>
+												</TableCell>
+												<TableCell>
+													<Typography variant="h6">Status</Typography>
+												</TableCell>
+											</TableRow>
+										</TableHead>
+										<TableBody>
+											<TableRow>
+												<TableCell>
+													Response within 24hrs
+													<br />
+													<br />
+													(This is not a dedicated service and is just a gesture
+													of goodwill.
+													<br />
+													This doesn't guarantee any timely response.)
+												</TableCell>
 												<TableCell style={{ color: "red", fontWeight: "bold" }}>
 													Unavailable
 												</TableCell>

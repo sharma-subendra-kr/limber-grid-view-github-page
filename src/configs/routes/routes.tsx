@@ -55,12 +55,12 @@ const Routes = () => {
 					component={FAQ}
 					redirectPath="/LimberGridView"
 				/>
-				<PublicRoute
+				{/*<PublicRoute
 					exact
 					path="/LimberGridView/howItWorks"
 					component={HowItWorks}
 					redirectPath="/LimberGridView"
-				/>
+				/>*/}
 				<PublicRoute
 					exact
 					path="/LimberGridView/infoOnCommercialLicense"

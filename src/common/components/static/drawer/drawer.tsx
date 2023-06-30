@@ -47,7 +47,7 @@ const list = [
 	{ icon: HomeIcon, title: "Home", url: "" },
 	{ icon: ShoppingCartIcon, title: "Pre-Order Now", url: "" },
 	{ icon: TouchAppIcon, title: "How To Use", url: "" },
-	{ icon: ToysIcon, title: "How It Works", url: "howItWorks" },
+	// { icon: ToysIcon, title: "How It Works", url: "howItWorks" },
 	{
 		icon: TimerIcon,
 		title: "About Time Complexity",

@@ -57,7 +57,9 @@ const Pricing = (props) => {
 												<Grid container alignItems="center" direction="column">
 													<Typography variant="h4">Licensing fees</Typography>
 													<br />
-													<Typography variant="h5">INR 50,000/yr</Typography>
+													<Typography variant="h5">
+														&#8377; 50,000/yr
+													</Typography>
 													<br />
 													<Typography variant="body2">
 														For one FQDN and one each application on iOS and
@@ -73,7 +75,9 @@ const Pricing = (props) => {
 												<Grid container alignItems="center" direction="column">
 													<Typography variant="h4">Licensing fees</Typography>
 													<br />
-													<Typography variant="h5">INR 25,000/yr</Typography>
+													<Typography variant="h5">
+														&#8377; 25,000/yr
+													</Typography>
 													<br />
 													<Typography variant="body2">
 														For one application on any one platforms like

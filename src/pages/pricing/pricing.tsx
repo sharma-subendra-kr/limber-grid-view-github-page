@@ -49,6 +49,7 @@ const Pricing = (props) => {
 									item
 									alignItems="center"
 									justifyContent="center"
+									spacing={3}
 								>
 									<Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
 										<Card>
@@ -57,6 +58,27 @@ const Pricing = (props) => {
 													<Typography variant="h4">Licensing fees</Typography>
 													<br />
 													<Typography variant="h5">INR 50,000/yr</Typography>
+													<br />
+													<Typography variant="body2">
+														For one FQDN and one each application on iOS and
+														android.
+													</Typography>
+												</Grid>
+											</CardContent>
+										</Card>
+									</Grid>
+									<Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
+										<Card>
+											<CardContent>
+												<Grid container alignItems="center" direction="column">
+													<Typography variant="h4">Licensing fees</Typography>
+													<br />
+													<Typography variant="h5">INR 25,000/yr</Typography>
+													<br />
+													<Typography variant="body2">
+														For one application on any one platforms like
+														Ubuntu, Windows, MacOS, etc.
+													</Typography>
 												</Grid>
 											</CardContent>
 										</Card>

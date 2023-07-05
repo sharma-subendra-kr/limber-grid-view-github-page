@@ -20,18 +20,17 @@ const RefundPolicy = (props) => {
 					<Typography variant="h4">Refund Policy</Typography>
 					<br />
 					<br />
-					You can get a 70% refund on the cost price(excluding tax) within 6
-					months from the date of purchase of the license, no questions asked.
+					You can get a 30% refund on the cost price(excluding tax) within 6
+					months.
 					<br />
 					<br />
-					If you would like to get a refund after six months from the date of
-					purchase of the license, then there must be a valid reason for me to
-					process your refund. For me to process your refund, your cause of
-					dissatisfaction must satisfy all the criteria listed below:
+					There must be a valid reason for me to process your refund. For me to
+					process your refund, your cause of dissatisfaction must satisfy all
+					the criteria listed below:
 					<br />
 					<br />
 					* there is a bug in LimberGridView due to which it crashes or is
-					unusable
+					unusable by the front end user
 					<br />
 					<br />
 					* the bug or unstable behavior is reproducible

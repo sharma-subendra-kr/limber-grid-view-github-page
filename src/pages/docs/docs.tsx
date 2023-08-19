@@ -30,7 +30,7 @@ const Docs = (props) => {
 			<PageContainer>
 				<Paper>
 					<Box p={4}>
-						<Typography variant="h4">API Docs</Typography>
+						<Typography variant="h4">Docs</Typography>
 						<Markdown
 							options={{ overrides: { table: TableWrapper } }}
 							className="docs"

@@ -26,6 +26,7 @@ import {
 	getDeskInteractionMode,
 	changeDeskInteractionModeAction,
 	setPositionDataAction,
+	setScaledMarginAction,
 } from "src/pages/home/ducks";
 
 import "./lgvTools.scss";
@@ -38,17 +39,20 @@ const LgvTools = (props) => {
 		deskInteractionMode,
 		changeDeskInteractionModeAction,
 		setPositionDataAction,
+		setScaledMarginAction,
 		lgv,
 	} = props;
 
 	const onUndo = () => {
 		lgv.current.undo();
 		setPositionDataAction(lgv.current.getGridData().positionData);
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
 	};
 
 	const onRedo = () => {
 		lgv.current.redo();
 		setPositionDataAction(lgv.current.getGridData().positionData);
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
 	};
 
 	const onLatchClick = ({ target: { checked } }) => {
@@ -183,6 +187,7 @@ export default compose(
 			changeLatchAction,
 			changeDeskInteractionModeAction,
 			setPositionDataAction,
+			setScaledMarginAction,
 		}
 	)
 )(StyledLgvTools);

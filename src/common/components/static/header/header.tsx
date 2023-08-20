@@ -19,6 +19,7 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import CodeIcon from "@material-ui/icons/Code";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+import { setOrderNowDialogAction } from "src/common/components/complex/orderNow/ducks";
 import {
 	getDrawerState,
 	toggleDrawerStateAction,
@@ -29,7 +30,7 @@ import "./header.scss";
 const codeLink =
 	"https://github.com/sharma-subendra-kr/limber-grid-view-github-page/blob/master/src/pages/home/common/components/lgvCustomizedView/lgvCustomizedView.tsx";
 
-const HeaderLinks = () => {
+const HeaderLinks = ({ setOrderNowDialogAction }) => {
 	return (
 		<>
 			<Typography className="header-links">
@@ -44,10 +45,11 @@ const HeaderLinks = () => {
 				</b>
 			</Typography>
 
-			<Typography className="header-links">
-				<b>
-					<Link to="/LimberGridView/buy">Pre-Order Now</Link>
-				</b>
+			<Typography
+				className="header-links"
+				onClick={() => setOrderNowDialogAction(true)}
+			>
+				<b>Pre-Order Now</b>
 			</Typography>
 
 			<Typography className="header-links">
@@ -59,7 +61,7 @@ const HeaderLinks = () => {
 	);
 };
 
-const HeaderLinksMobile = () => {
+const HeaderLinksMobile = ({ setOrderNowDialogAction }) => {
 	return (
 		<List>
 			<ListItem>
@@ -77,10 +79,11 @@ const HeaderLinksMobile = () => {
 				</Typography>
 			</ListItem>
 			<ListItem>
-				<Typography className="header-links">
-					<b>
-						<Link to="/LimberGridView/buy">Pre-Order Now</Link>
-					</b>
+				<Typography
+					className="header-links"
+					onClick={() => setOrderNowDialogAction(true)}
+				>
+					<b>Pre-Order Now</b>
 				</Typography>
 			</ListItem>
 			<ListItem>
@@ -101,7 +104,13 @@ const HeaderLinksMobile = () => {
 	);
 };
 
-const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
+const Header = ({
+	className,
+	drawerState,
+	toggleDrawerStateAction,
+	setOrderNowDialogAction,
+	push,
+}) => {
 	const [expand, setExpand] = useState(false);
 
 	const onToggleDrawer = () => {
@@ -129,7 +138,7 @@ const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
 						>
 							limber.in
 						</Typography>
-						<HeaderLinks />
+						<HeaderLinks setOrderNowDialogAction={setOrderNowDialogAction} />
 					</Grid>
 					<Grid item>
 						<a
@@ -161,7 +170,9 @@ const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
 			{expand && (
 				<Grid container className="mobile-links">
 					<Box p={2}>
-						<HeaderLinksMobile />
+						<HeaderLinksMobile
+							setOrderNowDialogAction={setOrderNowDialogAction}
+						/>
 					</Box>
 				</Grid>
 			)}
@@ -312,5 +323,5 @@ export default connect(
 	(state) => ({
 		drawerState: getDrawerState(state),
 	}),
-	{ toggleDrawerStateAction, push }
+	{ toggleDrawerStateAction, setOrderNowDialogAction, push }
 )(StyledHeader);

@@ -6,6 +6,10 @@ import LimberGridView from "@sharma-subendra-kr/limber-grid-view";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import TouchAppIcon from "@material-ui/icons/TouchApp";
+
 import { Layout } from "./layout";
 import { withLGV } from "../../../../../common/components/hoc/withLGV";
 
@@ -60,6 +64,13 @@ const LgvCustomizedView = (props) => {
 				getArrangeTime: getArrangeTime,
 				getLogMessage: getLogMessage,
 				offsetMovePseudoElement: offsetMovePseudoElement,
+				renderSwipeUpContent: renderSwipeUpContent,
+				renderSwipeDownContent: renderSwipeDownContent,
+				renderScrollEndContent: renderScrollEndContent,
+				renderPluginSwipeUp: renderPluginSwipeUp,
+				renderPluginSwipeDown: renderPluginSwipeDown,
+				renderPluginScrollEnd: renderPluginScrollEnd,
+				removePluginMobileScrollMsgs: removePluginMobileScrollMsgs,
 			},
 			publicConstants: {
 				showBottomLeftResizeGuide: true,
@@ -156,6 +167,60 @@ const LgvCustomizedView = (props) => {
 			x: x - (item.x2 - item.x1) / 2,
 			y: y - (item.y2 - item.y1) / 2,
 		};
+	};
+
+	const renderSwipeUpContent = function () {
+		return (
+			<div className="swipe-guide-content">
+				<ArrowUpwardIcon />
+				<TouchAppIcon />
+				<span>Swipe up for more!</span>
+			</div>
+		);
+	};
+
+	const renderSwipeDownContent = function () {
+		return (
+			<div className="swipe-guide-content">
+				<ArrowDownwardIcon />
+				<TouchAppIcon />
+				<span>Swipe down for previous!</span>
+			</div>
+		);
+	};
+
+	const renderScrollEndContent = function () {
+		return (
+			<div className="swipe-guide-content">
+				<span>That's all folks!</span>
+			</div>
+		);
+	};
+
+	const renderPluginSwipeUp = function (renderData, element) {
+		ReactDOM.render(renderData, element);
+	};
+
+	const renderPluginSwipeDown = function (renderData, element) {
+		ReactDOM.render(renderData, element);
+	};
+
+	const renderPluginScrollEnd = function (renderData, element) {
+		ReactDOM.render(renderData, element);
+	};
+
+	const removePluginMobileScrollMsgs = function (e1, e2, e3) {
+		if (e1) {
+			ReactDOM.unmountComponentAtNode(e1);
+		}
+
+		if (e2) {
+			ReactDOM.unmountComponentAtNode(e2);
+		}
+
+		if (e3) {
+			ReactDOM.unmountComponentAtNode(e3);
+		}
 	};
 
 	const onSnackBarClose = () => {

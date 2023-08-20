@@ -107,7 +107,7 @@ const Pricing = (props) => {
 												<Typography variant="h6">Price</Typography>
 											</TableCell>
 											<TableCell>
-												<Typography variant="h6">Status</Typography>
+												<Typography variant="h6">Availability</Typography>
 											</TableCell>
 										</TableRow>
 									</TableHead>
@@ -169,7 +169,7 @@ const Pricing = (props) => {
 													<Typography variant="h6">Price</Typography>
 												</TableCell>
 												<TableCell>
-													<Typography variant="h6">Status</Typography>
+													<Typography variant="h6">Availability</Typography>
 												</TableCell>
 											</TableRow>
 										</TableHead>
@@ -220,7 +220,7 @@ const Pricing = (props) => {
 													</Typography>
 												</TableCell>
 												<TableCell>
-													<Typography variant="h6">Status</Typography>
+													<Typography variant="h6">Availability</Typography>
 												</TableCell>
 											</TableRow>
 										</TableHead>

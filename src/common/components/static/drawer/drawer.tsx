@@ -43,11 +43,14 @@ import {
 } from "src/common/components/static/howToUse/ducks";
 import { getDrawerState, toggleDrawerStateAction } from "./ducks";
 
-const list = [
+const demoList = [
 	{ icon: HomeIcon, title: "Home", url: "" },
-	{ icon: ShoppingCartIcon, title: "Pre-Order Now", url: "" },
-	{ icon: TouchAppIcon, title: "How To Use", url: "" },
+	{ icon: TouchAppIcon, title: "How To Use", url: "howToUse" },
 	// { icon: ToysIcon, title: "How It Works", url: "howItWorks" },
+];
+const technicalList = [
+	{ icon: TouchAppIcon, title: "Docs", url: "docs" },
+	{ icon: LiveHelpIcon, title: "Dev Support", url: "devSupport" },
 	{
 		icon: TimerIcon,
 		title: "About Time Complexity",
@@ -55,18 +58,20 @@ const list = [
 	},
 	{ icon: PanToolIcon, title: "Limitations", url: "limitations" },
 	{ icon: WebIcon, title: "Browser Support", url: "browserSupport" },
+];
+const salesList = [
+	{ icon: ShoppingCartIcon, title: "Order Now", url: "" },
 	{ icon: AttachMoneyIcon, title: "Pricing", url: "pricing" },
-	{ icon: ThreeSixtyIcon, title: "Refund Policy", url: "refundPolicy" },
+	{ icon: HelpOutlineIcon, title: "FAQ & Contact me", url: "faq" },
 	{
 		icon: InfoIcon,
 		title: "Info On Commercial License",
 		url: "infoOnCommercialLicense",
 	},
-	{ icon: SecurityIcon, title: "Privacy", url: "privacy" },
-	{ icon: LiveHelpIcon, title: "Dev Support", url: "devSupport" },
-	{ icon: HelpOutlineIcon, title: "FAQ & Contact me", url: "faq" },
+	{ icon: ThreeSixtyIcon, title: "Refund Policy", url: "refundPolicy" },
 	{ icon: AppsIcon, title: "All Products", url: "allProducts" },
 ];
+const othersList = [{ icon: SecurityIcon, title: "Privacy", url: "privacy" }];
 
 const CustomDrawer = ({
 	className,
@@ -90,12 +95,12 @@ const CustomDrawer = ({
 	};
 
 	const onClickListItem = (title, url) => {
-		if (title !== "Pre-Order Now" && title !== "How To Use") {
-			push("/LimberGridView/" + url);
-		} else if (title === "Pre-Order Now") {
+		if (title === "Order Now") {
 			setOrderNowDialogAction(true);
 		} else if (title === "How To Use") {
 			setHowToUseDialogAction(true);
+		} else {
+			push("/LimberGridView/" + url);
 		}
 		toggleDrawerStateAction();
 	};
@@ -137,7 +142,11 @@ const CustomDrawer = ({
 						</Grid>
 					</ListItem>
 					<Divider />
-					{list.map((item) => {
+					<Typography variant="button" className="list-divider">
+						Demo
+					</Typography>
+					<Divider />
+					{demoList.map((item) => {
 						return (
 							<>
 								<ListItem
@@ -149,12 +158,66 @@ const CustomDrawer = ({
 									</ListItemIcon>
 									<ListItemText>{item.title}</ListItemText>
 								</ListItem>
-								{item.title === "Home" ||
-								item.title === "How It Works" ||
-								item.title === "How It Works" ||
-								item.title === "Info On Commercial License" ? (
-									<Divider />
-								) : null}
+							</>
+						);
+					})}
+					<Divider />
+					<Typography variant="button" className="list-divider">
+						Technical
+					</Typography>
+					<Divider />
+					{technicalList.map((item) => {
+						return (
+							<>
+								<ListItem
+									key={item.title}
+									onClick={() => onClickListItem(item.title, item.url)}
+								>
+									<ListItemIcon>
+										<item.icon />
+									</ListItemIcon>
+									<ListItemText>{item.title}</ListItemText>
+								</ListItem>
+							</>
+						);
+					})}
+					<Divider />
+					<Typography variant="button" className="list-divider">
+						Sales
+					</Typography>
+					<Divider />
+					{salesList.map((item) => {
+						return (
+							<>
+								<ListItem
+									key={item.title}
+									onClick={() => onClickListItem(item.title, item.url)}
+								>
+									<ListItemIcon>
+										<item.icon />
+									</ListItemIcon>
+									<ListItemText>{item.title}</ListItemText>
+								</ListItem>
+							</>
+						);
+					})}
+					<Divider />
+					<Typography variant="button" className="list-divider">
+						Others
+					</Typography>
+					<Divider />
+					{othersList.map((item) => {
+						return (
+							<>
+								<ListItem
+									key={item.title}
+									onClick={() => onClickListItem(item.title, item.url)}
+								>
+									<ListItemIcon>
+										<item.icon />
+									</ListItemIcon>
+									<ListItemText>{item.title}</ListItemText>
+								</ListItem>
 							</>
 						);
 					})}
@@ -172,6 +235,10 @@ const StyledCustomDrawer = styled(CustomDrawer)`
 	}
 	.version-info {
 		font-size: 9px;
+	}
+
+	.list-divider {
+		margin-left: 16px;
 	}
 
 	.MuiList-root {

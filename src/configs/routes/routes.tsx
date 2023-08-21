@@ -20,6 +20,7 @@ import Privacy from "../../pages/privacy/privacy";
 import RefundPolicy from "../../pages/refundPolicy/refundPolicy";
 import HowToUse from "../../pages/howToUse/howToUse";
 import Development from "../../pages/development/development";
+import SiteMap from "../../pages/siteMap/siteMap";
 
 const Routes = () => {
 	return (
@@ -116,6 +117,11 @@ const Routes = () => {
 				<PublicRoute
 					path="/LimberGridView/dev"
 					component={Development}
+					redirectPath="/LimberGridView"
+				/>
+				<PublicRoute
+					path="/LimberGridView/siteMap"
+					component={SiteMap}
 					redirectPath="/LimberGridView"
 				/>
 				<PublicRoute

@@ -66,8 +66,13 @@ const Pricing = ({ className }) => {
 												<Grid container alignItems="center" direction="column">
 													<Typography variant="h4">Licensing fees</Typography>
 													<br />
-													<Typography variant="h5">
+													{/*<Typography variant="h5">
 														&#8377; 50,000/yr
+													</Typography>*/}
+													<Typography variant="h5">
+														<Link to="/LimberGridView/contactMe">
+															Contact Me
+														</Link>
 													</Typography>
 													<br />
 													<Typography variant="body2">
@@ -92,8 +97,13 @@ const Pricing = ({ className }) => {
 												<Grid container alignItems="center" direction="column">
 													<Typography variant="h4">Licensing fees</Typography>
 													<br />
-													<Typography variant="h5">
+													{/*<Typography variant="h5">
 														&#8377; 25,000/yr
+													</Typography>*/}
+													<Typography variant="h5">
+														<Link to="/LimberGridView/contactMe">
+															Contact Me
+														</Link>
 													</Typography>
 													<br />
 													<Typography variant="body2">

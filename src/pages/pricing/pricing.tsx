@@ -15,13 +15,14 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Box from "@material-ui/core/Box";
 
+import styled from "styled-components";
+
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
 import Drawer from "src/common/components/static/drawer/drawer";
 import PageContainer from "src/common/components/static/pageContainer/pageContainer";
 
-const Pricing = (props) => {
-	console.log("location", location);
+const Pricing = ({ className }) => {
 	return (
 		<>
 			<Header />
@@ -34,7 +35,7 @@ const Pricing = (props) => {
 						<br />
 					</>
 				)}
-				<Box m={0} p={0}>
+				<Box m={0} p={0} className={className}>
 					<Grid container alignItems="center" direction="column" spacing={3}>
 						{location.pathname.indexOf("pricing") !== -1 && (
 							<>
@@ -51,7 +52,15 @@ const Pricing = (props) => {
 									justifyContent="center"
 									spacing={3}
 								>
-									<Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
+									<Grid
+										item
+										xl={3}
+										lg={3}
+										md={3}
+										sm={12}
+										xs={12}
+										className="fees-card"
+									>
 										<Card>
 											<CardContent>
 												<Grid container alignItems="center" direction="column">
@@ -69,7 +78,15 @@ const Pricing = (props) => {
 											</CardContent>
 										</Card>
 									</Grid>
-									<Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
+									<Grid
+										item
+										xl={3}
+										lg={3}
+										md={3}
+										sm={12}
+										xs={12}
+										className="fees-card"
+									>
 										<Card>
 											<CardContent>
 												<Grid container alignItems="center" direction="column">
@@ -261,4 +278,13 @@ const Pricing = (props) => {
 	);
 };
 
-export default connect((state) => ({}), {})(Pricing);
+const StyledPricing = styled(Pricing)`
+	.fees-card {
+		h4,
+		p {
+			text-align: center;
+		}
+	}
+`;
+
+export default connect((state) => ({}), {})(StyledPricing);

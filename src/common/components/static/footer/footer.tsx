@@ -55,7 +55,7 @@ const Footer = ({ className, orderNow, setOrderNowDialogAction }) => {
 						If you like to use this library on a non free software, you can get
 						a proprietary license. To get a proprietary license{" "}
 						<b className="order-now" onClick={onClickOrderNow}>
-							Pre-Order now.
+							Order now.
 						</b>
 					</p>
 				</div>

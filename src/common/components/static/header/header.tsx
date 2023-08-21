@@ -49,7 +49,7 @@ const HeaderLinks = ({ setOrderNowDialogAction }) => {
 				className="header-links"
 				onClick={() => setOrderNowDialogAction(true)}
 			>
-				<b>Pre-Order Now</b>
+				<b>Order Now</b>
 			</Typography>
 
 			<Typography className="header-links">

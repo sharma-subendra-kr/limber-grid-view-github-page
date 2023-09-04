@@ -74,6 +74,7 @@ const LgvTools = (props) => {
 		<div className={`${className} lgv-tools`}>
 			<FormGroup row>
 				<FormControlLabel
+					className="mobile-hide"
 					control={
 						<IconButton size="small" onClick={onUndo}>
 							<UndoIcon />
@@ -81,8 +82,9 @@ const LgvTools = (props) => {
 					}
 					label="Undo"
 				/>
-				<div className="seperator" />
+				<div className="seperator mobile-hide" />
 				<FormControlLabel
+					className="mobile-hide"
 					control={
 						<IconButton size="small" onClick={onRedo}>
 							<RedoIcon />
@@ -90,16 +92,17 @@ const LgvTools = (props) => {
 					}
 					label="Redo"
 				/>
-				<div className="seperator" />
+				<div className="seperator mobile-hide" />
 				<FormControlLabel
+					className="mobile-hide"
 					control={
 						<Checkbox size="small" checked={latch} onClick={onLatchClick} />
 					}
 					label="Latch on move/resize"
 				/>
-				<div className="seperator" />
+				<div className="seperator mobile-hide" />
 				<RadioGroup
-					className="add-cut-group"
+					className="add-cut-group mobile-hide"
 					name="addOrCut"
 					row
 					onChange={onAddOrCutClick}
@@ -127,7 +130,7 @@ const LgvTools = (props) => {
 						}
 					/>
 				</RadioGroup>
-				<div className="seperator" />
+				<div className="seperator mobile-hide" />
 				<FormControlLabel
 					control={
 						<IconButton size="small" onClick={onAddItemClick}>
@@ -170,9 +173,11 @@ const StyledLgvTools = styled(LgvTools)`
 		}
 	}
 
-	@media only screen and (max-width: 980px) and (min-width: 1px) and (orientation: portrait),
-		only screen and (max-width: 979px) and (min-width: 1px) and (orientation: landscape) {
-		display: none;
+	.mobile-hide {
+		@media only screen and (max-width: 980px) and (min-width: 1px) and (orientation: portrait),
+			only screen and (max-width: 979px) and (min-width: 1px) and (orientation: landscape) {
+			display: none;
+		}
 	}
 `;
 

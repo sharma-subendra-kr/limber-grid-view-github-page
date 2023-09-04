@@ -49,7 +49,12 @@ const demoList = [
 	// { icon: ToysIcon, title: "How It Works", url: "howItWorks" },
 ];
 const technicalList = [
-	{ icon: TouchAppIcon, title: "Docs", url: "docs" },
+	{
+		icon: DescriptionIcon,
+		title: "Docs v1.0.0-beta.14",
+		url: "docs/v1_0_0-beta_14",
+	},
+	{ icon: DescriptionIcon, title: "Docs Latest", url: "docs/latest" },
 	{ icon: LiveHelpIcon, title: "Dev Support", url: "devSupport" },
 	{
 		icon: TimerIcon,
@@ -133,7 +138,7 @@ const CustomDrawer = ({
 									size="small"
 									onClick={() => {
 										toggleDrawerStateAction();
-										push("/LimberGridView/docs");
+										push("/LimberGridView/docs/latest");
 									}}
 								>
 									Read the docs

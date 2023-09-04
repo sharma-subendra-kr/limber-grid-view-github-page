@@ -107,11 +107,7 @@ const LgvCustomizedView = (props) => {
 		setMarginChangeValueAction(lgv.current.getMarginChangeValue());
 	};
 
-	const renderComplete = (index) => {
-		if (index === undefined) {
-		} else {
-		}
-	};
+	const renderComplete = (index, element) => {};
 
 	const renderContent = (index, width, height, type) => {
 		return (
@@ -133,7 +129,7 @@ const LgvCustomizedView = (props) => {
 		setPositionDataAction(lgv.current.getGridData().positionData);
 	};
 
-	const addComplete = (index) => {
+	const addComplete = (index, element) => {
 		setPositionDataAction(lgv.current.getGridData().positionData);
 	};
 
@@ -145,11 +141,11 @@ const LgvCustomizedView = (props) => {
 		setPositionDataAction(lgv.current.getGridData().positionData);
 	};
 
-	const renderPlugin = (renderData, element) => {
+	const renderPlugin = (renderData, element, index) => {
 		ReactDOM.render(renderData, element);
 	};
 
-	const removePlugin = (element) => {
+	const removePlugin = (element, index) => {
 		ReactDOM.unmountComponentAtNode(element);
 	};
 

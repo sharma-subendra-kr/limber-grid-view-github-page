@@ -11,6 +11,7 @@ import AllProducts from "../../pages/allProducts/allProducts";
 import DevSupport from "../../pages/devSupport/devSupport";
 import FAQ from "../../pages/faq/faq";
 import Docs from "../../pages/docs/docs";
+import Docs1_0_0_14 from "../../pages/docs/v1.0.0-beta.14/docs";
 import HowItWorks from "../../pages/howItWorks/howItWorks";
 import InfoOnCommercialLicense from "../../pages/infoOnCommercialLicense/infoOnCommercialLicense";
 import Limitations from "../../pages/limitations/limitations";
@@ -99,7 +100,12 @@ const Routes = () => {
 					redirectPath="/LimberGridView"
 				/>
 				<PublicRoute
-					path="/LimberGridView/docs"
+					path="/LimberGridView/docs/v1_0_0-beta_14"
+					component={Docs1_0_0_14}
+					redirectPath="/LimberGridView"
+				/>
+				<PublicRoute
+					path="/LimberGridView/docs/latest"
 					component={Docs}
 					redirectPath="/LimberGridView"
 				/>

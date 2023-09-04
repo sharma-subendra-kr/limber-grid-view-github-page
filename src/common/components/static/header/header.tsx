@@ -41,7 +41,7 @@ const HeaderLinks = ({ setOrderNowDialogAction }) => {
 
 			<Typography className="header-links">
 				<b>
-					<Link to="/LimberGridView/docs">Docs</Link>
+					<Link to="/LimberGridView/docs/latest">Docs</Link>
 				</b>
 			</Typography>
 
@@ -74,7 +74,7 @@ const HeaderLinksMobile = ({ setOrderNowDialogAction }) => {
 			<ListItem>
 				<Typography className="header-links">
 					<b>
-						<Link to="/LimberGridView/docs">Docs</Link>
+						<Link to="/LimberGridView/docs/latest">Docs</Link>
 					</b>
 				</Typography>
 			</ListItem>

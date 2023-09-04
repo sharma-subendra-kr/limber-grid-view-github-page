@@ -34,7 +34,7 @@ const SiteMap = (props) => {
 					<Typography variant="h6">Technical</Typography>
 					<br />
 					<Typography variant="body2">
-						<Link to="/LimberGridView/docs">Read the docs</Link>
+						<Link to="/LimberGridView/docs/latest">Read the docs</Link>
 					</Typography>
 					<br />
 					<Typography variant="body2">

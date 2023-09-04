@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
+import { Link } from "react-router-dom";
 
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
@@ -65,7 +66,7 @@ const technicalList = [
 	{ icon: WebIcon, title: "Browser Support", url: "browserSupport" },
 ];
 const salesList = [
-	{ icon: ShoppingCartIcon, title: "Order Now", url: "" },
+	{ icon: ShoppingCartIcon, title: "Order Now", url: "buy" },
 	{ icon: AttachMoneyIcon, title: "Pricing", url: "pricing" },
 	{ icon: HelpOutlineIcon, title: "FAQ & Contact me", url: "faq" },
 	{
@@ -77,6 +78,37 @@ const salesList = [
 	{ icon: AppsIcon, title: "All Products", url: "allProducts" },
 ];
 const othersList = [{ icon: SecurityIcon, title: "Privacy", url: "privacy" }];
+
+const popUps = { "Order Now": true, "How To Use": true };
+
+const ListItemWrapper = ({ item, onClickListItem }) => {
+	return (
+		<>
+			<ListItem
+				key={item.title}
+				onClick={() => onClickListItem(item.title, item.url)}
+			>
+				<ListItemIcon>
+					<item.icon />
+				</ListItemIcon>
+				<ListItemText>{item.title}</ListItemText>
+			</ListItem>
+		</>
+	);
+};
+
+const ListItemLink = ({ item }) => {
+	return (
+		<Link to={item.url}>
+			<ListItem key={item.title}>
+				<ListItemIcon>
+					<item.icon />
+				</ListItemIcon>
+				<ListItemText>{item.title}</ListItemText>
+			</ListItem>
+		</Link>
+	);
+};
 
 const CustomDrawer = ({
 	className,
@@ -153,17 +185,11 @@ const CustomDrawer = ({
 					<Divider />
 					{demoList.map((item) => {
 						return (
-							<>
-								<ListItem
-									key={item.title}
-									onClick={() => onClickListItem(item.title, item.url)}
-								>
-									<ListItemIcon>
-										<item.icon />
-									</ListItemIcon>
-									<ListItemText>{item.title}</ListItemText>
-								</ListItem>
-							</>
+							<ListItemWrapper
+								key={item.title}
+								item={item}
+								onClickListItem={onClickListItem}
+							/>
 						);
 					})}
 					<Divider />
@@ -173,17 +199,11 @@ const CustomDrawer = ({
 					<Divider />
 					{technicalList.map((item) => {
 						return (
-							<>
-								<ListItem
-									key={item.title}
-									onClick={() => onClickListItem(item.title, item.url)}
-								>
-									<ListItemIcon>
-										<item.icon />
-									</ListItemIcon>
-									<ListItemText>{item.title}</ListItemText>
-								</ListItem>
-							</>
+							<ListItemWrapper
+								key={item.title}
+								item={item}
+								onClickListItem={onClickListItem}
+							/>
 						);
 					})}
 					<Divider />
@@ -193,17 +213,11 @@ const CustomDrawer = ({
 					<Divider />
 					{salesList.map((item) => {
 						return (
-							<>
-								<ListItem
-									key={item.title}
-									onClick={() => onClickListItem(item.title, item.url)}
-								>
-									<ListItemIcon>
-										<item.icon />
-									</ListItemIcon>
-									<ListItemText>{item.title}</ListItemText>
-								</ListItem>
-							</>
+							<ListItemWrapper
+								key={item.title}
+								item={item}
+								onClickListItem={onClickListItem}
+							/>
 						);
 					})}
 					<Divider />
@@ -213,17 +227,11 @@ const CustomDrawer = ({
 					<Divider />
 					{othersList.map((item) => {
 						return (
-							<>
-								<ListItem
-									key={item.title}
-									onClick={() => onClickListItem(item.title, item.url)}
-								>
-									<ListItemIcon>
-										<item.icon />
-									</ListItemIcon>
-									<ListItemText>{item.title}</ListItemText>
-								</ListItem>
-							</>
+							<ListItemWrapper
+								key={item.title}
+								item={item}
+								onClickListItem={onClickListItem}
+							/>
 						);
 					})}
 				</List>

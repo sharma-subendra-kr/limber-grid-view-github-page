@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Fab from "@material-ui/core/Fab";
+
+import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 
 import {
 	getOrderNowDialogState,
@@ -10,13 +13,19 @@ import {
 
 import "./footer.scss";
 const Footer = ({ className, orderNow, setOrderNowDialogAction }) => {
+	const [expand, setExpand] = useState(false);
+
 	const onClickOrderNow = () => {
 		setOrderNowDialogAction(true);
 	};
 
+	const onClickFooterFab = () => {
+		setExpand((state) => !state);
+	};
+
 	return (
 		<>
-			<footer className={`${className} footer`}>
+			<footer className={`${className} footer ${expand && "footer-expanded"} `}>
 				<div className="license-info">
 					<p>
 						LimberGridView, a powerful JavaScript Library using Computational
@@ -64,6 +73,15 @@ const Footer = ({ className, orderNow, setOrderNowDialogAction }) => {
 						<div>Site Map</div>
 					</Link>
 				</div>
+				<Fab
+					size="small"
+					color="secondary"
+					aria-label="expand"
+					onClick={onClickFooterFab}
+					className={`footer-fab ${expand && "expanded"}`}
+				>
+					<DoubleArrowIcon />
+				</Fab>
 			</footer>
 		</>
 	);
@@ -89,6 +107,24 @@ const StyledFooter = styled(Footer)`
 
 	.order-now {
 		cursor: pointer;
+	}
+
+	.MuiFab-root {
+		height: 20px;
+		width: 20px;
+		min-height: 20px;
+		z-index: 1000;
+		align-self: flex-start;
+		svg {
+			transform: rotate(-90deg);
+		}
+	}
+
+	.MuiFab-root.expanded {
+		align-self: flex-end;
+		svg {
+			transform: rotate(90deg);
+		}
 	}
 `;
 

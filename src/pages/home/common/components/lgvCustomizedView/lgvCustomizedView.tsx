@@ -158,11 +158,17 @@ const LgvCustomizedView = (props) => {
 		setSnackBarState(true);
 	};
 
-	const offsetMovePseudoElement = function (x, y, item) {
+	const offsetMovePseudoElement = function (x, y, item, X, Y) {
+		// To have helper element exactly where user envoked mousedown or touchhold
 		return {
-			x: x - (item.x2 - item.x1) / 2,
-			y: y - (item.y2 - item.y1) / 2,
+			x: x - X,
+			y: y - Y,
 		};
+		// To center helper element around cursor or touch position
+		// return {
+		// 	x: x - (item.x2 - item.x1) / 2,
+		// 	y: y - (item.y2 - item.y1) / 2,
+		// };
 	};
 
 	const renderSwipeUpContent = function () {

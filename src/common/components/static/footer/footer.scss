@@ -19,7 +19,14 @@
 }
 
 .footer-expanded {
-	padding: 15px;
 	top: initial;
 	bottom: 0;
+
+	.license-info {
+		padding: 15px;
+	}
+
+	.site-map-container {
+		align-self: flex-end;
+	}
 }

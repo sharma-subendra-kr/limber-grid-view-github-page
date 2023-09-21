@@ -18,8 +18,15 @@
 	left: 0;
 }
 
-.footer:hover {
-	padding: 15px;
+.footer-expanded {
 	top: initial;
 	bottom: 0;
+
+	.license-info {
+		padding: 15px;
+	}
+
+	.site-map-container {
+		align-self: flex-end;
+	}
 }

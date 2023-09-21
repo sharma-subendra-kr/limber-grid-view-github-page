@@ -42,7 +42,7 @@ const AllProducts = (props) => {
 							</CardContent>
 						</Card>
 					</Grid>
-					<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
+					{/*<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
 						<Card>
 							<CardContent>
 								<Typography variant="h5">limber_____.com</Typography>
@@ -59,7 +59,7 @@ const AllProducts = (props) => {
 								</Typography>
 							</CardContent>
 						</Card>
-					</Grid>
+					</Grid>*/}
 				</Grid>
 			</PageContainer>
 		</>

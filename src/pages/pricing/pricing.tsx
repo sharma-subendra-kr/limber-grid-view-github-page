@@ -21,13 +21,23 @@ import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
 import Drawer from "src/common/components/static/drawer/drawer";
 import PageContainer from "src/common/components/static/pageContainer/pageContainer";
+import {
+	getSendQueryDialogState,
+	setSendQueryDialogAction,
+} from "src/common/components/complex/sendQuery/ducks";
+import SendQuery from "src/common/components/complex/sendQuery/sendQuery";
 
-const Pricing = ({ className }) => {
+const Pricing = ({
+	className,
+	sendQueryDialogState,
+	setSendQueryDialogAction,
+}) => {
 	return (
 		<>
 			<Header />
 			<Drawer />
 			<Footer />
+			{sendQueryDialogState && <SendQuery onClose={() => {}} />}
 			<PageContainer>
 				{location.pathname.indexOf("pricing") !== -1 && (
 					<>
@@ -70,9 +80,14 @@ const Pricing = ({ className }) => {
 														&#8377; 50,000/yr
 													</Typography>*/}
 													<Typography variant="h5">
-														<Link to="/LimberGridView/contactMe">
+														{/*<Link to="/LimberGridView/contactMe">
 															Contact Me
-														</Link>
+														</Link>*/}
+														<ContactMe
+															setSendQueryDialogAction={
+																setSendQueryDialogAction
+															}
+														/>
 													</Typography>
 													<br />
 													<Typography variant="body2">
@@ -101,9 +116,14 @@ const Pricing = ({ className }) => {
 														&#8377; 25,000/yr
 													</Typography>*/}
 													<Typography variant="h5">
-														<Link to="/LimberGridView/contactMe">
+														{/*<Link to="/LimberGridView/contactMe">
 															Contact Me
-														</Link>
+														</Link>*/}
+														<ContactMe
+															setSendQueryDialogAction={
+																setSendQueryDialogAction
+															}
+														/>
 													</Typography>
 													<br />
 													<Typography variant="body2">
@@ -295,6 +315,30 @@ const StyledPricing = styled(Pricing)`
 			text-align: center;
 		}
 	}
+	.open-send-query {
+		color: blue;
+		cursor: pointer;
+		user-select: none;
+	}
 `;
 
-export default connect((state) => ({}), {})(StyledPricing);
+const ContactMe = ({ setSendQueryDialogAction }) => {
+	const onClickOpenModal = () => {
+		setSendQueryDialogAction(true);
+	};
+
+	return (
+		<u>
+			<b className={"open-send-query"} onClick={onClickOpenModal}>
+				Contact me
+			</b>
+		</u>
+	);
+};
+
+export default connect(
+	(state) => ({
+		sendQueryDialogState: getSendQueryDialogState(state),
+	}),
+	{ setSendQueryDialogAction }
+)(StyledPricing);

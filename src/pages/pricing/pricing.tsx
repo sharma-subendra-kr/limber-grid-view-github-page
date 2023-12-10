@@ -27,6 +27,8 @@ import {
 } from "src/common/components/complex/sendQuery/ducks";
 import SendQuery from "src/common/components/complex/sendQuery/sendQuery";
 
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+
 const Pricing = ({
 	className,
 	sendQueryDialogState,
@@ -74,7 +76,9 @@ const Pricing = ({
 										<Card>
 											<CardContent>
 												<Grid container alignItems="center" direction="column">
-													<Typography variant="h4">Licensing fees</Typography>
+													<Typography variant="h4">
+														Three Platform License
+													</Typography>
 													<br />
 													{/*<Typography variant="h5">
 														&#8377; 50,000/yr
@@ -94,6 +98,8 @@ const Pricing = ({
 														For one FQDN and one each application on iOS and
 														android.
 													</Typography>
+													<br />
+													<HelpOutlineIcon className="license-help-icon" />
 												</Grid>
 											</CardContent>
 										</Card>
@@ -110,7 +116,9 @@ const Pricing = ({
 										<Card>
 											<CardContent>
 												<Grid container alignItems="center" direction="column">
-													<Typography variant="h4">Licensing fees</Typography>
+													<Typography variant="h4">
+														Single platform License
+													</Typography>
 													<br />
 													{/*<Typography variant="h5">
 														&#8377; 25,000/yr
@@ -130,6 +138,48 @@ const Pricing = ({
 														For one application on any one platforms like
 														Ubuntu, Windows, MacOS, etc.
 													</Typography>
+													<br />
+													<HelpOutlineIcon className="license-help-icon" />
+												</Grid>
+											</CardContent>
+										</Card>
+									</Grid>
+									<Grid
+										item
+										xl={3}
+										lg={3}
+										md={3}
+										sm={12}
+										xs={12}
+										className="fees-card"
+									>
+										<Card>
+											<CardContent>
+												<Grid container alignItems="center" direction="column">
+													<Typography variant="h4">
+														Developer License
+													</Typography>
+													<br />
+													{/*<Typography variant="h5">
+														&#8377; 25,000/yr
+													</Typography>*/}
+													<Typography variant="h5">
+														{/*<Link to="/LimberGridView/contactMe">
+															Contact Me
+														</Link>*/}
+														<ContactMe
+															setSendQueryDialogAction={
+																setSendQueryDialogAction
+															}
+														/>
+													</Typography>
+													<br />
+													<Typography variant="body2">
+														For vendors and contractors building software for
+														clients.
+													</Typography>
+													<br />
+													<HelpOutlineIcon className="license-help-icon" />
 												</Grid>
 											</CardContent>
 										</Card>
@@ -291,6 +341,53 @@ const Pricing = ({
 								</TableContainer>
 							</Grid>
 							<br />
+							<br />
+							<br />
+							<Grid item>
+								<TableContainer component={Paper}>
+									<Table aria-label="simple table">
+										<TableHead>
+											<TableRow>
+												<TableCell>
+													<Typography variant="h6">
+														Bug reporting, fixes & updates
+													</Typography>
+												</TableCell>
+												<TableCell>
+													<Typography variant="h6">Price</Typography>
+												</TableCell>
+												<TableCell>
+													<Typography variant="h6">Availability</Typography>
+												</TableCell>
+											</TableRow>
+										</TableHead>
+										<TableBody>
+											<TableRow>
+												<TableCell>
+													Fixes within 2 months and regular updates
+													<br />
+													<br />
+													(Some bugs are harder to trace and fix, so more time
+													is required.
+													<br />
+													Small bugs are usually fixed immediately.)
+												</TableCell>
+												<TableCell
+													style={{ color: "green", fontWeight: "bold" }}
+												>
+													Always Free
+												</TableCell>
+												<TableCell
+													style={{ color: "green", fontWeight: "bold" }}
+												>
+													Always Available
+												</TableCell>
+											</TableRow>
+										</TableBody>
+									</Table>
+								</TableContainer>
+							</Grid>
+							<br />
 							<Typography variant="caption">
 								* Integration might not complete in 5 working days depending
 								upon your codebase. Buyers might be able to extend the service
@@ -310,9 +407,18 @@ const Pricing = ({
 
 const StyledPricing = styled(Pricing)`
 	.fees-card {
+		> .MuiCard-root {
+			min-height: 264px;
+			> .MuiCardContent-root {
+				min-height: 264px;
+			}
+		}
 		h4,
 		p {
 			text-align: center;
+		}
+
+		.license-help-icon {
 		}
 	}
 	.open-send-query {

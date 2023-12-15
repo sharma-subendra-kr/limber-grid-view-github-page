@@ -24,6 +24,7 @@ import {
 	setMarginAction,
 	setScaledMarginAction,
 	setMarginChangeValueAction,
+	changeDeskInteractionModeAction,
 } from "../../../ducks";
 
 import "./lgvCustomizedView.scss";
@@ -40,6 +41,7 @@ const LgvCustomizedView = (props) => {
 		setMarginAction,
 		setScaledMarginAction,
 		setMarginChangeValueAction,
+		changeDeskInteractionModeAction,
 	} = props;
 
 	const [snackBarState, setSnackBarState] = useState(false);
@@ -71,6 +73,7 @@ const LgvCustomizedView = (props) => {
 				renderPluginSwipeDown: renderPluginSwipeDown,
 				renderPluginScrollEnd: renderPluginScrollEnd,
 				removePluginMobileScrollMsgs: removePluginMobileScrollMsgs,
+				resizeObserverComplete: resizeObserverComplete,
 			},
 			publicConstants: {
 				showBottomLeftResizeGuide: true,
@@ -225,6 +228,12 @@ const LgvCustomizedView = (props) => {
 		}
 	};
 
+	const resizeObserverComplete = function (isMobileView, wasMobileView) {
+		if (isMobileView && !wasMobileView) {
+			changeDeskInteractionModeAction("ADD");
+		}
+	};
+
 	const onSnackBarClose = () => {
 		setSnackBarState(false);
 	};
@@ -261,6 +270,7 @@ export default compose(
 			setMarginAction,
 			setScaledMarginAction,
 			setMarginChangeValueAction,
+			changeDeskInteractionModeAction,
 		}
 	)
 )(LgvCustomizedView);

@@ -4,6 +4,8 @@ import { compose } from "redux";
 
 import Button from "@material-ui/core/Button";
 import Fab from "@material-ui/core/Fab";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
@@ -83,12 +85,8 @@ const Home = (props) => {
 		introBuy.current = "complete";
 	};
 
-	const onClickCustomizedView = () => {
-		changeViewAction("customized");
-	};
-
-	const onClickDefaultViewView = () => {
-		changeViewAction("default");
+	const onViewChange = (event) => {
+		changeViewAction(event.target.value);
 	};
 
 	const onCloseSwitchToDesktop = () => {
@@ -113,20 +111,14 @@ const Home = (props) => {
 				<div className="tools-container">
 					<div className={`tools-wrapper ${isToolsExpanded ? "expanded" : ""}`}>
 						<div>
-							<Button
-								className="tools-button"
-								size="small"
-								onClick={onClickCustomizedView}
+							<Select
+								value={view}
+								onChange={onViewChange}
+								className="select-view"
 							>
-								Customized View
-							</Button>
-							<Button
-								className="tools-button"
-								size="small"
-								onClick={onClickDefaultViewView}
-							>
-								Default View
-							</Button>
+								<MenuItem value="customized">Customized</MenuItem>
+								<MenuItem value="default">Default</MenuItem>
+							</Select>
 						</div>
 						<div className="lgv-tools-container">
 							<LgvTools />

@@ -13,6 +13,7 @@ import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import TouchAppOutlinedIcon from "@material-ui/icons/TouchAppOutlined";
 import UndoIcon from "@material-ui/icons/Undo";
 import RedoIcon from "@material-ui/icons/Redo";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCut } from "@fortawesome/free-solid-svg-icons";
@@ -108,6 +109,17 @@ const LgvTools = (props) => {
 					onChange={onAddOrCutClick}
 					value={deskInteractionMode}
 				>
+					<FormControlLabel
+						value="SELECT_MULTIPLE"
+						control={<Radio size="small" />}
+						label={
+							<>
+								<DashboardIcon />
+								{"  "}
+								Multi-select
+							</>
+						}
+					/>
 					<FormControlLabel
 						value="CUTSPACE"
 						control={<Radio size="small" />}

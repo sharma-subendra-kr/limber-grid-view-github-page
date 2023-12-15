@@ -27,7 +27,7 @@ import {
 } from "src/common/components/complex/sendQuery/ducks";
 import SendQuery from "src/common/components/complex/sendQuery/sendQuery";
 
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+// import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 
 const Pricing = ({
 	className,
@@ -76,9 +76,8 @@ const Pricing = ({
 										<Card>
 											<CardContent>
 												<Grid container alignItems="center" direction="column">
-													<Typography variant="h4">
-														Three Platform License
-													</Typography>
+													<Typography variant="h4">Three Platform</Typography>
+													<Typography variant="h4">License</Typography>
 													<br />
 													{/*<Typography variant="h5">
 														&#8377; 50,000/yr
@@ -99,7 +98,7 @@ const Pricing = ({
 														android.
 													</Typography>
 													<br />
-													<HelpOutlineIcon className="license-help-icon" />
+													{/*<HelpOutlineIcon className="license-help-icon" />*/}
 												</Grid>
 											</CardContent>
 										</Card>
@@ -116,9 +115,8 @@ const Pricing = ({
 										<Card>
 											<CardContent>
 												<Grid container alignItems="center" direction="column">
-													<Typography variant="h4">
-														Single platform License
-													</Typography>
+													<Typography variant="h4">Single platform</Typography>
+													<Typography variant="h4">License</Typography>
 													<br />
 													{/*<Typography variant="h5">
 														&#8377; 25,000/yr
@@ -139,7 +137,7 @@ const Pricing = ({
 														Ubuntu, Windows, MacOS, etc.
 													</Typography>
 													<br />
-													<HelpOutlineIcon className="license-help-icon" />
+													{/*<HelpOutlineIcon className="license-help-icon" />*/}
 												</Grid>
 											</CardContent>
 										</Card>
@@ -156,9 +154,8 @@ const Pricing = ({
 										<Card>
 											<CardContent>
 												<Grid container alignItems="center" direction="column">
-													<Typography variant="h4">
-														Developer License
-													</Typography>
+													<Typography variant="h4">Developer</Typography>
+													<Typography variant="h4">License</Typography>
 													<br />
 													{/*<Typography variant="h5">
 														&#8377; 25,000/yr
@@ -176,10 +173,11 @@ const Pricing = ({
 													<br />
 													<Typography variant="body2">
 														For vendors and contractors building software for
-														clients.
+														clients. Cliends need to buy separate platform
+														License.
 													</Typography>
 													<br />
-													<HelpOutlineIcon className="license-help-icon" />
+													{/*<HelpOutlineIcon className="license-help-icon" />*/}
 												</Grid>
 											</CardContent>
 										</Card>
@@ -436,7 +434,7 @@ const ContactMe = ({ setSendQueryDialogAction }) => {
 	return (
 		<u>
 			<b className={"open-send-query"} onClick={onClickOpenModal}>
-				Contact me
+				Contact me for pricing
 			</b>
 		</u>
 	);

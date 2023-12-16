@@ -40,11 +40,11 @@ const HowToUseContent = ({ className }) => {
 					corners. For example, it will try to latch the top-left corner to the
 					adjacent top-right and bottom-left corner or right and bottom edge.
 				</p>
-				<br />
-				<p>Why is this dotted box appearing?</p>
 			</Box>
 			<HowToUseVideoWrapper video="overlap_1.mp4" />
 			<Box px={3}>
+				<p>Why is this dotted box appearing?</p>
+				<br />
 				<p>
 					It's to tell you that LimberGridView is trying to place your item
 					where the top-left corner of the overlapped card is present. It will

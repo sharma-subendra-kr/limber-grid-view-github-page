@@ -112,6 +112,17 @@ const HowToUseContent = ({ className }) => {
 					Like how you added an item, select the cut space tool and drag your
 					mouse or finger.
 				</p>
+			</Box>
+			<HowToUseVideoWrapper video="multi_select_1.mp4" />
+			<Box px={3}>
+				<p>This is slow! I want to do things fast!</p>
+				<br />
+				<p>
+					You can use the multi-select tool to group multiple items by dragging
+					over items you want to select. Then you can resize or move all the
+					selected items at once. The groups behave as a single item. You can
+					make up to two groups.
+				</p>
 				<br />
 				<p>
 					You can learn to use LimberGridView by clicking on "How to use" on the

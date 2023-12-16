@@ -370,7 +370,7 @@ An object containing various callbacks.
 | onItemClickCallback | [<code>onItemClickCallback</code>](#callbacks..onItemClickCallback) | Callback function called when user clicks on an item. |
 | getLogMessage | [<code>getLogMessage</code>](#callbacks..getLogMessage) | The callback function to get logs for errors like when the user drags outside of grid view. Returns an object with keys type and message. |
 | getArrangeTime | [<code>getArrangeTime</code>](#callbacks..getArrangeTime) | The callback function to get logs for the move or resize operation. Returns time taken, resize count, and count of rectangles processed internally. |
-| offsetMovePseudoElement | [<code>offsetMovePseudoElement</code>](#callbacks..offsetMovePseudoElement) | The callback function to offset the move helper element from the top-left. Receives current cursor or touch coordinates and item dimensions in the two-point form as arguments. Use these details to offset the move helper top-left from the curser point. |
+| offsetMovePseudoElement | [<code>offsetMovePseudoElement</code>](#callbacks..offsetMovePseudoElement) | The callback function to offset the move helper element from the top-left. Receives current cursor or touch coordinates, original cursor or touch coordinates on the item and item dimensions in the two-point form as arguments. Use these details to offset the move helper top-left from the curser point. |
 | renderSwipeUpContent | [<code>renderSwipeUpContent</code>](#callbacks..renderSwipeUpContent) | Callback function to render content informing user to swipe up to see more content in mobile view. |
 | renderSwipeDownContent | [<code>renderSwipeDownContent</code>](#callbacks..renderSwipeDownContent) | Callback function to render content informing user to swipe down to see previous content in mobile view. |
 | renderScrollEndContent | [<code>renderScrollEndContent</code>](#callbacks..renderScrollEndContent) | Callback function to render content informing user that there is no more content in mobile view. |
@@ -379,6 +379,7 @@ An object containing various callbacks.
 | renderPluginScrollEnd | [<code>renderPluginScrollEnd</code>](#callbacks..renderPluginScrollEnd) | Optional callback function called after renderScrollEndContent to support different frameworks. |
 | removePluginMobileScrollMsgs | [<code>removePluginMobileScrollMsgs</code>](#callbacks..removePluginMobileScrollMsgs) | Optional callback function called before mobile scroll guides are removed from the DOM to support different frameworks. |
 | getDebugLog | [<code>getDebugLog</code>](#callbacks..getDebugLog) | The callback function to get currently logged item. For developer of LimberGridView only. |
+| resizeObserverComplete | [<code>resizeObserverComplete</code>](#callbacks..resizeObserverComplete) | The callback function called after resize observer was triggered and internal actions was completed. |
 
 
 * [callbacks](#callbacks) : <code>options~callbacks</code>
@@ -405,6 +406,7 @@ An object containing various callbacks.
     * [~renderPluginScrollEnd](#callbacks..renderPluginScrollEnd) ⇒ <code>undefined</code>
     * [~removePluginMobileScrollMsgs](#callbacks..removePluginMobileScrollMsgs) ⇒ <code>undefined</code>
     * [~getDebugLog](#callbacks..getDebugLog) : <code>function</code>
+    * [~resizeObserverComplete](#callbacks..resizeObserverComplete) : <code>function</code>
 
 <a name="callbacks..mountComplete"></a>
 
@@ -572,7 +574,7 @@ The callback function to get logs for the move or resize operation. Returns time
 <a name="callbacks..offsetMovePseudoElement"></a>
 
 ### callbacks~offsetMovePseudoElement ⇒ <code>object</code>
-The callback function to offset the move helper element from the top-left. Receives current cursor or touch coordinates and item dimensions in the two-point form as arguments. Use these details to offset the move helper top-left from the curser point.
+The callback function to offset the move helper element from the top-left. Receives current cursor or touch coordinates, original cursor or touch coordinates on the item and item dimensions in the two-point form as arguments. Use these details to offset the move helper top-left from the curser point.
 
 **Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
 **Returns**: <code>object</code> - An object with keys x and y. It represents the translated top-left point of the move pseudo-element.  
@@ -582,6 +584,8 @@ The callback function to offset the move helper element from the top-left. Recei
 | x | <code>number</code> | The distance along the x-axis where the user placed the cursor or touched the surface. |
 | y | <code>number</code> | The distance along the y-axis where the user placed the cursor or touched the surface. |
 | item | <code>object</code> | An item object in the two-point form. |
+| X | <code>number</code> | The distance along the x-axis starting from the top left of the item where the user placed the cursor or touched the item originally. |
+| Y | <code>number</code> | The distance along the y-axis starting from the top left of the item where the user placed the cursor or touched the item originally. |
 
 <a name="callbacks..renderSwipeUpContent"></a>
 
@@ -661,6 +665,18 @@ The callback function to get log messages. For use only for developer of LimberG
 | --- |
 | <code>number</code> | 
 
+<a name="callbacks..resizeObserverComplete"></a>
+
+### callbacks~resizeObserverComplete : <code>function</code>
+The callback function called after resize observer was triggered and internal actions was completed. It is triggered after renderComplete. It has two arguments. First agrument tells whether current view is mobile view or not, second argument tells wether previous view was mobile view or not.
+
+**Kind**: inner typedef of [<code>callbacks</code>](#callbacks)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| isMobileView | <code>boolean</code> | Tells whether current view is mobile or not. |
+| wasMobileView | <code>boolean</code> | Tells wether previous view was mobile or not. |
+
 <a name="publicConstants"></a>
 
 ## publicConstants : <code>options~publicConstants</code>
@@ -673,7 +689,7 @@ Constants that you can change or set at any point in time to get the desired beh
 | --- | --- | --- |
 | mobileAspectRatio | <code>number</code> | The floating-point number representing the aspect ratio of items for mobile view (e.g. 5:4). The default value is 5/4. |
 | moveGuideRadius | <code>number</code> | The radius of the default move guide. Move guide is a pseudo-element at the top-left corner of every item. You can remove the move guide for a customized look and feel. The default value is 10. |
-| resizeSquareGuideLength | <code>number</code> | The length of the square rendered at the bottom-right corner of every item as a pseudo-element. The default value is 10. |
+| resizeSquareGuideLength | <code>number</code> | The length of the square rendered at the bottom-right corner of every item as a pseudo-element. The default value is 30. |
 | resizeSquareGuideBorderWidth | <code>number</code> | The width of the border of the square rendered at the bottom-right corner of the item as a pseudo-element. The default value is 3. |
 | showBottomLeftResizeGuide | <code>boolean</code> | When this flag is true, resize guide is activated on the bottom-left corner also. Enabling this flag will cause the default move guide to be disabled and custom move behavior has to be defined. |
 | autoScrollDistance | <code>number</code> | The number by which the desk is scrolled automatically on resize events and move events when auto-scroll is enabled. Auto-scroll is enabled by default for touch events. The default value is 50. |

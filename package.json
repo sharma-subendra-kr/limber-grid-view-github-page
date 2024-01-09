@@ -6,6 +6,8 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+		"build-electron": "webpack --config webpack.electron.js",
+		"electron": "electron ./electron/index.js",
     "lint:check": "prettier -c **/*.{js,css,scss,json}; eslint \"**/*.js\"",
     "lint:fix": "prettier --write **/*.{js,css,scss,json} && eslint --fix \"**/*.js\"",
     "prettier:fix": "prettier --write **/*.{js,css,scss,json}",
@@ -31,6 +33,7 @@
     "babel-plugin-recharts": "^2.0.0",
     "clean-terminal-webpack-plugin": "^3.0.0",
     "css-loader": "^6.5.1",
+    "electron": "^28.1.2",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^14.1.1",

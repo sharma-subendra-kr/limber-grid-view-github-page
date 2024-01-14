@@ -49,14 +49,20 @@ app.whenReady().then(() => {
 		if (host === "js") {
 			filePath = "../dist/" + pathname;
 			// contentType = "application/javascript";
-		} else if (host === "css") {
+		} else if (host === "css" && pathname.includes(".css")) {
 			filePath = "../dist/" + pathname;
 			// contentType = "text/css";
+		} else {
+			filePath = "../public" + pathname;
 		}
 
-		const data = fs.readFileSync(path.resolve(__dirname, filePath));
-		return new Response(data);
-		// return net.fetch("file://" + path.resolve(__dirname, filePath));
+		try {
+			const data = fs.readFileSync(path.resolve(__dirname, filePath));
+			return new Response(data);
+			// return net.fetch("file://" + path.resolve(__dirname, filePath));
+		} catch (error) {
+			console.log("error: main", error);
+		}
 	});
 
 	protocol.handle("assets", (req) => {
@@ -64,22 +70,34 @@ app.whenReady().then(() => {
 
 		const filePath = "../public/" + pathname;
 
-		const data = fs.readFileSync(path.resolve(__dirname, filePath));
-		return new Response(data);
+		try {
+			const data = fs.readFileSync(path.resolve(__dirname, filePath));
+			return new Response(data);
+		} catch (error) {
+			console.log("error: assets", error);
+		}
 	});
 
 	protocol.handle("file", (req) => {
 		const { pathname } = new URL(req.url);
 
 		if (pathname.includes("LimberGridView")) {
-			const data = fs.readFileSync(
-				path.resolve(__dirname, "../src/templates/electron.index.html")
-			);
-			return new Response(data);
+			try {
+				const data = fs.readFileSync(
+					path.resolve(__dirname, "../src/templates/electron.index.html")
+				);
+				return new Response(data);
+			} catch (error) {
+				console.log("error: file", error);
+			}
 		}
 
-		const data = fs.readFileSync(pathname);
-		return new Response(data, {});
+		try {
+			const data = fs.readFileSync(pathname);
+			return new Response(data, {});
+		} catch (error) {
+			console.log("error: file", error);
+		}
 	});
 
 	protocol.handle("https", (req) => {
@@ -89,7 +107,11 @@ app.whenReady().then(() => {
 		dirname.length = dirname.length - 1;
 		dirname = dirname.join("/");
 
-		const data = fs.readFileSync(path.resolve(dirname, "public" + pathname));
-		return new Response(data);
+		try {
+			const data = fs.readFileSync(path.resolve(dirname, "public" + pathname));
+			return new Response(data);
+		} catch (error) {
+			console.log("error: https", error);
+		}
 	});
 });

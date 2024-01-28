@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-		"build-electron": "webpack --config webpack.electron.js",
-		"electron": "electron ./electron/index.js",
+    "build-electron": "webpack --config webpack.electron.js",
+    "electron": "electron ./electron/index.js",
     "lint:check": "prettier -c **/*.{js,css,scss,json}; eslint \"**/*.js\"",
     "lint:fix": "prettier --write **/*.{js,css,scss,json} && eslint --fix \"**/*.js\"",
     "prettier:fix": "prettier --write **/*.{js,css,scss,json}",

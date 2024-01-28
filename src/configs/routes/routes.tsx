@@ -11,6 +11,7 @@ import AllProducts from "../../pages/allProducts/allProducts";
 import DevSupport from "../../pages/devSupport/devSupport";
 import FAQ from "../../pages/faq/faq";
 import Docs from "../../pages/docs/docs";
+import DocsLatest from "../../pages/docs/latest/docs";
 import Docs1_0_0_14 from "../../pages/docs/v1.0.0-beta.14/docs";
 import HowItWorks from "../../pages/howItWorks/howItWorks";
 import InfoOnCommercialLicense from "../../pages/infoOnCommercialLicense/infoOnCommercialLicense";
@@ -106,6 +107,11 @@ const Routes = () => {
 				/>
 				<PublicRoute
 					path="/LimberGridView/docs/latest"
+					component={DocsLatest}
+					redirectPath="/LimberGridView"
+				/>
+				<PublicRoute
+					path="/LimberGridView/docs"
 					component={Docs}
 					redirectPath="/LimberGridView"
 				/>

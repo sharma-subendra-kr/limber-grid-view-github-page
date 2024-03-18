@@ -146,7 +146,7 @@ const Header = ({
 							href="https://github.com/sharma-subendra-kr/LimberGridView"
 							target="blank"
 						>
-							<span>Star on github!</span>
+							<span>LimberGridView</span>
 							<GitHubIcon />
 						</a>
 					</Grid>
@@ -236,7 +236,7 @@ const StyledHeader = styled(Header)`
 				text-decoration: none;
 				text-align: center;
 				span {
-					font-size: 24px;
+					font-size: 20px;
 					margin-right: 10px;
 					vertical-align: middle;
 					text-decoration: underline;

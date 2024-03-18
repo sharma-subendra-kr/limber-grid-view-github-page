@@ -24,7 +24,7 @@ export const getTitle = (index) => {
 	const arr = [
 		"Drag me! Resize me!",
 		"Build dashboards with resizable and movable items with LimberGridView!",
-		"Add or remove items by dragging.",
+		"Add items by dragging.",
 		"Drag items to any location!",
 		"Undo or redo your actions on the fly!",
 		"Have auto-arranging grids on your dashboard.",

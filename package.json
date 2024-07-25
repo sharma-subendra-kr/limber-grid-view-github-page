@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron-forge start",
+    "start": "webpack serve --config webpack.dev.js",
+    "start-electron": "electron-forge start",
     "build": "webpack --config webpack.prod.js",
     "build-electron": "webpack --config webpack.electron.js",
     "electron": "electron ./electron/index.js",

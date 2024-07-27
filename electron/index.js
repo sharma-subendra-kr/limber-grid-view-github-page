@@ -12,7 +12,7 @@ const createWindow = () => {
 	win.maximize();
 	win.show();
 	// win.webContents.openDevTools();
-	win.loadFile("../src/templates/electron.index.html");
+	win.loadFile(path.resolve(__dirname, "../src/templates/electron.index.html"));
 };
 
 // protocol.registerSchemesAsPrivileged([

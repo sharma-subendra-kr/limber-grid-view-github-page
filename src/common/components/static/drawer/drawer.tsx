@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
+import { Link } from "react-router-dom";
 
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
@@ -43,11 +44,19 @@ import {
 } from "src/common/components/static/howToUse/ducks";
 import { getDrawerState, toggleDrawerStateAction } from "./ducks";
 
-const list = [
+const demoList = [
 	{ icon: HomeIcon, title: "Home", url: "" },
-	{ icon: ShoppingCartIcon, title: "Pre-Order Now", url: "" },
-	{ icon: TouchAppIcon, title: "How To Use", url: "" },
-	{ icon: ToysIcon, title: "How It Works", url: "howItWorks" },
+	{ icon: TouchAppIcon, title: "How To Use", url: "howToUse" },
+	// { icon: ToysIcon, title: "How It Works", url: "howItWorks" },
+];
+const technicalList = [
+	{
+		icon: DescriptionIcon,
+		title: "Docs v1.0.0-beta.14",
+		url: "docs/v1_0_0-beta_14",
+	},
+	{ icon: DescriptionIcon, title: "Docs Latest", url: "docs/latest" },
+	{ icon: LiveHelpIcon, title: "Dev Support", url: "devSupport" },
 	{
 		icon: TimerIcon,
 		title: "About Time Complexity",
@@ -55,18 +64,51 @@ const list = [
 	},
 	{ icon: PanToolIcon, title: "Limitations", url: "limitations" },
 	{ icon: WebIcon, title: "Browser Support", url: "browserSupport" },
+];
+const salesList = [
+	{ icon: ShoppingCartIcon, title: "Order Now", url: "buy" },
 	{ icon: AttachMoneyIcon, title: "Pricing", url: "pricing" },
-	{ icon: ThreeSixtyIcon, title: "Refund Policy", url: "refundPolicy" },
+	{ icon: HelpOutlineIcon, title: "FAQ & Contact me", url: "faq" },
 	{
 		icon: InfoIcon,
 		title: "Info On Commercial License",
 		url: "infoOnCommercialLicense",
 	},
-	{ icon: SecurityIcon, title: "Privacy", url: "privacy" },
-	{ icon: LiveHelpIcon, title: "Dev Support", url: "devSupport" },
-	{ icon: HelpOutlineIcon, title: "FAQ & Contact me", url: "faq" },
+	{ icon: ThreeSixtyIcon, title: "Refund Policy", url: "refundPolicy" },
 	{ icon: AppsIcon, title: "All Products", url: "allProducts" },
 ];
+const othersList = [{ icon: SecurityIcon, title: "Privacy", url: "privacy" }];
+
+const popUps = { "Order Now": true, "How To Use": true };
+
+const ListItemWrapper = ({ item, onClickListItem }) => {
+	return (
+		<>
+			<ListItem
+				key={item.title}
+				onClick={() => onClickListItem(item.title, item.url)}
+			>
+				<ListItemIcon>
+					<item.icon />
+				</ListItemIcon>
+				<ListItemText>{item.title}</ListItemText>
+			</ListItem>
+		</>
+	);
+};
+
+const ListItemLink = ({ item }) => {
+	return (
+		<Link to={item.url}>
+			<ListItem key={item.title}>
+				<ListItemIcon>
+					<item.icon />
+				</ListItemIcon>
+				<ListItemText>{item.title}</ListItemText>
+			</ListItem>
+		</Link>
+	);
+};
 
 const CustomDrawer = ({
 	className,
@@ -90,12 +132,12 @@ const CustomDrawer = ({
 	};
 
 	const onClickListItem = (title, url) => {
-		if (title !== "Pre-Order Now" && title !== "How To Use") {
-			push("/LimberGridView/" + url);
-		} else if (title === "Pre-Order Now") {
+		if (title === "Order Now") {
 			setOrderNowDialogAction(true);
 		} else if (title === "How To Use") {
 			setHowToUseDialogAction(true);
+		} else {
+			push("/LimberGridView/" + url);
 		}
 		toggleDrawerStateAction();
 	};
@@ -119,7 +161,7 @@ const CustomDrawer = ({
 									</Typography>
 								</Grid>
 								<Grid item>
-									<span className="version-info">Latest v1.0.0-beta.13</span>
+									<span className="version-info">Latest v1.0.0-beta.16</span>
 								</Grid>
 							</Grid>
 							<Grid item>
@@ -128,7 +170,7 @@ const CustomDrawer = ({
 									size="small"
 									onClick={() => {
 										toggleDrawerStateAction();
-										push("/LimberGridView/docs");
+										push("/LimberGridView/docs/latest");
 									}}
 								>
 									Read the docs
@@ -137,25 +179,59 @@ const CustomDrawer = ({
 						</Grid>
 					</ListItem>
 					<Divider />
-					{list.map((item) => {
+					<Typography variant="button" className="list-divider">
+						Demo
+					</Typography>
+					<Divider />
+					{demoList.map((item) => {
 						return (
-							<>
-								<ListItem
-									key={item.title}
-									onClick={() => onClickListItem(item.title, item.url)}
-								>
-									<ListItemIcon>
-										<item.icon />
-									</ListItemIcon>
-									<ListItemText>{item.title}</ListItemText>
-								</ListItem>
-								{item.title === "Home" ||
-								item.title === "How It Works" ||
-								item.title === "How It Works" ||
-								item.title === "Info On Commercial License" ? (
-									<Divider />
-								) : null}
-							</>
+							<ListItemWrapper
+								key={item.title}
+								item={item}
+								onClickListItem={onClickListItem}
+							/>
+						);
+					})}
+					<Divider />
+					<Typography variant="button" className="list-divider">
+						Technical
+					</Typography>
+					<Divider />
+					{technicalList.map((item) => {
+						return (
+							<ListItemWrapper
+								key={item.title}
+								item={item}
+								onClickListItem={onClickListItem}
+							/>
+						);
+					})}
+					<Divider />
+					<Typography variant="button" className="list-divider">
+						Sales
+					</Typography>
+					<Divider />
+					{salesList.map((item) => {
+						return (
+							<ListItemWrapper
+								key={item.title}
+								item={item}
+								onClickListItem={onClickListItem}
+							/>
+						);
+					})}
+					<Divider />
+					<Typography variant="button" className="list-divider">
+						Others
+					</Typography>
+					<Divider />
+					{othersList.map((item) => {
+						return (
+							<ListItemWrapper
+								key={item.title}
+								item={item}
+								onClickListItem={onClickListItem}
+							/>
 						);
 					})}
 				</List>
@@ -172,6 +248,10 @@ const StyledCustomDrawer = styled(CustomDrawer)`
 	}
 	.version-info {
 		font-size: 9px;
+	}
+
+	.list-divider {
+		margin-left: 16px;
 	}
 
 	.MuiList-root {

@@ -40,11 +40,11 @@ const HowToUseContent = ({ className }) => {
 					corners. For example, it will try to latch the top-left corner to the
 					adjacent top-right and bottom-left corner or right and bottom edge.
 				</p>
-				<br />
-				<p>Why is this dotted box appearing?</p>
 			</Box>
 			<HowToUseVideoWrapper video="overlap_1.mp4" />
 			<Box px={3}>
+				<p>Why is this dotted box appearing?</p>
+				<br />
 				<p>
 					It's to tell you that LimberGridView is trying to place your item
 					where the top-left corner of the overlapped card is present. It will
@@ -111,6 +111,17 @@ const HowToUseContent = ({ className }) => {
 				<p>
 					Like how you added an item, select the cut space tool and drag your
 					mouse or finger.
+				</p>
+			</Box>
+			<HowToUseVideoWrapper video="multi_select_1.mp4" />
+			<Box px={3}>
+				<p>This is slow! I want to do things fast!</p>
+				<br />
+				<p>
+					You can use the multi-select tool to group multiple items by dragging
+					over items you want to select. Then you can resize or move all the
+					selected items at once. The groups behave as a single item. You can
+					make up to two groups.
 				</p>
 				<br />
 				<p>

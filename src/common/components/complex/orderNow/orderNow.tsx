@@ -135,14 +135,13 @@ const OrderNowModal = ({
 			scroll="body"
 			maxWidth="md"
 		>
-			{!submitted && <DialogTitle>Pre-Order Now!</DialogTitle>}
+			{!submitted && <DialogTitle>Order Now!</DialogTitle>}
 			{!submitted && (
 				<DialogContent>
 					<Grid container direction="row" justify="center">
 						<DialogContentText>
-							A stable release is planned soon. This can be pushed further back
-							as LimberGridView is going under rigorous testing. Pre-order now
-							to get your purchase processed ASAP after the stable release.
+							A stable release is planned soon. LimberGridView is going under
+							rigorous testing. Order now to get a beta release.
 						</DialogContentText>
 						<br />
 						<Grid item lg={8} md={8} xs={8} sm={8} className="order-field">

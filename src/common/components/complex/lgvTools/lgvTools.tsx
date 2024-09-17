@@ -13,6 +13,7 @@ import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import TouchAppOutlinedIcon from "@material-ui/icons/TouchAppOutlined";
 import UndoIcon from "@material-ui/icons/Undo";
 import RedoIcon from "@material-ui/icons/Redo";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCut } from "@fortawesome/free-solid-svg-icons";
@@ -26,6 +27,7 @@ import {
 	getDeskInteractionMode,
 	changeDeskInteractionModeAction,
 	setPositionDataAction,
+	setScaledMarginAction,
 } from "src/pages/home/ducks";
 
 import "./lgvTools.scss";
@@ -38,17 +40,20 @@ const LgvTools = (props) => {
 		deskInteractionMode,
 		changeDeskInteractionModeAction,
 		setPositionDataAction,
+		setScaledMarginAction,
 		lgv,
 	} = props;
 
 	const onUndo = () => {
 		lgv.current.undo();
 		setPositionDataAction(lgv.current.getGridData().positionData);
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
 	};
 
 	const onRedo = () => {
 		lgv.current.redo();
 		setPositionDataAction(lgv.current.getGridData().positionData);
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
 	};
 
 	const onLatchClick = ({ target: { checked } }) => {
@@ -70,6 +75,7 @@ const LgvTools = (props) => {
 		<div className={`${className} lgv-tools`}>
 			<FormGroup row>
 				<FormControlLabel
+					className="mobile-hide"
 					control={
 						<IconButton size="small" onClick={onUndo}>
 							<UndoIcon />
@@ -77,8 +83,9 @@ const LgvTools = (props) => {
 					}
 					label="Undo"
 				/>
-				<div className="seperator" />
+				<div className="seperator mobile-hide" />
 				<FormControlLabel
+					className="mobile-hide"
 					control={
 						<IconButton size="small" onClick={onRedo}>
 							<RedoIcon />
@@ -86,21 +93,33 @@ const LgvTools = (props) => {
 					}
 					label="Redo"
 				/>
-				<div className="seperator" />
+				<div className="seperator mobile-hide" />
 				<FormControlLabel
+					className="mobile-hide"
 					control={
 						<Checkbox size="small" checked={latch} onClick={onLatchClick} />
 					}
 					label="Latch on move/resize"
 				/>
-				<div className="seperator" />
+				<div className="seperator mobile-hide" />
 				<RadioGroup
-					className="add-cut-group"
+					className="add-cut-group mobile-hide"
 					name="addOrCut"
 					row
 					onChange={onAddOrCutClick}
 					value={deskInteractionMode}
 				>
+					<FormControlLabel
+						value="SELECT_MULTIPLE"
+						control={<Radio size="small" />}
+						label={
+							<>
+								<DashboardIcon />
+								{"  "}
+								Multi-select
+							</>
+						}
+					/>
 					<FormControlLabel
 						value="CUTSPACE"
 						control={<Radio size="small" />}
@@ -123,7 +142,7 @@ const LgvTools = (props) => {
 						}
 					/>
 				</RadioGroup>
-				<div className="seperator" />
+				<div className="seperator mobile-hide" />
 				<FormControlLabel
 					control={
 						<IconButton size="small" onClick={onAddItemClick}>
@@ -166,9 +185,11 @@ const StyledLgvTools = styled(LgvTools)`
 		}
 	}
 
-	@media only screen and (max-width: 980px) and (min-width: 1px) and (orientation: portrait),
-		only screen and (max-width: 979px) and (min-width: 1px) and (orientation: landscape) {
-		display: none;
+	.mobile-hide {
+		@media only screen and (max-width: 980px) and (min-width: 1px) and (orientation: portrait),
+			only screen and (max-width: 979px) and (min-width: 1px) and (orientation: landscape) {
+			display: none;
+		}
 	}
 `;
 
@@ -183,6 +204,7 @@ export default compose(
 			changeLatchAction,
 			changeDeskInteractionModeAction,
 			setPositionDataAction,
+			setScaledMarginAction,
 		}
 	)
 )(StyledLgvTools);

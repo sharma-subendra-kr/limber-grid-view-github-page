@@ -14,12 +14,15 @@ export const Layout = (props) => {
 	const { index, width, height, isAdd, onRemove, useIndexForTitle } = props;
 
 	const [renderBody, setRenderBody] = useState(
-		isAdd ? -1 : Math.floor(Math.random() * 4)
+		// isAdd ? -1 : Math.floor(Math.random() * 4)
+		isAdd ? -1 : (index + 1) % 4
 	);
-	const [random] = useState(Math.floor(Math.random() * 11));
+	// const [random] = useState(Math.floor(Math.random() * 11));
+	const [random] = useState((index + 1) % 11);
 
 	const onSelectCb = (key) => {
-		const rand = Math.floor(Math.random() * 4);
+		// const rand = Math.floor(Math.random() * 4);
+		const rand = (index + 1) % 4;
 		if (key === "add") {
 			setRenderBody(rand);
 		} else {
@@ -41,7 +44,7 @@ export const Layout = (props) => {
 				</div>
 			</div>
 			<div className="custom-layout-body">
-				{renderBody != -1 ? <Comp width={width} height={height - 30} /> : ""}
+				{renderBody !== -1 ? <Comp width={width} height={height - 30} /> : ""}
 			</div>
 		</div>
 	);

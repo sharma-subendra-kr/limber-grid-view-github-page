@@ -6,6 +6,10 @@ import LimberGridView from "@sharma-subendra-kr/limber-grid-view";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import TouchAppIcon from "@material-ui/icons/TouchApp";
+
 import { Layout } from "./layout";
 import { withLGV } from "../../../../../common/components/hoc/withLGV";
 
@@ -15,6 +19,12 @@ import {
 	getDeskInteractionMode,
 	getPositionData,
 	setPositionDataAction,
+	getMargin,
+	getMarginChangeValue,
+	setMarginAction,
+	setScaledMarginAction,
+	setMarginChangeValueAction,
+	changeDeskInteractionModeAction,
 } from "../../../ducks";
 
 import "./lgvCustomizedView.scss";
@@ -26,6 +36,12 @@ const LgvCustomizedView = (props) => {
 		positionData,
 		setPositionDataAction,
 		lgv,
+		margin,
+		marginChangeValue,
+		setMarginAction,
+		setScaledMarginAction,
+		setMarginChangeValueAction,
+		changeDeskInteractionModeAction,
 	} = props;
 
 	const [snackBarState, setSnackBarState] = useState(false);
@@ -37,6 +53,7 @@ const LgvCustomizedView = (props) => {
 			el: el.current,
 			itemMouseDownMoveCheck: itemMouseDownMoveCheck,
 			callbacks: {
+				mountComplete: mountComplete,
 				renderComplete: renderComplete,
 				renderContent: renderContent,
 				resizeComplete: resizeComplete,
@@ -49,6 +66,14 @@ const LgvCustomizedView = (props) => {
 				getArrangeTime: getArrangeTime,
 				getLogMessage: getLogMessage,
 				offsetMovePseudoElement: offsetMovePseudoElement,
+				renderSwipeUpContent: renderSwipeUpContent,
+				renderSwipeDownContent: renderSwipeDownContent,
+				renderScrollEndContent: renderScrollEndContent,
+				renderPluginSwipeUp: renderPluginSwipeUp,
+				renderPluginSwipeDown: renderPluginSwipeDown,
+				renderPluginScrollEnd: renderPluginScrollEnd,
+				removePluginMobileScrollMsgs: removePluginMobileScrollMsgs,
+				resizeObserverComplete: resizeObserverComplete,
 			},
 			publicConstants: {
 				showBottomLeftResizeGuide: true,
@@ -58,6 +83,8 @@ const LgvCustomizedView = (props) => {
 				resizeSquareGuideLength: 30, // see ./layout.scss for required css
 			},
 			positionData: positionData,
+			margin: margin,
+			marginChangeValue: marginChangeValue,
 		});
 		// for debugging
 		window.limberGridView = lgv.current;
@@ -77,11 +104,13 @@ const LgvCustomizedView = (props) => {
 		lgv.current.removeItem(index);
 	};
 
-	const renderComplete = (index) => {
-		if (index === undefined) {
-		} else {
-		}
+	const mountComplete = () => {
+		setMarginAction(lgv.current.getCurrentMargin());
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
+		setMarginChangeValueAction(lgv.current.getMarginChangeValue());
 	};
+
+	const renderComplete = (index, element) => {};
 
 	const renderContent = (index, width, height, type) => {
 		return (
@@ -103,7 +132,7 @@ const LgvCustomizedView = (props) => {
 		setPositionDataAction(lgv.current.getGridData().positionData);
 	};
 
-	const addComplete = (index) => {
+	const addComplete = (index, element) => {
 		setPositionDataAction(lgv.current.getGridData().positionData);
 	};
 
@@ -115,11 +144,11 @@ const LgvCustomizedView = (props) => {
 		setPositionDataAction(lgv.current.getGridData().positionData);
 	};
 
-	const renderPlugin = (renderData, element) => {
+	const renderPlugin = (renderData, element, index) => {
 		ReactDOM.render(renderData, element);
 	};
 
-	const removePlugin = (element) => {
+	const removePlugin = (element, index) => {
 		ReactDOM.unmountComponentAtNode(element);
 	};
 
@@ -132,11 +161,77 @@ const LgvCustomizedView = (props) => {
 		setSnackBarState(true);
 	};
 
-	const offsetMovePseudoElement = function (x, y, item) {
+	const offsetMovePseudoElement = function (x, y, item, X, Y) {
+		// To have helper element exactly where user envoked mousedown or touchhold
 		return {
-			x: x - (item.x2 - item.x1) / 2,
-			y: y - (item.y2 - item.y1) / 2,
+			x: x - X,
+			y: y - Y,
 		};
+		// To center helper element around cursor or touch position
+		// return {
+		// 	x: x - (item.x2 - item.x1) / 2,
+		// 	y: y - (item.y2 - item.y1) / 2,
+		// };
+	};
+
+	const renderSwipeUpContent = function () {
+		return (
+			<div className="swipe-guide-content">
+				<ArrowUpwardIcon />
+				<TouchAppIcon />
+				<span>Swipe up for more!</span>
+			</div>
+		);
+	};
+
+	const renderSwipeDownContent = function () {
+		return (
+			<div className="swipe-guide-content">
+				<ArrowDownwardIcon />
+				<TouchAppIcon />
+				<span>Swipe down for previous!</span>
+			</div>
+		);
+	};
+
+	const renderScrollEndContent = function () {
+		return (
+			<div className="swipe-guide-content">
+				<span>That's all folks!</span>
+			</div>
+		);
+	};
+
+	const renderPluginSwipeUp = function (renderData, element) {
+		ReactDOM.render(renderData, element);
+	};
+
+	const renderPluginSwipeDown = function (renderData, element) {
+		ReactDOM.render(renderData, element);
+	};
+
+	const renderPluginScrollEnd = function (renderData, element) {
+		ReactDOM.render(renderData, element);
+	};
+
+	const removePluginMobileScrollMsgs = function (e1, e2, e3) {
+		if (e1) {
+			ReactDOM.unmountComponentAtNode(e1);
+		}
+
+		if (e2) {
+			ReactDOM.unmountComponentAtNode(e2);
+		}
+
+		if (e3) {
+			ReactDOM.unmountComponentAtNode(e3);
+		}
+	};
+
+	const resizeObserverComplete = function (isMobileView, wasMobileView) {
+		if (isMobileView && !wasMobileView) {
+			changeDeskInteractionModeAction("ADD");
+		}
 	};
 
 	const onSnackBarClose = () => {
@@ -167,9 +262,15 @@ export default compose(
 			latch: getLatch(state),
 			deskInteractionMode: getDeskInteractionMode(state),
 			positionData: getPositionData(state),
+			margin: getMargin(state),
+			marginChangeValue: getMarginChangeValue(state),
 		}),
 		{
 			setPositionDataAction,
+			setMarginAction,
+			setScaledMarginAction,
+			setMarginChangeValueAction,
+			changeDeskInteractionModeAction,
 		}
 	)
 )(LgvCustomizedView);

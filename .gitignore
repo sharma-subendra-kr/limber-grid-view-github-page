@@ -1,3 +1,7 @@
 node_modules
-public/assets
+#public/assets
 *.sublime-workspace
+*DS_Store
+package-lock.json
+
+out/

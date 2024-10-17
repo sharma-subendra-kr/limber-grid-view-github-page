@@ -150,6 +150,17 @@ const Header = ({
 							<GitHubIcon />
 						</a>
 					</Grid>
+					<Grid item>
+						<a
+							className="try-limber-notes"
+							href="https://limbernotes.com"
+							target="blank"
+						>
+							Try
+							<br />
+							limberNotes!
+						</a>
+					</Grid>
 					<Grid item container>
 						<a className="view-example-code" href={codeLink} target="blank">
 							<Grid item direction="column">
@@ -248,6 +259,12 @@ const StyledHeader = styled(Header)`
 			}
 		}
 		.MuiGrid-item:nth-child(3) {
+			flex-grow: 0;
+			a {
+				text-align: center;
+			}
+		}
+		.MuiGrid-item:nth-child(4) {
 			justify-content: flex-end;
 
 			.view-example-code {
@@ -256,7 +273,7 @@ const StyledHeader = styled(Header)`
 				}
 			}
 		}
-		.MuiGrid-item:nth-child(4) {
+		.MuiGrid-item:nth-child(5) {
 			display: none;
 			svg {
 				transition-property: transform;
@@ -296,9 +313,11 @@ const StyledHeader = styled(Header)`
 				}
 			}
 			.MuiGrid-item:nth-child(3) {
-				display: none;
 			}
 			.MuiGrid-item:nth-child(4) {
+				display: none;
+			}
+			.MuiGrid-item:nth-child(5) {
 				display: flex;
 				justify-content: flex-end;
 			}

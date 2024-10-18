@@ -147,6 +147,7 @@ const Header = ({
 							target="blank"
 						>
 							<span>LimberGridView</span>
+							<br />
 							<GitHubIcon />
 						</a>
 					</Grid>
@@ -332,6 +333,26 @@ const StyledHeader = styled(Header)`
 				svg {
 					font-size: 32px;
 					vertical-align: middle;
+				}
+			}
+		}
+	}
+
+	@media only screen and (max-width: 400px) and (min-width: 1px) and (orientation: portrait),
+		only screen and (max-width: 400px) and (min-width: 1px) and (orientation: landscape) {
+		.MuiGrid-root.header-content {
+			.MuiGrid-item:first-child {
+				display: none;
+			}
+			.MuiGrid-item:nth-child(2) {
+				min-width: 105px;
+				max-width: 105px;
+				justify-content: flex-start;
+				.star-on-github {
+					span {
+						font-size: 1rem;
+						margin-right: 5px;
+					}
 				}
 			}
 		}

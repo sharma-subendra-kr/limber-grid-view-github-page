@@ -43,3 +43,8 @@ p {
 .button:disabled {
 	cursor: not-allowed;
 }
+
+.undecorated-link {
+	text-decoration: none;
+	color: unset;
+}

@@ -56,7 +56,7 @@ const AllProducts = (props) => {
 									<br />
 									<Typography color="textSecondary">
 										LimberNotes is a cross-platform handwritten note taking app
-										for browsers. It supports all kinds of styluses like Samnung
+										for browsers. It supports all kinds of styluses like Samsung
 										S Pen and Apple Pencil.
 									</Typography>
 								</CardContent>

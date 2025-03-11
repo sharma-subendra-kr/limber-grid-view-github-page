@@ -107,7 +107,7 @@ module.exports = {
 		htmlWebpackPluginGhPage,
 	],
 	resolve: {
-		extensions: [".tsx", ".ts", ".js", "jsx"],
+		extensions: [".tsx", ".ts", ".js", ".jsx"],
 		alias: {
 			src: path.resolve(__dirname, "src/"),
 			"@src": path.resolve(__dirname, "src/"),

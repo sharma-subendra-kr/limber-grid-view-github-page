@@ -59,13 +59,13 @@ module.exports = {
 				},
 			},
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				enforce: "pre",
 				exclude: /node_modules/,
 				loader: "source-map-loader",
 			},
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: "babel-loader",
 			},
@@ -107,7 +107,7 @@ module.exports = {
 		htmlWebpackPluginGhPage,
 	],
 	resolve: {
-		extensions: [".tsx", ".ts", ".js", "jsx"],
+		extensions: [".tsx", ".ts", ".js", ".jsx"],
 		alias: {
 			src: path.resolve(__dirname, "src/"),
 			"@src": path.resolve(__dirname, "src/"),

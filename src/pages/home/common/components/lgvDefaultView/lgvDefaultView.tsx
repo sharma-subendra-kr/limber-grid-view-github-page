@@ -6,6 +6,10 @@ import LimberGridView from "@sharma-subendra-kr/limber-grid-view";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import TouchAppIcon from "@material-ui/icons/TouchApp";
+
 import { Layout } from "./layout";
 import { withLGV } from "../../../../../common/components/hoc/withLGV";
 
@@ -15,6 +19,11 @@ import {
 	getDeskInteractionMode,
 	getPositionData,
 	setPositionDataAction,
+	getMargin,
+	getMarginChangeValue,
+	setMarginAction,
+	setScaledMarginAction,
+	setMarginChangeValueAction,
 } from "../../../ducks";
 
 import "./lgvDefaultView.scss";
@@ -26,6 +35,11 @@ const LgvDefaultView = (props) => {
 		positionData,
 		setPositionDataAction,
 		lgv,
+		margin,
+		marginChangeValue,
+		setMarginAction,
+		setScaledMarginAction,
+		setMarginChangeValueAction,
 	} = props;
 
 	const [snackBarState, setSnackBarState] = useState(false);
@@ -36,6 +50,7 @@ const LgvDefaultView = (props) => {
 		lgv.current = new LimberGridView({
 			el: el.current,
 			callbacks: {
+				mountComplete: mountComplete,
 				renderComplete: renderComplete,
 				renderContent: renderContent,
 				resizeComplete: resizeComplete,
@@ -47,6 +62,13 @@ const LgvDefaultView = (props) => {
 				removePlugin: removePlugin,
 				getArrangeTime: getArrangeTime,
 				getLogMessage: getLogMessage,
+				renderSwipeUpContent: renderSwipeUpContent,
+				renderSwipeDownContent: renderSwipeDownContent,
+				renderScrollEndContent: renderScrollEndContent,
+				renderPluginSwipeUp: renderPluginSwipeUp,
+				renderPluginSwipeDown: renderPluginSwipeDown,
+				renderPluginScrollEnd: renderPluginScrollEnd,
+				removePluginMobileScrollMsgs: removePluginMobileScrollMsgs,
 			},
 			publicConstants: {
 				autoScrollForMouse: true,
@@ -54,10 +76,20 @@ const LgvDefaultView = (props) => {
 				latchMovedItem: latch,
 			},
 			positionData: positionData,
+			margin: margin,
+			marginChangeValue: marginChangeValue,
 		});
 	}, []);
 
-	const onRemove = (index) => {};
+	const onRemove = (index) => {
+		lgv.current.removeItem(index);
+	};
+
+	const mountComplete = () => {
+		setMarginAction(lgv.current.getCurrentMargin());
+		setScaledMarginAction(lgv.current.getCurrentMargin(true));
+		setMarginChangeValueAction(lgv.current.getMarginChangeValue());
+	};
 
 	const renderComplete = (index) => {
 		if (index === undefined) {
@@ -114,6 +146,60 @@ const LgvDefaultView = (props) => {
 		setSnackBarState(true);
 	};
 
+	const renderSwipeUpContent = function () {
+		return (
+			<div className="swipe-guide-content">
+				<ArrowUpwardIcon />
+				<TouchAppIcon />
+				<span>Swipe up for more!</span>
+			</div>
+		);
+	};
+
+	const renderSwipeDownContent = function () {
+		return (
+			<div className="swipe-guide-content">
+				<ArrowDownwardIcon />
+				<TouchAppIcon />
+				<span>Swipe down for previous!</span>
+			</div>
+		);
+	};
+
+	const renderScrollEndContent = function () {
+		return (
+			<div className="swipe-guide-content">
+				<span>That's all folks!</span>
+			</div>
+		);
+	};
+
+	const renderPluginSwipeUp = function (renderData, element) {
+		ReactDOM.render(renderData, element);
+	};
+
+	const renderPluginSwipeDown = function (renderData, element) {
+		ReactDOM.render(renderData, element);
+	};
+
+	const renderPluginScrollEnd = function (renderData, element) {
+		ReactDOM.render(renderData, element);
+	};
+
+	const removePluginMobileScrollMsgs = function (e1, e2, e3) {
+		if (e1) {
+			ReactDOM.unmountComponentAtNode(e1);
+		}
+
+		if (e2) {
+			ReactDOM.unmountComponentAtNode(e2);
+		}
+
+		if (e3) {
+			ReactDOM.unmountComponentAtNode(e3);
+		}
+	};
+
 	const onSnackBarClose = () => {
 		setSnackBarState(false);
 	};
@@ -142,9 +228,14 @@ export default compose(
 			latch: getLatch(state),
 			deskInteractionMode: getDeskInteractionMode(state),
 			positionData: getPositionData(state),
+			margin: getMargin(state),
+			marginChangeValue: getMarginChangeValue(state),
 		}),
 		{
 			setPositionDataAction,
+			setMarginAction,
+			setScaledMarginAction,
+			setMarginChangeValueAction,
 		}
 	)
 )(LgvDefaultView);

@@ -19,6 +19,7 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import CodeIcon from "@material-ui/icons/Code";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+import { setOrderNowDialogAction } from "src/common/components/complex/orderNow/ducks";
 import {
 	getDrawerState,
 	toggleDrawerStateAction,
@@ -29,7 +30,7 @@ import "./header.scss";
 const codeLink =
 	"https://github.com/sharma-subendra-kr/limber-grid-view-github-page/blob/master/src/pages/home/common/components/lgvCustomizedView/lgvCustomizedView.tsx";
 
-const HeaderLinks = () => {
+const HeaderLinks = ({ setOrderNowDialogAction }) => {
 	return (
 		<>
 			<Typography className="header-links">
@@ -40,14 +41,15 @@ const HeaderLinks = () => {
 
 			<Typography className="header-links">
 				<b>
-					<Link to="/LimberGridView/docs">API Docs</Link>
+					<Link to="/LimberGridView/docs/latest">Docs</Link>
 				</b>
 			</Typography>
 
-			<Typography className="header-links">
-				<b>
-					<Link to="/LimberGridView/buy">Pre-Order Now</Link>
-				</b>
+			<Typography
+				className="header-links"
+				onClick={() => setOrderNowDialogAction(true)}
+			>
+				<b>Order Now</b>
 			</Typography>
 
 			<Typography className="header-links">
@@ -59,7 +61,7 @@ const HeaderLinks = () => {
 	);
 };
 
-const HeaderLinksMobile = () => {
+const HeaderLinksMobile = ({ setOrderNowDialogAction }) => {
 	return (
 		<List>
 			<ListItem>
@@ -72,15 +74,16 @@ const HeaderLinksMobile = () => {
 			<ListItem>
 				<Typography className="header-links">
 					<b>
-						<Link to="/LimberGridView/docs">API Docs</Link>
+						<Link to="/LimberGridView/docs/latest">Docs</Link>
 					</b>
 				</Typography>
 			</ListItem>
 			<ListItem>
-				<Typography className="header-links">
-					<b>
-						<Link to="/LimberGridView/buy">Pre-Order Now</Link>
-					</b>
+				<Typography
+					className="header-links"
+					onClick={() => setOrderNowDialogAction(true)}
+				>
+					<b>Pre-Order Now</b>
 				</Typography>
 			</ListItem>
 			<ListItem>
@@ -101,7 +104,13 @@ const HeaderLinksMobile = () => {
 	);
 };
 
-const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
+const Header = ({
+	className,
+	drawerState,
+	toggleDrawerStateAction,
+	setOrderNowDialogAction,
+	push,
+}) => {
 	const [expand, setExpand] = useState(false);
 
 	const onToggleDrawer = () => {
@@ -129,7 +138,7 @@ const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
 						>
 							limber.in
 						</Typography>
-						<HeaderLinks />
+						<HeaderLinks setOrderNowDialogAction={setOrderNowDialogAction} />
 					</Grid>
 					<Grid item>
 						<a
@@ -137,8 +146,20 @@ const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
 							href="https://github.com/sharma-subendra-kr/LimberGridView"
 							target="blank"
 						>
-							<span>Star on github!</span>
+							<span>LimberGridView</span>
+							<br />
 							<GitHubIcon />
+						</a>
+					</Grid>
+					<Grid item>
+						<a
+							className="try-limber-notes"
+							href="https://limbernotes.com"
+							target="blank"
+						>
+							Try
+							<br />
+							limberNotes!
 						</a>
 					</Grid>
 					<Grid item container>
@@ -161,7 +182,9 @@ const Header = ({ className, drawerState, toggleDrawerStateAction, push }) => {
 			{expand && (
 				<Grid container className="mobile-links">
 					<Box p={2}>
-						<HeaderLinksMobile />
+						<HeaderLinksMobile
+							setOrderNowDialogAction={setOrderNowDialogAction}
+						/>
 					</Box>
 				</Grid>
 			)}
@@ -225,7 +248,7 @@ const StyledHeader = styled(Header)`
 				text-decoration: none;
 				text-align: center;
 				span {
-					font-size: 24px;
+					font-size: 20px;
 					margin-right: 10px;
 					vertical-align: middle;
 					text-decoration: underline;
@@ -237,6 +260,12 @@ const StyledHeader = styled(Header)`
 			}
 		}
 		.MuiGrid-item:nth-child(3) {
+			flex-grow: 0;
+			a {
+				text-align: center;
+			}
+		}
+		.MuiGrid-item:nth-child(4) {
 			justify-content: flex-end;
 
 			.view-example-code {
@@ -245,7 +274,7 @@ const StyledHeader = styled(Header)`
 				}
 			}
 		}
-		.MuiGrid-item:nth-child(4) {
+		.MuiGrid-item:nth-child(5) {
 			display: none;
 			svg {
 				transition-property: transform;
@@ -285,9 +314,11 @@ const StyledHeader = styled(Header)`
 				}
 			}
 			.MuiGrid-item:nth-child(3) {
-				display: none;
 			}
 			.MuiGrid-item:nth-child(4) {
+				display: none;
+			}
+			.MuiGrid-item:nth-child(5) {
 				display: flex;
 				justify-content: flex-end;
 			}
@@ -306,11 +337,31 @@ const StyledHeader = styled(Header)`
 			}
 		}
 	}
+
+	@media only screen and (max-width: 400px) and (min-width: 1px) and (orientation: portrait),
+		only screen and (max-width: 400px) and (min-width: 1px) and (orientation: landscape) {
+		.MuiGrid-root.header-content {
+			.MuiGrid-item:first-child {
+				display: none;
+			}
+			.MuiGrid-item:nth-child(2) {
+				min-width: 105px;
+				max-width: 105px;
+				justify-content: flex-start;
+				.star-on-github {
+					span {
+						font-size: 1rem;
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+	}
 `;
 
 export default connect(
 	(state) => ({
 		drawerState: getDrawerState(state),
 	}),
-	{ toggleDrawerStateAction, push }
+	{ toggleDrawerStateAction, setOrderNowDialogAction, push }
 )(StyledHeader);

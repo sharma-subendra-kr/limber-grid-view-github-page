@@ -11,6 +11,8 @@ import AllProducts from "../../pages/allProducts/allProducts";
 import DevSupport from "../../pages/devSupport/devSupport";
 import FAQ from "../../pages/faq/faq";
 import Docs from "../../pages/docs/docs";
+import DocsLatest from "../../pages/docs/latest/docs";
+import Docs1_0_0_14 from "../../pages/docs/v1.0.0-beta.14/docs";
 import HowItWorks from "../../pages/howItWorks/howItWorks";
 import InfoOnCommercialLicense from "../../pages/infoOnCommercialLicense/infoOnCommercialLicense";
 import Limitations from "../../pages/limitations/limitations";
@@ -20,6 +22,7 @@ import Privacy from "../../pages/privacy/privacy";
 import RefundPolicy from "../../pages/refundPolicy/refundPolicy";
 import HowToUse from "../../pages/howToUse/howToUse";
 import Development from "../../pages/development/development";
+import SiteMap from "../../pages/siteMap/siteMap";
 
 const Routes = () => {
 	return (
@@ -40,7 +43,7 @@ const Routes = () => {
 				<PublicRoute
 					exact
 					path="/LimberGridView/devSupport"
-					component={DevSupport}
+					component={Pricing}
 					redirectPath="/LimberGridView"
 				/>
 				<PublicRoute
@@ -55,12 +58,12 @@ const Routes = () => {
 					component={FAQ}
 					redirectPath="/LimberGridView"
 				/>
-				<PublicRoute
+				{/*<PublicRoute
 					exact
 					path="/LimberGridView/howItWorks"
 					component={HowItWorks}
 					redirectPath="/LimberGridView"
-				/>
+				/>*/}
 				<PublicRoute
 					exact
 					path="/LimberGridView/infoOnCommercialLicense"
@@ -98,6 +101,16 @@ const Routes = () => {
 					redirectPath="/LimberGridView"
 				/>
 				<PublicRoute
+					path="/LimberGridView/docs/v1_0_0-beta_14"
+					component={Docs1_0_0_14}
+					redirectPath="/LimberGridView"
+				/>
+				<PublicRoute
+					path="/LimberGridView/docs/latest"
+					component={DocsLatest}
+					redirectPath="/LimberGridView"
+				/>
+				<PublicRoute
 					path="/LimberGridView/docs"
 					component={Docs}
 					redirectPath="/LimberGridView"
@@ -116,6 +129,11 @@ const Routes = () => {
 				<PublicRoute
 					path="/LimberGridView/dev"
 					component={Development}
+					redirectPath="/LimberGridView"
+				/>
+				<PublicRoute
+					path="/LimberGridView/siteMap"
+					component={SiteMap}
 					redirectPath="/LimberGridView"
 				/>
 				<PublicRoute

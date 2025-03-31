@@ -1,6 +1,7 @@
 .lgv-tools {
 	display: flex;
 	justify-content: flex-end;
+	user-select: none;
 
 	.lgv-tool {
 		margin: 0px 10px;

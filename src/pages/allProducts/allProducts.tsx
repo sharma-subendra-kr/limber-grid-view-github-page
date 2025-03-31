@@ -43,22 +43,25 @@ const AllProducts = (props) => {
 						</Card>
 					</Grid>
 					<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-						<Card>
-							<CardContent>
-								<Typography variant="h5">limber_____.com</Typography>
-								<br />
-								<br />
-								<Typography color="textSecondary">
-									It is a browser-based application for one of your most common
-									daily tasks and aimed to reduce your carbon footprint. It's
-									aimed at everyone whether a 13-year-old kid or a 90-year-old
-									nana.
+						<a
+							href="https://limbernotes.com"
+							className="undecorated-link"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<Card>
+								<CardContent>
+									<Typography variant="h5">limberNotes</Typography>
 									<br />
 									<br />
-									It's not Free Software.
-								</Typography>
-							</CardContent>
-						</Card>
+									<Typography color="textSecondary">
+										LimberNotes is a cross-platform handwritten note taking app
+										for browsers. It supports all kinds of styluses like Samsung
+										S Pen and Apple Pencil.
+									</Typography>
+								</CardContent>
+							</Card>
+						</a>
 					</Grid>
 				</Grid>
 			</PageContainer>

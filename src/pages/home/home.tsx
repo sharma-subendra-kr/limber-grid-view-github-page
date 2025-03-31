@@ -4,12 +4,14 @@ import { compose } from "redux";
 
 import Button from "@material-ui/core/Button";
 import Fab from "@material-ui/core/Fab";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import Footer from "src/common/components/static/footer/footer";
 import Header from "src/common/components/static/header/header";
 import Drawer from "src/common/components/static/drawer/drawer";
 import LgvTools from "src/common/components/complex/lgvTools/lgvTools";
-// import LgvMoreTools from "src/common/components/complex/lgvMoreTools/lgvMoreTools";
+import LgvMoreTools from "src/common/components/complex/lgvMoreTools/lgvMoreTools";
 import LgvCustomizedView from "./common/components/lgvCustomizedView/lgvCustomizedView";
 import LgvDefaultView from "./common/components/lgvDefaultView/lgvDefaultView";
 import SwitchToDesktop from "src/common/components/static/switchToDesktop/switchToDesktop";
@@ -83,12 +85,8 @@ const Home = (props) => {
 		introBuy.current = "complete";
 	};
 
-	const onClickCustomizedView = () => {
-		changeViewAction("customized");
-	};
-
-	const onClickDefaultViewView = () => {
-		changeViewAction("default");
+	const onViewChange = (event) => {
+		changeViewAction(event.target.value);
 	};
 
 	const onCloseSwitchToDesktop = () => {
@@ -113,36 +111,28 @@ const Home = (props) => {
 				<div className="tools-container">
 					<div className={`tools-wrapper ${isToolsExpanded ? "expanded" : ""}`}>
 						<div>
-							<Button
-								className="tools-button"
-								size="small"
-								onClick={onClickCustomizedView}
+							<Select
+								value={view}
+								onChange={onViewChange}
+								className="select-view"
 							>
-								Customized View
-							</Button>
-							<Button
-								className="tools-button"
-								size="small"
-								onClick={onClickDefaultViewView}
-							>
-								Default View
-							</Button>
+								<MenuItem value="customized">Customized</MenuItem>
+								<MenuItem value="default">Default</MenuItem>
+							</Select>
 						</div>
 						<div className="lgv-tools-container">
 							<LgvTools />
-							{/*{isToolsExpanded && <LgvMoreTools />}*/}
+							{isToolsExpanded && <LgvMoreTools />}
 						</div>
-						{false && (
-							<Fab
-								size="small"
-								color="secondary"
-								aria-label="expand"
-								onClick={onClickExpandTools}
-								className={isToolsExpanded && "expanded"}
-							>
-								<DoubleArrowIcon />
-							</Fab>
-						)}
+						<Fab
+							size="small"
+							color="secondary"
+							aria-label="expand"
+							onClick={onClickExpandTools}
+							className={isToolsExpanded && "expanded"}
+						>
+							<DoubleArrowIcon />
+						</Fab>
 					</div>
 				</div>
 				{positionData && (

@@ -20,37 +20,38 @@ const InfoOnCommercialLicense = (props) => {
 					<Typography variant="h4">Info On Commercial License</Typography>
 					<br />
 					<br />
-					You can buy a 1 or 2 or a 5-year license depending on your needs.
+					You can buy a 1 year license. Your license is automatically renewed
+					after you pay the updated license fees (this will change according to
+					market inflation, I do not to increase for random reasons).
 					<br />
 					<br />
-					This license applies to a single domain and a single application. You
-					are allowed to use it on subdomains also.
+					This license applies to a single Fully Qualified Domain Name(FQDN) i.e
+					a single IP address for websites that are loaded via web browsers and
+					a single iOS and android application.
 					<br />
 					<br />
 					Example:
 					<br /> example.com is allowed.
-					<br /> sth.example.com is also allowed.
+					<br /> sth.example.com is NOT allowed.
 					<br />
 					<br />
-					Example:
-					<br /> On the Play store, your application name is "Example". Then you
-					are allowed to use LimberGridView on an application named Example on
-					iOS App Store.
-					<br />
-					<br />
-					Using LimberGridView on some other domain through iframe or by any
-					other means is strictly prohibited. You can use it for only the domain
-					you purchased for.
+					Using LimberGridView on some other FQDN or IP address through iframe
+					or by any other means is strictly prohibited. You can use it for only
+					the FQDN you purchased for i.e. only one IP address.
 					<br />
 					<br />
 					Loading LimberGridView on some other application is strictly
-					prohibited by any means.
+					prohibited by any means (e.g. via web view in android).
 					<br />
 					<br />
-					If some third party would like to load your application loading thus
-					LimberGridView or one of your other applications would like to load
-					your application loading LimberGridView then the party who wants to
-					load LimberGridView from your application should also buy a license.
+					If some third party would like to load LimberGridView from your
+					application then the party who wants to load LimberGridView from your
+					application should also buy a license.
+					<br />
+					<br />
+					If one of your other applications would like to load LimberGridView
+					from your application then you must buy a license for your other
+					application also.
 					<br />
 					<br />
 					Any dev support or other kinds of support is not mentioned and

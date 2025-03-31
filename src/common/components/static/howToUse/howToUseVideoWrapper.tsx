@@ -25,7 +25,7 @@ const HowToUseVideoWrapper = ({ className, video }) => {
 		<div>
 			<br />
 			<div className={className}>
-				<video autoPlay loop muted>
+				<video autoPlay loop muted playsInline>
 					<source src={`${BASE}${video}`} type="video/mp4" />
 				</video>
 			</div>

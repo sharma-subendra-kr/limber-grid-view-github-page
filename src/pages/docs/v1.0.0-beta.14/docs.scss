@@ -1,0 +1,105 @@
+.docs-view-example-code {
+	svg {
+		vertical-align: middle;
+	}
+}
+
+.docs {
+	h2 {
+		font-size: 20px;
+		text-decoration: underline;
+		box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+			0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+		line-height: 2;
+		padding: 5px 15px;
+		background-color: #9a0036;
+		color: #fff;
+		word-break: break-word;
+	}
+
+	h3 {
+		font-size: 16px;
+		text-decoration: underline;
+		box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+			0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+		line-height: 1.5;
+		padding: 5px 15px;
+		background-color: #000;
+		color: #fff;
+		margin-top: 50px;
+		word-break: break-word;
+
+		~ p {
+			line-height: 1.5;
+		}
+	}
+
+	p + h2 {
+		margin-top: 50px;
+	}
+
+	dl + h2 {
+		margin-top: 50px;
+	}
+
+	a + h2 {
+		margin-top: 50px;
+	}
+
+	code {
+		padding: 0.2em 0.4em;
+		margin: 0;
+		font-size: 85%;
+		background-color: rgba(175, 184, 193, 0.2);
+		border-radius: 6px;
+	}
+
+	dl {
+		dt {
+			margin-top: 5px;
+			p {
+				display: inline;
+			}
+		}
+		dd {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			line-height: 1.5;
+		}
+	}
+
+	ul {
+		li {
+			line-height: 1.5;
+		}
+	}
+
+	.docs-table {
+		width: 100%;
+		overflow-x: auto;
+		table {
+			border-collapse: collapse;
+			margin: 10px;
+			thead {
+				tr {
+					border-bottom: 1px solid rgba(224, 224, 224, 1);
+					font-weight: 500;
+					line-height: 1.5rem;
+
+					th {
+						padding: 16px;
+					}
+				}
+			}
+			tbody {
+				tr {
+					td {
+						border-bottom: 1px solid rgba(224, 224, 224, 1);
+						padding: 16px;
+						line-height: 1.5rem;
+					}
+				}
+			}
+		}
+	}
+}

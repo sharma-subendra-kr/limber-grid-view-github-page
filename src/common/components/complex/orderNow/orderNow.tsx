@@ -139,6 +139,16 @@ const OrderNowModal = ({
 			{!submitted && (
 				<DialogContent>
 					<Grid container direction="row" justify="center">
+						<Grid item xs={12} sm={12}>
+							<DialogContentText>
+								Send an email to place your order.
+							</DialogContentText>
+							<a href="mailto:sales@limber.in" rel="noreferrer">
+								sales@limber.in
+							</a>
+						</Grid>
+					</Grid>
+					{/*<Grid container direction="row" justify="center">
 						<DialogContentText>
 							A stable release is planned soon. LimberGridView is going under
 							rigorous testing. Order now to get a beta release.
@@ -271,7 +281,7 @@ const OrderNowModal = ({
 								})}
 							</TextField>
 						</Grid>
-					</Grid>
+					</Grid>*/}
 				</DialogContent>
 			)}
 			{!submitted && (
@@ -281,9 +291,9 @@ const OrderNowModal = ({
 							Close
 						</Button>
 						{fetching && <CircularProgress size={30} color="primary" />}
-						<Button color="primary" onClick={onClickOrder} disabled={fetching}>
+						{/*<Button color="primary" onClick={onClickOrder} disabled={fetching}>
 							Pre-Order!
-						</Button>
+						</Button>*/}
 					</DialogActions>
 				</>
 			)}

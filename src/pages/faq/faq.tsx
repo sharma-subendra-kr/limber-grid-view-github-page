@@ -1,8 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import styled from "styled-components";
 
@@ -34,16 +39,46 @@ const FAQ = ({ className, sendQueryDialogState, setSendQueryDialogAction }) => {
 					<Typography variant="h4">FAQ</Typography>
 					<br />
 					<br />
-					Coming soon...
+					<div>
+						If you have any queries, then feel free to send a{" "}
+						<u>
+							<b className={"open-send-query"} onClick={onClickOpenModal}>
+								message
+							</b>
+						</u>
+						.
+					</div>
 					<br />
 					<br />
-					If you have any queries, then feel free to send a{" "}
-					<u>
-						<b className={"open-send-query"} onClick={onClickOpenModal}>
-							message
-						</b>
-					</u>
-					.
+					<Accordion defaultExpanded={true}>
+						<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+							<Typography>Is there a free version?</Typography>
+						</AccordionSummary>
+						<AccordionDetails>
+							<Typography>
+								No, there is no free version. Potential customers can try out a
+								old and unstable version before making a purchase. This version
+								is not production ready and is riddled with bugs which are fixed
+								in new releases. You can install it from npm store. Documentaion
+								is also provided for this version. It's APIs are also not up to
+								date with the latest stable version. You can try the latest
+								version via this website.
+								<br />
+								<br />
+								Docs:{"  "}
+								<br />
+								<Link to="/LimberGridView/docs/v1_0_0-beta_14">
+									v1.0.0-beta.14
+								</Link>
+								<br />
+								<br />
+								Install:{"  "}
+								<Typography variant="body2">
+									npm install @sharma-subendra-kr/limber-grid-view
+								</Typography>
+							</Typography>
+						</AccordionDetails>
+					</Accordion>
 				</Paper>
 			</PageContainer>
 		</div>

@@ -146,6 +146,16 @@ const OrderNowModal = ({
 							<a href="mailto:sales@limber.in" rel="noreferrer">
 								sales@limber.in
 							</a>
+							<br />
+							<br />
+							<DialogContentText>LinkedIn:</DialogContentText>
+							<a
+								href="https://www.linkedin.com/in/subendra-sharma-214302150/"
+								rel="noreferrer"
+								target="_blank"
+							>
+								Subendra Sharma
+							</a>
 						</Grid>
 					</Grid>
 					{/*<Grid container direction="row" justify="center">

@@ -61,8 +61,9 @@ const FAQ = ({ className, sendQueryDialogState, setSendQueryDialogAction }) => {
 						<Typography>
 							No, there is no free version. Potential customers can try out a
 							old and unstable version before making a purchase. This version is
-							not production ready and is riddled with bugs which are fixed in
-							new releases. You can install it from npm store. Documentaion is
+							not production ready and has many bugs which are fixed in new
+							releases. It also doesn't feature the grouping multiple cards
+							functionality. You can install it from npm store. Documentaion is
 							also provided for this version. It's APIs are also not up to date
 							with the latest stable version. You can try the latest version via
 							this website.

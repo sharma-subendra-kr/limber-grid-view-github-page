@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
+import Divider from "@material-ui/core/Divider";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import styled from "styled-components";
@@ -35,10 +36,10 @@ const FAQ = ({ className, sendQueryDialogState, setSendQueryDialogAction }) => {
 			<Footer />
 			{sendQueryDialogState && <SendQuery onClose={onCloseSendQuery} />}
 			<PageContainer>
+				<Typography variant="h4">FAQ</Typography>
+				<br />
+				<br />
 				<Paper>
-					<Typography variant="h4">FAQ</Typography>
-					<br />
-					<br />
 					<div>
 						If you have any queries, then feel free to send a{" "}
 						<u>
@@ -48,38 +49,39 @@ const FAQ = ({ className, sendQueryDialogState, setSendQueryDialogAction }) => {
 						</u>
 						.
 					</div>
-					<br />
-					<br />
-					<Accordion defaultExpanded={true}>
-						<AccordionSummary expandIcon={<ExpandMoreIcon />}>
-							<Typography>Is there a free version?</Typography>
-						</AccordionSummary>
-						<AccordionDetails>
-							<Typography>
-								No, there is no free version. Potential customers can try out a
-								old and unstable version before making a purchase. This version
-								is not production ready and is riddled with bugs which are fixed
-								in new releases. You can install it from npm store. Documentaion
-								is also provided for this version. It's APIs are also not up to
-								date with the latest stable version. You can try the latest
-								version via this website.
-								<br />
-								<br />
-								Docs:{"  "}
-								<br />
-								<Link to="/LimberGridView/docs/v1_0_0-beta_14">
-									v1.0.0-beta.14
-								</Link>
-								<br />
-								<br />
-								Install:{"  "}
-								<Typography variant="body2">
-									npm install @sharma-subendra-kr/limber-grid-view
-								</Typography>
-							</Typography>
-						</AccordionDetails>
-					</Accordion>
 				</Paper>
+				<br />
+				<br />
+				<Accordion defaultExpanded={true}>
+					<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+						<Typography variant="h6">Is there a free version?</Typography>
+					</AccordionSummary>
+					<Divider />
+					<AccordionDetails>
+						<Typography>
+							No, there is no free version. Potential customers can try out a
+							old and unstable version before making a purchase. This version is
+							not production ready and is riddled with bugs which are fixed in
+							new releases. You can install it from npm store. Documentaion is
+							also provided for this version. It's APIs are also not up to date
+							with the latest stable version. You can try the latest version via
+							this website.
+							<br />
+							<br />
+							Docs:{"  "}
+							<br />
+							<Link to="/LimberGridView/docs/v1_0_0-beta_14">
+								v1.0.0-beta.14
+							</Link>
+							<br />
+							<br />
+							Install:{"  "}
+							<Typography variant="body2">
+								npm install @sharma-subendra-kr/limber-grid-view
+							</Typography>
+						</Typography>
+					</AccordionDetails>
+				</Accordion>
 			</PageContainer>
 		</div>
 	);

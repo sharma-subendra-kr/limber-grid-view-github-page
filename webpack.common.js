@@ -59,13 +59,13 @@ module.exports = {
 				},
 			},
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				enforce: "pre",
 				exclude: /node_modules/,
 				loader: "source-map-loader",
 			},
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: "babel-loader",
 			},

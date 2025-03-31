@@ -25,22 +25,29 @@ const AllProducts = (props) => {
 				<Typography variant="h4">All Products</Typography>
 				<Grid container spacing={2}>
 					<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-						<Card>
-							<CardContent>
-								<Typography variant="h5">LimberGridView</Typography>
-								<br />
-								<br />
-								<Typography color="textSecondary">
-									LimberGridView, a powerful JavaScript Library using
-									Computational Geometry to render movable, dynamically
-									resizable, and auto-arranging grids. Written in raw
-									JavaScript, it can be plugged into most frameworks, plus it
-									has a plugin for React applications. It gives users the most
-									optimal arrangements using its highly efficient and fine-tuned
-									algorithm.
-								</Typography>
-							</CardContent>
-						</Card>
+						<a
+							href="https://limber.in"
+							className="undecorated-link"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<Card>
+								<CardContent>
+									<Typography variant="h5">LimberGridView</Typography>
+									<br />
+									<br />
+									<Typography color="textSecondary">
+										LimberGridView, a powerful JavaScript Library using
+										Computational Geometry to render movable, dynamically
+										resizable, and auto-arranging grids. Written in raw
+										JavaScript, it can be plugged into most frameworks, plus it
+										has a plugin for React applications. It gives users the most
+										optimal arrangements using its highly efficient and
+										fine-tuned algorithm.
+									</Typography>
+								</CardContent>
+							</Card>
+						</a>
 					</Grid>
 					<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
 						<a

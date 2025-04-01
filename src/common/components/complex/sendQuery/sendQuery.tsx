@@ -119,7 +119,7 @@ const SendQueryModal = ({
 			{!submitted && (
 				<DialogContent>
 					<Grid container direction="column">
-						<Grid item xs={12} sm={12}>
+						{/*<Grid item xs={12} sm={12}>
 							<DialogContentText>
 								Feel free to send me your queries.
 							</DialogContentText>
@@ -136,12 +136,17 @@ const SendQueryModal = ({
 							>
 								Subendra Sharma
 							</a>
-						</Grid>
+						</Grid>*/}
 					</Grid>
-					{/*<Grid container direction="column">
+					<Grid container direction="column">
 						<Grid item xs={12} sm={12}>
 							<DialogContentText>
-								Feel free to send me your queries. I will contact you via email.
+								Feel free to send me your queries.
+								<br /> Please fill up this form or contact{" "}
+								<a href="mailto:sales@limber.in" rel="noreferrer">
+									sales@limber.in
+								</a>
+								.
 							</DialogContentText>
 						</Grid>
 						<br />
@@ -216,7 +221,7 @@ const SendQueryModal = ({
 								size="small"
 							/>
 						</Grid>
-					</Grid>*/}
+					</Grid>
 				</DialogContent>
 			)}
 			{!submitted && (
@@ -226,9 +231,9 @@ const SendQueryModal = ({
 							Close
 						</Button>
 						{fetching && <CircularProgress size={30} color="primary" />}
-						{/*<Button color="primary" onClick={onClickSend} disabled={fetching}>
+						<Button color="primary" onClick={onClickSend} disabled={fetching}>
 							Send!
-						</Button>*/}
+						</Button>
 					</DialogActions>
 				</>
 			)}

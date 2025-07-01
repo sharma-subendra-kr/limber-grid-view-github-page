@@ -135,7 +135,7 @@ const OrderNowModal = ({
 			scroll="body"
 			maxWidth="md"
 		>
-			{!submitted && <DialogTitle>Order Now!</DialogTitle>}
+			{!submitted && <DialogTitle>{/*Order Now!*/}Book Demo</DialogTitle>}
 			{!submitted && (
 				<DialogContent>
 					{/*<Grid container direction="row" justify="center">
@@ -159,13 +159,13 @@ const OrderNowModal = ({
 						</Grid>
 					</Grid>*/}
 					<Grid container direction="row" justify="center">
-						<DialogContentText>
+						{/*<DialogContentText>
 							Please fill up this form or contact{" "}
 							<a href="mailto:sales@limber.in" rel="noreferrer">
 								sales@limber.in
 							</a>
 							.
-						</DialogContentText>
+						</DialogContentText>*/}
 						<br />
 						<Grid item lg={8} md={8} xs={8} sm={8} className="order-field">
 							<TextField
@@ -269,7 +269,7 @@ const OrderNowModal = ({
 							/>
 						</Grid>
 						<br />
-						<Grid item xs={8} sm={8} className="order-field">
+						{/*<Grid item xs={8} sm={8} className="order-field">
 							<TextField
 								id="company-revenue"
 								name="companyRevenue"
@@ -293,7 +293,7 @@ const OrderNowModal = ({
 									);
 								})}
 							</TextField>
-						</Grid>
+						</Grid>*/}
 					</Grid>
 				</DialogContent>
 			)}

@@ -206,7 +206,7 @@ const CustomDrawer = ({
 							/>
 						);
 					})}
-					<Divider />
+					{/*<Divider />
 					<Typography variant="button" className="list-divider">
 						Sales
 					</Typography>
@@ -219,7 +219,7 @@ const CustomDrawer = ({
 								onClickListItem={onClickListItem}
 							/>
 						);
-					})}
+					})}*/}
 					<Divider />
 					<Typography variant="button" className="list-divider">
 						Others

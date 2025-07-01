@@ -49,10 +49,11 @@ const HeaderLinks = ({ setOrderNowDialogAction }) => {
 				className="header-links"
 				onClick={() => setOrderNowDialogAction(true)}
 			>
-				<b>Order Now</b>
+				<b>Book Demo</b>
+				{/*<b>Order Now</b>*/}
 			</Typography>
 
-			<Typography className="header-links">
+			<Typography className="header-links header-links-pricing">
 				<b>
 					<Link to="/LimberGridView/pricing">Pricing</Link>
 				</b>
@@ -83,11 +84,12 @@ const HeaderLinksMobile = ({ setOrderNowDialogAction }) => {
 					className="header-links"
 					onClick={() => setOrderNowDialogAction(true)}
 				>
-					<b>Pre-Order Now</b>
+					<b>Book Demo</b>
+					{/*<b>Order Now</b>*/}
 				</Typography>
 			</ListItem>
 			<ListItem>
-				<Typography className="header-links">
+				<Typography className="header-links header-links-pricing">
 					<b>
 						<Link to="/LimberGridView/pricing">Pricing</Link>
 					</b>
@@ -220,6 +222,11 @@ const StyledHeader = styled(Header)`
 		margin-right: 8px;
 		text-align: left;
 	}
+
+	.MuiTypography-root.header-links.header-links-pricing {
+		visibility: hidden;
+	}
+
 	//
 
 	.MuiGrid-root.header-content {
